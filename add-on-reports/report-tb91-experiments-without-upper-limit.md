@@ -7,12 +7,10 @@ body {
 
 </style>
 
-<link rel="stylesheet" href="{{ '/css/site.css' | relative_url }}" />
-<link rel="stylesheet" href="./docs/css/main.css" />
-<link rel="stylesheet" href="/ThunderKdB/docs/css/xpi-search.css" />
+<link rel="stylesheet" href="resources/css/site.css" />
 
 <div class="search-banner">	
-	<img class="banner-image" src='/ThunderKdB/docs/images/Thunderbird-Banner.png'
+	<img class="banner-image" src='resources/Thunderbird-Banner.png'
 		style="padding-right: 60px; height: 40px; width: 170px" />
 	<label class="banner-header">[TB91] Experiments without upper limit in ATN, which might not be compatible with TB91 (excluding reported positives). (70)</label>
 	<label class="banner-header-rt">2021-09-06</label>
