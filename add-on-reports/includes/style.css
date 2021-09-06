@@ -36,3 +36,7 @@ a {
 	text-decoration: underline dotted;
 	color: rgb(0, 34, 117);
 }
+p {
+	margin:0;
+	padding:0;
+}
