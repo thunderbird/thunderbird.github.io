@@ -1,7 +1,5 @@
-<link rel="stylesheet" href="resources/style.css" />
-
 <div class="search-banner">	
-	<img class="banner-image" src='resources/Thunderbird-Banner.png'
+	<img class="banner-image" src='_includes/Thunderbird-Banner.png'
 		style="padding-right: 60px; height: 40px; width: 170px" />
 	<label class="banner-header">[TB91] Experiments without upper limit in ATN, which might not be compatible with TB91 (excluding reported positives). (70)</label>
 	<label class="banner-header-rt">2021-09-06</label>
