@@ -7,7 +7,7 @@ body {
 
 </style>
 
-<link rel="stylesheet" href="resources/css/site.css" />
+<link rel="stylesheet" href="resources/style.css" />
 
 <div class="search-banner">	
 	<img class="banner-image" src='resources/Thunderbird-Banner.png'
