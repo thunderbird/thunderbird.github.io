@@ -1,14 +1,3 @@
-<style>
-@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono&display=swap');
-
-body {
-	font-family: 'Roboto';
-}
-
-</style>
-
-<link rel="stylesheet" href="resources/style.css" />
-
 <div class="search-banner">	
 	<img class="banner-image" src='resources/Thunderbird-Banner.png'
 		style="padding-right: 60px; height: 40px; width: 170px" />
