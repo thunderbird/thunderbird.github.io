@@ -1,0 +1,11 @@
+# Dependencies
+highlighter: rouge
+pretty: filename.markdown
+
+plugins:
+  - jekyll-default-layout
+
+sass:
+  sass_dir:  /_sass
+  
+title: null
