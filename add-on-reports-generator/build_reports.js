@@ -49,7 +49,7 @@ var reports = {
 				getExtData(extJson, "68").version ||
 				getExtData(extJson, "60").version;
 
-			return !!vHighest;
+			return { include: !!vHighest };
 		},
 	},
 	"parsing-error": {
@@ -59,7 +59,7 @@ var reports = {
 		enabled: true,
 		filter: function (extJson) {
 			let current_version = getExtData(extJson, "current").data;
-			return !current_version;
+			return { include: !current_version };
 		}
 	},
 	"recent-activity": {
@@ -75,65 +75,9 @@ var reports = {
 				let today = new Date();
 				const msDay = 24 * 60 * 60 * 1000;
 				let d = (today - cv) / msDay;
-				return (d <= 14);
+				return { include: (d <= 14) };
 			}
-			return false;
-		}
-	},
-	// -- ATN status reports------------------------------------------------------------------------
-
-	"atn-tb60": {
-		group: "atn",
-		header: "Extensions compatible with Thunderbird 60 as seen by ATN.",
-		template: "report-template.html",
-		enabled: true,
-		filter: function (extJson) {
-			return !!(getExtData(extJson, "60").version);
-		},
-	},
-	"atn-tb68": {
-		group: "atn",
-		header: "Extensions compatible with Thunderbird 68 as seen by ATN.",
-		template: "report-template.html",
-		enabled: true,
-		filter: function (extJson) {
-			return !!(getExtData(extJson, "68").version);
-		}
-	},
-	"atn-tb78": {
-		group: "atn",
-		header: "Extensions compatible with Thunderbird 78 as seen by ATN.",
-		template: "report-template.html",
-		enabled: true,
-		filter: function (extJson) {
-			return !!(getExtData(extJson, "78").version);
-		}
-	},
-	"atn-tb91": {
-		group: "91",
-		header: "Extensions compatible with Thunderbird 91 as seen by ATN.",
-		template: "report-template.html",
-		enabled: true,
-		filter: function (extJson) {
-			return !!(getExtData(extJson, "91").version);
-		}
-	},
-	"max-atn-value-raised-above-max-xpi-value": {
-		group: "atn",
-		header: "Extensions whose max version has been raised in ATN above the XPI value (excluding legacy extensions).",
-		template: "report-template.html",
-		enabled: true,
-		filter: function (extJson) {
-			let vCurrent = getExtData(extJson, "current").data;
-			if (!vCurrent)
-				return false;
-
-			let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max || "*";
-			let strict_max = vCurrent.manifest?.applications?.gecko?.strict_max_version ||
-				vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
-				"*";
-
-			return vCurrent.mext && !vCurrent.legacy && (compareVer(strict_max, atn_max) < 0)
+			return { include: false };
 		}
 	},
 	// -- ATN error reports ------------------------------------------------------------------------
@@ -148,16 +92,16 @@ var reports = {
 			let v68 = getExtData(extJson, "68").version;
 			let v60 = getExtData(extJson, "60").version;
 
-			if (v60 && v68 && compareVer(v60, v68) > 0) return true;
-			if (v60 && v78 && compareVer(v60, v78) > 0) return true;
-			if (v60 && v91 && compareVer(v60, v91) > 0) return true;
+			if (v60 && v68 && compareVer(v60, v68) > 0) return { include: true };
+			if (v60 && v78 && compareVer(v60, v78) > 0) return { include: true };
+			if (v60 && v91 && compareVer(v60, v91) > 0) return { include: true };
 
-			if (v68 && v78 && compareVer(v68, v78) > 0) return true;
-			if (v68 && v91 && compareVer(v68, v91) > 0) return true;
+			if (v68 && v78 && compareVer(v68, v78) > 0) return { include: true };
+			if (v68 && v91 && compareVer(v68, v91) > 0) return { include: true };
 
-			if (v78 && v91 && compareVer(v78, v91) > 0) return true;
+			if (v78 && v91 && compareVer(v78, v91) > 0) return { include: true };
 
-			return false;
+			return { include: false };
 		},
 	},
 	"max-atn-value-reduced-below-max-xpi-value": {
@@ -168,14 +112,14 @@ var reports = {
 		filter: function (extJson) {
 			let vCurrent = getExtData(extJson, "current").data;
 			if (!vCurrent)
-				return false;
+				return { include: false };
 
 			let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max || "*";
 			let strict_max = vCurrent.manifest?.applications?.gecko?.strict_max_version ||
 				vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
 				"*";
 
-			return vCurrent.mext && !vCurrent.legacy && (compareVer(strict_max, atn_max) > 0)
+			return { include: vCurrent.mext && !vCurrent.legacy && (compareVer(strict_max, atn_max) > 0) };
 		}
 	},
 	"latest-current-mismatch": {
@@ -190,7 +134,7 @@ var reports = {
 				getExtData(extJson, "60").version;
 
 			let vCurrent = getExtData(extJson, "current").version;
-			return !reports["wrong-order"].filter(extJson) && !!vHighest && vHighest != vCurrent;
+			return { include: !reports["wrong-order"].filter(extJson).include && !!vHighest && vHighest != vCurrent };
 		},
 	},
 	"false-positives-tb68": {
@@ -200,7 +144,7 @@ var reports = {
 		enabled: true,
 		filter: function (extJson) {
 			let data = getExtData(extJson, "68").data;
-			return !!data && data.legacy && !data.mext;
+			return { include: !!data && data.legacy && !data.mext };
 		}
 	},
 	"false-positives-tb78": {
@@ -210,74 +154,35 @@ var reports = {
 		enabled: true,
 		filter: function (extJson) {
 			let data = getExtData(extJson, "78").data;
-			return !!data && data.legacy;
-		}
-	},
-	// -- Lost extensions (only useful if all false positives have been removed) -------------------
-	"lost-tb60-to-tb68": {
-		group: "lost",
-		header: "Extensions which have been lost from TB60 to TB68 (including alternatives).",
-		template: "report-template.html",
-		enabled: true,
-		filter: function (extJson) {
-			let v68 = getExtData(extJson, "68").version;
-			let v60 = getExtData(extJson, "60").version;
-			return !!v60 && !v68;
-		}
-	},
-	"lost-tb68-to-tb78": {
-		group: "lost",
-		header: "Extensions which have been lost from TB68 to TB78 (including alternatives).",
-		template: "report-template.html",
-		enabled: true,
-		filter: function (extJson) {
-			let v78 = getExtData(extJson, "78").version;
-			let v68 = getExtData(extJson, "68").version;
-			return !!v68 && !v78;
-		}
-	},
-	"lost-tb78-to-tb91": {
-		group: "91",
-		header: "Extensions which have been lost from TB78 to TB91 (including alternatives).",
-		template: "report-template.html",
-		enabled: true,
-		filter: function (extJson) {
-			let v91 = getExtData(extJson, "91").version;
-			let v78 = getExtData(extJson, "78").version;
-			return !!v78 && !v91;
-		}
-	},
-	// -- Lost extensions without alternatives -----------------------------------------------------
-	"lost-tb60-to-tb68-no-alternatives": {
-		group: "lost",
-		header: "Extensions which have been lost from TB60 to TB68.",
-		template: "report-template.html",
-		enabled: true,
-		filter: function (extJson) {
-			return !getAlternative(extJson) && reports['lost-tb60-to-tb68'].filter(extJson);
-		}
-	},
-	"lost-tb68-to-tb78-no-alternatives": {
-		group: "lost",
-		header: "Extensions which have been lost from TB68 to TB78.",
-		template: "report-template.html",
-		enabled: true,
-		filter: function (extJson) {
-			let v78 = getExtData(extJson, "78").version;
-			let v68 = getExtData(extJson, "68").version;
-			return !getAlternative(extJson) && reports['lost-tb68-to-tb78'].filter(extJson);
-		}
-	},
-	"lost-tb78-to-tb91-no-alternatives": {
-		group: "91",
-		header: "Extensions which have been lost from TB78 to TB91.",
-		template: "report-template.html",
-		enabled: true,
-		filter: function (extJson) {
-			return !getAlternative(extJson) && reports['lost-tb78-to-tb91'].filter(extJson);
+			return { include: !!data && data.legacy };
 		}
 	},
 	// -- Specials v91 -----------------------------------------------------------------------------
+	"tb91-worst-case-lost-tb78-to-tb91": {
+		group: "91",
+		header: "Extensions which have been lost from TB78 to TB91 (including alternatives, possible false positives and possible false negatives).",
+		template: "report-template.html",
+		enabled: true,
+		filter: function (extJson) {
+			let include = false;
+			let notes = "";
+
+			if (reports['lost-tb78-to-tb91'].filter(extJson).include) {
+			 include = true;
+			 notes = "incompatible";
+			}
+			if (reports['tb91-pure-mx-incompatible'].filter(extJson).include) {
+				include = true;
+				notes = "probably compatible";
+			}
+			if (reports['tb91-experiments-without-upper-limit'].filter(extJson).include) {
+				include = true;
+				notes = "probably incompatible";
+			}
+   
+			return { include, notes};
+		}
+	},
 	"tb91-pure-mx-incompatible": {
 		group: "91",
 		header: "Pure MailExtensions, marked incompatible with TB91, which they probably are not.",
@@ -286,7 +191,7 @@ var reports = {
 		filter: function (extJson) {
 			let v78 = getExtData(extJson, "78").data;
 			let v91 = getExtData(extJson, "91").data;
-			return !!v78 && !v91 && v78.mext && !v78.experiment && !v78.legacy
+			return { include: !!v78 && !v91 && v78.mext && !v78.experiment && !v78.legacy };
 		}
 	},
 	"tb91-max-atn-value-reduced-below-max-xpi-value": {
@@ -297,7 +202,7 @@ var reports = {
 		filter: function (extJson) {
 			let vCurrent = getExtData(extJson, "current").data;
 			if (!vCurrent)
-				return false;
+				return { include: false };
 
 			let v78 = getExtData(extJson, "78").data;
 			let v91 = getExtData(extJson, "91").data;
@@ -307,7 +212,7 @@ var reports = {
 				vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
 				"*";
 
-			return !!v78 && !v91 && (compareVer(strict_max, atn_max) > 0)
+			return { include: !!v78 && !v91 && (compareVer(strict_max, atn_max) > 0) };
 		}
 	},
 	"tb91-experiments-without-upper-limit": {
@@ -378,6 +283,8 @@ var reports = {
 			852623
 			987665
 			986523
+			 986643
+			 11005
 			 987888
 			 986372
 			 987906
@@ -421,8 +328,126 @@ var reports = {
 			let v91 = getExtData(extJson, "91").data;
 			let atn_max = v91?.atn?.compatibility?.thunderbird?.max || "*";
 			let atn_min = v91?.atn?.compatibility?.thunderbird?.min || "*";
-			return !knownToWork.includes(`${extJson.id}`) && !!v91 && v91.mext && v91.experiment && compareVer("90", atn_min) > 0 && atn_max == "*";
+			return { include: !knownToWork.includes(`${extJson.id}`) && !!v91 && v91.mext && v91.experiment && compareVer("90", atn_min) > 0 && atn_max == "*" };
 
+		}
+	},
+	// -- Lost extensions (only useful if all false positives have been removed) -------------------
+	"lost-tb60-to-tb68": {
+		group: "lost",
+		header: "Extensions which have been lost from TB60 to TB68 (including alternatives).",
+		template: "report-template.html",
+		enabled: true,
+		filter: function (extJson) {
+			let v68 = getExtData(extJson, "68").version;
+			let v60 = getExtData(extJson, "60").version;
+			return { include: !!v60 && !v68 };
+		}
+	},
+	"lost-tb68-to-tb78": {
+		group: "lost",
+		header: "Extensions which have been lost from TB68 to TB78 (including alternatives).",
+		template: "report-template.html",
+		enabled: true,
+		filter: function (extJson) {
+			let v78 = getExtData(extJson, "78").version;
+			let v68 = getExtData(extJson, "68").version;
+			return { include: !!v68 && !v78 };
+		}
+	},
+	"lost-tb78-to-tb91": {
+		group: "lost",
+		header: "Extensions which have been lost from TB78 to TB91 (including alternatives).",
+		template: "report-template.html",
+		enabled: true,
+		filter: function (extJson) {
+			let v91 = getExtData(extJson, "91").version;
+			let v78 = getExtData(extJson, "78").version;
+			return { include: !!v78 && !v91 };
+		}
+	},
+	"lost-tb60-to-tb68-no-alternatives": {
+		group: "lost",
+		header: "Extensions which have been lost from TB60 to TB68.",
+		template: "report-template.html",
+		enabled: true,
+		filter: function (extJson) {
+			return { include: !getAlternative(extJson) && reports['lost-tb60-to-tb68'].filter(extJson).include };
+		}
+	},
+	"lost-tb68-to-tb78-no-alternatives": {
+		group: "lost",
+		header: "Extensions which have been lost from TB68 to TB78.",
+		template: "report-template.html",
+		enabled: true,
+		filter: function (extJson) {
+			let v78 = getExtData(extJson, "78").version;
+			let v68 = getExtData(extJson, "68").version;
+			return { include: !getAlternative(extJson) && reports['lost-tb68-to-tb78'].filter(extJson).include };
+		}
+	},
+	"lost-tb78-to-tb91-no-alternatives": {
+		group: "lost",
+		header: "Extensions which have been lost from TB78 to TB91.",
+		template: "report-template.html",
+		enabled: true,
+		filter: function (extJson) {
+			return { include: !getAlternative(extJson) && reports['lost-tb78-to-tb91'].filter(extJson).include };
+		}
+	},
+	// -- ATN status reports------------------------------------------------------------------------
+	"atn-tb60": {
+		group: "atn",
+		header: "Extensions compatible with Thunderbird 60 as seen by ATN.",
+		template: "report-template.html",
+		enabled: true,
+		filter: function (extJson) {
+			return { include: !!(getExtData(extJson, "60").version) };
+		},
+	},
+	"atn-tb68": {
+		group: "atn",
+		header: "Extensions compatible with Thunderbird 68 as seen by ATN.",
+		template: "report-template.html",
+		enabled: true,
+		filter: function (extJson) {
+			return { include: !!(getExtData(extJson, "68").version) };
+		}
+	},
+	"atn-tb78": {
+		group: "atn",
+		header: "Extensions compatible with Thunderbird 78 as seen by ATN.",
+		template: "report-template.html",
+		enabled: true,
+		filter: function (extJson) {
+			return { include: !!(getExtData(extJson, "78").version) };
+		}
+	},
+	"atn-tb91": {
+		group: "atn",
+		header: "Extensions compatible with Thunderbird 91 as seen by ATN.",
+		template: "report-template.html",
+		enabled: true,
+		filter: function (extJson) {
+			return { include: !!(getExtData(extJson, "91").version) };
+		}
+	},
+	"max-atn-value-raised-above-max-xpi-value": {
+		group: "atn",
+		header: "Extensions whose max version has been raised in ATN above the XPI value (excluding legacy extensions).",
+		template: "report-template.html",
+		enabled: true,
+		filter: function (extJson) {
+			let vCurrent = getExtData(extJson, "current").data;
+			if (!vCurrent)
+				return { include: false };
+
+			let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max || "*";
+			let strict_max = vCurrent.manifest?.applications?.gecko?.strict_max_version ||
+				vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
+				"*";
+
+			return { include: vCurrent.mext && !vCurrent.legacy && (compareVer(strict_max, atn_max) < 0) };
 		}
 	},
 }
@@ -563,8 +588,9 @@ function genReport(extsJson, name, report) {
 		}
 		extJson.xpilib.rank = index + 1;
 
-		if (report.filter === null || report.filter(extJson)) {
-			let row = createExtMDTableRow(extJson);
+		let filterResponse = report.filter ? report.filter(extJson) : {include:true, notes: ""}
+		if (filterResponse.include) {
+			let row = createExtMDTableRow(extJson, filterResponse.notes);
 			if (row != "") {
 				rows++;
 			}
@@ -598,7 +624,7 @@ function genIndex(index) {
 	fs.writeFileSync(`${reportDir}/index.html`, extsListFile);
 }
 
-function createExtMDTableRow(extJson) {
+function createExtMDTableRow(extJson, notes) {
 	let default_locale = extJson.default_locale;
 	if (default_locale === undefined) {
 		if (typeof extJson.name["en-US"] === 'string') {
@@ -690,19 +716,20 @@ function createExtMDTableRow(extJson) {
 
 	return `
 	<tr>
-	  <th style="text-align: right" valign="top">${rank}</th>
-	  <th style="text-align: right" valign="top">${extJson.id}</th>
-	  <th style="text-align: left"  valign="top">${name_link}${getAlternative(extJson) ? getAlternative(extJson).join("") : ""}</th>
-	  <th style="text-align: right" valign="top">${extJson.average_daily_users}</th>
-	  <th style="text-align: right" valign="top">${cv("60")}</th>
-	  <th style="text-align: right" valign="top">${cv("68")}</th>
-	  <th style="text-align: right" valign="top">${cv("78")}</th>
-	  <th style="text-align: right" valign="top">${cv("91")}</th>
-	  <th style="text-align: right" valign="top">${current_version?.atn.files[0].created.split('T')[0]}</th>
-	  <th style="text-align: right" valign="top">${cv("current")}</th>
-	  <th style="text-align: right" valign="top">${v_min}</th>
-	  <th style="text-align: right" valign="top">${v_strict_max}</th>
-	  <th style="text-align: right" valign="top">${v_max}</th>
+	  <td style="text-align: right" valign="top">${rank}</td>
+	  <td style="text-align: right" valign="top">${extJson.id}</td>
+	  <td style="text-align: left"  valign="top">${name_link}${getAlternative(extJson) ? getAlternative(extJson).join("") : ""}</td>
+	  <td style="text-align: right" valign="top">${extJson.average_daily_users}</td>
+	  <td style="text-align: right" valign="top">${cv("60")}</td>
+	  <td style="text-align: right" valign="top">${cv("68")}</td>
+	  <td style="text-align: right" valign="top">${cv("78")}</td>
+	  <td style="text-align: right" valign="top">${cv("91")}</td>
+	  <td style="text-align: right" valign="top">${current_version?.atn.files[0].created.split('T')[0]}</td>
+	  <td style="text-align: right" valign="top">${cv("current")}</td>
+	  <td style="text-align: right" valign="top">${v_min}</td>
+	  <td style="text-align: right" valign="top">${v_strict_max}</td>
+	  <td style="text-align: right" valign="top">${v_max}</td>
+	  <td style="text-align: right; font-style: italic" valign="top">${notes ? notes : ""}</td>
 	</tr>`;
 }
 
