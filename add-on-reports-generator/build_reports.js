@@ -168,8 +168,8 @@ var reports = {
 			let notes = "";
 
 			if (reports['lost-tb78-to-tb91'].filter(extJson).include) {
-			 include = true;
-			 notes = "incompatible";
+				include = true;
+				notes = "incompatible";
 			}
 			if (reports['tb91-pure-mx-incompatible'].filter(extJson).include) {
 				include = true;
@@ -179,8 +179,8 @@ var reports = {
 				include = true;
 				notes = "probably incompatible";
 			}
-   
-			return { include, notes};
+
+			return { include, notes };
 		}
 	},
 	"tb91-pure-mx-incompatible": {
@@ -429,7 +429,21 @@ var reports = {
 		template: "report-template.html",
 		enabled: true,
 		filter: function (extJson) {
-			return { include: !!(getExtData(extJson, "91").version) };
+			let notes = "";
+			if (reports['lost-tb78-to-tb91'].filter(extJson).include) {
+				notes = "incompatible";
+			}
+			if (reports['tb91-pure-mx-incompatible'].filter(extJson).include) {
+				notes = "probably compatible";
+			}
+			if (reports['tb91-experiments-without-upper-limit'].filter(extJson).include) {
+				notes = "probably incompatible";
+			}
+
+			return {
+				include: !!(getExtData(extJson, "91").version),
+				notes
+			};
 		}
 	},
 	"max-atn-value-raised-above-max-xpi-value": {
@@ -555,7 +569,7 @@ async function alternativeDataToLinks(data) {
 			if (!entries[entry.u_id]) {
 				entries[entry.u_id] = [];
 			}
-			if (entry.r_link) 
+			if (entry.r_link)
 				entries[entry.u_id].push(`<br> &#8627; <a href="${entry.r_link}">${entry.r_name}</a>`);
 			else
 				entries[entry.u_id].push(`<br> &#8627; ${entry.r_name}`);
@@ -588,7 +602,7 @@ function genReport(extsJson, name, report) {
 		}
 		extJson.xpilib.rank = index + 1;
 
-		let filterResponse = report.filter ? report.filter(extJson) : {include:true, notes: ""}
+		let filterResponse = report.filter ? report.filter(extJson) : { include: true, notes: "" }
 		if (filterResponse.include) {
 			let row = createExtMDTableRow(extJson, filterResponse.notes);
 			if (row != "") {
