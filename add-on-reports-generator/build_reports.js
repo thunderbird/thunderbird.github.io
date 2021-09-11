@@ -13,6 +13,14 @@ const rootDir = "data";
 const reportDir = "../add-on-reports";
 const extsAllJsonFileName = `${rootDir}/xall.json`;
 
+const wip = {
+	2610 : "https://github.com/tjeb/Mailbox-Alert/pull/42",
+	90003: "https://github.com/cleidigh/Localfolder-TB/pull/51",
+	605874: "https://github.com/jeevatkm/ReplyWithHeaderMozilla/issues/110",
+	310: "https://github.com/eyalroz/bidimailui/tree/development",
+	331319: "-" //Folder Pane Switcher
+}
+
 var gAlternativeData;
 
 var groups = [
@@ -165,22 +173,30 @@ var reports = {
 		enabled: true,
 		filter: function (extJson) {
 			let include = false;
-			let notes = "";
+			let notes = [];
 
-			if (reports['lost-tb78-to-tb91'].filter(extJson).include) {
-				include = true;
-				notes = "incompatible";
-			}
 			if (reports['tb91-pure-mx-incompatible'].filter(extJson).include) {
+				notes.push(makeBadgeElement({ bRightText: 'probably compatible', bLeftText: 'TB91', bColor: 'darkgreen' }));
 				include = true;
-				notes = "probably compatible";
-			}
-			if (reports['tb91-experiments-without-upper-limit'].filter(extJson).include) {
+			} else if (reports['lost-tb78-to-tb91'].filter(extJson).include) {
 				include = true;
-				notes = "probably incompatible";
+				if (getAlternative(extJson)) {
+					notes.push(`${makeBadgeElement({ bRightText: 'alternative available', bLeftText: 'TB91', bColor: 'darkgreen' })}`);
+				} else if (include && wip[`${extJson.id}`]) {
+					notes.push(`<a href="${wip[`${extJson.id}`]}">${makeBadgeElement({ bRightText: 'work in progress', bLeftText: 'TB91', bColor: 'yellow' })}</a>`);
+				} else {
+					notes.push(makeBadgeElement({ bRightText: 'incompatible', bLeftText: 'TB91', bColor: 'c90016' }));
+				}
+			} else if (reports['tb91-experiments-without-upper-limit'].filter(extJson).include) {
+				include = true;
+				if (include && wip[`${extJson.id}`]) {
+					notes.push(`<a href="${wip[`${extJson.id}`]}">${makeBadgeElement({ bRightText: 'work in progress', bLeftText: 'TB91', bColor: 'yellow' })}</a>`);
+				} else {
+					notes.push(makeBadgeElement({ bRightText: 'probably incompatible', bLeftText: 'TB91', bColor: 'c90016' }));
+				}
 			}
-
-			return { include, notes };
+			
+			return { include, notes: notes.join("<br>") };
 		}
 	},
 	"tb91-pure-mx-incompatible": {
@@ -429,20 +445,16 @@ var reports = {
 		template: "report-template.html",
 		enabled: true,
 		filter: function (extJson) {
-			let notes = "";
-			if (reports['lost-tb78-to-tb91'].filter(extJson).include) {
-				notes = "incompatible";
-			}
-			if (reports['tb91-pure-mx-incompatible'].filter(extJson).include) {
-				notes = "probably compatible";
-			}
-			if (reports['tb91-experiments-without-upper-limit'].filter(extJson).include) {
-				notes = "probably incompatible";
+			let notes = [];
+			if (wip[`${extJson.id}`]) {
+				notes.push(`<a href="${wip[`${extJson.id}`]}">${makeBadgeElement({ bRightText: 'work in progress', bLeftText: 'TB91', bColor: 'yellow' })}</a>`);
+			} else if (reports['tb91-experiments-without-upper-limit'].filter(extJson).include) {
+				notes.push(makeBadgeElement({ bRightText: 'probably incompatible', bLeftText: 'TB91', bColor: 'c90016' }));
 			}
 
 			return {
 				include: !!(getExtData(extJson, "91").version),
-				notes
+				notes : notes.join("<br>")
 			};
 		}
 	},
@@ -474,7 +486,8 @@ function debug(...args) {
 }
 
 function makeBadgeElement(bOpt) {
-	return `<img src='${bOpt.badgeBasedURL}/${bOpt.bLeftText}-${bOpt.bRightText}-${bOpt.bColor}.png' title='${bOpt.bTooltip}'>`;
+	let title = bOpt.bTooltip ? `title='${bOpt.bTooltip}'` : ``;
+	return `<img src='https://img.shields.io/badge/${bOpt.bLeftText}-${bOpt.bRightText}-${bOpt.bColor}.png' ${title}>`;
 }
 
 // A versioncompare, taken from https://jsfiddle.net/vanowm/p7uvtbor/
@@ -676,9 +689,9 @@ function createExtMDTableRow(extJson, notes) {
 		}
 
 		if (data) {
-			let cBadge_type_setup = { bLeftText: 'T', bRightText: 'MX', bColor: 'purple', bTooltip: "Extension Type:", badgeBasedURL: 'https://img.shields.io/badge/' };
-			let cBadge_legacy_setup = { bLeftText: 'L', bRightText: '+', bColor: 'green', bTooltip: "Legacy Type:", badgeBasedURL: 'https://img.shields.io/badge/' };
-			let cBadge_experiment_setup = { bLeftText: 'E', bRightText: '+', bColor: 'blue', bTooltip: 'Experiment APIs: ', badgeBasedURL: 'https://img.shields.io/badge/' };
+			let cBadge_type_setup = { bLeftText: 'T', bRightText: 'MX', bColor: 'purple', bTooltip: "Extension Type:" };
+			let cBadge_legacy_setup = { bLeftText: 'L', bRightText: '+', bColor: 'green', bTooltip: "Legacy Type:" };
+			let cBadge_experiment_setup = { bLeftText: 'E', bRightText: '+', bColor: 'blue', bTooltip: "Experiment APIs: " };
 
 			if (data.mext == true && data.legacy == false) {
 				cBadge_type_setup.bRightText = "MX"
