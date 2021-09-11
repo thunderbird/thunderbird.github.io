@@ -351,7 +351,7 @@ var reports = {
 	// -- Lost extensions (only useful if all false positives have been removed) -------------------
 	"lost-tb60-to-tb68": {
 		group: "lost",
-		header: "Extensions which have been lost from TB60 to TB68 (including alternatives).",
+		header: "Extensions which have been lost from TB60 to TB68.",
 		template: "report-template.html",
 		enabled: true,
 		filter: function (extJson) {
@@ -362,7 +362,7 @@ var reports = {
 	},
 	"lost-tb68-to-tb78": {
 		group: "lost",
-		header: "Extensions which have been lost from TB68 to TB78 (including alternatives).",
+		header: "Extensions which have been lost from TB68 to TB78.",
 		template: "report-template.html",
 		enabled: true,
 		filter: function (extJson) {
@@ -373,7 +373,7 @@ var reports = {
 	},
 	"lost-tb78-to-tb91": {
 		group: "lost",
-		header: "Extensions which have been lost from TB78 to TB91 (including alternatives).",
+		header: "Extensions which have been lost from TB78 to TB91.",
 		template: "report-template.html",
 		enabled: true,
 		filter: function (extJson) {
@@ -384,7 +384,7 @@ var reports = {
 	},
 	"lost-tb60-to-tb68-no-alternatives": {
 		group: "lost",
-		header: "Extensions which have been lost from TB60 to TB68.",
+		header: "Extensions which have been lost from TB60 to TB68 (excluding those with alternatives).",
 		template: "report-template.html",
 		enabled: true,
 		filter: function (extJson) {
@@ -393,7 +393,7 @@ var reports = {
 	},
 	"lost-tb68-to-tb78-no-alternatives": {
 		group: "lost",
-		header: "Extensions which have been lost from TB68 to TB78.",
+		header: "Extensions which have been lost from TB68 to TB78 (excluding those with alternatives).",
 		template: "report-template.html",
 		enabled: true,
 		filter: function (extJson) {
@@ -404,7 +404,7 @@ var reports = {
 	},
 	"lost-tb78-to-tb91-no-alternatives": {
 		group: "lost",
-		header: "Extensions which have been lost from TB78 to TB91.",
+		header: "Extensions which have been lost from TB78 to TB91 (excluding those with alternatives).",
 		template: "report-template.html",
 		enabled: true,
 		filter: function (extJson) {
