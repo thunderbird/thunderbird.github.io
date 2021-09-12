@@ -351,7 +351,7 @@ var reports = {
 	// -- Lost extensions (only useful if all false positives have been removed) -------------------
 	"lost-tb60-to-tb68": {
 		group: "lost",
-		header: "Extensions which have been lost from TB60 to TB68.",
+		header: "Extensions which have been lost from TB60 to TB68, as seen by ATN.",
 		template: "report-template.html",
 		enabled: true,
 		filter: function (extJson) {
@@ -362,7 +362,7 @@ var reports = {
 	},
 	"lost-tb68-to-tb78": {
 		group: "lost",
-		header: "Extensions which have been lost from TB68 to TB78.",
+		header: "Extensions which have been lost from TB68 to TB78, as seen by ATN.",
 		template: "report-template.html",
 		enabled: true,
 		filter: function (extJson) {
@@ -373,7 +373,7 @@ var reports = {
 	},
 	"lost-tb78-to-tb91": {
 		group: "lost",
-		header: "Extensions which have been lost from TB78 to TB91.",
+		header: "Extensions which have been lost from TB78 to TB91, as seen by ATN.",
 		template: "report-template.html",
 		enabled: true,
 		filter: function (extJson) {
