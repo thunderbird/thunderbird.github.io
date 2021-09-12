@@ -15,15 +15,15 @@ const extsAllJsonFileName = `${rootDir}/xall.json`;
 
 const wip = {
 	986686: "https://github.com/thundernest/import-export-tools-ng/tree/v10.1.0",
-	2610 : "https://github.com/tjeb/Mailbox-Alert/pull/42",
 	90003: "https://github.com/cleidigh/Localfolder-TB/pull/51",
-	605874: "https://github.com/jeevatkm/ReplyWithHeaderMozilla/issues/110",
 	310: "https://github.com/eyalroz/bidimailui/tree/development",
-	331319: "-" //Folder Pane Switcher
+	331319: "-", //Folder Pane Switcher
+	988001: "-", //Attachment Image Viewer/Slideshow
+	988100: "-", //Glodaquilla-NG
 }
 
 const false_negatives = [
-	811161,
+	811161, //WarnAttachments
 ];
 
 var gAlternativeData;
@@ -39,11 +39,11 @@ var groups = [
 	},
 	{
 		id: "lost",
-		header: "Other lost extension reports"
+		header: "ATN lost extension reports"
 	},
 	{
 		id: "atn",
-		header: "Other ATN reports"
+		header: "ATN compatibilits reports"
 	},
 	{
 		id: "all",
@@ -181,27 +181,27 @@ var reports = {
 			let notes = [];
 
 			if (reports['tb91-pure-mx-incompatible'].filter(extJson).include || false_negatives.includes(extJson.id)) {
-				notes.push(makeBadgeElement({ bRightText: 'probably compatible', bLeftText: 'TB91', bColor: 'darkgreen' }));
+				notes.push({ bRightText: 'probably compatible', bLeftText: 'TB91', bColor: 'darkgreen' });
 				include = true;
 			} else if (reports['lost-tb78-to-tb91'].filter(extJson).include) {
 				include = true;
 				if (getAlternative(extJson)) {
-					notes.push(`${makeBadgeElement({ bRightText: 'alternative available', bLeftText: 'TB91', bColor: 'darkgreen' })}`);
-				} else if (include && wip[`${extJson.id}`]) {
-					notes.push(`<a href="${wip[`${extJson.id}`]}">${makeBadgeElement({ bRightText: 'work in progress', bLeftText: 'TB91', bColor: 'yellow' })}</a>`);
+					notes.push({ bRightText: 'alternative available', bLeftText: 'TB91', bColor: 'darkgreen' });
+				} else if (include && wip[extJson.id]) {
+					notes.push({ bLink: wip[extJson.id], bRightText: 'work in progress', bLeftText: 'TB91', bColor: 'yellow' });
 				} else {
-					notes.push(makeBadgeElement({ bRightText: 'incompatible', bLeftText: 'TB91', bColor: 'c90016' }));
+					notes.push({ bRightText: 'incompatible', bLeftText: 'TB91', bColor: 'c90016' });
 				}
 			} else if (reports['tb91-experiments-without-upper-limit'].filter(extJson).include) {
 				include = true;
-				if (include && wip[`${extJson.id}`]) {
-					notes.push(`<a href="${wip[`${extJson.id}`]}">${makeBadgeElement({ bRightText: 'work in progress', bLeftText: 'TB91', bColor: 'yellow' })}</a>`);
+				if (include && wip[extJson.id]) {
+					notes.push({ bLink: wip[extJson.id], bRightText: 'work in progress', bLeftText: 'TB91', bColor: 'yellow' });
 				} else {
-					notes.push(makeBadgeElement({ bRightText: 'probably incompatible', bLeftText: 'TB91', bColor: 'c90016' }));
+					notes.push({ bRightText: 'probably incompatible', bLeftText: 'TB91', bColor: 'c90016' });
 				}
 			}
 			
-			return { include, notes: notes.join("<br>") };
+			return { include, notes };
 		}
 	},
 	"tb91-pure-mx-incompatible": {
@@ -384,36 +384,21 @@ var reports = {
 		filter: function (extJson) {
 			let v91 = getExtData(extJson, "91").version;
 			let v78 = getExtData(extJson, "78").version;
-			return { include: !!v78 && !v91 };
-		}
-	},
-	"lost-tb60-to-tb68-no-alternatives": {
-		group: "lost",
-		header: "Extensions which have been lost from TB60 to TB68 (excluding those with alternatives).",
-		template: "report-template.html",
-		enabled: true,
-		filter: function (extJson) {
-			return { include: !getAlternative(extJson) && reports['lost-tb60-to-tb68'].filter(extJson).include };
-		}
-	},
-	"lost-tb68-to-tb78-no-alternatives": {
-		group: "lost",
-		header: "Extensions which have been lost from TB68 to TB78 (excluding those with alternatives).",
-		template: "report-template.html",
-		enabled: true,
-		filter: function (extJson) {
-			let v78 = getExtData(extJson, "78").version;
-			let v68 = getExtData(extJson, "68").version;
-			return { include: !getAlternative(extJson) && reports['lost-tb68-to-tb78'].filter(extJson).include };
-		}
-	},
-	"lost-tb78-to-tb91-no-alternatives": {
-		group: "lost",
-		header: "Extensions which have been lost from TB78 to TB91 (excluding those with alternatives).",
-		template: "report-template.html",
-		enabled: true,
-		filter: function (extJson) {
-			return { include: !getAlternative(extJson) && reports['lost-tb78-to-tb91'].filter(extJson).include };
+			let include = !!v78 && !v91;
+
+			let notes = [];
+			if (reports['tb91-pure-mx-incompatible'].filter(extJson).include || false_negatives.includes(extJson.id)) {
+				notes.push({ bRightText: 'probably compatible', bLeftText: 'TB91', bColor: 'darkgreen' });
+			} else if (include) {
+				if (getAlternative(extJson)) {
+					notes.push({ bRightText: 'alternative available', bLeftText: 'TB91', bColor: 'darkgreen' });
+				} else if (wip[extJson.id]) {
+					notes.push({ bLink: wip[extJson.id], bRightText: 'work in progress', bLeftText: 'TB91', bColor: 'yellow' });
+				} else {
+					notes.push({ bRightText: 'incompatible', bLeftText: 'TB91', bColor: 'c90016' });
+				}
+			}
+			return { include, notes };
 		}
 	},
 	// -- ATN status reports------------------------------------------------------------------------
@@ -451,15 +436,16 @@ var reports = {
 		enabled: true,
 		filter: function (extJson) {
 			let notes = [];
-			if (wip[`${extJson.id}`]) {
-				notes.push(`<a href="${wip[`${extJson.id}`]}">${makeBadgeElement({ bRightText: 'work in progress', bLeftText: 'TB91', bColor: 'yellow' })}</a>`);
-			} else if (reports['tb91-experiments-without-upper-limit'].filter(extJson).include) {
-				notes.push(makeBadgeElement({ bRightText: 'probably incompatible', bLeftText: 'TB91', bColor: 'c90016' }));
+			if (reports['tb91-experiments-without-upper-limit'].filter(extJson).include) {
+				notes.push({ bRightText: 'probably incompatible', bLeftText: 'TB91', bColor: 'c90016' });
+			}
+			if (wip[extJson.id]) {
+				notes.push({ bLink: wip[extJson.id], bRightText: 'work in progress', bLeftText: 'TB91', bColor: 'yellow' });
 			}
 
 			return {
 				include: !!(getExtData(extJson, "91").version),
-				notes : notes.join("<br>")
+				notes 
 			};
 		}
 	},
@@ -492,7 +478,8 @@ function debug(...args) {
 
 function makeBadgeElement(bOpt) {
 	let title = bOpt.bTooltip ? `title='${bOpt.bTooltip}'` : ``;
-	return `<img src='https://img.shields.io/badge/${bOpt.bLeftText}-${bOpt.bRightText}-${bOpt.bColor}.png' ${title}>`;
+	let tag = `<img src='https://img.shields.io/badge/${bOpt.bLeftText}-${bOpt.bRightText}-${bOpt.bColor}.png' ${title}>`
+	return bOpt.bLink ? `<a href="${bOpt.bLink}">${tag}</a>` : tag;
 }
 
 // A versioncompare, taken from https://jsfiddle.net/vanowm/p7uvtbor/
@@ -604,9 +591,9 @@ function getAlternative(extJson) {
 
 function genReport(extsJson, name, report) {
 	let extsListFile = fs.readFileSync(report.template, 'utf8');
-	let extRows = "";
-	let rows = 0;
-
+	let rows = [];
+	let stats = {};
+	
 	extsJson.map((extJson, index) => {
 		debug('Extension ' + extJson.id + ' Index: ' + index);
 
@@ -620,13 +607,20 @@ function genReport(extsJson, name, report) {
 		}
 		extJson.xpilib.rank = index + 1;
 
-		let filterResponse = report.filter ? report.filter(extJson) : { include: true, notes: "" }
+		let filterResponse = report.filter ? report.filter(extJson) : { include: true, notes: [] }
 		if (filterResponse.include) {
-			let row = createExtMDTableRow(extJson, filterResponse.notes);
-			if (row != "") {
-				rows++;
+
+			let badges = [];
+			if (filterResponse.notes) {
+				for (let note of filterResponse.notes) {
+					badges.push(makeBadgeElement(note));
+					let statBadge = makeBadgeElement({ bRightText: note.bRightText, bLeftText: note.bLeftText, bColor: note.bColor });
+					if (stats[statBadge]) stats[statBadge]++
+					else stats[statBadge] = 1;
+				}
 			}
-			extRows += row;
+
+			rows.push(createExtMDTableRow(extJson, badges));
 		} else {
 			debug('Skip ' + extJson.slug);
 		}
@@ -636,15 +630,18 @@ function genReport(extsJson, name, report) {
 	extsListFile = extsListFile.replace('__header__', report.header);
 	extsListFile = extsListFile.replace('__description__', report.description);
 
-	extsListFile = extsListFile.replace('__count__', rows);
+	extsListFile = extsListFile.replace('__count__', rows.length);
 	let today = new Date().toISOString().split('T')[0];
 	extsListFile = extsListFile.replace('__date__', today);
-	extsListFile = extsListFile.replace('__table__', extRows);
+	extsListFile = extsListFile.replace('__table__', rows.join("\n"));
+	
+	extsListFile = extsListFile.replace('__stats__', Object.keys(stats).map(e => `${e}: ${stats[e]}`).join("<br>"));
+	
 	fs.ensureDirSync(`${reportDir}`);
 	fs.writeFileSync(`${reportDir}/${name}.html`, extsListFile);
 
 	debug('Done');
-	return rows;
+	return rows.length;
 }
 
 function genIndex(index) {
@@ -674,7 +671,6 @@ function createExtMDTableRow(extJson, notes) {
 
 	const idSlug = `${extJson.id}-${extJson.slug}`;
 	const name_link = `<a id="${idSlug}" href="${extJson.url}">${extJson.name[default_locale].substr(0, 38)}</a>`;
-	debug("SLUG", idSlug);
 
 	let rank = extJson.xpilib.rank;
 	let current_version = getExtData(extJson, "current").data;
@@ -761,7 +757,7 @@ function createExtMDTableRow(extJson, notes) {
 	  <td style="text-align: right" valign="top">${v_min}</td>
 	  <td style="text-align: right" valign="top">${v_strict_max}</td>
 	  <td style="text-align: right" valign="top">${v_max}</td>
-	  <td style="text-align: right; font-style: italic" valign="top">${notes ? notes : ""}</td>
+	  <td style="text-align: right; font-style: italic" valign="top">${notes ? notes.join("<br>") : ""}</td>
 	</tr>`;
 }
 
