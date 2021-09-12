@@ -14,12 +14,17 @@ const reportDir = "../add-on-reports";
 const extsAllJsonFileName = `${rootDir}/xall.json`;
 
 const wip = {
+	986686: "https://github.com/thundernest/import-export-tools-ng/tree/v10.1.0",
 	2610 : "https://github.com/tjeb/Mailbox-Alert/pull/42",
 	90003: "https://github.com/cleidigh/Localfolder-TB/pull/51",
 	605874: "https://github.com/jeevatkm/ReplyWithHeaderMozilla/issues/110",
 	310: "https://github.com/eyalroz/bidimailui/tree/development",
 	331319: "-" //Folder Pane Switcher
 }
+
+const false_negatives = [
+	811161,
+];
 
 var gAlternativeData;
 
@@ -175,7 +180,7 @@ var reports = {
 			let include = false;
 			let notes = [];
 
-			if (reports['tb91-pure-mx-incompatible'].filter(extJson).include) {
+			if (reports['tb91-pure-mx-incompatible'].filter(extJson).include || false_negatives.includes(extJson.id)) {
 				notes.push(makeBadgeElement({ bRightText: 'probably compatible', bLeftText: 'TB91', bColor: 'darkgreen' }));
 				include = true;
 			} else if (reports['lost-tb78-to-tb91'].filter(extJson).include) {
