@@ -13,6 +13,12 @@ const rootDir = "data";
 const reportDir = "../add-on-reports";
 const extsAllJsonFileName = `${rootDir}/xall.json`;
 
+const badge_probably_compatible = { bRightText: 'probably compatible', bLeftText: 'TB91', bColor: 'darkgreen' };
+const badge_alternative_available = { bRightText: 'alternative available', bLeftText: 'TB91', bColor: 'darkgreen' };
+const badge_work_in_progress = { bRightText: 'work in progress', bLeftText: 'TB91', bColor: 'yellow' };
+const badge_incompatible = { bRightText: 'incompatible', bLeftText: 'TB91', bColor: 'c90016' };
+const badge_probably_incompatible = { bRightText: 'probably incompatible', bLeftText: 'TB91', bColor: 'c90016' };
+
 const wip = {
 	986686: "https://github.com/thundernest/import-export-tools-ng/tree/v10.1.0",
 	90003: "https://github.com/cleidigh/Localfolder-TB/pull/51",
@@ -56,6 +62,7 @@ var reports = {
 		header: "All Extensions compatible with TB60 or newer.",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			let vHighest = getExtData(extJson, "91").version ||
 				getExtData(extJson, "78").version ||
@@ -70,6 +77,7 @@ var reports = {
 		header: "Extensions whose XPI files could not be parsed properly and are excluded from analysis.",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			let current_version = getExtData(extJson, "current").data;
 			return { include: !current_version };
@@ -80,6 +88,7 @@ var reports = {
 		header: "Extensions updated within the last 2 weeks.",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			let current_version = getExtData(extJson, "current").data;
 			if (current_version) {
@@ -99,6 +108,7 @@ var reports = {
 		header: "Extension with wrong upper limit setting in older versions, which will lead to the wrong version reported compatible by ATN.",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			let v91 = getExtData(extJson, "91").version;
 			let v78 = getExtData(extJson, "78").version;
@@ -122,6 +132,7 @@ var reports = {
 		header: "Extensions whose max version has been reduced in ATN below the XPI value, which is ignored during install and app upgrade (excluding legacy).",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			let vCurrent = getExtData(extJson, "current").data;
 			if (!vCurrent)
@@ -140,6 +151,7 @@ var reports = {
 		header: "Extensions, where the latest upload is for an older release, which will fail to install in current ESR (current = defined current in ATN) from within the add-on manager.",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			let vHighest = getExtData(extJson, "91").version ||
 				getExtData(extJson, "78").version ||
@@ -155,6 +167,7 @@ var reports = {
 		header: "Extensions claiming to be compatible with Thunderbird 68, but are legacy extensions and therefore unsupported.",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			let data = getExtData(extJson, "68").data;
 			return { include: !!data && data.legacy && !data.mext };
@@ -165,6 +178,7 @@ var reports = {
 		header: "Extensions claiming to be compatible with Thunderbird 78, but are legacy extensions or legacy WebExtensions and therefore unsupported.",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			let data = getExtData(extJson, "78").data;
 			return { include: !!data && data.legacy };
@@ -176,32 +190,42 @@ var reports = {
 		header: "Extensions which have been lost from TB78 to TB91 (including alternatives, possible false positives and possible false negatives).",
 		template: "report-template.html",
 		enabled: true,
-		filter: function (extJson) {
-			let include = false;
+		row: createStandardRow,
+		badges: function (extJson) {
 			let notes = [];
 
 			if (reports['tb91-pure-mx-incompatible'].filter(extJson).include || false_negatives.includes(extJson.id)) {
-				notes.push({ bRightText: 'probably compatible', bLeftText: 'TB91', bColor: 'darkgreen' });
-				include = true;
+				notes.push(badge_probably_compatible);
 			} else if (reports['lost-tb78-to-tb91'].filter(extJson).include) {
 				include = true;
 				if (getAlternative(extJson)) {
-					notes.push({ bRightText: 'alternative available', bLeftText: 'TB91', bColor: 'darkgreen' });
-				} else if (include && wip[extJson.id]) {
+					notes.push(badge_alternative_available);
+				} else if (wip[extJson.id]) {
 					notes.push({ bLink: wip[extJson.id], bRightText: 'work in progress', bLeftText: 'TB91', bColor: 'yellow' });
 				} else {
 					notes.push({ bRightText: 'incompatible', bLeftText: 'TB91', bColor: 'c90016' });
+					notes.push(badge_incompatible);
 				}
 			} else if (reports['tb91-experiments-without-upper-limit'].filter(extJson).include) {
-				include = true;
-				if (include && wip[extJson.id]) {
+				if (wip[extJson.id]) {
 					notes.push({ bLink: wip[extJson.id], bRightText: 'work in progress', bLeftText: 'TB91', bColor: 'yellow' });
 				} else {
 					notes.push({ bRightText: 'probably incompatible', bLeftText: 'TB91', bColor: 'c90016' });
+					notes.push(badge_probably_incompatible);
 				}
 			}
-			
-			return { include, notes };
+			return notes;
+		},
+		filter: function (extJson) {
+			let include = true;
+			let notes = [];
+			let stats = "";
+
+			let badges = this.badges(extJson);
+			return { 
+				include: badges.length > 0, 
+				row: createStandardRow(extJson,	badges)
+			};
 		}
 	},
 	"tb91-pure-mx-incompatible": {
@@ -209,6 +233,7 @@ var reports = {
 		header: "Pure MailExtensions, marked incompatible with TB91, which they probably are not.",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			let v78 = getExtData(extJson, "78").data;
 			let v91 = getExtData(extJson, "91").data;
@@ -220,6 +245,7 @@ var reports = {
 		header: "Extensions whose max version has been reduced in ATN below the XPI value to be marked as not compatible with TB91, which is ignored during install and app upgrade.",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			let vCurrent = getExtData(extJson, "current").data;
 			if (!vCurrent)
@@ -241,6 +267,7 @@ var reports = {
 		header: "Experiments without upper limit in ATN, which might not be compatible with TB91 (excluding confirmed positives).",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			let knownToWork = `4631
 			15102
@@ -359,6 +386,7 @@ var reports = {
 		header: "Extensions which have been lost from TB60 to TB68, as seen by ATN.",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			let v68 = getExtData(extJson, "68").version;
 			let v60 = getExtData(extJson, "60").version;
@@ -370,6 +398,7 @@ var reports = {
 		header: "Extensions which have been lost from TB68 to TB78, as seen by ATN.",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			let v78 = getExtData(extJson, "78").version;
 			let v68 = getExtData(extJson, "68").version;
@@ -389,13 +418,16 @@ var reports = {
 			let notes = [];
 			if (reports['tb91-pure-mx-incompatible'].filter(extJson).include || false_negatives.includes(extJson.id)) {
 				notes.push({ bRightText: 'probably compatible', bLeftText: 'TB91', bColor: 'darkgreen' });
+				notes.push(badge_probably_compatible);
 			} else if (include) {
 				if (getAlternative(extJson)) {
 					notes.push({ bRightText: 'alternative available', bLeftText: 'TB91', bColor: 'darkgreen' });
+					notes.push(badge_alternative_available);
 				} else if (wip[extJson.id]) {
 					notes.push({ bLink: wip[extJson.id], bRightText: 'work in progress', bLeftText: 'TB91', bColor: 'yellow' });
 				} else {
 					notes.push({ bRightText: 'incompatible', bLeftText: 'TB91', bColor: 'c90016' });
+					notes.push(badge_incompatible);
 				}
 			}
 			return { include, notes };
@@ -407,6 +439,7 @@ var reports = {
 		header: "Extensions compatible with Thunderbird 60 as seen by ATN.",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			return { include: !!(getExtData(extJson, "60").version) };
 		},
@@ -416,6 +449,7 @@ var reports = {
 		header: "Extensions compatible with Thunderbird 68 as seen by ATN.",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			return { include: !!(getExtData(extJson, "68").version) };
 		}
@@ -425,6 +459,7 @@ var reports = {
 		header: "Extensions compatible with Thunderbird 78 as seen by ATN.",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			return { include: !!(getExtData(extJson, "78").version) };
 		}
@@ -434,10 +469,12 @@ var reports = {
 		header: "Extensions compatible with Thunderbird 91 as seen by ATN.",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			let notes = [];
 			if (reports['tb91-experiments-without-upper-limit'].filter(extJson).include) {
 				notes.push({ bRightText: 'probably incompatible', bLeftText: 'TB91', bColor: 'c90016' });
+				notes.push(badge_probably_incompatible);
 			}
 			if (wip[extJson.id]) {
 				notes.push({ bLink: wip[extJson.id], bRightText: 'work in progress', bLeftText: 'TB91', bColor: 'yellow' });
@@ -454,6 +491,7 @@ var reports = {
 		header: "Extensions whose max version has been raised in ATN above the XPI value (excluding legacy extensions).",
 		template: "report-template.html",
 		enabled: true,
+		row: createStandardRow,
 		filter: function (extJson) {
 			let vCurrent = getExtData(extJson, "current").data;
 			if (!vCurrent)
@@ -477,9 +515,11 @@ function debug(...args) {
 }
 
 function makeBadgeElement(bOpt) {
+function makeBadgeElement(bOpt, bLink) {
 	let title = bOpt.bTooltip ? `title='${bOpt.bTooltip}'` : ``;
 	let tag = `<img src='https://img.shields.io/badge/${bOpt.bLeftText}-${bOpt.bRightText}-${bOpt.bColor}.png' ${title}>`
 	return bOpt.bLink ? `<a href="${bOpt.bLink}">${tag}</a>` : tag;
+	return bLink ? `<a href="${bLink}">${tag}</a>` : tag;
 }
 
 // A versioncompare, taken from https://jsfiddle.net/vanowm/p7uvtbor/
@@ -608,9 +648,12 @@ function genReport(extsJson, name, report) {
 		extJson.xpilib.rank = index + 1;
 
 		let filterResponse = report.filter ? report.filter(extJson) : { include: true, notes: [] }
+		let filterResponse = report.filter(extJson);
 		if (filterResponse.include) {
+			rows.push(filterResponse.row);
 
 			let badges = [];
+/*			let badges = [];
 			if (filterResponse.notes) {
 				for (let note of filterResponse.notes) {
 					badges.push(makeBadgeElement(note));
@@ -621,6 +664,7 @@ function genReport(extsJson, name, report) {
 			}
 
 			rows.push(createExtMDTableRow(extJson, badges));
+			rows.push(createStandardRow(extJson, badges));*/
 		} else {
 			debug('Skip ' + extJson.slug);
 		}
@@ -654,6 +698,7 @@ function genIndex(index) {
 }
 
 function createExtMDTableRow(extJson, notes) {
+function createStandardRow(extJson, notes) {
 	let default_locale = extJson.default_locale;
 	if (default_locale === undefined) {
 		if (typeof extJson.name["en-US"] === 'string') {
