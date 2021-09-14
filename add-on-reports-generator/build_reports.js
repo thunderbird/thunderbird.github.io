@@ -22,7 +22,7 @@ const badge_definitions = {
 }
 
 const wip = {
-	986686: "https://github.com/thundernest/import-export-tools-ng/tree/v10.1.0",
+	986686: "https://github.com/thundernest/import-export-tools-ng/pull/268",
 	90003: "https://github.com/cleidigh/Localfolder-TB/pull/51",
 	310: "https://github.com/eyalroz/bidimailui/tree/development",
 	331319: "-", //Folder Pane Switcher
