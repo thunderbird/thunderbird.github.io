@@ -72,10 +72,10 @@ async function writePrettyJSONFile(f, json) {
 	}
 }
 
-function requestATN(addon_id, query_type, options) {
+async function requestATN(addon_id, query_type, options) {
 	let extRequestOptions = {
 		json: true,
-		maxAttempts: 5,   // (default) try 5 times
+		maxAttempts: 1,   // (default) try 5 times
 		retryDelay: 5000,  // (default) wait for 5s before trying again
 		retryStrategy: request.RetryStrategies.HTTPOrNetworkError, // (default) retry on 5xx or network errors
 		headers: {
@@ -104,21 +104,26 @@ function requestATN(addon_id, query_type, options) {
 			throw new Error(`Unknown ATN command <${query_type}>`);
 	}
 
-	return new Promise((resolve, reject) => {
-		try {
-			request.get(extRequestOptions)
-				.then(response => {
-					resolve(response.body);
-				})
-				.catch(err => {
-					console.error('Error in ATN request', addon_id, query_type, err);
-					reject(err);
-				});
-
-		} catch (error) {
-			reject(0);
+	// Retry of requestretry is not working somehow, so make our own.
+	let rv;
+	for (let i=0; (!rv && i<5); i++) {
+		if (i > 0) {
+			console.error("Retry", i);
+			await new Promise(resolve => setTimeout(resolve, 5000));
 		}
-	});
+		
+		let killTimer;
+		let killSwitch = new Promise((resolve, reject) => { killTimer = setTimeout(reject, 15000, "HardTimeout"); })
+		rv = await Promise
+				.race([request.get(extRequestOptions), killSwitch])
+				.then(response => response.body)
+				.catch(err => {
+					console.error('Error in ATN request', addon_id || query_type, err);
+					return null;
+				});
+		clearTimeout(killTimer);
+	}
+	return rv;
 }
 
 // Common check on compatibility string.
