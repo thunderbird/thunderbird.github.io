@@ -7,7 +7,10 @@
 const debugLevel = 0;
 
 const fs = require('fs-extra');
-const request = require('requestretry');
+
+// replacement for deprecated request
+const bent = require('bent');
+const bentGetTEXT = bent('GET', 'string', 200);
 
 const rootDir = "data";
 const reportDir = "../add-on-reports";
@@ -727,17 +730,7 @@ function getExtData(extJson, esr) {
 }
 
 async function loadAlternativeData() {
-	let extRequestOptions = {
-		url: "https://raw.githubusercontent.com/thundernest/extension-finder/master/data.yaml",
-		//		json: true,
-		maxAttempts: 5,   // (default) try 5 times
-		retryDelay: 5000,  // (default) wait for 5s before trying again
-		retryStrategy: request.RetryStrategies.HTTPOrNetworkError, // (default) retry on 5xx or network errors
-		headers: {
-			'User-Agent': 'request'
-		}
-	}
-	return request(extRequestOptions).then(r => r.body).then(alternativeDataToLinks);
+	return bentGetTEXT("https://raw.githubusercontent.com/thundernest/extension-finder/master/data.yaml").then(alternativeDataToLinks);
 }
 
 async function alternativeDataToLinks(data) {
