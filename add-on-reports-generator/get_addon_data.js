@@ -14,7 +14,10 @@ const debugLevel = 1;
 // Debug option to speed up processing.
 const maxNumberOfAddonPages = 0;
 
-const request = require('requestretry');
+// replacement for deprecated request
+const bent = require('bent');
+const bentGetJSON = bent('GET', 'json', 200);
+
 const fs = require('fs-extra');
 const download = require('download');
 const path = require('path');
@@ -50,7 +53,7 @@ function rdfGetValue(file, valuePath) {
 
 	var xml = fs.readFileSync(file, 'utf8');
 	var options = { ignoreComment: true, alwaysChildren: true, compact: true };
-	var result = convert.xml2js(xml, options); 
+	var result = convert.xml2js(xml, options);
 
 	var rdfXMLPath = 'result.RDF.' + valuePath + '._text';
 	try {
@@ -73,54 +76,51 @@ async function writePrettyJSONFile(f, json) {
 }
 
 async function requestATN(addon_id, query_type, options) {
-	let extRequestOptions = {
-		json: true,
-		maxAttempts: 1,   // (default) try 5 times
-		retryDelay: 5000,  // (default) wait for 5s before trying again
-		retryStrategy: request.RetryStrategies.HTTPOrNetworkError, // (default) retry on 5xx or network errors
-		headers: {
-			'User-Agent': 'request'
-		}
-	};
-
-	if (options) {
-		extRequestOptions.qs = options;
-	}
-
+	let url;
 	switch (query_type) {
 		case "details":
-			extRequestOptions.url = `https://addons.thunderbird.net/api/v4/addons/addon/${addon_id}`;
+			url = `https://addons.thunderbird.net/api/v4/addons/addon/${addon_id}`;
 			break;
 
 		case "versions":
-			extRequestOptions.url = `https://addons.thunderbird.net/api/v4/addons/addon/${addon_id}/versions/`;
+			url = `https://addons.thunderbird.net/api/v4/addons/addon/${addon_id}/versions/`;
 			break;
 
 		case "search":
-			extRequestOptions.url = "https://addons.thunderbird.net/api/v4/addons/search/";
+			url = "https://addons.thunderbird.net/api/v4/addons/search/";
 			break;
 
 		default:
 			throw new Error(`Unknown ATN command <${query_type}>`);
 	}
 
-	// Retry of requestretry is not working somehow, so make our own.
+	if (options) {
+		let opts = [];
+		for (let [key, value] of Object.entries(options)) {
+			opts.push(`${key}=${encodeURIComponent(value)}`);
+		}
+		url = url + "?" + opts.join("&");
+	}
+
+	// Retry on error, using a hard timeout enforced from the client side.
 	let rv;
-	for (let i=0; (!rv && i<5); i++) {
+	for (let i = 0; (!rv && i < 5); i++) {
 		if (i > 0) {
 			console.error("Retry", i);
 			await new Promise(resolve => setTimeout(resolve, 5000));
 		}
-		
+
 		let killTimer;
 		let killSwitch = new Promise((resolve, reject) => { killTimer = setTimeout(reject, 15000, "HardTimeout"); })
 		rv = await Promise
-				.race([request.get(extRequestOptions), killSwitch])
-				.then(response => response.body)
-				.catch(err => {
-					console.error('Error in ATN request', addon_id || query_type, err);
-					return null;
-				});
+			.race([bentGetJSON(url), killSwitch])
+			.catch(err => {
+				console.error('Error in ATN request', addon_id || query_type, err);
+				return null;
+			});
+
+		// node will continue to "wait" after the script finished, if we do not
+		// clear the timeouts.
 		clearTimeout(killTimer);
 	}
 	return rv;
@@ -337,14 +337,14 @@ async function main() {
 	fs.ensureDirSync(`${rootDir}`);
 	await writePrettyJSONFile(extsAllLogFileName, extensions.map(e => `${e.id}-${e.guid}-${e.slug}`).sort());
 
-	let sorted_extensions = extensions.sort((a,b) => {
-        if(a.average_daily_users < b.average_daily_users){
+	let sorted_extensions = extensions.sort((a, b) => {
+		if (a.average_daily_users < b.average_daily_users) {
 			return 1;
-		} else if(a.average_daily_users > b.average_daily_users) {
+		} else if (a.average_daily_users > b.average_daily_users) {
 			return -1;
-		} else{
+		} else {
 			return 0;
-		}		
+		}
 	})
 
 
