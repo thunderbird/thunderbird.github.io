@@ -159,7 +159,7 @@ var groups = [
 	},
 	{
 		id: "atn",
-		header: "ATN compatibilits reports"
+		header: "ATN compatibility reports"
 	},
 	{
 		id: "all",
