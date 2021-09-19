@@ -33,7 +33,6 @@ const wip = {
 }
 
 const false_negatives = [
-	811161, //WarnAttachments
 ];
 
 
@@ -304,10 +303,10 @@ var reports = {
 		rowData: function (extJson) {
 			let badges = [];
 
-			if (reports['tb91-pure-mx-incompatible'].rowData(extJson).include || false_negatives.includes(extJson.id)) {
-				badges.push({ badge: "probably_compatible" });
-			} else if (reports['lost-tb78-to-tb91'].rowData(extJson).include) {
-				if (getAlternative(extJson)) {
+			if (reports['lost-tb78-to-tb91'].rowData(extJson).include) {
+				if (reports['tb91-pure-mx-incompatible'].rowData(extJson).include || false_negatives.includes(extJson.id)) {
+					badges.push({ badge: "probably_compatible" });
+				} else if (getAlternative(extJson)) {
 					badges.push({ badge: "alternative_available" });
 				} else if (wip[extJson.id]) {
 					badges.push({ link: wip[extJson.id], badge: "work_in_progress" });
