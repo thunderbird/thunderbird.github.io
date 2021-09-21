@@ -295,7 +295,7 @@ var reports = {
 		}
 	},
 	// -- Specials v91 -----------------------------------------------------------------------------
-	"tb91-used-permissions": {
+	"tb91-requested-permissions": {
 		group: "91",
 		header: "Extensions for TB91 requesting WebExtension permissions.",
 		template: "report-template.html",
