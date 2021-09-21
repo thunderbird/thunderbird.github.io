@@ -297,15 +297,15 @@ var reports = {
 	// -- Specials v91 -----------------------------------------------------------------------------
 	"tb91-used-permissions": {
 		group: "91",
-		header: "Used permissions.",
+		header: "Extensions for TB91 requesting WebExtension permissions.",
 		template: "report-template.html",
 		enabled: true,
 		generate: genStandardReport,
 		rowData: function (extJson) {
 			let data = getExtData(extJson, "91").data;
-			let permissions = data?.manifest?.permissions;
-
 			let badges = [];
+
+			let permissions = data?.manifest?.permissions;
 			if (Array.isArray(permissions)) {
 				for (let permission of permissions) {
 					// We do not see each individal contentScript definition
@@ -318,6 +318,14 @@ var reports = {
 					}
 				}
 			}
+
+			let manifest = data?.manifest;
+			const keys = ["compose_action", "browser_action", "message_display_action", "cloud_file", "commands"];
+			if (manifest) {
+				for (let key of keys) 
+					if (manifest[key])
+						badges.push({ badge: `permission.${key}` });
+			}			
 
 			return {
 				include: !!permissions,
@@ -671,9 +679,16 @@ function genStandardReport(extsJson, name, report) {
 	for (let i = 0; i < stats.length; i++) {
 		stats_counts[stats[i].badge] = 1 + (stats_counts[stats[i].badge] || 0);
 	};
+
+	function sortStats(a,b) {
+		if (a[1] > b[1]) return -1;
+		if (a[1] < b[1]) return 1;
+		return 0;
+	}
+
 	// Generate stats
 	let stats_entries = [];
-	for (let [name, count] of Object.entries(stats_counts)) {
+	for (let [name, count] of Object.entries(stats_counts).sort(sortStats)) {
 		stats_entries.push(`<tr><td style="text-align: right">${count}</td><td>${getBadgeElement(name)}</td></tr>`)
 	}
 	if (stats_entries.length > 0) {
