@@ -17,6 +17,7 @@ const reportDir = "../add-on-reports";
 const extsAllJsonFileName = `${rootDir}/xall.json`;
 
 const badge_definitions = {
+	"permission": { bLeftText: 'p', bColor: 'orange', bTooltip: "Requested permission" },
 	"probably_compatible": { bRightText: 'probably compatible', bLeftText: 'TB91', bColor: 'darkgreen' },
 	"alternative_available": { bRightText: 'alternative available', bLeftText: 'TB91', bColor: 'darkgreen' },
 	"work_in_progress": { bRightText: 'work in progress', bLeftText: 'TB91', bColor: 'yellow' },
@@ -294,6 +295,36 @@ var reports = {
 		}
 	},
 	// -- Specials v91 -----------------------------------------------------------------------------
+	"tb91-used-permissions": {
+		group: "91",
+		header: "Used permissions.",
+		template: "report-template.html",
+		enabled: true,
+		generate: genStandardReport,
+		rowData: function (extJson) {
+			let data = getExtData(extJson, "91").data;
+			let permissions = data?.manifest?.permissions;
+
+			let badges = [];
+			if (Array.isArray(permissions)) {
+				for (let permission of permissions) {
+					// We do not see each individal contentScript definition
+					if (permission.includes(":/") || permission == "<all_urls>") {
+						if (badges.filter(e => e.badge == "permission.contentScript").length == 0) {
+							badges.push({ badge: `permission.contentScript` });
+						}
+					} else {
+						badges.push({ badge: `permission.${permission}` });
+					}
+				}
+			}
+
+			return {
+				include: !!permissions,
+				badges
+			};
+		},
+	},
 	"tb91-worst-case-lost-tb78-to-tb91": {
 		group: "91",
 		header: "Extensions which have been lost from TB78 to TB91 (including alternatives, possible false positives and possible false negatives).",
@@ -609,7 +640,7 @@ function genStandardReport(extsJson, name, report) {
 		  <td style="text-align: right" valign="top">${v_min}</td>
 		  <td style="text-align: right" valign="top">${v_strict_max}</td>
 		  <td style="text-align: right" valign="top">${v_max}</td>
-		  <td style="text-align: right; font-style: italic" valign="top">${rowData.badges ? rowData.badges.map(e => makeBadgeElement(badge_definitions[e.badge], e.link)).join("<br>") : ""}</td>
+		  <td style="text-align: right; font-style: italic" valign="top">${rowData.badges ? rowData.badges.map(e => getBadgeElement(e.badge, e.link)).join("<br>") : ""}</td>
 		</tr>`;
 	}
 
@@ -643,7 +674,7 @@ function genStandardReport(extsJson, name, report) {
 	// Generate stats
 	let stats_entries = [];
 	for (let [name, count] of Object.entries(stats_counts)) {
-		stats_entries.push(`<tr><td style="text-align: right">${count}</td><td>${makeBadgeElement(badge_definitions[name])}</td></tr>`)
+		stats_entries.push(`<tr><td style="text-align: right">${count}</td><td>${getBadgeElement(name)}</td></tr>`)
 	}
 	if (stats_entries.length > 0) {
 		stats_entries.unshift("<h3>Statistics</h3>", "<table class='statstable'>");
@@ -676,8 +707,20 @@ function debug(...args) {
 	}
 }
 
+function getBadgeElement(badgeName, bLink) {
+	// manipulate bRightText to reuse base bage
+	let badgeParts = badgeName.split(".");
+	let badgeOpt = badge_definitions[badgeName];
+	if (!badgeOpt && Array.isArray(badgeParts) &&  badge_definitions[badgeParts[0]]) {
+		badgeOpt = badge_definitions[badgeParts[0]];
+		badgeOpt.bRightText = badgeParts.slice(1).join(".");
+	}
+	return makeBadgeElement(badgeOpt, bLink);
+}
+
 function makeBadgeElement(bOpt, bLink) {
 	let title = bOpt.bTooltip ? `title='${bOpt.bTooltip}'` : ``;
+	
 	let tag = `<img src='https://img.shields.io/badge/${bOpt.bLeftText}-${bOpt.bRightText}-${bOpt.bColor}.png' ${title}>`
 	return bLink ? `<a href="${bLink}">${tag}</a>` : tag;
 }
