@@ -11,8 +11,8 @@ const bentGetTEXT = bent('GET', 'string', 200);
 const cheerio = require('cheerio');
 const git = require("isomorphic-git");
 const http = require('isomorphic-git/http/node');
-//const mdParser = require('md-hierarchical-parser');
-
+const xml2js = require('xml2js');
+const util = require('util');
 const fs = require('fs-extra');
 const {
 	parse,
@@ -26,6 +26,10 @@ function debug(...args) {
 	if (debugLevel > 0) {
 		console.debug(...args);
 	}
+}
+
+function dump(data) {
+	console.log(util.inspect(data, false, null));
 }
 
 /**
@@ -60,10 +64,91 @@ async function request(url) {
 	return rv;
 }
 
-function getSchemaFilename(branch, tree, ref) {
+function cleanUp(lines) {
+	if (!Array.isArray(lines))
+		lines = [lines.toString()];
+
+	const replacements = [
+		{
+			reg: /\bFirefox\b/g,
+			val: "Thunderbird",
+		},
+		{
+			reg: /\bfirefox\b/g,
+			val: "thunderbird",
+		},
+		{
+			reg: /([\W_])FF(\d\d)/g,
+			val: "\$1TB\$2",
+		},
+		{
+			reg: /\bAMO\b/g,
+			val: "ATN",
+		},
+		{
+			reg: /addons.mozilla.org/g,
+			val: "addons.thunderbird.net",
+		}
+	]
+
+	for (let i = 0; i < lines.length; i++) {
+		for (let r of replacements) {
+			lines[i] = lines[i].replace(r.reg, r.val);
+		}
+	}
+
+	// We do not state compatibility per policy, but per report
+	return lines
+		.filter(e => !e.includes("**Compatibility:**"))
+		.join("\n");
+}
+
+// -----------------------------------------------------------------------------
+
+/**
+ * Download a certain revision of mozilla policy templates.
+ * 
+ * ref - branch/tag to checkout, "master" or "v3.0"
+ */
+async function getMozillaPolicyTemplate(ref) {
+	console.log(`Downloading mozilla-policy-template version ${ref}`);
+	let dir = `${data_dir}/mozilla-policy-templates/${ref}`;
+	/*
+		fs.removeSync(dir);
+		fs.ensureDirSync(dir);
+		await git.clone({
+			fs,
+			http,
+			dir,
+			url: "https://github.com/mozilla/policy-templates/",
+			ref,
+			singleBranch: true,
+			depth: 10,
+			force: true
+		});
+	*/
+	let file = fs.readFileSync(`${dir}/README.md`, 'utf8');
+
+	// Split on ### heading to get chunks of policy descriptions
+	let data = file.split("\n### ");
+	let header = data.shift();
+
+	let policies = {};
+	for (let p of data) {
+		let lines = p.split("\n");
+		let name = lines[0];
+		lines[0] = `### ${name}`;
+		policies[name] = lines.join("\n")
+	}
+
+	// Log found policies
+	debug(`Policies found in mozilla template ${ref}`, Object.keys(policies))
+	return { header, policies };
+}
+
+function getPolicySchemaFilename(branch, tree, ref) {
 	return `${schema_dir}/${branch}-${tree}-${ref}.json`;
 }
-// -----------------------------------------------------------------------------
 
 /**
  * Download the most recent revision of the policies-schema.json for a given tree.
@@ -75,7 +160,7 @@ function getSchemaFilename(branch, tree, ref) {
  * 
  * Returns a data object for comm and mozilla.
  */
-async function getSchemaRevisions(settings) {
+async function downloadPolicySchemaFiles(settings) {
 	let tree = settings.tree;
 	let data = {
 		comm: {
@@ -97,7 +182,6 @@ async function getSchemaRevisions(settings) {
 	console.log(`Processing ${tree}`);
 	fs.ensureDirSync(schema_dir);
 
-
 	for (let branch of ["mozilla", "comm"]) {
 		let folder = branch == "mozilla" ? "browser" : "mail"
 		let path = tree == "central" ? `${branch}-${tree}` : `releases/${branch}-${tree}`
@@ -118,7 +202,7 @@ async function getSchemaRevisions(settings) {
 
 		for (let revision of revisions) {
 			let file = await request(`https://hg.mozilla.org/${path}/raw-file/${revision}/${folder}/components/enterprisepolicies/schemas/policies-schema.json`);
-			fs.writeFileSync(getSchemaFilename(branch, tree, revision), file);
+			fs.writeFileSync(getPolicySchemaFilename(branch, tree, revision), file);
 
 			if (revision != currentPolicyRevision) {
 				// we only need the most recent file, we can ignore any file between latest and current.
@@ -137,57 +221,33 @@ async function getSchemaRevisions(settings) {
 }
 
 /**
- * Download a certain revision of mozilla policy templates.
+ * Extract flat out policy named from a schema file
  * 
- * ref - branch/tag to checkout, "master" or "v3.0"
+ * @param {object} data - Object returned by downloadPolicySchemaFiles
  */
-async function getTemplateRevision(ref) {
-	console.log(`Downloading mozilla-policy-template version ${ref}`);
-
-	let dir = `${data_dir}/mozilla-policy-templates/${ref}`;
-	fs.removeSync(dir);
-	fs.ensureDirSync(dir);
-	await git.clone({
-		fs,
-		http,
-		dir,
-		url: "https://github.com/mozilla/policy-templates/",
-		ref,
-		singleBranch: true,
-		depth: 10,
-		force: true
-	});
-
-	let file = fs.readFileSync(`${dir}/README.md`, 'utf8');
-
-	// Split on ### heading to get chunks of policy descriptions
-	let data = file.split("\n### ");
-	let header = data.shift();
-
-	let policies = {};
-	for (let p of data) {
-		let lines = p.split("\n");
-		let name = lines[0];
-		lines[0] = `### ${name}`;
-		policies[name] = lines.join("\n")
+function extractFlatPolicyNamesFromPolicySchema(data) {
+	let properties = [];
+	if (data.properties) {
+		for (let [name, entry] of Object.entries(data.properties)) {
+			properties.push(name)
+			let subs = extractFlatPolicyNamesFromPolicySchema(entry);
+			if (subs.length > 0) properties.push(...subs.map(e => `${name}_${e}`))
+		}
 	}
-
-	// Log found policies
-	debug(`Policies found in mozilla template ${ref}`, Object.keys(policies))
-	return { header, policies };
+	return properties;
 }
 
 /**
- * Check for changes in tree.
- * 
- * @param {object} data - Object returned by getSchemaRevisions
- */
-function checkChanges(file1, file2) {
+* Check for changes in m-c and c-c tree.
+* 
+* @param {object} data - Object returned by downloadPolicySchemaFiles
+*/
+function checkPolicySchemaChanges(file1, file2) {
 	if (!file1?.properties || !file2?.properties)
 		return;
 
-	let keys1 = Object.keys(file1.properties);
-	let keys2 = Object.keys(file2.properties);
+	let keys1 = extractFlatPolicyNamesFromPolicySchema(file1);
+	let keys2 = extractFlatPolicyNamesFromPolicySchema(file2);
 
 	let added = keys2.filter(e => !keys1.includes(e));
 	let removed = keys1.filter(e => !keys2.includes(e));
@@ -197,44 +257,16 @@ function checkChanges(file1, file2) {
 	return { added, removed, changed }
 }
 
-function cleanUp(lines) {
-	const replacements = [
-		{
-			reg: /\bFirefox\b/g,
-			val: "Thunderbird",
-		},
-		{
-			reg: /\bfirefox\b/g,
-			val: "thunderbird",
-		},
-		{
-			reg: /\bAMO\b/g,
-			val: "ATN",
-		},
-		{
-			reg: /addons.mozilla.org/g,
-			val: "addons.thunderbird.net",
-		}
-	]
+// -----------------------------------------------------------------------------
 
-	for (let i = 0; i < lines.length; i++) {
-		for (let r of replacements) {
-			lines[i] = lines[i].replace(r.reg, r.val);
-		}
-	}
-
-	// We do not state compatibility per policy, but per report
-	return lines.filter(e => !e.includes("**Compatibility:**"));
-}
-
-async function buildThunderbirdReadme(settings) {
+async function buildThunderbirdTemplate(settings) {
 	// Download schema from https://hg.mozilla.org/
-	let data = await getSchemaRevisions(settings);
+	let data = await downloadPolicySchemaFiles(settings);
 	if (!data)
 		return;
 
-	// Get changes and log them.
-	let m_m_changes = checkChanges(data.mozilla.currentFile, data.mozilla.latestFile);
+	// Get changes in the schema files and log them.
+	let m_m_changes = checkPolicySchemaChanges(data.mozilla.currentFile, data.mozilla.latestFile);
 	if (m_m_changes) {
 		console.log();
 		console.log(` Mozilla has released an new policy revision for mozilla-${settings.tree}!`);
@@ -243,12 +275,12 @@ async function buildThunderbirdReadme(settings) {
 		if (m_m_changes.removed.length > 0) console.log(` - Mozilla removed the following policies:`, m_m_changes.removed);
 		if (m_m_changes.changed.length > 0) console.log(` - Mozilla changed properties of the following policies:`, m_m_changes.changed);
 		console.log();
-		console.log(` - currently acknowledged policy revision (${data.mozilla.currentRevision}): \n\t${getSchemaFilename("mozilla", settings.tree, data.mozilla.currentRevision)}\n`);
-		console.log(` - latest available policy revision (${data.mozilla.latestRevision}): \n\t${getSchemaFilename("mozilla", settings.tree, data.mozilla.latestRevision)}\n`);
+		console.log(` - currently acknowledged policy revision (${data.mozilla.currentRevision}): \n\t${getPolicySchemaFilename("mozilla", settings.tree, data.mozilla.currentRevision)}\n`);
+		console.log(` - latest available policy revision (${data.mozilla.latestRevision}): \n\t${getPolicySchemaFilename("mozilla", settings.tree, data.mozilla.latestRevision)}\n`);
 		console.log(` - hg change log for mozilla-${settings.tree}: \n\t${data.mozilla.hgLogUrl}\n`);
 	}
 
-	let c_c_changes = checkChanges(data.comm.currentFile, data.comm.latestFile);
+	let c_c_changes = checkPolicySchemaChanges(data.comm.currentFile, data.comm.latestFile);
 	if (c_c_changes) {
 		console.log();
 		console.log(` Thunderbird has released an new policy revision for comm-${settings.tree}!`);
@@ -257,12 +289,12 @@ async function buildThunderbirdReadme(settings) {
 		if (c_c_changes.removed.length > 0) console.log(` - Thunderbird removed the following policies:`, c_c_changes.removed);
 		if (c_c_changes.changed.length > 0) console.log(` - Thunderbird changed properties of the following policies:`, c_c_changes.changed);
 		console.log();
-		console.log(` - currently acknowledged policy revision (${data.comm.currentRevision}): \n\t${getSchemaFilename("comm", settings.tree, data.comm.currentRevision)}\n`);
-		console.log(` - latest available policy revision (${data.comm.latestRevision}): \n\t${getSchemaFilename("comm", settings.tree, data.comm.latestRevision)}\n`);
+		console.log(` - currently acknowledged policy revision (${data.comm.currentRevision}): \n\t${getPolicySchemaFilename("comm", settings.tree, data.comm.currentRevision)}\n`);
+		console.log(` - latest available policy revision (${data.comm.latestRevision}): \n\t${getPolicySchemaFilename("comm", settings.tree, data.comm.latestRevision)}\n`);
 		console.log(` - hg change log for comm-${settings.tree}: \n\t${data.comm.hgLogUrl}\n`);
 	}
 
-	let m_c_diff = checkChanges(data.mozilla.currentFile, data.comm.currentFile);
+	let m_c_diff = checkPolicySchemaChanges(data.mozilla.currentFile, data.comm.currentFile);
 	if (m_c_diff) {
 		console.log();
 		console.log(` There are differences between the currently acknowledged policy revisions of Mozilla and Thunderbird for the ${settings.tree} branch!`);
@@ -270,52 +302,74 @@ async function buildThunderbirdReadme(settings) {
 		if (m_c_diff.removed.length > 0) console.log(` - Thunderbird does not support the following policies in the currently acknowledged policy revisions:`, m_c_diff.removed);
 		if (m_c_diff.changed.length > 0) console.log(` - Thunderbird and Mozilla policy properties differ in the following policies in the currently acknowledged policy revisions:`, m_c_diff.changed);
 		console.log();
-		console.log(` - currently acknowledged mozilla policy revision (${data.mozilla.currentRevision}): \n\t${getSchemaFilename("mozilla", settings.tree, data.mozilla.currentRevision)}\n`);
-		console.log(` - currently acknowledged comm policy revision (${data.comm.currentRevision}): \n\t${getSchemaFilename("comm", settings.tree, data.comm.currentRevision)}\n`);
+		console.log(` - currently acknowledged mozilla policy revision (${data.mozilla.currentRevision}): \n\t${getPolicySchemaFilename("mozilla", settings.tree, data.mozilla.currentRevision)}\n`);
+		console.log(` - currently acknowledged comm policy revision (${data.comm.currentRevision}): \n\t${getPolicySchemaFilename("comm", settings.tree, data.comm.currentRevision)}\n`);
 		console.log(` - available template versions: \n\thttps://github.com/mozilla/policy-templates/releases\n`);
 	}
 
-	// Update mozilla reference templates to match Thunderbird policies.
+	// Build Readme.
 	let readme = [];
 	let header = [];
-	let description = ``;
 
-	for (let policy of Object.keys(data.comm.currentFile.properties)) {
+	let thunderbirdPolicies = extractFlatPolicyNamesFromPolicySchema(data.comm.currentFile);
+	for (let policy of thunderbirdPolicies) {
 		let template = templates[settings.mozillaReferenceTemplates["*"]];
 
-		// Is this an override from the global policy?
+		// Is this an override from the globally used template version?
 		if (settings.mozillaReferenceTemplates[policy]) {
 			template = templates[settings.mozillaReferenceTemplates[policy]];
 		}
 
-		// Get the header for this policy
-		header.push(...template.header.split("\n").filter(e => e.startsWith(`| **[\`${policy}\`]`) || e.startsWith(`| **[\`${policy} `)));
+		// Get policy header from the template (header uses -> instead of _ as hierarchy separator).
+		header.push(...template.header.split("\n").filter(e => e.replace(" -> ", "_").startsWith(`| **[\`${policy}\`]`)));
 
-		if (template.policies[policy]) {
-			readme.push(...template.policies[policy].split("\n"));
+		// Get detailed policy description from the template (description uses | instead of _ as hierarchy separator).
+		for (let p of Object.keys(template.policies).filter(e => e.replace(" | ", "_") == policy)) {
+			readme.push(...template.policies[p].split("\n"));
 		}
 	}
 
 	let md = settings.readmeTemplate
-		.replace("__list_of_policies", cleanUp(header).join("\n"))
-		.replace("__details__", cleanUp(readme).join("\n"));
+		.replace("__list_of_policies", cleanUp(header))
+		.replace("__details__", cleanUp(readme));
 
 	fs.ensureDirSync(settings.output);
 	fs.writeFileSync(`${settings.output}/README.md`, md);
+
+	// Read ADMX files - https://www.npmjs.com/package/xml2js
+	var parser = new xml2js.Parser();
+	let admx_file = fs.readFileSync(`${data_dir}/mozilla-policy-templates/${settings.mozillaReferenceTemplates["*"]}/windows/firefox.admx`);
+	let admx_obj = await parser.parseStringPromise(
+		cleanUp(admx_file).replace(/">">/g, '">'), // issue https://github.com/mozilla/policy-templates/issues/801
+	);
+
+	// Remove unsupported policies.
+	// admxPolicies have sub-policies, like Authentication_SPNEGO
+	// which is mapped into Authentication | SPNEGO in the readme
+	// this could be used to manually remove sub-policies
+	// currently we just look at the top policy as thunderbirdPolicies does not support it.
+	let admxPolicies = admx_obj.policyDefinitions.policies[0].policy;
+	admx_obj.policyDefinitions.policies[0].policy = admxPolicies.filter(policy => thunderbirdPolicies.includes(policy.$.name.split("_")[0]));
+
+	// Rebuild ADMX file.
+	var builder = new xml2js.Builder();
+	var xml = builder.buildObject(admx_obj);
+	fs.ensureDirSync(`${settings.output}/windows`);
+	fs.writeFileSync(`${settings.output}/windows/thunderbird.admx`, xml);
 }
 
 async function main() {
-	fs.removeSync(data_dir);
+	//fs.removeSync(data_dir);
 
 	// Checkout mozilla policies:
 	// https://github.com/mozilla/policy-templates/releases
-	templates["master"] = await getTemplateRevision("master");
-	templates["v3.0"] = await getTemplateRevision("v3.0"); //TB91
-	templates["v2.12"] = await getTemplateRevision("v2.12"); //TB78
-	templates["v1.17"] = await getTemplateRevision("v1.17"); //TB68
+	templates["master"] = await getMozillaPolicyTemplate("master");
+	templates["v3.0"] = await getMozillaPolicyTemplate("v3.0"); //TB91
+	templates["v2.12"] = await getMozillaPolicyTemplate("v2.12"); //TB78
+	templates["v1.17"] = await getMozillaPolicyTemplate("v1.17"); //TB68
 
 	// Check status of thunderbird trees and generate policies.
-	await buildThunderbirdReadme({
+	await buildThunderbirdTemplate({
 		tree: "central",
 		commPolicyRevision: "677f5bd4d2af44fa56de3eb68354243cebf53ab6",
 		mozillaReferencePolicyRevision: "02bf5ca05376f55029da3645bdc6c8806e306e80",
@@ -323,7 +377,7 @@ async function main() {
 			"*": "master",
 		},
 		output: "../thunderbird-policy-templates/master",
-		readmeTemplate: `## Enterprise policies for Thunderbird Beta (active development)
+		readmeTemplate: `## Enterprise policies for Thunderbird Daily & Beta (active development)
 
 **These policies are in active development and so might contain changes that do not work with current versions of Thunderbird.**
 
@@ -333,13 +387,11 @@ Policies can be specified using the [Group Policy templates on Windows](windows)
 | --- | --- |
 __list_of_policies
 
-## Detailed policy description
-
 __details__
 
 `});
 
-	await buildThunderbirdReadme({
+	await buildThunderbirdTemplate({
 		tree: "esr91",
 		commPolicyRevision: "2d7ea4fb88ccc2db866a362d2ad71a4850e5b150",
 		mozillaReferencePolicyRevision: "02bf5ca05376f55029da3645bdc6c8806e306e80",
@@ -355,13 +407,11 @@ Policies can be specified using the [Group Policy templates on Windows](windows)
 | --- | --- |
 __list_of_policies
 
-## Detailed policy description
-
 __details__
 
 `});
 
-	await buildThunderbirdReadme({
+	await buildThunderbirdTemplate({
 		tree: "esr78",
 		commPolicyRevision: "4ebc4c2e1bbdd3d9660b519c270dac71bd86717d",
 		mozillaReferencePolicyRevision: "a8c4670b6ef144a0f3b6851c2a9d4bbd44fc032a",
@@ -377,8 +427,6 @@ Policies can be specified using the [Group Policy templates on Windows](windows)
 | Policy Name | Description
 | --- | --- |
 __list_of_policies
-
-## Detailed policy description
 
 __details__
 

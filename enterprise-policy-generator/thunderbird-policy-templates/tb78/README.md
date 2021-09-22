@@ -41,8 +41,6 @@ Policies can be specified using the [Group Policy templates on Windows](windows)
 | **[`SSLVersionMax`](#sslversionmax)** | Set and lock the maximum version of TLS.
 | **[`SSLVersionMin`](#sslversionmin)** | Set and lock the minimum version of TLS.
 
-## Detailed policy description
-
 ### 3rdparty
 
 Allow WebExtensions to configure policy. For more information, see [Adding policy support to your extension](https://extensionworkshop.com/documentation/enterprise/adding-policy-support-to-your-extension/).
@@ -443,6 +441,114 @@ Value (string):
 ```
 ### Certificates
 
+### Certificates | ImportEnterpriseRoots
+
+Trust certificates that have been added to the operating system certificate store by a user or administrator.
+
+Note: This policy only works on Windows and macOS. For Linux discussion, see [bug 1600509](https://bugzilla.mozilla.org/show_bug.cgi?id=1600509).
+
+See https://support.mozilla.org/kb/setting-certificate-authorities-thunderbird for more detail.
+
+**CCK2 Equivalent:** N/A\
+**Preferences Affected:** `security.enterprise_roots.enabled`
+
+#### Windows (GPO)
+```
+Software\Policies\Mozilla\Thunderbird\Certificates\ImportEnterpriseRoots = 0x1 | 0x0
+```
+#### Windows (Intune)
+OMA-URI:
+```
+./Device/Vendor/MSFT/Policy/Config/Thunderbird~Policy~thunderbird~Certificates/Certificates_ImportEnterpriseRoots
+```
+Value (string):
+```
+<enabled/> or <disabled/>
+```
+#### macOS
+```
+<dict>
+  <key>Certificates</key>
+  <dict>
+    <key>ImportEnterpriseRoots</key>
+    <true/> | <false/>
+  </dict>
+</dict>
+```
+#### policies.json
+```
+{
+  "policies": {
+    "Certificates": {
+      "ImportEnterpriseRoots": true | false
+    }
+  }
+}
+```
+### Certificates | Install
+
+Install certificates into the Thunderbird certificate store. If only a filename is specified, Thunderbird searches for the file in the following locations:
+
+- Windows
+  - %USERPROFILE%\AppData\Local\Mozilla\Certificates
+  - %USERPROFILE%\AppData\Roaming\Mozilla\Certificates
+- macOS
+  - /Library/Application Support/Mozilla/Certificates
+  - ~/Library/Application Support/Mozilla/Certificates
+- Linux
+  - /usr/lib/mozilla/certificates
+  - /usr/lib64/mozilla/certificates
+  - ~/.mozilla/certificates
+
+Starting with Thunderbird 65, Thunderbird 60.5 ESR, a fully qualified path can be used, including UNC paths. You should use the native path style for your operating system. We do not support using %USERPROFILE% or other environment variables on Windows.
+
+If you are specifying the path in the policies.json file on Windows, you need to escape your backslashes (`\\`) which means that for UNC paths, you need to escape both (`\\\\`). If you use group policy, you only need one backslash.
+
+Certificates are installed using the trust string `CT,CT,`.
+
+Binary (DER) and ASCII (PEM) certificates are both supported.
+
+**CCK2 Equivalent:** `certs.ca`\
+**Preferences Affected:** N/A
+
+#### Windows (GPO)
+```
+Software\Policies\Mozilla\Thunderbird\Certificates\Install\1 = "cert1.der"
+Software\Policies\Mozilla\Thunderbird\Certificates\Install\2 = "C:\Users\username\cert2.pem"
+```
+#### Windows (Intune)
+OMA-URI:
+```
+./Device/Vendor/MSFT/Policy/Config/Thunderbird~Policy~thunderbird~Certificates/Certificates_Install
+```
+Value (string):
+```
+<enabled/>
+<data id="Certificates_Install" value="1&#xF000;cert1.der&#xF000;2&#xF000;C:\Users\username\cert2.pem"/>
+```
+#### macOS
+```
+<dict>
+  <key>Certificates</key>
+  <dict>
+    <key>Install</key>
+    <array>
+      <string>cert1.der</string>
+      <string>/Users/username/cert2.pem</string>
+    </array>
+  </dict>
+</dict>
+```
+#### policies.json
+```
+{
+  "policies": {
+    "Certificates": {
+      "Install": ["cert1.der", "/home/username/cert2.pem"]
+    }
+  }
+}
+```
 ### Cookies
 Configure cookie preferences.
 
