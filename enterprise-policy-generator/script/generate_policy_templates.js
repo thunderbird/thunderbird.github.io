@@ -136,125 +136,6 @@ async function getSchemaRevisions(settings) {
 	return data;
 }
 
-function cleanUp(lines) {
-	const replacements = [
-		{
-			reg: /\bFirefox\b/g,
-			val: "Thunderbird",
-		},
-		{
-			reg: /\bfirefox\b/g,
-			val: "thunderbird",
-		},
-		{
-			reg: /\bAMO\b/g,
-			val: "ATN",
-		},
-		{
-			reg: /addons.mozilla.org/g,
-			val: "addons.thunderbird.net",
-		}
-	]
-
-	for (let i = 0; i < lines.length; i++) {
-		for (let r of replacements) {
-			lines[i] = lines[i].replace(r.reg, r.val);
-		}
-	}
-
-	// We do not state compatibility per policy, but per report
-	return lines.filter(e => !e.includes("**Compatibility:**"));
-}
-/**
- * Check for changes in tree.
- * 
- * @param {object} data - Object returned by getSchemaRevisions
- */
-function checkChanges(file1, file2) {
-	if (!file1?.properties || !file2?.properties)
-		return;
-
-	let keys1 = Object.keys(file1.properties);
-	let keys2 = Object.keys(file2.properties);
-	
-	let added = keys2.filter(e => !keys1.includes(e));
-	let removed = keys1.filter(e => !keys2.includes(e));
-
-	let changed = keys2.filter(e => keys1.includes(e) && JSON.stringify(file2.properties[e]) != JSON.stringify(file1.properties[e]));
-
-	return {added, removed, changed}
-}
-
-async function buildThunderbirdReadme(settings) {
-	// Download schema from https://hg.mozilla.org/
-	let data = await getSchemaRevisions(settings);
-	if (!data)
-		return;
-
-	// Get changes and log them.
-	let m_m_changes = checkChanges(data.mozilla.currentFile, data.mozilla.latestFile);
-	if (m_m_changes) {
-		console.log();
-		console.log(` Mozilla has released an new policy revision for mozilla-${settings.tree}!`);
-		console.log(` Do those changes need to be ported to Thunderbird?`);
-		if (m_m_changes.added.length > 0) console.log(` - Mozilla added the following policies:`, m_m_changes.added);
-		if (m_m_changes.removed.length > 0) console.log(` - Mozilla removed the following policies:`, m_m_changes.removed);
-		if (m_m_changes.changed.length > 0) console.log(` - Mozilla changed properties of the following policies:`, m_m_changes.changed);
-		console.log();
-		console.log(` - currently acknowledged policy revision (${data.mozilla.currentRevision}): \n\t${getSchemaFilename("mozilla", settings.tree, data.mozilla.currentRevision)}\n`);
-		console.log(` - latest available policy revision (${data.mozilla.latestRevision}): \n\t${getSchemaFilename("mozilla", settings.tree, data.mozilla.latestRevision)}\n`);			
-		console.log(` - hg change log for mozilla-${settings.tree}: \n\t${data.mozilla.hgLogUrl}\n`);
-	}
-
-	let c_c_changes = 	checkChanges(data.comm.currentFile, data.comm.latestFile);
-	if (c_c_changes) {
-		console.log();
-		console.log(` Thunderbird has released an new policy revision for comm-${settings.tree}!`);
-		console.log(` Is our documentation still up to date?`);
-		if (c_c_changes.added.length > 0) console.log(` - Thunderbird added the following policies:`, c_c_changes.added);
-		if (c_c_changes.removed.length > 0) console.log(` - Thunderbird removed the following policies:`, c_c_changes.removed);
-		if (c_c_changes.changed.length > 0) console.log(` - Thunderbird changed properties of the following policies:`, c_c_changes.changed);
-		console.log();
-		console.log(` - currently acknowledged policy revision (${data.comm.currentRevision}): \n\t${getSchemaFilename("comm", settings.tree, data.comm.currentRevision)}\n`);
-		console.log(` - latest available policy revision (${data.comm.latestRevision}): \n\t${getSchemaFilename("comm", settings.tree, data.comm.latestRevision)}\n`);			
-		console.log(` - hg change log for comm-${settings.tree}: \n\t${data.comm.hgLogUrl}\n`);
-	}
-
-	let m_c_diff = 	checkChanges(data.mozilla.currentFile, data.comm.currentFile);
-	if (m_c_diff) {
-		console.log();
-		console.log(` There are differences between the currently acknowledged policy revisions of Mozilla and Thunderbird for the ${settings.tree} branch!`);
-		console.log(` That probably means we need to manually adjust our documentations (using a different template version for a specific policy might help already).`);		
-		if (m_c_diff.added.length > 0) console.log(` - Thunderbird added extra support for the following policies in the currently acknowledged policy revisions:`, m_c_diff.added);
-		if (m_c_diff.removed.length > 0) console.log(` - Thunderbird does not support the following policies in the currently acknowledged policy revisions:`, m_c_diff.removed);
-		if (m_c_diff.changed.length > 0) console.log(` - Thunderbird and Mozilla policy properties differ in the following policies in the currently acknowledged policy revisions:`, m_c_diff.changed);
-		console.log();
-		console.log(` - currently acknowledged mozilla policy revision (${data.mozilla.currentRevision}): \n\t${getSchemaFilename("mozilla", settings.tree, data.mozilla.currentRevision)}\n`);			
-		console.log(` - currently acknowledged comm policy revision (${data.comm.currentRevision}): \n\t${getSchemaFilename("comm", settings.tree, data.comm.currentRevision)}\n`);
-		console.log(` - available template versions: \n\thttps://github.com/mozilla/policy-templates/releases\n`);
-	}
-	
-	
-	// Update mozilla reference templates to match Thunderbird policies.
-	return;
-
-	let readme = [];
-	for (let policy of Object.keys(schema.properties)) {
-		let template = templates[settings.mozillaReferenceTemplates["*"]];
-
-		// Is this an override from the global policy?
-		if (settings.mozillaReferenceTemplates[policy]) {
-			template = templates[settings.mozillaReferenceTemplates[policy]];
-		}
-
-		if (template.policies[policy]) {
-			readme.push(...template.policies[policy].split("\n"));
-		}
-	}
-	fs.ensureDirSync(settings.output);
-	fs.writeFileSync(`${settings.output}/README.md`, cleanUp(readme).join("\n"));
-}
-
 /**
  * Download a certain revision of mozilla policy templates.
  * 
@@ -296,6 +177,133 @@ async function getTemplateRevision(ref) {
 	return { header, policies };
 }
 
+/**
+ * Check for changes in tree.
+ * 
+ * @param {object} data - Object returned by getSchemaRevisions
+ */
+function checkChanges(file1, file2) {
+	if (!file1?.properties || !file2?.properties)
+		return;
+
+	let keys1 = Object.keys(file1.properties);
+	let keys2 = Object.keys(file2.properties);
+
+	let added = keys2.filter(e => !keys1.includes(e));
+	let removed = keys1.filter(e => !keys2.includes(e));
+
+	let changed = keys2.filter(e => keys1.includes(e) && JSON.stringify(file2.properties[e]) != JSON.stringify(file1.properties[e]));
+
+	return { added, removed, changed }
+}
+
+function cleanUp(lines) {
+	const replacements = [
+		{
+			reg: /\bFirefox\b/g,
+			val: "Thunderbird",
+		},
+		{
+			reg: /\bfirefox\b/g,
+			val: "thunderbird",
+		},
+		{
+			reg: /\bAMO\b/g,
+			val: "ATN",
+		},
+		{
+			reg: /addons.mozilla.org/g,
+			val: "addons.thunderbird.net",
+		}
+	]
+
+	for (let i = 0; i < lines.length; i++) {
+		for (let r of replacements) {
+			lines[i] = lines[i].replace(r.reg, r.val);
+		}
+	}
+
+	// We do not state compatibility per policy, but per report
+	return lines.filter(e => !e.includes("**Compatibility:**"));
+}
+
+async function buildThunderbirdReadme(settings) {
+	// Download schema from https://hg.mozilla.org/
+	let data = await getSchemaRevisions(settings);
+	if (!data)
+		return;
+
+	// Get changes and log them.
+	let m_m_changes = checkChanges(data.mozilla.currentFile, data.mozilla.latestFile);
+	if (m_m_changes) {
+		console.log();
+		console.log(` Mozilla has released an new policy revision for mozilla-${settings.tree}!`);
+		console.log(` Do those changes need to be ported to Thunderbird?`);
+		if (m_m_changes.added.length > 0) console.log(` - Mozilla added the following policies:`, m_m_changes.added);
+		if (m_m_changes.removed.length > 0) console.log(` - Mozilla removed the following policies:`, m_m_changes.removed);
+		if (m_m_changes.changed.length > 0) console.log(` - Mozilla changed properties of the following policies:`, m_m_changes.changed);
+		console.log();
+		console.log(` - currently acknowledged policy revision (${data.mozilla.currentRevision}): \n\t${getSchemaFilename("mozilla", settings.tree, data.mozilla.currentRevision)}\n`);
+		console.log(` - latest available policy revision (${data.mozilla.latestRevision}): \n\t${getSchemaFilename("mozilla", settings.tree, data.mozilla.latestRevision)}\n`);
+		console.log(` - hg change log for mozilla-${settings.tree}: \n\t${data.mozilla.hgLogUrl}\n`);
+	}
+
+	let c_c_changes = checkChanges(data.comm.currentFile, data.comm.latestFile);
+	if (c_c_changes) {
+		console.log();
+		console.log(` Thunderbird has released an new policy revision for comm-${settings.tree}!`);
+		console.log(` Is our documentation still up to date?`);
+		if (c_c_changes.added.length > 0) console.log(` - Thunderbird added the following policies:`, c_c_changes.added);
+		if (c_c_changes.removed.length > 0) console.log(` - Thunderbird removed the following policies:`, c_c_changes.removed);
+		if (c_c_changes.changed.length > 0) console.log(` - Thunderbird changed properties of the following policies:`, c_c_changes.changed);
+		console.log();
+		console.log(` - currently acknowledged policy revision (${data.comm.currentRevision}): \n\t${getSchemaFilename("comm", settings.tree, data.comm.currentRevision)}\n`);
+		console.log(` - latest available policy revision (${data.comm.latestRevision}): \n\t${getSchemaFilename("comm", settings.tree, data.comm.latestRevision)}\n`);
+		console.log(` - hg change log for comm-${settings.tree}: \n\t${data.comm.hgLogUrl}\n`);
+	}
+
+	let m_c_diff = checkChanges(data.mozilla.currentFile, data.comm.currentFile);
+	if (m_c_diff) {
+		console.log();
+		console.log(` There are differences between the currently acknowledged policy revisions of Mozilla and Thunderbird for the ${settings.tree} branch!`);
+		if (m_c_diff.added.length > 0) console.log(` - Thunderbird added extra support for the following policies in the currently acknowledged policy revisions:`, m_c_diff.added);
+		if (m_c_diff.removed.length > 0) console.log(` - Thunderbird does not support the following policies in the currently acknowledged policy revisions:`, m_c_diff.removed);
+		if (m_c_diff.changed.length > 0) console.log(` - Thunderbird and Mozilla policy properties differ in the following policies in the currently acknowledged policy revisions:`, m_c_diff.changed);
+		console.log();
+		console.log(` - currently acknowledged mozilla policy revision (${data.mozilla.currentRevision}): \n\t${getSchemaFilename("mozilla", settings.tree, data.mozilla.currentRevision)}\n`);
+		console.log(` - currently acknowledged comm policy revision (${data.comm.currentRevision}): \n\t${getSchemaFilename("comm", settings.tree, data.comm.currentRevision)}\n`);
+		console.log(` - available template versions: \n\thttps://github.com/mozilla/policy-templates/releases\n`);
+	}
+
+	// Update mozilla reference templates to match Thunderbird policies.
+	let readme = [];
+	let header = [];
+	let description = ``;
+
+	for (let policy of Object.keys(data.comm.currentFile.properties)) {
+		let template = templates[settings.mozillaReferenceTemplates["*"]];
+
+		// Is this an override from the global policy?
+		if (settings.mozillaReferenceTemplates[policy]) {
+			template = templates[settings.mozillaReferenceTemplates[policy]];
+		}
+
+		// Get the header for this policy
+		header.push(...template.header.split("\n").filter(e => e.startsWith(`| **[\`${policy}\`]`) || e.startsWith(`| **[\`${policy} `)));
+
+		if (template.policies[policy]) {
+			readme.push(...template.policies[policy].split("\n"));
+		}
+	}
+
+	let md = settings.readmeTemplate
+		.replace("__list_of_policies", cleanUp(header).join("\n"))
+		.replace("__details__", cleanUp(readme).join("\n"));
+
+	fs.ensureDirSync(settings.output);
+	fs.writeFileSync(`${settings.output}/README.md`, md);
+}
+
 async function main() {
 	fs.removeSync(data_dir);
 
@@ -315,7 +323,21 @@ async function main() {
 			"*": "master",
 		},
 		output: "../thunderbird-policy-templates/master",
-	});
+		readmeTemplate: `## Enterprise policies for Thunderbird Beta (active development)
+
+**These policies are in active development and so might contain changes that do not work with current versions of Thunderbird.**
+
+Policies can be specified using the [Group Policy templates on Windows](windows), [Intune on Windows](https://support.mozilla.org/kb/managing-firefox-intune), [configuration profiles on macOS](mac), or by creating a file called \`policies.json\`. On Windows, create a directory called \`distribution\` where the EXE is located and place the file there. On Mac, the file goes into \`Thunderbird.app/Contents/Resources/distribution\`.  On Linux, the file goes into \`thunderbird/distribution\`, where \`thunderbird\` is the installation directory for Thunderbird, which varies by distribution or you can specify system-wide policy by placing the file in \`/etc/thunderbird/policies\`.
+
+| Policy Name | Description
+| --- | --- |
+__list_of_policies
+
+## Detailed policy description
+
+__details__
+
+`});
 
 	await buildThunderbirdReadme({
 		tree: "esr91",
@@ -325,7 +347,19 @@ async function main() {
 			"*": "v3.0"
 		},
 		output: "../thunderbird-policy-templates/tb91",
-	});
+		readmeTemplate: `## Enterprise policies for Thunderbird 91
+
+Policies can be specified using the [Group Policy templates on Windows](windows), [Intune on Windows](https://support.mozilla.org/kb/managing-firefox-intune), [configuration profiles on macOS](mac), or by creating a file called \`policies.json\`. On Windows, create a directory called \`distribution\` where the EXE is located and place the file there. On Mac, the file goes into \`Thunderbird.app/Contents/Resources/distribution\`.  On Linux, the file goes into \`thunderbird/distribution\`, where \`thunderbird\` is the installation directory for Thunderbird, which varies by distribution or you can specify system-wide policy by placing the file in \`/etc/thunderbird/policies\`.
+		
+| Policy Name | Description
+| --- | --- |
+__list_of_policies
+
+## Detailed policy description
+
+__details__
+
+`});
 
 	await buildThunderbirdReadme({
 		tree: "esr78",
@@ -336,7 +370,19 @@ async function main() {
 			"Preferences": "v1.17", // Preferences had not been backported.
 		},
 		output: "../thunderbird-policy-templates/tb78",
-	});
+		readmeTemplate: `## Enterprise policies for Thunderbird 78
+
+Policies can be specified using the [Group Policy templates on Windows](windows), [Intune on Windows](https://support.mozilla.org/kb/managing-firefox-intune), [configuration profiles on macOS](mac), or by creating a file called \`policies.json\`. On Windows, create a directory called \`distribution\` where the EXE is located and place the file there. On Mac, the file goes into \`Thunderbird.app/Contents/Resources/distribution\`.  On Linux, the file goes into \`thunderbird/distribution\`, where \`thunderbird\` is the installation directory for Thunderbird, which varies by distribution or you can specify system-wide policy by placing the file in \`/etc/thunderbird/policies\`.
+
+| Policy Name | Description
+| --- | --- |
+__list_of_policies
+
+## Detailed policy description
+
+__details__
+
+`});
 
 }
 

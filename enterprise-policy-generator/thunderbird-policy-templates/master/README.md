@@ -1,3 +1,61 @@
+## Enterprise policies for Thunderbird Beta (active development)
+
+**These policies are in active development and so might contain changes that do not work with current versions of Thunderbird.**
+
+Policies can be specified using the [Group Policy templates on Windows](windows), [Intune on Windows](https://support.mozilla.org/kb/managing-firefox-intune), [configuration profiles on macOS](mac), or by creating a file called `policies.json`. On Windows, create a directory called `distribution` where the EXE is located and place the file there. On Mac, the file goes into `Thunderbird.app/Contents/Resources/distribution`.  On Linux, the file goes into `thunderbird/distribution`, where `thunderbird` is the installation directory for Thunderbird, which varies by distribution or you can specify system-wide policy by placing the file in `/etc/thunderbird/policies`.
+
+| Policy Name | Description
+| --- | --- |
+| **[`3rdparty`](#3rdparty)** | Set policies that WebExtensions can access via chrome.storage.managed.
+| **[`AppAutoUpdate`](#appautoupdate)** | Enable or disable automatic application update.
+| **[`AppUpdateURL`](#appupdateurl)** | Change the URL for application update.
+| **[`Authentication`](#authentication)** | Configure sites that support integrated authentication.
+| **[`BackgroundAppUpdate`](#backgroundappupdate)** | Enable or disable the background updater (Windows only).
+| **[`BlockAboutAddons`](#blockaboutaddons)** | Block access to the Add-ons Manager (about:addons).
+| **[`BlockAboutConfig`](#blockaboutconfig)** | Block access to about:config.
+| **[`BlockAboutProfiles`](#blockaboutprofiles)** | Block access to About Profiles (about:profiles).
+| **[`BlockAboutSupport`](#blockaboutsupport)** | Block access to Troubleshooting Information (about:support).
+| **[`CaptivePortal`](#captiveportal)** | Enable or disable the detection of captive portals.
+| **[`Certificates`](#certificates)** |
+| **[`Certificates -> ImportEnterpriseRoots`](#certificates--importenterpriseroots)** | Trust certificates that have been added to the operating system certificate store by a user or administrator.
+| **[`Certificates -> Install`](#certificates--install)** | Install certificates into the Thunderbird certificate store.
+| **[`Cookies`](#cookies)** | Configure cookie preferences.
+| **[`DefaultDownloadDirectory`](#defaultdownloaddirectory)** | Set the default download directory.
+| **[`DisableAppUpdate`](#disableappupdate)** | Turn off application updates.
+| **[`DisableBuiltinPDFViewer`](#disablebuiltinpdfviewer)** | Disable the built in PDF viewer.
+| **[`DisabledCiphers`](#disabledciphers)** | Disable ciphers.
+| **[`DisableDeveloperTools`](#disabledevelopertools)** | Remove access to all developer tools.
+| **[`DisableMasterPasswordCreation`](#disablemasterpasswordcreation)** | Remove the master password functionality.
+| **[`DisablePasswordReveal`](#disablepasswordreveal)** | Do not allow passwords to be revealed in saved logins.
+| **[`DisableSafeMode`](#disablesafemode)** | Disable safe mode within the browser.
+| **[`DisableSecurityBypass`](#disablesecuritybypass)** | Prevent the user from bypassing security in certain cases.
+| **[`DisableSystemAddonUpdate`](#disablesystemaddonupdate)** | Prevent system add-ons from being installed or update.
+| **[`DisableTelemetry`](#disabletelemetry)** | DisableTelemetry
+| **[`DNSOverHTTPS`](#dnsoverhttps)** | Configure DNS over HTTPS.
+| **[`DownloadDirectory`](#downloaddirectory)** | Set and lock the download directory.
+| **[`Extensions`](#extensions)** | Control the installation, uninstallation and locking of extensions.
+| **[`ExtensionSettings`](#extensionsettings)** | Manage all aspects of extensions.
+| **[`ExtensionUpdate`](#extensionupdate)** | Control extension updates.
+| **[`Handlers`](#handlers)** | Configure default application handlers.
+| **[`HardwareAcceleration`](#hardwareacceleration)** | Control hardware acceleration.
+| **[`InstallAddonsPermission`](#installaddonspermission)** | Configure the default extension install policy as well as origins for extension installs are allowed.
+| **[`ManualAppUpdateOnly`](#manualappupdateonly)** | Allow manual updates only and do not notify the user about updates..
+| **[`NetworkPrediction`](#networkprediction)** | Enable or disable network prediction (DNS prefetching).
+| **[`OfferToSaveLogins`](#offertosavelogins)** | Control whether or not Thunderbird offers to save passwords.
+| **[`OfferToSaveLoginsDefault`](#offertosaveloginsdefault)** | Set the default value for whether or not Thunderbird offers to save passwords.
+| **[`PasswordManagerEnabled`](#passwordmanagerenabled)** | Remove (some) access to the password manager.
+| **[`PDFjs`](#pdfjs)** | Disable or configure PDF.js, the built-in PDF viewer.
+| **[`Preferences`](#preferences)** | Set and lock preferences.
+| **[`Preferences (Deprecated)`](#preferences-deprecated)** | Set and lock some preferences.
+| **[`PrimaryPassword`](#primarypassword)** | Require or prevent using a primary (formerly master) password.
+| **[`PromptForDownloadLocation`](#promptfordownloadlocation)** | Ask where to save each file before downloading.
+| **[`Proxy`](#proxy)** | Configure proxy settings.
+| **[`RequestedLocales`](#requestedlocales)** | Set the the list of requested locales for the application in order of preference.
+| **[`SSLVersionMax`](#sslversionmax)** | Set and lock the maximum version of TLS.
+| **[`SSLVersionMin`](#sslversionmin)** | Set and lock the minimum version of TLS.
+
+## Detailed policy description
+
 ### 3rdparty
 
 Allow WebExtensions to configure policy. For more information, see [Adding policy support to your extension](https://extensionworkshop.com/documentation/enterprise/adding-policy-support-to-your-extension/).
@@ -2420,3 +2478,4 @@ Value (string):
   }
 }
 ```
+
