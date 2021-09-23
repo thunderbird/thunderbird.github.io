@@ -447,7 +447,7 @@ Trust certificates that have been added to the operating system certificate stor
 
 Note: This policy only works on Windows and macOS. For Linux discussion, see [bug 1600509](https://bugzilla.mozilla.org/show_bug.cgi?id=1600509).
 
-See https://support.mozilla.org/kb/setting-certificate-authorities-thunderbird for more detail.
+See https://support.mozilla.org/kb/setting-certificate-authorities-firefox for more detail.
 
 **CCK2 Equivalent:** N/A\
 **Preferences Affected:** `security.enterprise_roots.enabled`

@@ -96,9 +96,14 @@ function cleanUp(lines) {
 		{
 			reg: /\bchrome\.\b/g,
 			val: "messenger.",
-		},		{
+		},
+		{
 			reg: /addons.mozilla.org/g,
 			val: "addons.thunderbird.net",
+		},
+		{	// Undo a wrong replace
+			reg: "https://support.mozilla.org/kb/setting-certificate-authorities-thunderbird",
+			val: "https://support.mozilla.org/kb/setting-certificate-authorities-firefox"
 		}
 	]
 
@@ -370,7 +375,7 @@ async function buildThunderbirdTemplate(settings) {
 		console.log(` - hg change log for comm-${settings.tree}: \n\t${data.comm.hgLogUrl}\n`);
 	}
 
-	/*	
+	/*	TODO: For the readme it would be helpfull to know which properties of used policies are not supported
 		// This logs differences between m-c and c-c, but the gain of information is not much, clutters the screen, we know they differ.
 		let m_c_diff = checkPolicySchemaChanges(data.mozilla.currentFile, data.comm.currentFile);
 		if (m_c_diff) {
@@ -410,10 +415,18 @@ async function buildThunderbirdTemplate(settings) {
 			// Maybe log policies_properties which are not mentioned directly in the readme?
 			// console.error("Policy or policy property not present in mozilla readme", policy)
 		}
+		// Also check for deprecated versions.
+		if (template.headers[`${policy} (Deprecated)`]) {
+			header.push(template.headers[`${policy} (Deprecated)`].override || template.headers[`${policy} (Deprecated)`].current);
+		}
 
 		// Get the policy details from the template (or its override).
 		if (template.policies[policy]) {
 			details.push(...(template.policies[policy].override || template.policies[policy].current));
+		}
+		// Also check for deprecated versions.
+		if (template.policies[`${policy} (Deprecated)`]) {
+			details.push(...(template.policies[`${policy} (Deprecated)`].override || template.policies[`${policy} (Deprecated)`].current));
 		}
 	}
 
@@ -436,17 +449,32 @@ async function buildThunderbirdTemplate(settings) {
 		cleanUp(admx_file).replace(/">">/g, '">'), // issue https://github.com/mozilla/policy-templates/issues/801
 	);
 
-	// Remove unsupported policies.
-	// admxPolicies have a flattened hierarchy, like Authentication_SPNEGO
-	// which is mapped into Authentication | SPNEGO in the readme
+	// Remove unsupported policies. (Remember, we work with flattened policy_property names here)
 	let admxPolicies = admx_obj.policyDefinitions.policies[0].policy;
 	admx_obj.policyDefinitions.policies[0].policy = admxPolicies.filter(policy => thunderbirdPolicies.includes(policy.$.name));
 
-	// Rebuild ADMX file.
+	// Rebuild thunderbird.admx file.
 	var builder = new xml2js.Builder();
 	var xml = builder.buildObject(admx_obj);
 	fs.ensureDirSync(`${settings.output}/windows`);
 	fs.writeFileSync(`${settings.output}/windows/thunderbird.admx`, xml);
+
+	// Copy mozilla.admx file.
+	file = fs.readFileSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates["*"]}/windows/mozilla.admx`);
+	fs.writeFileSync(`${settings.output}/windows/mozilla.admx`, file);
+
+	// Handle translation files.
+	let folders = fs.readdirSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates["*"]}/windows`, { withFileTypes: true })
+		.filter(dirent => dirent.isDirectory())
+		.map(dirent => dirent.name);
+	for (let folder of folders) {
+		fs.ensureDirSync(`${settings.output}/windows/${folder}`);
+		let file = fs.readFileSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates["*"]}/windows/${folder}/firefox.adml`);
+		fs.writeFileSync(`${settings.output}/windows/${folder}/thunderbird.adml`, cleanUp(file));
+		// This file probably does not need to change
+		file = fs.readFileSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates["*"]}/windows/${folder}/mozilla.adml`);
+		fs.writeFileSync(`${settings.output}/windows/${folder}/mozilla.adml`, file);
+	}
 }
 
 async function main() {
