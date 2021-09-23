@@ -5,9 +5,9 @@
 // Debug logging (0 - errors and basic logs only, 1 - verbose debug)
 const debugLevel = 0;
 
-const mozilla_template_dir = "../data/mozilla-policy-templates";
-const thunderbird_template_dir = "../data/thunderbird-policy-templates";
-const schema_dir = "../data/schema";
+const mozilla_template_dir = "./data/mozilla-policy-templates";
+const thunderbird_template_dir = "./build";
+const schema_dir = "./data/schema";
 const readme_json_path = "./readme.json";
 
 // replacement for deprecated request
