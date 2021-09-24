@@ -614,6 +614,26 @@
         <decimal value="0"/>
       </disabledValue>
     </policy>
+    <policy name="P_DisableSecurityBypass_InvalidCertificate" class="Both" displayName="$(string.DisableSecurityBypass_InvalidCertificate)" explainText="$(string.DisableSecurityBypass_InvalidCertificate_Explain)" key="Software\Policies\Mozilla\Thunderbird\DisableSecurityBypass" valueName="InvalidCertificate">
+      <parentCategory ref="thunderbird"/>
+      <supportedOn ref="SUPPORTED_TB60"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="P_DisableSecurityBypass_SafeBrowsing" class="Both" displayName="$(string.DisableSecurityBypass_SafeBrowsing)" explainText="$(string.DisableSecurityBypass_SafeBrowsing_Explain)" key="Software\Policies\Mozilla\Thunderbird\DisableSecurityBypass" valueName="SafeBrowsing">
+      <parentCategory ref="thunderbird"/>
+      <supportedOn ref="SUPPORTED_TB60"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
     <policy name="PasswordManagerEnabled" class="Both" displayName="$(string.PasswordManagerEnabled)" explainText="$(string.PasswordManagerEnabled_Explain)" key="Software\Policies\Mozilla\Thunderbird" valueName="PasswordManagerEnabled">
       <parentCategory ref="thunderbird"/>
       <supportedOn ref="SUPPORTED_TB70"/>
@@ -719,6 +739,13 @@
       <supportedOn ref="SUPPORTED_TB64"/>
       <elements>
         <list id="RequestedLocales" key="Software\Policies\Mozilla\Thunderbird\RequestedLocales" valuePrefix=""/>
+      </elements>
+    </policy>
+    <policy name="RequestedLocalesString" class="Both" displayName="$(string.RequestedLocalesString)" explainText="$(string.RequestedLocales_Explain)" key="Software\Policies\Mozilla\Thunderbird" presentation="$(presentation.Preferences_String)">
+      <parentCategory ref="thunderbird"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <elements>
+        <text id="Preferences_String" valueName="RequestedLocales"/>
       </elements>
     </policy>
     <policy name="SSLVersionMin" class="Both" displayName="$(string.SSLVersionMin)" explainText="$(string.SSLVersionMin_Explain)" key="Software\Policies\Mozilla\Thunderbird" presentation="$(presentation.SSLVersion)">

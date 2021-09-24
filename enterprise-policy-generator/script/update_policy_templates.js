@@ -28,8 +28,6 @@ const {
 	assign
 } = require('comment-json');
 
-var parsed_readme_files = [];
-
 function debug(...args) {
 	if (debugLevel > 0) {
 		console.debug(...args);
@@ -142,7 +140,7 @@ async function updateMozillaPolicyTemplate(ref, dir) {
 			depth: 10,
 			force: true
 		});
-	} else {
+	} else if (ref == "master") {
 		console.log(`Updating mozilla-policy-template version ${ref}`);
 		await git.pull({
 			author: { name: "generate_policy_template.js" },
@@ -461,9 +459,55 @@ async function buildThunderbirdTemplate(settings) {
 		cleanUp(admx_file).replace(/">">/g, '">'), // issue https://github.com/mozilla/policy-templates/issues/801
 	);
 
+	function getNameFromKey(key) {
+		const key_prefix = "Software\\Policies\\Mozilla\\Thunderbird\\";
+		const key_prefix_length = key_prefix.length;
+		if (key.length > key_prefix_length) {
+			return key.substring(key_prefix_length).split("\\").join("_");
+		}
+
+	}
+	function isThunderbirdPolicy(policy, element) {
+		let parts = [];
+		let name = getNameFromKey(policy.$.key);
+		if (name) {
+			parts.push(name);
+		}
+		
+		if (policy.$.valueName) {
+			parts.push(policy.$.valueName);
+		}
+		
+		if (element) {
+			if (element.$.key) parts = [getNameFromKey(element.$.key)];
+			else if (element.$.valueName) parts.push(element.$.valueName);
+		}
+
+		return thunderbirdPolicies.includes(parts.join("_"));
+	}
+
 	// Remove unsupported policies. (Remember, we work with flattened policy_property names here)
+	// A single admx policy entry can include multiple elements, we need to check those individually.
 	let admxPolicies = admx_obj.policyDefinitions.policies[0].policy;
-	admx_obj.policyDefinitions.policies[0].policy = admxPolicies.filter(policy => thunderbirdPolicies.includes(policy.$.name) || thunderbirdPolicies.includes(`${policy.$.name} (Deprecated)`));
+	for (let policy of admxPolicies) {
+		if (!isThunderbirdPolicy(policy)) {
+			policy.unsupported = true
+		}
+		
+		if (policy.elements) {
+			for (let element of policy.elements) {
+				for (let type of Object.keys(element)) {
+					element[type] = element[type].filter(e => isThunderbirdPolicy(policy, e))
+					if (element[type].length == 0) delete element[type]
+					else delete policy.unsupported;
+				}
+			}
+			// If we removed all elements, remove the policy
+			policy.elements = policy.elements.filter(e => Object.keys(e).length > 0)
+			if (policy.elements.length == 0) policy.unsupported = true
+		}	
+	}
+	admx_obj.policyDefinitions.policies[0].policy = admxPolicies.filter(p => !p.unsupported);
 
 	// Rebuild thunderbird.admx file.
 	var builder = new xml2js.Builder();
@@ -487,6 +531,8 @@ async function buildThunderbirdTemplate(settings) {
 		file = fs.readFileSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates}/windows/${folder}/mozilla.adml`);
 		fs.writeFileSync(`${settings.output}/windows/${folder}/mozilla.adml`, file);
 	}
+
+	// TODO: Mac
 }
 
 async function main() {

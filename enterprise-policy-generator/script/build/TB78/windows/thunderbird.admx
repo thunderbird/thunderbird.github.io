@@ -516,6 +516,26 @@
         <decimal value="0"/>
       </disabledValue>
     </policy>
+    <policy name="P_DisableSecurityBypass_InvalidCertificate" class="Both" displayName="$(string.DisableSecurityBypass_InvalidCertificate)" explainText="$(string.DisableSecurityBypass_InvalidCertificate_Explain)" key="Software\Policies\Mozilla\Thunderbird\DisableSecurityBypass" valueName="InvalidCertificate">
+      <parentCategory ref="thunderbird"/>
+      <supportedOn ref="SUPPORTED_TB60"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="P_DisableSecurityBypass_SafeBrowsing" class="Both" displayName="$(string.DisableSecurityBypass_SafeBrowsing)" explainText="$(string.DisableSecurityBypass_SafeBrowsing_Explain)" key="Software\Policies\Mozilla\Thunderbird\DisableSecurityBypass" valueName="SafeBrowsing">
+      <parentCategory ref="thunderbird"/>
+      <supportedOn ref="SUPPORTED_TB60"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
     <policy name="PasswordManagerEnabled" class="Both" displayName="$(string.PasswordManagerEnabled)" explainText="$(string.PasswordManagerEnabled_Explain)" key="Software\Policies\Mozilla\Thunderbird" valueName="PasswordManagerEnabled">
       <parentCategory ref="thunderbird"/>
       <supportedOn ref="SUPPORTED_TB70"/>
@@ -623,6 +643,13 @@
         <list id="RequestedLocales" key="Software\Policies\Mozilla\Thunderbird\RequestedLocales" valuePrefix=""/>
       </elements>
     </policy>
+    <policy name="RequestedLocalesString" class="Both" displayName="$(string.RequestedLocalesString)" explainText="$(string.RequestedLocales_Explain)" key="Software\Policies\Mozilla\Thunderbird" presentation="$(presentation.Preferences_String)">
+      <parentCategory ref="thunderbird"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <elements>
+        <text id="Preferences_String" valueName="RequestedLocales"/>
+      </elements>
+    </policy>
     <policy name="SSLVersionMin" class="Both" displayName="$(string.SSLVersionMin)" explainText="$(string.SSLVersionMin_Explain)" key="Software\Policies\Mozilla\Thunderbird" presentation="$(presentation.SSLVersion)">
       <parentCategory ref="thunderbird"/>
       <supportedOn ref="SUPPORTED_TB66"/>
@@ -677,6 +704,267 @@
             </value>
           </item>
         </enum>
+      </elements>
+    </policy>
+    <policy name="accessibility_force_disabled" class="Both" displayName="$(string.accessibility_force_disabled)" explainText="$(string.Preferences_Enum_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" presentation="$(presentation.Preferences_accessibility_force_disabled)">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB70"/>
+      <elements>
+        <enum id="Preferences_accessibility_force_disabled" valueName="accessibility.force_disabled">
+          <item displayName="$(string.Preferences_accessibility_force_disabled_auto)">
+            <value>
+              <decimal value="0"/>
+            </value>
+          </item>
+          <item displayName="$(string.Preferences_accessibility_force_disabled_off)">
+            <value>
+              <decimal value="1"/>
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="browser_cache_disk_enable" class="Both" displayName="$(string.browser_cache_disk_enable)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="browser.cache.disk.enable">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="browser_safebrowsing_phishing_enabled" class="Both" displayName="$(string.browser_safebrowsing_phishing_enabled)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="browser.safebrowsing.phishing.enabled">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB70"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="browser_safebrowsing_malware_enabled" class="Both" displayName="$(string.browser_safebrowsing_malware_enabled)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="browser.safebrowsing.malware.enabled">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB70"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="browser_search_update" class="Both" displayName="$(string.browser_search_update)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="browser.search.update">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="datareporting_policy_dataSubmissionPolicyBypassNotification" class="Both" displayName="$(string.datareporting_policy_dataSubmissionPolicyBypassNotification)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="datareporting.policy.dataSubmissionPolicyBypassNotification">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="dom_allow_scripts_to_close_windows" class="Both" displayName="$(string.dom_allow_scripts_to_close_windows)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="dom.allow_scripts_to_close_windows">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB70"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="dom_disable_window_flip" class="Both" displayName="$(string.dom_disable_window_flip)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="dom.disable_window_flip">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="dom_disable_window_move_resize" class="Both" displayName="$(string.dom_disable_window_move_resize)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="dom.disable_window_move_resize">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="dom_event_contextmenu_enabled" class="Both" displayName="$(string.dom_event_contextmenu_enabled)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="dom.event.contextmenu.enabled">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="extensions_blocklist_enabled" class="Both" displayName="$(string.extensions_blocklist_enabled)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="extensions.blocklist.enabled">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB70"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="geo_enabled" class="Both" displayName="$(string.geo_enabled)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="geo.enabled">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB70"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="intl_accept_languages" class="Both" displayName="$(string.intl_accept_languages)" explainText="$(string.Preferences_String_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" presentation="$(presentation.Preferences_String)">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB70"/>
+      <elements>
+        <text id="Preferences_String" valueName="intl.accept_languages" required="true" expandable="true"/>
+      </elements>
+    </policy>
+    <policy name="network_dns_disableIPv6" class="Both" displayName="$(string.network_dns_disableIPv6)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="network.dns.disableIPv6">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="network_IDN_show_punycode" class="Both" displayName="$(string.network_IDN_show_punycode)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="network.IDN_show_punycode">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="places_history_enabled" class="Both" displayName="$(string.places_history_enabled)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="places.history.enabled">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="print_save_print_settings" class="Both" displayName="$(string.print_save_print_settings)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="print.save_print_settings">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB70"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="security_mixed_content_block_active_content" class="Both" displayName="$(string.security_mixed_content_block_active_content)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="security.mixed_content.block_active_content">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB70"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="security_ssl_errorReporting_enabled" class="Both" displayName="$(string.security_ssl_errorReporting_enabled)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="security.ssl.errorReporting.enabled">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="browser_cache_disk_parent_directory" class="Both" displayName="$(string.browser_cache_disk_parent_directory)" explainText="$(string.Preferences_String_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" presentation="$(presentation.Preferences_String)">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <elements>
+        <text id="Preferences_String" valueName="browser.cache.disk.parent_directory" required="true" expandable="true"/>
+      </elements>
+    </policy>
+    <policy name="dom_keyboardevent_keypress_hack_dispatch_non_printable_keys_addl" class="Both" displayName="$(string.dom_keyboardevent_keypress_hack_dispatch_non_printable_keys_addl)" explainText="$(string.Preferences_String_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" presentation="$(presentation.Preferences_String)">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <elements>
+        <text id="Preferences_String" valueName="dom.keyboardevent.keypress.hack.dispatch_non_printable_keys.addl" required="true"/>
+      </elements>
+    </policy>
+    <policy name="dom_keyboardevent_keypress_hack_use_legacy_keycode_and_charcode_addl" class="Both" displayName="$(string.dom_keyboardevent_keypress_hack_use_legacy_keycode_and_charcode_addl)" explainText="$(string.Preferences_String_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" presentation="$(presentation.Preferences_String)">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <elements>
+        <text id="Preferences_String" valueName="dom.keyboardevent.keypress.hack.use_legacy_keycode_and_charcode.addl" required="true"/>
+      </elements>
+    </policy>
+    <policy name="security_default_personal_cert" class="Both" displayName="$(string.security_default_personal_cert)" explainText="$(string.Preferences_Enum_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" presentation="$(presentation.Preferences_security_default_personal_cert)">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <elements>
+        <enum id="Preferences_security_default_personal_cert" valueName="security.default_personal_cert">
+          <item displayName="$(string.Preferences_security_default_personal_cert_Ask_Every_Time)">
+            <value>
+              <string>Ask Every Time</string>
+            </value>
+          </item>
+          <item displayName="$(string.Preferences_security_default_personal_cert_Select_Automatically)">
+            <value>
+              <string>Select Automatically</string>
+            </value>
+          </item>
+        </enum>
+      </elements>
+    </policy>
+    <policy name="security_osclientcerts_autoload" class="Both" displayName="$(string.security_osclientcerts_autoload)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="security.osclientcerts.autoload">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB72"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="security_tls_hello_downgrade_check" class="Both" displayName="$(string.security_tls_hello_downgrade_check)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="security.tls.hello_downgrade_check">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB72"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="widget_content_gtk-theme-override" class="Both" displayName="$(string.widget_content_gtk-theme-override)" explainText="$(string.Preferences_String_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" presentation="$(presentation.Preferences_String)">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <elements>
+        <text id="Preferences_String" valueName="widget.content.gtk-theme-override" required="true"/>
       </elements>
     </policy>
     <policy name="DisabledCiphers_TLS_DHE_RSA_WITH_AES_128_CBC_SHA" class="Both" displayName="$(string.DisabledCiphers_TLS_DHE_RSA_WITH_AES_128_CBC_SHA)" explainText="$(string.DisabledCiphers_Explain)" key="Software\Policies\Mozilla\Thunderbird\DisabledCiphers" valueName="TLS_DHE_RSA_WITH_AES_128_CBC_SHA">
