@@ -1615,9 +1615,9 @@ Set and lock certain preferences.
 | dom.event.contextmenu.enabled | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, web pages can't override context menus.
 | dom.keyboardevent.keypress.hack.dispatch_non_printable_keys.addl | string | N/A
-| &nbsp;&nbsp;&nbsp;&nbsp;See https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-thunderbird-66
+| &nbsp;&nbsp;&nbsp;&nbsp;See https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-firefox-66
 | dom.keyboardevent.keypress.hack.use_legacy_keycode_and_charcode.addl | string | N/A
-| &nbsp;&nbsp;&nbsp;&nbsp;See https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-thunderbird-66
+| &nbsp;&nbsp;&nbsp;&nbsp;See https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-firefox-66
 | dom.xmldocument.load.enabled | boolean | true.
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, XMLDocument.load is not available.
 | dom.xmldocument.async.enabled | boolean | true

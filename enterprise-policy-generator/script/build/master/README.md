@@ -2139,7 +2139,7 @@ as well as the following security preferences:
 | security.tls.hello_downgrade_check | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, the TLS 1.3 downgrade check is disabled.
 | security.tls.version.enable-deprecated | boolean | false
-| &nbsp;&nbsp;&nbsp;&nbsp;If true, browser will accept TLS 1.0. and TLS 1.1 (Thunderbird 86, Thunderbird 78.8)
+| &nbsp;&nbsp;&nbsp;&nbsp;If true, browser will accept TLS 1.0. and TLS 1.1
 | security.warn_submit_secure_to_insecure | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, no warning is shown when submitting s form from https to http.
 &nbsp;
@@ -2313,9 +2313,9 @@ Set and lock certain preferences.
 | dom.event.contextmenu.enabled | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, web pages can't override context menus.
 | dom.keyboardevent.keypress.hack.dispatch_non_printable_keys.addl | string | N/A
-| &nbsp;&nbsp;&nbsp;&nbsp;See https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-thunderbird-66
+| &nbsp;&nbsp;&nbsp;&nbsp;See https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-firefox-66
 | dom.keyboardevent.keypress.hack.use_legacy_keycode_and_charcode.addl | string | N/A
-| &nbsp;&nbsp;&nbsp;&nbsp;See https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-thunderbird-66
+| &nbsp;&nbsp;&nbsp;&nbsp;See https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-firefox-66
 | dom.xmldocument.load.enabled | boolean | true.
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, XMLDocument.load is not available.
 | dom.xmldocument.async.enabled | boolean | true

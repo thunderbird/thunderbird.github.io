@@ -100,7 +100,11 @@ function cleanUp(lines) {
 		{	// Undo a wrong replace
 			reg: "https://support.mozilla.org/kb/setting-certificate-authorities-thunderbird",
 			val: "https://support.mozilla.org/kb/setting-certificate-authorities-firefox"
-		}
+		},
+		{	// Undo a wrong replace
+			reg: "https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-thunderbird-66",
+			val: "https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-firefox-66"
+		}		
 	]
 
 	for (let i = 0; i < lines.length; i++) {
@@ -138,10 +142,10 @@ async function updateMozillaPolicyTemplate(ref, dir) {
 			depth: 10,
 			force: true
 		});
-	} else if (ref == "master") { // Only master can be updated
+	} else {
 		console.log(`Updating mozilla-policy-template version ${ref}`);
 		await git.pull({
-			author: { name: "generate:policy_template.js" },
+			author: { name: "generate_policy_template.js" },
 			fs,
 			http,
 			dir,
@@ -156,10 +160,12 @@ async function updateMozillaPolicyTemplate(ref, dir) {
  * Parse the README file of a given mozilla policy template.
  * 
  * @param {string} ref - branch/tag to checkout, "master" or "v3.0"
+ * @param {string} tree - matching tree, "central" or "esr91"
  * 
  * @return - {headers ({}), policies ({}), upstreamChanges (bool)} 
  */
-async function parseMozillaPolicyReadme(ref) {
+async function parseMozillaPolicyReadme(ref, tree) {
+	// https://github.com/mozilla/policy-templates/releases
 	let dir = `${mozilla_template_dir}/${ref}`;
 	await updateMozillaPolicyTemplate(ref, dir);
 
@@ -168,9 +174,9 @@ async function parseMozillaPolicyReadme(ref) {
 		? parse(fs.readFileSync(readme_json_path).toString())
 		: {};
 	if (!readme) readme = {};
-	if (!readme[ref]) readme[ref] = {};
-	if (!readme[ref].headers) readme[ref].headers = {};
-	if (!readme[ref].policies) readme[ref].policies = {};
+	if (!readme[tree]) readme[tree] = {};
+	if (!readme[tree].headers) readme[tree].headers = {};
+	if (!readme[tree].policies) readme[tree].policies = {};
 
 	// This parsing highly depends on the structure of the README and needs to be
 	// adjusted when its layout is changing. In the intro section we have lines like 
@@ -189,15 +195,15 @@ async function parseMozillaPolicyReadme(ref) {
 			.replace(/`/g, "") // unable to fix the regex to exclude those
 			.replace(" -> ", "_"); // flat hierarchy
 
-		if (!readme[ref].headers[name]) {
-			readme[ref].headers[name] = { current: h };
-		} else if (!readme[ref].headers[name].current) {
-			readme[ref].headers[name].current = h;
+		if (!readme[tree].headers[name]) {
+			readme[tree].headers[name] = { current: h };
+		} else if (!readme[tree].headers[name].current) {
+			readme[tree].headers[name].current = h;
 		};
 
 		// Detect upstream changes.
-		if (readme[ref].headers[name].current != h) {
-			readme[ref].headers[name].upstream = h;
+		if (readme[tree].headers[name].current != h) {
+			readme[tree].headers[name].upstream = h;
 			upstreamChanges = true;
 		}
 	}
@@ -209,22 +215,22 @@ async function parseMozillaPolicyReadme(ref) {
 		lines[0] = `### ${name}`;
 
 		name = name.replace(" | ", "_"); // flat hierarchy
-		if (!readme[ref].policies[name]) {
-			readme[ref].policies[name] = { current: lines };
-		} else if (!readme[ref].policies[name].current) {
-			readme[ref].policies[name].current = lines;
+		if (!readme[tree].policies[name]) {
+			readme[tree].policies[name] = { current: lines };
+		} else if (!readme[tree].policies[name].current) {
+			readme[tree].policies[name].current = lines;
 		}
 
 		// Detect upstream changes.
-		if (stringify(readme[ref].policies[name].current) != stringify(lines)) {
-			readme[ref].policies[name].upstream = lines;
+		if (stringify(readme[tree].policies[name].current) != stringify(lines)) {
+			readme[tree].policies[name].upstream = lines;
 			upstreamChanges = true;
 		}
 	}
 	fs.writeFileSync(readme_json_path, stringify(readme, null, 2));
 
-	readme[ref].upstreamChanges = upstreamChanges;
-	return readme[ref];
+	readme[tree].upstreamChanges = upstreamChanges;
+	return readme[tree];
 }
 
 function getPolicySchemaFilename(branch, tree, ref) {
@@ -396,7 +402,7 @@ async function buildThunderbirdTemplate(settings) {
 	 */
 	let header = [];
 	let details = [];
-	let template = parsed_readme_files[settings.mozillaReferenceTemplates];
+	let template = await parseMozillaPolicyReadme(settings.mozillaReferenceTemplates, settings.tree);
 
 
 	// Loop over all policies found in the thunderbird policy schema file and rebuild the readme.
@@ -484,13 +490,6 @@ async function buildThunderbirdTemplate(settings) {
 }
 
 async function main() {
-	// Checkout mozilla policies:
-	// https://github.com/mozilla/policy-templates/releases
-	parsed_readme_files["master"] = await parseMozillaPolicyReadme("master");
-	parsed_readme_files["v3.0"] = await parseMozillaPolicyReadme("v3.0"); //TB91
-	parsed_readme_files["v2.12"] = await parseMozillaPolicyReadme("v2.12"); //TB78
-	parsed_readme_files["v1.17"] = await parseMozillaPolicyReadme("v1.17"); //TB68
-
 	// Check status of thunderbird trees and generate policies.
 	await buildThunderbirdTemplate({
 		tree: "central",
