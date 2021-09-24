@@ -102,7 +102,7 @@ function cleanUp(lines) {
 		{	// Undo a wrong replace
 			reg: "https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-thunderbird-66",
 			val: "https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-firefox-66"
-		}		
+		}
 	]
 
 	for (let i = 0; i < lines.length; i++) {
@@ -465,7 +465,6 @@ async function buildThunderbirdTemplate(settings) {
 		if (key.length > key_prefix_length) {
 			return key.substring(key_prefix_length).split("\\").join("_");
 		}
-
 	}
 	function isThunderbirdPolicy(policy, element) {
 		let parts = [];
@@ -473,11 +472,11 @@ async function buildThunderbirdTemplate(settings) {
 		if (name) {
 			parts.push(name);
 		}
-		
+
 		if (policy.$.valueName) {
 			parts.push(policy.$.valueName);
 		}
-		
+
 		if (element) {
 			if (element.$.key) parts = [getNameFromKey(element.$.key)];
 			else if (element.$.valueName) parts.push(element.$.valueName);
@@ -493,7 +492,7 @@ async function buildThunderbirdTemplate(settings) {
 		if (!isThunderbirdPolicy(policy)) {
 			policy.unsupported = true
 		}
-		
+
 		if (policy.elements) {
 			for (let element of policy.elements) {
 				for (let type of Object.keys(element)) {
@@ -505,7 +504,7 @@ async function buildThunderbirdTemplate(settings) {
 			// If we removed all elements, remove the policy
 			policy.elements = policy.elements.filter(e => Object.keys(e).length > 0)
 			if (policy.elements.length == 0) policy.unsupported = true
-		}	
+		}
 	}
 	admx_obj.policyDefinitions.policies[0].policy = admxPolicies.filter(p => !p.unsupported);
 
