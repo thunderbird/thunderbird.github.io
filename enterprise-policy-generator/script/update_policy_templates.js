@@ -515,7 +515,7 @@ __details__
 		tree: "esr91",
 		commPolicyRevision: "2d7ea4fb88ccc2db866a362d2ad71a4850e5b150",
 		mozillaReferencePolicyRevision: "02bf5ca05376f55029da3645bdc6c8806e306e80",
-		mozillaReferenceTemplates: "v3.0",
+		mozillaReferenceTemplates: "v3.1",
 		output: `${thunderbird_template_dir}/TB91`,
 		readmeTemplate: `## Enterprise policy descriptions and templates for Thunderbird 91 and older
 
