@@ -2263,7 +2263,7 @@ Set and lock certain preferences.
 **Preferences Affected:** See below
 
 | Preference | Type | Default
-| --- | --- | --- | ---
+| --- | --- | ---
 | accessibility.force_disabled | integer | 0
 | &nbsp;&nbsp;&nbsp;&nbsp;If set to 1, platform accessibility is disabled.
 | app.update.auto (Deprecated - Switch to AppAutoUpdate policy) | boolean | true
