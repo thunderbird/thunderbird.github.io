@@ -94,10 +94,6 @@ function cleanUp(lines) {
 			val: "ATN",
 		},
 		{
-			reg: /\bchrome\.\b/g,
-			val: "messenger.",
-		},
-		{
 			reg: /addons.mozilla.org/g,
 			val: "addons.thunderbird.net",
 		},
@@ -193,8 +189,10 @@ async function parseMozillaPolicyReadme(ref) {
 			.replace(/`/g, "") // unable to fix the regex to exclude those
 			.replace(" -> ", "_"); // flat hierarchy
 
-		if (!readme[ref].headers[name]) readme[ref].headers[name] = {
-			current: h,
+		if (!readme[ref].headers[name]) {
+			readme[ref].headers[name] = { current: h };
+		} else if (!readme[ref].headers[name].current) {
+			readme[ref].headers[name].current = h;
 		};
 
 		// Detect upstream changes.
@@ -211,9 +209,11 @@ async function parseMozillaPolicyReadme(ref) {
 		lines[0] = `### ${name}`;
 
 		name = name.replace(" | ", "_"); // flat hierarchy
-		if (!readme[ref].policies[name]) readme[ref].policies[name] = {
-			current: lines
-		};
+		if (!readme[ref].policies[name]) {
+			readme[ref].policies[name] = { current: lines };
+		} else if (!readme[ref].policies[name].current) {
+			readme[ref].policies[name].current = lines;
+		}
 
 		// Detect upstream changes.
 		if (stringify(readme[ref].policies[name].current) != stringify(lines)) {
@@ -396,37 +396,43 @@ async function buildThunderbirdTemplate(settings) {
 	 */
 	let header = [];
 	let details = [];
+	let template = parsed_readme_files[settings.mozillaReferenceTemplates];
+
 
 	// Loop over all policies found in the thunderbird policy schema file and rebuild the readme.
 	let thunderbirdPolicies = extractFlatPolicyNamesFromPolicySchema(data.comm.currentFile);
 	for (let policy of thunderbirdPolicies) {
-		let template = parsed_readme_files[settings.mozillaReferenceTemplates["*"]];
-
-		// Select the template to get the entries from (either the global one or a specific override)
-		// Todo: This was done for the Preference policy, but we need a different approach (deprecated)
-		if (settings.mozillaReferenceTemplates[policy]) {
-			template = parsed_readme_files[settings.mozillaReferenceTemplates[policy]];
-		}
-
 		// Get the policy header from the template (or its override).
 		if (template.headers[policy]) {
-			header.push(template.headers[policy].override || template.headers[policy].current);
+			let content = template.headers[policy].override || template.headers[policy].current;
+			if (content && content != "skip") {
+				header.push(content);
+			}
 		} else {
 			// Maybe log policies_properties which are not mentioned directly in the readme?
 			// console.error("Policy or policy property not present in mozilla readme", policy)
 		}
 		// Also check for deprecated versions.
 		if (template.headers[`${policy} (Deprecated)`]) {
-			header.push(template.headers[`${policy} (Deprecated)`].override || template.headers[`${policy} (Deprecated)`].current);
+			let content = template.headers[`${policy} (Deprecated)`].override || template.headers[`${policy} (Deprecated)`].current;
+			if (content && content != "skip") {
+				header.push(content);
+			}
 		}
 
 		// Get the policy details from the template (or its override).
 		if (template.policies[policy]) {
-			details.push(...(template.policies[policy].override || template.policies[policy].current));
+			let content = template.policies[policy].override || template.policies[policy].current;
+			if (content && content != "skip") {
+				details.push(...content);
+			}
 		}
 		// Also check for deprecated versions.
 		if (template.policies[`${policy} (Deprecated)`]) {
-			details.push(...(template.policies[`${policy} (Deprecated)`].override || template.policies[`${policy} (Deprecated)`].current));
+			let content = template.policies[`${policy} (Deprecated)`].override || template.policies[`${policy} (Deprecated)`].current;
+			if (content && content != "skip") {
+				details.push(...content);
+			}
 		}
 	}
 
@@ -439,19 +445,19 @@ async function buildThunderbirdTemplate(settings) {
 
 
 	/**
-	 * Build the ADMX files.
+	 * Build the ADMX/ADML files.
 	 */
 
 	// Read ADMX files - https://www.npmjs.com/package/xml2js
 	var parser = new xml2js.Parser();
-	let admx_file = fs.readFileSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates["*"]}/windows/firefox.admx`);
+	let admx_file = fs.readFileSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates}/windows/firefox.admx`);
 	let admx_obj = await parser.parseStringPromise(
 		cleanUp(admx_file).replace(/">">/g, '">'), // issue https://github.com/mozilla/policy-templates/issues/801
 	);
 
 	// Remove unsupported policies. (Remember, we work with flattened policy_property names here)
 	let admxPolicies = admx_obj.policyDefinitions.policies[0].policy;
-	admx_obj.policyDefinitions.policies[0].policy = admxPolicies.filter(policy => thunderbirdPolicies.includes(policy.$.name));
+	admx_obj.policyDefinitions.policies[0].policy = admxPolicies.filter(policy => thunderbirdPolicies.includes(policy.$.name) || thunderbirdPolicies.includes(`${policy.$.name} (Deprecated)`));
 
 	// Rebuild thunderbird.admx file.
 	var builder = new xml2js.Builder();
@@ -460,19 +466,19 @@ async function buildThunderbirdTemplate(settings) {
 	fs.writeFileSync(`${settings.output}/windows/thunderbird.admx`, xml);
 
 	// Copy mozilla.admx file.
-	file = fs.readFileSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates["*"]}/windows/mozilla.admx`);
+	file = fs.readFileSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates}/windows/mozilla.admx`);
 	fs.writeFileSync(`${settings.output}/windows/mozilla.admx`, file);
 
 	// Handle translation files.
-	let folders = fs.readdirSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates["*"]}/windows`, { withFileTypes: true })
+	let folders = fs.readdirSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates}/windows`, { withFileTypes: true })
 		.filter(dirent => dirent.isDirectory())
 		.map(dirent => dirent.name);
 	for (let folder of folders) {
 		fs.ensureDirSync(`${settings.output}/windows/${folder}`);
-		let file = fs.readFileSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates["*"]}/windows/${folder}/firefox.adml`);
+		let file = fs.readFileSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates}/windows/${folder}/firefox.adml`);
 		fs.writeFileSync(`${settings.output}/windows/${folder}/thunderbird.adml`, cleanUp(file));
 		// This file probably does not need to change
-		file = fs.readFileSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates["*"]}/windows/${folder}/mozilla.adml`);
+		file = fs.readFileSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates}/windows/${folder}/mozilla.adml`);
 		fs.writeFileSync(`${settings.output}/windows/${folder}/mozilla.adml`, file);
 	}
 }
@@ -490,9 +496,7 @@ async function main() {
 		tree: "central",
 		commPolicyRevision: "677f5bd4d2af44fa56de3eb68354243cebf53ab6",
 		mozillaReferencePolicyRevision: "17c8763d65a017a7e5d1834d2dc674014b97cbea", //"02bf5ca05376f55029da3645bdc6c8806e306e80",
-		mozillaReferenceTemplates: {
-			"*": "master",
-		},
+		mozillaReferenceTemplates: "master",
 		output: `${thunderbird_template_dir}/master`,
 		readmeTemplate: `## Enterprise policy descriptions and templates for Thunderbird (active development)
 
@@ -512,9 +516,7 @@ __details__
 		tree: "esr91",
 		commPolicyRevision: "2d7ea4fb88ccc2db866a362d2ad71a4850e5b150",
 		mozillaReferencePolicyRevision: "02bf5ca05376f55029da3645bdc6c8806e306e80",
-		mozillaReferenceTemplates: {
-			"*": "v3.0"
-		},
+		mozillaReferenceTemplates: "v3.0",
 		output: `${thunderbird_template_dir}/TB91`,
 		readmeTemplate: `## Enterprise policy descriptions and templates for Thunderbird 91 and older
 
@@ -532,10 +534,7 @@ __details__
 		tree: "esr78",
 		commPolicyRevision: "4ebc4c2e1bbdd3d9660b519c270dac71bd86717d",
 		mozillaReferencePolicyRevision: "a8c4670b6ef144a0f3b6851c2a9d4bbd44fc032a",
-		mozillaReferenceTemplates: {
-			"*": "v2.12",
-			"Preferences": "v1.17", // Preferences had not been backported.
-		},
+		mozillaReferenceTemplates: "v2.12",
 		output: `${thunderbird_template_dir}/TB78`,
 		readmeTemplate: `## Enterprise policy descriptions and templates for Thunderbird 78 and older
 
