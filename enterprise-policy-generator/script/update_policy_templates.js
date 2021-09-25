@@ -287,6 +287,7 @@ async function downloadPolicySchemaFiles(settings) {
 
 		for (let revision of revisions) {
 			let file = await request(`https://hg.mozilla.org/${path}/raw-file/${revision}/${folder}/components/enterprisepolicies/schemas/policies-schema.json`);
+			let version = (await request(`https://hg.mozilla.org/${path}/raw-file/${revision}/${folder}/config/version.txt`)).trim();
 			fs.writeFileSync(getPolicySchemaFilename(branch, tree, revision), file);
 
 			if (revision != currentPolicyRevision) {
@@ -294,10 +295,12 @@ async function downloadPolicySchemaFiles(settings) {
 				if (!data[branch].latestFile) {
 					data[branch].latestFile = parse(file);
 					data[branch].latestRevision = revision;
+					data[branch].latestVersion = version;
 				}
 			} else {
 				data[branch].currentFile = parse(file);
 				data[branch].currentRevision = revision;
+				data[branch].currentVersion = version;
 				break;
 			}
 		}
@@ -350,6 +353,8 @@ async function buildThunderbirdTemplate(settings) {
 	if (!data)
 		return;
 
+	let output_dir = `${thunderbird_template_dir}/${data.comm.currentVersion}`;
+
 	// Get changes in the schema files and log them.
 	let m_m_changes = checkPolicySchemaChanges(data.mozilla.currentFile, data.mozilla.latestFile);
 	if (m_m_changes) {
@@ -360,8 +365,8 @@ async function buildThunderbirdTemplate(settings) {
 		if (m_m_changes.removed.length > 0) console.log(` - Mozilla removed the following policies:`, m_m_changes.removed);
 		if (m_m_changes.changed.length > 0) console.log(` - Mozilla changed properties of the following policies:`, m_m_changes.changed);
 		console.log();
-		console.log(` - currently acknowledged policy revision (${data.mozilla.currentRevision}): \n\t${path.resolve(getPolicySchemaFilename("mozilla", settings.tree, data.mozilla.currentRevision))}\n`);
-		console.log(` - latest available policy revision (${data.mozilla.latestRevision}): \n\t${path.resolve(getPolicySchemaFilename("mozilla", settings.tree, data.mozilla.latestRevision))}\n`);
+		console.log(` - currently acknowledged policy revision (${data.mozilla.currentRevision} / ${data.mozilla.currentVersion}): \n\t${path.resolve(getPolicySchemaFilename("mozilla", settings.tree, data.mozilla.currentRevision))}\n`);
+		console.log(` - latest available policy revision (${data.mozilla.latestRevision} / ${data.mozilla.latestVersion}): \n\t${path.resolve(getPolicySchemaFilename("mozilla", settings.tree, data.mozilla.latestRevision))}\n`);
 		console.log(` - hg change log for mozilla-${settings.tree}: \n\t${data.mozilla.hgLogUrl}\n`);
 	}
 
@@ -374,8 +379,8 @@ async function buildThunderbirdTemplate(settings) {
 		if (c_c_changes.removed.length > 0) console.log(` - Thunderbird removed the following policies:`, c_c_changes.removed);
 		if (c_c_changes.changed.length > 0) console.log(` - Thunderbird changed properties of the following policies:`, c_c_changes.changed);
 		console.log();
-		console.log(` - currently acknowledged policy revision (${data.comm.currentRevision}): \n\t${path.resolve(getPolicySchemaFilename("comm", settings.tree, data.comm.currentRevision))}\n`);
-		console.log(` - latest available policy revision (${data.comm.latestRevision}): \n\t${path.resolve(getPolicySchemaFilename("comm", settings.tree, data.comm.latestRevision))}\n`);
+		console.log(` - currently acknowledged policy revision (${data.comm.currentRevision} / ${data.comm.currentVersion}): \n\t${path.resolve(getPolicySchemaFilename("comm", settings.tree, data.comm.currentRevision))}\n`);
+		console.log(` - latest available policy revision (${data.comm.latestRevision} / ${data.comm.latestVersion}): \n\t${path.resolve(getPolicySchemaFilename("comm", settings.tree, data.comm.latestRevision))}\n`);
 		console.log(` - hg change log for comm-${settings.tree}: \n\t${data.comm.hgLogUrl}\n`);
 	}
 
@@ -444,8 +449,8 @@ async function buildThunderbirdTemplate(settings) {
 		.replace("__list_of_policies", cleanUp(header))
 		.replace("__details__", cleanUp(details));
 
-	fs.ensureDirSync(settings.output);
-	fs.writeFileSync(`${settings.output}/README.md`, md);
+	fs.ensureDirSync(output_dir);
+	fs.writeFileSync(`${output_dir}/README.md`, md);
 
 
 	/**
@@ -511,40 +516,40 @@ async function buildThunderbirdTemplate(settings) {
 	// Rebuild thunderbird.admx file.
 	var builder = new xml2js.Builder();
 	var xml = builder.buildObject(admx_obj);
-	fs.ensureDirSync(`${settings.output}/windows`);
-	fs.writeFileSync(`${settings.output}/windows/thunderbird.admx`, xml);
+	fs.ensureDirSync(`${output_dir}/windows`);
+	fs.writeFileSync(`${output_dir}/windows/thunderbird.admx`, xml);
 
 	// Copy mozilla.admx file.
 	file = fs.readFileSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates}/windows/mozilla.admx`);
-	fs.writeFileSync(`${settings.output}/windows/mozilla.admx`, file);
+	fs.writeFileSync(`${output_dir}/windows/mozilla.admx`, file);
 
 	// Handle translation files.
 	let folders = fs.readdirSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates}/windows`, { withFileTypes: true })
 		.filter(dirent => dirent.isDirectory())
 		.map(dirent => dirent.name);
 	for (let folder of folders) {
-		fs.ensureDirSync(`${settings.output}/windows/${folder}`);
+		fs.ensureDirSync(`${output_dir}/windows/${folder}`);
 		let file = fs.readFileSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates}/windows/${folder}/firefox.adml`);
-		fs.writeFileSync(`${settings.output}/windows/${folder}/thunderbird.adml`, cleanUp(file));
+		fs.writeFileSync(`${output_dir}/windows/${folder}/thunderbird.adml`, cleanUp(file));
 		// This file probably does not need to change
 		file = fs.readFileSync(`${mozilla_template_dir}/${settings.mozillaReferenceTemplates}/windows/${folder}/mozilla.adml`);
-		fs.writeFileSync(`${settings.output}/windows/${folder}/mozilla.adml`, file);
+		fs.writeFileSync(`${output_dir}/windows/${folder}/mozilla.adml`, file);
 	}
 
 	// TODO: Mac
 }
 
 async function main() {
-	// Check status of thunderbird trees and generate policies.
-	await buildThunderbirdTemplate({
-		tree: "central",
-		commPolicyRevision: "677f5bd4d2af44fa56de3eb68354243cebf53ab6",
-		mozillaReferencePolicyRevision: "17c8763d65a017a7e5d1834d2dc674014b97cbea", //"02bf5ca05376f55029da3645bdc6c8806e306e80",
-		mozillaReferenceTemplates: "master",
-		output: `${thunderbird_template_dir}/master`,
-		readmeTemplate: `## Enterprise policy descriptions and templates for Thunderbird (active development)
+	// This script build its compatibility information from the provided schema files, they have to
+	// be scanned from oldest to newest. We also include all policies in the ADMX files, which we have
+	// once supported. This also requires to scan from oldest to newest.
 
-**These policies are in active development and so might contain changes that do not work with current versions of Thunderbird.**
+	await buildThunderbirdTemplate({
+		tree: "esr78",
+		commPolicyRevision: "4ebc4c2e1bbdd3d9660b519c270dac71bd86717d",
+		mozillaReferencePolicyRevision: "a8c4670b6ef144a0f3b6851c2a9d4bbd44fc032a",
+		mozillaReferenceTemplates: "v2.12",
+		readmeTemplate: `## Enterprise policy descriptions and templates for Thunderbird 78 and older
 
 Policies can be specified using the [Group Policy templates on Windows](windows), [Intune on Windows](https://support.mozilla.org/kb/managing-firefox-intune), [configuration profiles on macOS](mac), or by creating a file called \`policies.json\`. On Windows, create a directory called \`distribution\` where the EXE is located and place the file there. On Mac, the file goes into \`Thunderbird.app/Contents/Resources/distribution\`.  On Linux, the file goes into \`thunderbird/distribution\`, where \`thunderbird\` is the installation directory for Thunderbird, which varies by distribution or you can specify system-wide policy by placing the file in \`/etc/thunderbird/policies\`.
 
@@ -561,7 +566,6 @@ __details__
 		commPolicyRevision: "2d7ea4fb88ccc2db866a362d2ad71a4850e5b150",
 		mozillaReferencePolicyRevision: "02bf5ca05376f55029da3645bdc6c8806e306e80",
 		mozillaReferenceTemplates: "v3.1",
-		output: `${thunderbird_template_dir}/TB91`,
 		readmeTemplate: `## Enterprise policy descriptions and templates for Thunderbird 91 and older
 
 Policies can be specified using the [Group Policy templates on Windows](windows), [Intune on Windows](https://support.mozilla.org/kb/managing-firefox-intune), [configuration profiles on macOS](mac), or by creating a file called \`policies.json\`. On Windows, create a directory called \`distribution\` where the EXE is located and place the file there. On Mac, the file goes into \`Thunderbird.app/Contents/Resources/distribution\`.  On Linux, the file goes into \`thunderbird/distribution\`, where \`thunderbird\` is the installation directory for Thunderbird, which varies by distribution or you can specify system-wide policy by placing the file in \`/etc/thunderbird/policies\`.
@@ -574,13 +578,15 @@ __details__
 
 `});
 
+	// Check status of thunderbird trees and generate policies.
 	await buildThunderbirdTemplate({
-		tree: "esr78",
-		commPolicyRevision: "4ebc4c2e1bbdd3d9660b519c270dac71bd86717d",
-		mozillaReferencePolicyRevision: "a8c4670b6ef144a0f3b6851c2a9d4bbd44fc032a",
-		mozillaReferenceTemplates: "v2.12",
-		output: `${thunderbird_template_dir}/TB78`,
-		readmeTemplate: `## Enterprise policy descriptions and templates for Thunderbird 78 and older
+		tree: "central",
+		commPolicyRevision: "677f5bd4d2af44fa56de3eb68354243cebf53ab6",
+		mozillaReferencePolicyRevision: "17c8763d65a017a7e5d1834d2dc674014b97cbea", //"02bf5ca05376f55029da3645bdc6c8806e306e80",
+		mozillaReferenceTemplates: "master",
+		readmeTemplate: `## Enterprise policy descriptions and templates for Thunderbird (active development)
+
+**These policies are in active development and so might contain changes that do not work with current versions of Thunderbird.**
 
 Policies can be specified using the [Group Policy templates on Windows](windows), [Intune on Windows](https://support.mozilla.org/kb/managing-firefox-intune), [configuration profiles on macOS](mac), or by creating a file called \`policies.json\`. On Windows, create a directory called \`distribution\` where the EXE is located and place the file there. On Mac, the file goes into \`Thunderbird.app/Contents/Resources/distribution\`.  On Linux, the file goes into \`thunderbird/distribution\`, where \`thunderbird\` is the installation directory for Thunderbird, which varies by distribution or you can specify system-wide policy by placing the file in \`/etc/thunderbird/policies\`.
 
@@ -591,6 +597,7 @@ __list_of_policies
 __details__
 
 `});
+
 
 }
 
