@@ -9,6 +9,7 @@ const mozilla_template_dir = "./data/mozilla-policy-templates";
 const thunderbird_template_dir = "./build";
 const schema_dir = "./data/schema";
 const readme_json_path = "./readme.json";
+const compatibility_json_path = "./compatibility.json";
 
 // replacement for deprecated request
 const bent = require('bent');
@@ -27,6 +28,8 @@ const {
 	stringify,
 	assign
 } = require('comment-json');
+
+var compatibility_data = {};
 
 function debug(...args) {
 	if (debugLevel > 0) {
@@ -236,73 +239,59 @@ function getPolicySchemaFilename(branch, tree, ref) {
 }
 
 /**
- * Download the most recent revision of the policies-schema.json for a given tree.
+ * Download missing revisions of the policies-schema.json for the given tree.
  * 
- * @params {object} settings
- *  settings.tree - "central" or "esr91"
- *  settings.commPolicyRevision - currently acknowledged comm policy revision
- *  settings.mozillaReferencePolicyRevision - currently acknowledged mozilla policy revision
+ * @params {string} tree - "central" or "esr91"
  * 
  * Returns a data object for comm and mozilla.
  */
-async function downloadPolicySchemaFiles(settings) {
-	let tree = settings.tree;
+async function downloadPolicySchemaFiles(tree) {
 	let data = {
 		comm: {
-			currentPolicyRevision: settings["commPolicyRevision"],
-			currentFile: null,
-			latestFile: null,
-			currentRevision: null,
-			latestRevision: null,
+			hgLogUrl: "",
+			revisions: []
 		},
 		mozilla: {
-			currentPolicyRevision: settings["mozillaReferencePolicyRevision"],
-			currentFile: null,
-			latestFile: null,
-			currentRevision: null,
-			latestRevision: null,
+			hgLogUrl: "",
+			revisions: []
 		},
 	};
 
 	console.log(`Processing ${tree}`);
 	fs.ensureDirSync(schema_dir);
 
+	// For mozilla, we just need to check if there is a new revision out.
+	// For comm, we need all revisions
 	for (let branch of ["mozilla", "comm"]) {
 		let folder = branch == "mozilla" ? "browser" : "mail"
 		let path = tree == "central" ? `${branch}-${tree}` : `releases/${branch}-${tree}`
+		let max = branch == "mozilla" ? 5 : 30;
 
-		debug(`Downloading policies-schema.json revisions for ${tree}`);
+		console.log(`Checking policies-schema.json revisions for ${path}`);
 		data[branch].hgLogUrl = `https://hg.mozilla.org/${path}/log/tip/${folder}/components/enterprisepolicies/schemas/policies-schema.json`;
 		let hgLog = await request(data[branch].hgLogUrl);
 		const $ = cheerio.load(hgLog);
 
 		// Get the revision identifier from the table cell (TODO: switch to github tree instead of parsing html)
 		let revisions = [...$("body > table > tbody > tr > td:nth-child(2)")].map(element => element.children[0].data.trim());
-		let currentPolicyRevision = data[branch].currentPolicyRevision;
 
-		if (!revisions.includes(currentPolicyRevision)) {
-			console.error(`Unknown policy revision ${currentPolicyRevision} set for ${branch}-${tree}.\nCheck ${hgLogUrl}`);
-			return null;
-		}
-
-		for (let revision of revisions) {
-			let file = await request(`https://hg.mozilla.org/${path}/raw-file/${revision}/${folder}/components/enterprisepolicies/schemas/policies-schema.json`);
-			let version = (await request(`https://hg.mozilla.org/${path}/raw-file/${revision}/${folder}/config/version.txt`)).trim();
-			fs.writeFileSync(getPolicySchemaFilename(branch, tree, revision), file);
-
-			if (revision != currentPolicyRevision) {
-				// we only need the most recent file, we can ignore any file between latest and current.
-				if (!data[branch].latestFile) {
-					data[branch].latestFile = parse(file);
-					data[branch].latestRevision = revision;
-					data[branch].latestVersion = version;
-				}
+		for (let revision of revisions.slice(0, max)) {
+			let filename = getPolicySchemaFilename(branch, tree, revision);
+			let file;
+			let version;
+			if (!fs.existsSync(filename)) {
+				let url = `https://hg.mozilla.org/${path}/raw-file/${revision}/${folder}/components/enterprisepolicies/schemas/policies-schema.json`
+				console.log(`Downloading ${url}`);
+				file = parse(await request(url));
+				version = (await request(`https://hg.mozilla.org/${path}/raw-file/${revision}/${folder}/config/version.txt`)).trim();
+				file.version = version;
+				file.revision = revision;
+				fs.writeFileSync(getPolicySchemaFilename(branch, tree, revision), stringify(file, null, 2));
 			} else {
-				data[branch].currentFile = parse(file);
-				data[branch].currentRevision = revision;
-				data[branch].currentVersion = version;
-				break;
+				file = parse(fs.readFileSync(filename).toString());
+
 			}
+			data[branch].revisions.push(file);
 		}
 	}
 	return data;
@@ -346,45 +335,46 @@ function checkPolicySchemaChanges(file1, file2) {
 }
 
 // -----------------------------------------------------------------------------
-
+/**
+ * 
+ * @param {*} settings 
+ *  settings.tree - 
+ *  settings.mozillaReferencePolicyRevision -
+ *  settings.mozillaReferenceTemplates -
+ *  settings.readmeTemplate - 
+ * @returns 
+ */
 async function buildThunderbirdTemplate(settings) {
 	// Download schema from https://hg.mozilla.org/
-	let data = await downloadPolicySchemaFiles(settings);
+	let data = await downloadPolicySchemaFiles(settings.tree);
 	if (!data)
 		return;
 
-	let output_dir = `${thunderbird_template_dir}/${data.comm.currentVersion}`;
+	let output_dir = `${thunderbird_template_dir}/${data.comm.revisions[0].version}`;
+	let mozillaReferencePolicyFile = data.mozilla.revisions.find(r => r.revision == settings.mozillaReferencePolicyRevision);
+	if (!mozillaReferencePolicyFile) {
+		console.error(`Unknown policy revision ${settings.mozillaReferencePolicyRevision} set for mozilla-${settings.tree}.\nCheck ${data.mozilla.hgLogUrl}`);
+		return;
+	}
 
 	// Get changes in the schema files and log them.
-	let m_m_changes = checkPolicySchemaChanges(data.mozilla.currentFile, data.mozilla.latestFile);
-	if (m_m_changes) {
-		console.log();
-		console.log(` Mozilla has released an new policy revision for mozilla-${settings.tree}!`);
-		console.log(` Do those changes need to be ported to Thunderbird?`);
-		if (m_m_changes.added.length > 0) console.log(` - Mozilla added the following policies:`, m_m_changes.added);
-		if (m_m_changes.removed.length > 0) console.log(` - Mozilla removed the following policies:`, m_m_changes.removed);
-		if (m_m_changes.changed.length > 0) console.log(` - Mozilla changed properties of the following policies:`, m_m_changes.changed);
-		console.log();
-		console.log(` - currently acknowledged policy revision (${data.mozilla.currentRevision} / ${data.mozilla.currentVersion}): \n\t${path.resolve(getPolicySchemaFilename("mozilla", settings.tree, data.mozilla.currentRevision))}\n`);
-		console.log(` - latest available policy revision (${data.mozilla.latestRevision} / ${data.mozilla.latestVersion}): \n\t${path.resolve(getPolicySchemaFilename("mozilla", settings.tree, data.mozilla.latestRevision))}\n`);
-		console.log(` - hg change log for mozilla-${settings.tree}: \n\t${data.mozilla.hgLogUrl}\n`);
+	if (mozillaReferencePolicyFile.revision != data.mozilla.revisions[0].revision) {
+		let m_m_changes = checkPolicySchemaChanges(mozillaReferencePolicyFile, data.mozilla.revisions[0]);
+		if (m_m_changes) {
+			console.log();
+			console.log(` Mozilla has released an new policy revision for mozilla-${settings.tree}!`);
+			console.log(` Do those changes need to be ported to Thunderbird?`);
+			if (m_m_changes.added.length > 0) console.log(` - Mozilla added the following policies:`, m_m_changes.added);
+			if (m_m_changes.removed.length > 0) console.log(` - Mozilla removed the following policies:`, m_m_changes.removed);
+			if (m_m_changes.changed.length > 0) console.log(` - Mozilla changed properties of the following policies:`, m_m_changes.changed);
+			console.log();
+			console.log(` - currently acknowledged policy revision (${mozillaReferencePolicyFile.revision} / ${mozillaReferencePolicyFile.version}): \n\t${path.resolve(getPolicySchemaFilename("mozilla", settings.tree, mozillaReferencePolicyFile.revision))}\n`);
+			console.log(` - latest available policy revision (${data.mozilla.revisions[0].revision} / ${data.mozilla.revisions[0].version}): \n\t${path.resolve(getPolicySchemaFilename("mozilla", settings.tree, data.mozilla.revisions[0].revision))}\n`);
+			console.log(` - hg change log for mozilla-${settings.tree}: \n\t${data.mozilla.hgLogUrl}\n`);
+		}
 	}
 
-	let c_c_changes = checkPolicySchemaChanges(data.comm.currentFile, data.comm.latestFile);
-	if (c_c_changes) {
-		console.log();
-		console.log(` Thunderbird has released an new policy revision for comm-${settings.tree}!`);
-		console.log(` Is our documentation still up to date?`);
-		if (c_c_changes.added.length > 0) console.log(` - Thunderbird added the following policies:`, c_c_changes.added);
-		if (c_c_changes.removed.length > 0) console.log(` - Thunderbird removed the following policies:`, c_c_changes.removed);
-		if (c_c_changes.changed.length > 0) console.log(` - Thunderbird changed properties of the following policies:`, c_c_changes.changed);
-		console.log();
-		console.log(` - currently acknowledged policy revision (${data.comm.currentRevision} / ${data.comm.currentVersion}): \n\t${path.resolve(getPolicySchemaFilename("comm", settings.tree, data.comm.currentRevision))}\n`);
-		console.log(` - latest available policy revision (${data.comm.latestRevision} / ${data.comm.latestVersion}): \n\t${path.resolve(getPolicySchemaFilename("comm", settings.tree, data.comm.latestRevision))}\n`);
-		console.log(` - hg change log for comm-${settings.tree}: \n\t${data.comm.hgLogUrl}\n`);
-	}
-
-	/*	TODO: For the readme it would be helpfull to know which properties of used policies are not supported
+	/*	TODO: For the readme it would be helpful to know which properties of used policies are not supported
 		// This logs differences between m-c and c-c, but the gain of information is not much, clutters the screen, we know they differ.
 		let m_c_diff = checkPolicySchemaChanges(data.mozilla.currentFile, data.comm.currentFile);
 		if (m_c_diff) {
@@ -401,15 +391,29 @@ async function buildThunderbirdTemplate(settings) {
 	*/
 
 	/**
+	 * Extract compatibility information.
+	 */
+	for (let r = data.comm.revisions.length; r > 0; r--) {
+		let policies = extractFlatPolicyNamesFromPolicySchema(data.comm.revisions[r-1]);
+		for (let policy of policies) {
+			if (!compatibility_data[policy]) {
+				compatibility_data[policy] = {};
+			}
+			if (!compatibility_data[policy][settings.tree]) {
+				compatibility_data[policy][settings.tree] = data.comm.revisions[r-1].version;
+			}
+		}
+	}
+
+	/**
 	 * Build the README file.
 	 */
 	let header = [];
 	let details = [];
 	let template = await parseMozillaPolicyReadme(settings.mozillaReferenceTemplates, settings.tree);
 
-
 	// Loop over all policies found in the thunderbird policy schema file and rebuild the readme.
-	let thunderbirdPolicies = extractFlatPolicyNamesFromPolicySchema(data.comm.currentFile);
+	let thunderbirdPolicies = extractFlatPolicyNamesFromPolicySchema(data.comm.revisions[0]);
 	for (let policy of thunderbirdPolicies) {
 		// Get the policy header from the template (or its override).
 		if (template.headers[policy]) {
@@ -545,8 +549,23 @@ async function main() {
 	// once supported. This also requires to scan from oldest to newest.
 
 	await buildThunderbirdTemplate({
+		tree: "esr68",
+		mozillaReferencePolicyRevision: "1b0a29b456b432d1c8bef09c233b84205ec9e13c",
+		mozillaReferenceTemplates: "v1.17",
+		readmeTemplate: `## Enterprise policy descriptions and templates for Thunderbird 68
+
+Policies can be specified using the [Group Policy templates on Windows](windows), [Intune on Windows](https://support.mozilla.org/kb/managing-firefox-intune), [configuration profiles on macOS](mac), or by creating a file called \`policies.json\`. On Windows, create a directory called \`distribution\` where the EXE is located and place the file there. On Mac, the file goes into \`Thunderbird.app/Contents/Resources/distribution\`.  On Linux, the file goes into \`thunderbird/distribution\`, where \`thunderbird\` is the installation directory for Thunderbird, which varies by distribution or you can specify system-wide policy by placing the file in \`/etc/thunderbird/policies\`.
+
+| Policy Name | Description
+| --- | --- |
+__list_of_policies
+
+__details__
+
+`});
+
+	await buildThunderbirdTemplate({
 		tree: "esr78",
-		commPolicyRevision: "4ebc4c2e1bbdd3d9660b519c270dac71bd86717d",
 		mozillaReferencePolicyRevision: "a8c4670b6ef144a0f3b6851c2a9d4bbd44fc032a",
 		mozillaReferenceTemplates: "v2.12",
 		readmeTemplate: `## Enterprise policy descriptions and templates for Thunderbird 78 and older
@@ -563,7 +582,6 @@ __details__
 
 	await buildThunderbirdTemplate({
 		tree: "esr91",
-		commPolicyRevision: "2d7ea4fb88ccc2db866a362d2ad71a4850e5b150",
 		mozillaReferencePolicyRevision: "02bf5ca05376f55029da3645bdc6c8806e306e80",
 		mozillaReferenceTemplates: "v3.1",
 		readmeTemplate: `## Enterprise policy descriptions and templates for Thunderbird 91 and older
@@ -581,7 +599,6 @@ __details__
 	// Check status of thunderbird trees and generate policies.
 	await buildThunderbirdTemplate({
 		tree: "central",
-		commPolicyRevision: "677f5bd4d2af44fa56de3eb68354243cebf53ab6",
 		mozillaReferencePolicyRevision: "17c8763d65a017a7e5d1834d2dc674014b97cbea", //"02bf5ca05376f55029da3645bdc6c8806e306e80",
 		mozillaReferenceTemplates: "master",
 		readmeTemplate: `## Enterprise policy descriptions and templates for Thunderbird (active development)
@@ -598,6 +615,8 @@ __details__
 
 `});
 
+	// Dump policy compatibility information to disc.
+	fs.writeFileSync(compatibility_json_path, stringify(compatibility_data, null, 2));
 
 }
 

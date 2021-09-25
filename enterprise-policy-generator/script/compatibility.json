@@ -1,0 +1,710 @@
+{
+  "AppUpdateURL": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "DisableMasterPasswordCreation": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "ExtensionSettings": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Preferences": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Preferences_network.IDN_show_punycode": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Preferences_browser.fixup.dns_first_for_single_words": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Preferences_browser.cache.disk.parent_directory": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Preferences_browser.urlbar.suggest.openpage": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Preferences_browser.urlbar.suggest.history": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Preferences_browser.urlbar.suggest.bookmark": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Proxy": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Proxy_Mode": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Proxy_Locked": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Proxy_AutoConfigURL": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Proxy_FTPProxy": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Proxy_HTTPProxy": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Proxy_SSLProxy": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Proxy_SOCKSProxy": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Proxy_SOCKSVersion": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Proxy_UseHTTPProxyForAllProtocols": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Proxy_Passthrough": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Proxy_UseProxyForDNS": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Proxy_AutoLogin": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "RequestedLocales": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "SSLVersionMax": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "SSLVersionMin": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "BlockAboutAddons": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "BlockAboutConfig": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "BlockAboutProfiles": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "BlockAboutSupport": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Certificates": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Certificates_ImportEnterpriseRoots": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Certificates_Install": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "DisableAppUpdate": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "DisableDeveloperTools": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "DisableSecurityBypass": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "DisableSecurityBypass_InvalidCertificate": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "DisableSecurityBypass_SafeBrowsing": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Extensions": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Extensions_Install": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Extensions_Uninstall": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "Extensions_Locked": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "ExtensionUpdate": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "InstallAddonsPermission": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "InstallAddonsPermission_Allow": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "InstallAddonsPermission_Default": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "AppAutoUpdate": {
+    "esr78": "75.0a1",
+    "esr91": "75.0a1",
+    "central": "75.0a1"
+  },
+  "DisabledCiphers": {
+    "esr78": "76.0a1",
+    "esr91": "76.0a1",
+    "central": "76.0a1"
+  },
+  "DisabledCiphers_TLS_DHE_RSA_WITH_AES_128_CBC_SHA": {
+    "esr78": "76.0a1",
+    "esr91": "76.0a1",
+    "central": "76.0a1"
+  },
+  "DisabledCiphers_TLS_DHE_RSA_WITH_AES_256_CBC_SHA": {
+    "esr78": "76.0a1",
+    "esr91": "76.0a1",
+    "central": "76.0a1"
+  },
+  "DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA": {
+    "esr78": "76.0a1",
+    "esr91": "76.0a1",
+    "central": "76.0a1"
+  },
+  "DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA": {
+    "esr78": "76.0a1",
+    "esr91": "76.0a1",
+    "central": "76.0a1"
+  },
+  "DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256": {
+    "esr78": "76.0a1",
+    "esr91": "76.0a1",
+    "central": "76.0a1"
+  },
+  "DisabledCiphers_TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256": {
+    "esr78": "76.0a1",
+    "esr91": "76.0a1",
+    "central": "76.0a1"
+  },
+  "DisabledCiphers_TLS_RSA_WITH_AES_128_CBC_SHA": {
+    "esr78": "76.0a1",
+    "esr91": "76.0a1",
+    "central": "76.0a1"
+  },
+  "DisabledCiphers_TLS_RSA_WITH_AES_256_CBC_SHA": {
+    "esr78": "76.0a1",
+    "esr91": "76.0a1",
+    "central": "76.0a1"
+  },
+  "DisabledCiphers_TLS_RSA_WITH_3DES_EDE_CBC_SHA": {
+    "esr78": "76.0a1",
+    "esr91": "76.0a1",
+    "central": "76.0a1"
+  },
+  "DisableSystemAddonUpdate": {
+    "esr78": "77.0a1",
+    "esr91": "77.0a1",
+    "central": "77.0a1"
+  },
+  "3rdparty": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "3rdparty_Extensions": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Authentication": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Authentication_SPNEGO": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Authentication_Delegated": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Authentication_NTLM": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Authentication_AllowNonFQDN": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Authentication_AllowNonFQDN_SPNEGO": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Authentication_AllowNonFQDN_NTLM": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Authentication_AllowProxies": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Authentication_AllowProxies_SPNEGO": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Authentication_AllowProxies_NTLM": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Authentication_Locked": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Authentication_PrivateBrowsing": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "CaptivePortal": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Cookies": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Cookies_Allow": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Cookies_Block": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Cookies_Default": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Cookies_AcceptThirdParty": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Cookies_ExpireAtSessionEnd": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Cookies_Locked": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "DefaultDownloadDirectory": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "DisablePasswordReveal": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "DisableSafeMode": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "DisableTelemetry": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "DownloadDirectory": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "HardwareAcceleration": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "PasswordManagerEnabled": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_accessibility.force_disabled": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_browser.cache.disk.enable": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_browser.safebrowsing.phishing.enabled": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_browser.safebrowsing.malware.enabled": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_browser.search.update": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_datareporting.policy.dataSubmissionPolicyBypassNotification": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_dom.allow_scripts_to_close_windows": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_dom.disable_window_flip": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_dom.disable_window_move_resize": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_dom.event.contextmenu.enabled": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_dom.keyboardevent.keypress.hack.dispatch_non_printable_keys.addl": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_dom.keyboardevent.keypress.hack.use_legacy_keycode_and_charcode.addl": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_extensions.blocklist.enabled": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_geo.enabled": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_intl.accept_languages": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_network.dns.disableIPv6": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_places.history.enabled": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_print.save_print_settings": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_security.default_personal_cert": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_security.mixed_content.block_active_content": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_security.osclientcerts.autoload": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_security.ssl.errorReporting.enabled": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_security.tls.hello_downgrade_check": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "Preferences_widget.content.gtk-theme-override": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "PromptForDownloadLocation": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
+  "ExtensionSettings_*": {
+    "esr78": "78.10.3",
+    "esr91": "89.0a1",
+    "central": "89.0a1"
+  },
+  "ExtensionSettings_*_installation_mode": {
+    "esr78": "78.10.3",
+    "esr91": "89.0a1",
+    "central": "89.0a1"
+  },
+  "ExtensionSettings_*_allowed_types": {
+    "esr78": "78.10.3",
+    "esr91": "89.0a1",
+    "central": "89.0a1"
+  },
+  "ExtensionSettings_*_blocked_install_message": {
+    "esr78": "78.10.3",
+    "esr91": "89.0a1",
+    "central": "89.0a1"
+  },
+  "ExtensionSettings_*_install_sources": {
+    "esr78": "78.10.3",
+    "esr91": "89.0a1",
+    "central": "89.0a1"
+  },
+  "ExtensionSettings_*_restricted_domains": {
+    "esr78": "78.10.3",
+    "esr91": "89.0a1",
+    "central": "89.0a1"
+  },
+  "BackgroundAppUpdate": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "DisableBuiltinPDFViewer": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "DisabledCiphers_TLS_RSA_WITH_AES_128_GCM_SHA256": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "DisabledCiphers_TLS_RSA_WITH_AES_256_GCM_SHA384": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "DNSOverHTTPS": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "DNSOverHTTPS_Enabled": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "DNSOverHTTPS_ProviderURL": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "DNSOverHTTPS_ExcludedDomains": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "DNSOverHTTPS_Locked": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "Handlers": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "ManualAppUpdateOnly": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "NetworkPrediction": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "OfferToSaveLogins": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "OfferToSaveLoginsDefault": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "PDFjs": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "PDFjs_Enabled": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "PDFjs_EnablePermissions": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "PrimaryPassword": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  }
+}
