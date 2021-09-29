@@ -2,301 +2,301 @@
   "central": {
     "headers": {
       "3rdparty": {
-        "current": "| **[`3rdparty`](#3rdparty)** | Set policies that WebExtensions can access via chrome.storage.managed."
+        "upstream": "| **[`3rdparty`](#3rdparty)** | Set policies that WebExtensions can access via chrome.storage.managed."
       },
       "AllowedDomainsForApps": {
-        "current": "| **[`AllowedDomainsForApps`](#alloweddomainsforapps)** | Define domains allowed to access Google Workspace."
+        "upstream": "| **[`AllowedDomainsForApps`](#alloweddomainsforapps)** | Define domains allowed to access Google Workspace."
       },
       "AppAutoUpdate": {
-        "current": "| **[`AppAutoUpdate`](#appautoupdate)** | Enable or disable automatic application update."
+        "upstream": "| **[`AppAutoUpdate`](#appautoupdate)** | Enable or disable automatic application update."
       },
       "AppUpdateURL": {
-        "current": "| **[`AppUpdateURL`](#appupdateurl)** | Change the URL for application update."
+        "upstream": "| **[`AppUpdateURL`](#appupdateurl)** | Change the URL for application update."
       },
       "Authentication": {
-        "current": "| **[`Authentication`](#authentication)** | Configure sites that support integrated authentication."
+        "upstream": "| **[`Authentication`](#authentication)** | Configure sites that support integrated authentication."
       },
       "AutoLaunchProtocolsFromOrigins": {
-        "current": "| **[`AutoLaunchProtocolsFromOrigins`](#autolaunchprotocolsfromorigins)** | Define a list of external protocols that can be used from listed origins without prompting the user."
+        "upstream": "| **[`AutoLaunchProtocolsFromOrigins`](#autolaunchprotocolsfromorigins)** | Define a list of external protocols that can be used from listed origins without prompting the user."
       },
       "BackgroundAppUpdate": {
-        "current": "| **[`BackgroundAppUpdate`](#backgroundappupdate)** | Enable or disable the background updater (Windows only)."
+        "upstream": "| **[`BackgroundAppUpdate`](#backgroundappupdate)** | Enable or disable the background updater (Windows only)."
       },
       "BlockAboutAddons": {
-        "current": "| **[`BlockAboutAddons`](#blockaboutaddons)** | Block access to the Add-ons Manager (about:addons)."
+        "upstream": "| **[`BlockAboutAddons`](#blockaboutaddons)** | Block access to the Add-ons Manager (about:addons)."
       },
       "BlockAboutConfig": {
-        "current": "| **[`BlockAboutConfig`](#blockaboutconfig)** | Block access to about:config."
+        "upstream": "| **[`BlockAboutConfig`](#blockaboutconfig)** | Block access to about:config."
       },
       "BlockAboutProfiles": {
-        "current": "| **[`BlockAboutProfiles`](#blockaboutprofiles)** | Block access to About Profiles (about:profiles)."
+        "upstream": "| **[`BlockAboutProfiles`](#blockaboutprofiles)** | Block access to About Profiles (about:profiles)."
       },
       "BlockAboutSupport": {
-        "current": "| **[`BlockAboutSupport`](#blockaboutsupport)** | Block access to Troubleshooting Information (about:support)."
+        "upstream": "| **[`BlockAboutSupport`](#blockaboutsupport)** | Block access to Troubleshooting Information (about:support)."
       },
       "Bookmarks": {
-        "current": "| **[`Bookmarks`](#bookmarks)** | Add bookmarks in either the bookmarks toolbar or menu."
+        "upstream": "| **[`Bookmarks`](#bookmarks)** | Add bookmarks in either the bookmarks toolbar or menu."
       },
       "CaptivePortal": {
-        "current": "| **[`CaptivePortal`](#captiveportal)** | Enable or disable the detection of captive portals."
+        "upstream": "| **[`CaptivePortal`](#captiveportal)** | Enable or disable the detection of captive portals."
       },
       "Certificates": {
-        "current": "| **[`Certificates`](#certificates)** |"
+        "upstream": "| **[`Certificates`](#certificates)** |"
       },
       "Certificates_ImportEnterpriseRoots": {
-        "current": "| **[`Certificates -> ImportEnterpriseRoots`](#certificates--importenterpriseroots)** | Trust certificates that have been added to the operating system certificate store by a user or administrator."
+        "upstream": "| **[`Certificates -> ImportEnterpriseRoots`](#certificates--importenterpriseroots)** | Trust certificates that have been added to the operating system certificate store by a user or administrator."
       },
       "Certificates_Install": {
-        "current": "| **[`Certificates -> Install`](#certificates--install)** | Install certificates into the Firefox certificate store."
+        "upstream": "| **[`Certificates -> Install`](#certificates--install)** | Install certificates into the Firefox certificate store."
       },
       "Cookies": {
-        "current": "| **[`Cookies`](#cookies)** | Configure cookie preferences."
+        "upstream": "| **[`Cookies`](#cookies)** | Configure cookie preferences."
       },
       "DisableAppUpdate": {
-        "current": "| **[`DisableAppUpdate`](#disableappupdate)** | Turn off application updates."
+        "upstream": "| **[`DisableAppUpdate`](#disableappupdate)** | Turn off application updates."
       },
       "DisableBuiltinPDFViewer": {
-        "current": "| **[`DisableBuiltinPDFViewer`](#disablebuiltinpdfviewer)** | Disable the built in PDF viewer."
+        "upstream": "| **[`DisableBuiltinPDFViewer`](#disablebuiltinpdfviewer)** | Disable the built in PDF viewer."
       },
       "DisabledCiphers": {
-        "current": "| **[`DisabledCiphers`](#disabledciphers)** | Disable ciphers."
+        "upstream": "| **[`DisabledCiphers`](#disabledciphers)** | Disable ciphers."
       },
       "DisableDefaultBrowserAgent": {
-        "current": "| **[`DisableDefaultBrowserAgent`](#disabledefaultbrowseragent)** | Prevent the default browser agent from taking any actions (Windows only)."
+        "upstream": "| **[`DisableDefaultBrowserAgent`](#disabledefaultbrowseragent)** | Prevent the default browser agent from taking any actions (Windows only)."
       },
       "DisableDeveloperTools": {
-        "current": "| **[`DisableDeveloperTools`](#disabledevelopertools)** | Remove access to all developer tools."
+        "upstream": "| **[`DisableDeveloperTools`](#disabledevelopertools)** | Remove access to all developer tools."
       },
       "DisableFeedbackCommands": {
-        "current": "| **[`DisableFeedbackCommands`](#disablefeedbackcommands)** | Disable the menus for reporting sites."
+        "upstream": "| **[`DisableFeedbackCommands`](#disablefeedbackcommands)** | Disable the menus for reporting sites."
       },
       "DisableFirefoxScreenshots": {
-        "current": "| **[`DisableFirefoxScreenshots`](#disablefirefoxscreenshots)** | Remove access to Firefox Screenshots."
+        "upstream": "| **[`DisableFirefoxScreenshots`](#disablefirefoxscreenshots)** | Remove access to Firefox Screenshots."
       },
       "DisableFirefoxAccounts": {
-        "current": "| **[`DisableFirefoxAccounts`](#disablefirefoxaccounts)** | Disable Firefox Accounts integration (Sync)."
+        "upstream": "| **[`DisableFirefoxAccounts`](#disablefirefoxaccounts)** | Disable Firefox Accounts integration (Sync)."
       },
       "DisableFirefoxStudies": {
-        "current": "| **[`DisableFirefoxStudies`](#disablefirefoxstudies)** | Disable Firefox studies (Shield)."
+        "upstream": "| **[`DisableFirefoxStudies`](#disablefirefoxstudies)** | Disable Firefox studies (Shield)."
       },
       "DisableForgetButton": {
-        "current": "| **[`DisableForgetButton`](#disableforgetbutton)** | Disable the \"Forget\" button."
+        "upstream": "| **[`DisableForgetButton`](#disableforgetbutton)** | Disable the \"Forget\" button."
       },
       "DisableFormHistory": {
-        "current": "| **[`DisableFormHistory`](#disableformhistory)** | Turn off saving information on web forms and the search bar."
+        "upstream": "| **[`DisableFormHistory`](#disableformhistory)** | Turn off saving information on web forms and the search bar."
       },
       "DisableMasterPasswordCreation": {
-        "current": "| **[`DisableMasterPasswordCreation`](#disablemasterpasswordcreation)** | Remove the master password functionality."
+        "upstream": "| **[`DisableMasterPasswordCreation`](#disablemasterpasswordcreation)** | Remove the master password functionality."
       },
       "DisablePasswordReveal": {
-        "current": "| **[`DisablePasswordReveal`](#disablepasswordreveal)** | Do not allow passwords to be revealed in saved logins."
+        "upstream": "| **[`DisablePasswordReveal`](#disablepasswordreveal)** | Do not allow passwords to be revealed in saved logins."
       },
       "DisablePocket": {
-        "current": "| **[`DisablePocket`](#disablepocket)** | Remove Pocket in the Firefox UI."
+        "upstream": "| **[`DisablePocket`](#disablepocket)** | Remove Pocket in the Firefox UI."
       },
       "DisablePrivateBrowsing": {
-        "current": "| **[`DisablePrivateBrowsing`](#disableprivatebrowsing)** | Remove access to private browsing."
+        "upstream": "| **[`DisablePrivateBrowsing`](#disableprivatebrowsing)** | Remove access to private browsing."
       },
       "DisableProfileImport": {
-        "current": "| **[`DisableProfileImport`](#disableprofileimport)** | Disables the \"Import data from another browser\" option in the bookmarks window."
+        "upstream": "| **[`DisableProfileImport`](#disableprofileimport)** | Disables the \"Import data from another browser\" option in the bookmarks window."
       },
       "DisableProfileRefresh": {
-        "current": "| **[`DisableProfileRefresh`](#disableprofilerefresh)** | Disable the Refresh Firefox button on about:support and support.mozilla.org"
+        "upstream": "| **[`DisableProfileRefresh`](#disableprofilerefresh)** | Disable the Refresh Firefox button on about:support and support.mozilla.org"
       },
       "DisableSafeMode": {
-        "current": "| **[`DisableSafeMode`](#disablesafemode)** | Disable safe mode within the browser."
+        "upstream": "| **[`DisableSafeMode`](#disablesafemode)** | Disable safe mode within the browser."
       },
       "DisableSecurityBypass": {
-        "current": "| **[`DisableSecurityBypass`](#disablesecuritybypass)** | Prevent the user from bypassing security in certain cases."
+        "upstream": "| **[`DisableSecurityBypass`](#disablesecuritybypass)** | Prevent the user from bypassing security in certain cases."
       },
       "DisableSetDesktopBackground": {
-        "current": "| **[`DisableSetDesktopBackground`](#disablesetdesktopbackground)** | Remove the \"Set As Desktop Background...\" menuitem when right clicking on an image."
+        "upstream": "| **[`DisableSetDesktopBackground`](#disablesetdesktopbackground)** | Remove the \"Set As Desktop Background...\" menuitem when right clicking on an image."
       },
       "DisableSystemAddonUpdate": {
-        "current": "| **[`DisableSystemAddonUpdate`](#disablesystemaddonupdate)** | Prevent system add-ons from being installed or update."
+        "upstream": "| **[`DisableSystemAddonUpdate`](#disablesystemaddonupdate)** | Prevent system add-ons from being installed or update."
       },
       "DisableTelemetry": {
-        "current": "| **[`DisableTelemetry`](#disabletelemetry)** | DisableTelemetry"
+        "upstream": "| **[`DisableTelemetry`](#disabletelemetry)** | DisableTelemetry"
       },
       "DisplayBookmarksToolbar": {
-        "current": "| **[`DisplayBookmarksToolbar`](#displaybookmarkstoolbar)** | Set the initial state of the bookmarks toolbar."
+        "upstream": "| **[`DisplayBookmarksToolbar`](#displaybookmarkstoolbar)** | Set the initial state of the bookmarks toolbar."
       },
       "DisplayMenuBar (Deprecated)": {
-        "current": "| **[`DisplayMenuBar (Deprecated)`](#displaymenubar-deprecated)** | Set the initial state of the menubar."
+        "upstream": "| **[`DisplayMenuBar (Deprecated)`](#displaymenubar-deprecated)** | Set the initial state of the menubar."
       },
       "DisplayMenuBar": {
-        "current": "| **[`DisplayMenuBar`](#displaymenubar)** | Set the state of the menubar."
+        "upstream": "| **[`DisplayMenuBar`](#displaymenubar)** | Set the state of the menubar."
       },
       "DNSOverHTTPS": {
-        "current": "| **[`DNSOverHTTPS`](#dnsoverhttps)** | Configure DNS over HTTPS."
+        "upstream": "| **[`DNSOverHTTPS`](#dnsoverhttps)** | Configure DNS over HTTPS."
       },
       "DontCheckDefaultBrowser": {
-        "current": "| **[`DontCheckDefaultBrowser`](#dontcheckdefaultbrowser)** | Don't check if Firefox is the default browser at startup."
+        "upstream": "| **[`DontCheckDefaultBrowser`](#dontcheckdefaultbrowser)** | Don't check if Firefox is the default browser at startup."
       },
       "DefaultDownloadDirectory": {
-        "current": "| **[`DefaultDownloadDirectory`](#defaultdownloaddirectory)** | Set the default download directory."
+        "upstream": "| **[`DefaultDownloadDirectory`](#defaultdownloaddirectory)** | Set the default download directory."
       },
       "DownloadDirectory": {
-        "current": "| **[`DownloadDirectory`](#downloaddirectory)** | Set and lock the download directory."
+        "upstream": "| **[`DownloadDirectory`](#downloaddirectory)** | Set and lock the download directory."
       },
       "EnableTrackingProtection": {
-        "current": "| **[`EnableTrackingProtection`](#enabletrackingprotection)** | Configure tracking protection."
+        "upstream": "| **[`EnableTrackingProtection`](#enabletrackingprotection)** | Configure tracking protection."
       },
       "EncryptedMediaExtensions": {
-        "current": "| **[`EncryptedMediaExtensions`](#encryptedmediaextensions)** | Enable or disable Encrypted Media Extensions and optionally lock it."
+        "upstream": "| **[`EncryptedMediaExtensions`](#encryptedmediaextensions)** | Enable or disable Encrypted Media Extensions and optionally lock it."
       },
       "EnterprisePoliciesEnabled": {
-        "current": "| **[`EnterprisePoliciesEnabled`](#enterprisepoliciesenabled)** | Enable policy support on macOS."
+        "upstream": "| **[`EnterprisePoliciesEnabled`](#enterprisepoliciesenabled)** | Enable policy support on macOS."
       },
       "Extensions": {
-        "current": "| **[`Extensions`](#extensions)** | Control the installation, uninstallation and locking of extensions."
+        "upstream": "| **[`Extensions`](#extensions)** | Control the installation, uninstallation and locking of extensions."
       },
       "ExtensionSettings": {
-        "current": "| **[`ExtensionSettings`](#extensionsettings)** | Manage all aspects of extensions."
+        "upstream": "| **[`ExtensionSettings`](#extensionsettings)** | Manage all aspects of extensions."
       },
       "ExtensionUpdate": {
-        "current": "| **[`ExtensionUpdate`](#extensionupdate)** | Control extension updates."
+        "upstream": "| **[`ExtensionUpdate`](#extensionupdate)** | Control extension updates."
       },
       "FlashPlugin": {
-        "current": "| **[`FlashPlugin`](#flashplugin)** | Configure the default Flash plugin policy as well as origins for which Flash is allowed."
+        "upstream": "| **[`FlashPlugin`](#flashplugin)** | Configure the default Flash plugin policy as well as origins for which Flash is allowed."
       },
       "FirefoxHome": {
-        "current": "| **[`FirefoxHome`](#firefoxhome)** | Customize the Firefox Home page."
+        "upstream": "| **[`FirefoxHome`](#firefoxhome)** | Customize the Firefox Home page."
       },
       "HardwareAcceleration": {
-        "current": "| **[`HardwareAcceleration`](#hardwareacceleration)** | Control hardware acceleration."
+        "upstream": "| **[`HardwareAcceleration`](#hardwareacceleration)** | Control hardware acceleration."
       },
       "Handlers": {
-        "current": "| **[`Handlers`](#handlers)** | Configure default application handlers."
+        "upstream": "| **[`Handlers`](#handlers)** | Configure default application handlers."
       },
       "Homepage": {
-        "current": "| **[`Homepage`](#homepage)** | Configure the default homepage and how Firefox starts."
+        "upstream": "| **[`Homepage`](#homepage)** | Configure the default homepage and how Firefox starts."
       },
       "InstallAddonsPermission": {
-        "current": "| **[`InstallAddonsPermission`](#installaddonspermission)** | Configure the default extension install policy as well as origins for extension installs are allowed."
+        "upstream": "| **[`InstallAddonsPermission`](#installaddonspermission)** | Configure the default extension install policy as well as origins for extension installs are allowed."
       },
       "LegacyProfiles": {
-        "current": "| **[`LegacyProfiles`](#legacyprofiles)** | Disable the feature enforcing a separate profile for each installation."
+        "upstream": "| **[`LegacyProfiles`](#legacyprofiles)** | Disable the feature enforcing a separate profile for each installation."
       },
       "LocalFileLinks": {
-        "current": "| **[`LocalFileLinks`](#localfilelinks)** | Enable linking to local files by origin."
+        "upstream": "| **[`LocalFileLinks`](#localfilelinks)** | Enable linking to local files by origin."
       },
       "ManagedBookmarks": {
-        "current": "| **[`ManagedBookmarks`](#managedbookmarks)** | Configures a list of bookmarks managed by an administrator that cannot be changed by the user."
+        "upstream": "| **[`ManagedBookmarks`](#managedbookmarks)** | Configures a list of bookmarks managed by an administrator that cannot be changed by the user."
       },
       "ManualAppUpdateOnly": {
-        "current": "| **[`ManualAppUpdateOnly`](#manualappupdateonly)** | Allow manual updates only and do not notify the user about updates.."
+        "upstream": "| **[`ManualAppUpdateOnly`](#manualappupdateonly)** | Allow manual updates only and do not notify the user about updates.."
       },
       "PrimaryPassword": {
-        "current": "| **[`PrimaryPassword`](#primarypassword)** | Require or prevent using a primary (formerly master) password."
+        "upstream": "| **[`PrimaryPassword`](#primarypassword)** | Require or prevent using a primary (formerly master) password."
       },
       "NetworkPrediction": {
-        "current": "| **[`NetworkPrediction`](#networkprediction)** | Enable or disable network prediction (DNS prefetching)."
+        "upstream": "| **[`NetworkPrediction`](#networkprediction)** | Enable or disable network prediction (DNS prefetching)."
       },
       "NewTabPage": {
-        "current": "| **[`NewTabPage`](#newtabpage)** | Enable or disable the New Tab page."
+        "upstream": "| **[`NewTabPage`](#newtabpage)** | Enable or disable the New Tab page."
       },
       "NoDefaultBookmarks": {
-        "current": "| **[`NoDefaultBookmarks`](#nodefaultbookmarks)** | Disable the creation of default bookmarks."
+        "upstream": "| **[`NoDefaultBookmarks`](#nodefaultbookmarks)** | Disable the creation of default bookmarks."
       },
       "OfferToSaveLogins": {
-        "current": "| **[`OfferToSaveLogins`](#offertosavelogins)** | Control whether or not Firefox offers to save passwords."
+        "upstream": "| **[`OfferToSaveLogins`](#offertosavelogins)** | Control whether or not Firefox offers to save passwords."
       },
       "OfferToSaveLoginsDefault": {
-        "current": "| **[`OfferToSaveLoginsDefault`](#offertosaveloginsdefault)** | Set the default value for whether or not Firefox offers to save passwords."
+        "upstream": "| **[`OfferToSaveLoginsDefault`](#offertosaveloginsdefault)** | Set the default value for whether or not Firefox offers to save passwords."
       },
       "OverrideFirstRunPage": {
-        "current": "| **[`OverrideFirstRunPage`](#overridefirstrunpage)** | Override the first run page."
+        "upstream": "| **[`OverrideFirstRunPage`](#overridefirstrunpage)** | Override the first run page."
       },
       "OverridePostUpdatePage": {
-        "current": "| **[`OverridePostUpdatePage`](#overridepostupdatepage)** | Override the upgrade page."
+        "upstream": "| **[`OverridePostUpdatePage`](#overridepostupdatepage)** | Override the upgrade page."
       },
       "PasswordManagerEnabled": {
-        "current": "| **[`PasswordManagerEnabled`](#passwordmanagerenabled)** | Remove (some) access to the password manager."
+        "upstream": "| **[`PasswordManagerEnabled`](#passwordmanagerenabled)** | Remove (some) access to the password manager."
       },
       "PDFjs": {
-        "current": "| **[`PDFjs`](#pdfjs)** | Disable or configure PDF.js, the built-in PDF viewer."
+        "upstream": "| **[`PDFjs`](#pdfjs)** | Disable or configure PDF.js, the built-in PDF viewer."
       },
       "Permissions": {
-        "current": "| **[`Permissions`](#permissions)** | Set permissions associated with camera, microphone, location, and notifications."
+        "upstream": "| **[`Permissions`](#permissions)** | Set permissions associated with camera, microphone, location, and notifications."
       },
       "PictureInPicture": {
-        "current": "| **[`PictureInPicture`](#pictureinpicture)** | Enable or disable Picture-in-Picture."
+        "upstream": "| **[`PictureInPicture`](#pictureinpicture)** | Enable or disable Picture-in-Picture."
       },
       "PopupBlocking": {
-        "current": "| **[`PopupBlocking`](#popupblocking)** | Configure the default pop-up window policy as well as origins for which pop-up windows are allowed."
+        "upstream": "| **[`PopupBlocking`](#popupblocking)** | Configure the default pop-up window policy as well as origins for which pop-up windows are allowed."
       },
       "Preferences": {
-        "current": "| **[`Preferences`](#preferences)** | Set and lock preferences.",
-        "override": "| **[`Preferences (TB91+)`](#preferences-tb91)** | Set and lock preferences."
+        "override": "| **[`Preferences (TB91+)`](#preferences-tb91)** | Set and lock preferences.",
+        "upstream": "| **[`Preferences`](#preferences)** | Set and lock preferences."
       },
       "Preferences (Deprecated)": {
-        "current": "| **[`Preferences (Deprecated)`](#preferences-deprecated)** | Set and lock some preferences."
+        "upstream": "| **[`Preferences (Deprecated)`](#preferences-deprecated)** | Set and lock some preferences."
       },
       "PromptForDownloadLocation": {
-        "current": "| **[`PromptForDownloadLocation`](#promptfordownloadlocation)** | Ask where to save each file before downloading."
+        "upstream": "| **[`PromptForDownloadLocation`](#promptfordownloadlocation)** | Ask where to save each file before downloading."
       },
       "Proxy": {
-        "current": "| **[`Proxy`](#proxy)** | Configure proxy settings."
+        "upstream": "| **[`Proxy`](#proxy)** | Configure proxy settings."
       },
       "RequestedLocales": {
-        "current": "| **[`RequestedLocales`](#requestedlocales)** | Set the the list of requested locales for the application in order of preference."
+        "upstream": "| **[`RequestedLocales`](#requestedlocales)** | Set the the list of requested locales for the application in order of preference."
       },
       "SanitizeOnShutdown (All)": {
-        "current": "| **[`SanitizeOnShutdown` (All)](#sanitizeonshutdown-all)** | Clear all data on shutdown."
+        "upstream": "| **[`SanitizeOnShutdown` (All)](#sanitizeonshutdown-all)** | Clear all data on shutdown."
       },
       "SanitizeOnShutdown (Selective)": {
-        "current": "| **[`SanitizeOnShutdown` (Selective)](#sanitizeonshutdown-selective)** | Clear data on shutdown."
+        "upstream": "| **[`SanitizeOnShutdown` (Selective)](#sanitizeonshutdown-selective)** | Clear data on shutdown."
       },
       "SearchBar": {
-        "current": "| **[`SearchBar`](#searchbar)** | Set whether or not search bar is displayed."
+        "upstream": "| **[`SearchBar`](#searchbar)** | Set whether or not search bar is displayed."
       },
       "SearchEngines": {
-        "current": "| **[`SearchEngines`](#searchengines-this-policy-is-only-available-on-the-esr)** |"
+        "upstream": "| **[`SearchEngines`](#searchengines-this-policy-is-only-available-on-the-esr)** |"
       },
       "SearchEngines_Default": {
-        "current": "| **[`SearchEngines -> Default`](#searchengines--default)** | Set the default search engine."
+        "upstream": "| **[`SearchEngines -> Default`](#searchengines--default)** | Set the default search engine."
       },
       "SearchEngines_PreventInstalls": {
-        "current": "| **[`SearchEngines -> PreventInstalls`](#searchengines--preventinstalls)** | Prevent installing search engines from webpages."
+        "upstream": "| **[`SearchEngines -> PreventInstalls`](#searchengines--preventinstalls)** | Prevent installing search engines from webpages."
       },
       "SearchEngines_Remove": {
-        "current": "| **[`SearchEngines -> Remove`](#searchengines--remove)** | Hide built-in search engines."
+        "upstream": "| **[`SearchEngines -> Remove`](#searchengines--remove)** | Hide built-in search engines."
       },
       "SearchEngines_Add": {
-        "current": "| **[`SearchEngines -> Add`](#searchengines--add)** | Add new search engines."
+        "upstream": "| **[`SearchEngines -> Add`](#searchengines--add)** | Add new search engines."
       },
       "SearchSuggestEnabled": {
-        "current": "| **[`SearchSuggestEnabled`](#searchsuggestenabled)** | Enable search suggestions."
+        "upstream": "| **[`SearchSuggestEnabled`](#searchsuggestenabled)** | Enable search suggestions."
       },
       "SecurityDevices": {
-        "current": "| **[`SecurityDevices`](#securitydevices)** | Install PKCS #11 modules."
+        "upstream": "| **[`SecurityDevices`](#securitydevices)** | Install PKCS #11 modules."
       },
       "ShowHomeButton": {
-        "current": "| **[`ShowHomeButton`](#showhomebutton)** | Show the home button on the toolbar."
+        "upstream": "| **[`ShowHomeButton`](#showhomebutton)** | Show the home button on the toolbar."
       },
       "SSLVersionMax": {
-        "current": "| **[`SSLVersionMax`](#sslversionmax)** | Set and lock the maximum version of TLS."
+        "upstream": "| **[`SSLVersionMax`](#sslversionmax)** | Set and lock the maximum version of TLS."
       },
       "SSLVersionMin": {
-        "current": "| **[`SSLVersionMin`](#sslversionmin)** | Set and lock the minimum version of TLS."
+        "upstream": "| **[`SSLVersionMin`](#sslversionmin)** | Set and lock the minimum version of TLS."
       },
       "SupportMenu": {
-        "current": "| **[`SupportMenu`](#supportmenu)** | Add a menuitem to the help menu for specifying support information."
+        "upstream": "| **[`SupportMenu`](#supportmenu)** | Add a menuitem to the help menu for specifying support information."
       },
       "UserMessaging": {
-        "current": "| **[`UserMessaging`](#usermessaging)** | Don't show certain messages to the user."
+        "upstream": "| **[`UserMessaging`](#usermessaging)** | Don't show certain messages to the user."
       },
       "WebsiteFilter": {
-        "current": "| **[`WebsiteFilter`](#websitefilter)** | Block websites from being visited."
+        "upstream": "| **[`WebsiteFilter`](#websitefilter)** | Block websites from being visited."
       },
       "WindowsSSO": {
-        "current": "| **[`WindowsSSO`](#windowssso)** | Allow Windows single sign-on for Microsoft, work, and school accounts."
+        "upstream": "| **[`WindowsSSO`](#windowssso)** | Allow Windows single sign-on for Microsoft, work, and school accounts."
       }
     },
     "policies": {
       "3rdparty": {
-        "current": [
+        "upstream": [
           "### 3rdparty",
           "",
           "Allow WebExtensions to configure policy. For more information, see [Adding policy support to your extension](https://extensionworkshop.com/documentation/enterprise/adding-policy-support-to-your-extension/).",
@@ -304,7 +304,7 @@
         ]
       },
       "AppAutoUpdate": {
-        "current": [
+        "upstream": [
           "### AppAutoUpdate",
           "",
           "Enable or disable **automatic** application update.",
@@ -350,7 +350,7 @@
         ]
       },
       "AllowedDomainsForApps": {
-        "current": [
+        "upstream": [
           "### AllowedDomainsForApps",
           "",
           "Define domains allowed to access Google Workspace.",
@@ -395,7 +395,7 @@
         ]
       },
       "AppUpdateURL": {
-        "current": [
+        "upstream": [
           "### AppUpdateURL",
           "",
           "Change the URL for application update if you are providing Firefox updates from a custom update server.",
@@ -436,7 +436,7 @@
         ]
       },
       "Authentication": {
-        "current": [
+        "upstream": [
           "### Authentication",
           "",
           "Configure sites that support integrated authentication.",
@@ -584,7 +584,7 @@
         ]
       },
       "AutoLaunchProtocolsFromOrigins": {
-        "current": [
+        "upstream": [
           "### AutoLaunchProtocolsFromOrigins",
           "Define a list of external protocols that can be used from listed origins without prompting the user.",
           "",
@@ -680,7 +680,7 @@
         ]
       },
       "BackgroundAppUpdate": {
-        "current": [
+        "upstream": [
           "### BackgroundAppUpdate",
           "",
           "Enable or disable **automatic** application update **in the background**, when the application is not running.",
@@ -726,7 +726,7 @@
         ]
       },
       "BlockAboutAddons": {
-        "current": [
+        "upstream": [
           "### BlockAboutAddons",
           "",
           "Block access to the Add-ons Manager (about:addons).",
@@ -766,7 +766,7 @@
         ]
       },
       "BlockAboutConfig": {
-        "current": [
+        "upstream": [
           "### BlockAboutConfig",
           "",
           "Block access to about:config.",
@@ -806,7 +806,7 @@
         ]
       },
       "BlockAboutProfiles": {
-        "current": [
+        "upstream": [
           "### BlockAboutProfiles",
           "",
           "Block access to About Profiles (about:profiles).",
@@ -846,7 +846,7 @@
         ]
       },
       "BlockAboutSupport": {
-        "current": [
+        "upstream": [
           "### BlockAboutSupport",
           "",
           "Block access to Troubleshooting Information (about:support).",
@@ -886,7 +886,7 @@
         ]
       },
       "Bookmarks": {
-        "current": [
+        "upstream": [
           "### Bookmarks",
           "",
           "Note: [`ManagedBookmarks`](#managedbookmarks) is the new recommended way to add bookmarks. This policy will continue to be supported.",
@@ -958,7 +958,7 @@
         ]
       },
       "CaptivePortal": {
-        "current": [
+        "upstream": [
           "### CaptivePortal",
           "Enable or disable the detection of captive portals.",
           "",
@@ -997,13 +997,13 @@
         ]
       },
       "Certificates": {
-        "current": [
+        "upstream": [
           "### Certificates",
           ""
         ]
       },
       "Certificates_ImportEnterpriseRoots": {
-        "current": [
+        "upstream": [
           "### Certificates | ImportEnterpriseRoots",
           "",
           "Trust certificates that have been added to the operating system certificate store by a user or administrator.",
@@ -1052,7 +1052,7 @@
         ]
       },
       "Certificates_Install": {
-        "current": [
+        "upstream": [
           "### Certificates | Install",
           "",
           "Install certificates into the Firefox certificate store. If only a filename is specified, Firefox searches for the file in the following locations:",
@@ -1121,7 +1121,7 @@
         ]
       },
       "Cookies": {
-        "current": [
+        "upstream": [
           "### Cookies",
           "Configure cookie preferences.",
           "",
@@ -1275,7 +1275,7 @@
         ]
       },
       "DisableSetDesktopBackground": {
-        "current": [
+        "upstream": [
           "### DisableSetDesktopBackground",
           "Remove the \"Set As Desktop Background...\" menuitem when right clicking on an image.",
           "",
@@ -1314,7 +1314,7 @@
         ]
       },
       "DisableMasterPasswordCreation": {
-        "current": [
+        "upstream": [
           "### DisableMasterPasswordCreation",
           "Remove the master password functionality.",
           "",
@@ -1357,7 +1357,7 @@
         ]
       },
       "DisableAppUpdate": {
-        "current": [
+        "upstream": [
           "### DisableAppUpdate",
           "Turn off application updates within Firefox.",
           "",
@@ -1396,7 +1396,7 @@
         ]
       },
       "DisableBuiltinPDFViewer": {
-        "current": [
+        "upstream": [
           "### DisableBuiltinPDFViewer",
           "Disable the built in PDF viewer. PDF files are downloaded and sent externally.",
           "",
@@ -1435,7 +1435,7 @@
         ]
       },
       "DisabledCiphers": {
-        "current": [
+        "upstream": [
           "### DisabledCiphers",
           "Disable specific cryptographic ciphers.",
           "",
@@ -1537,7 +1537,7 @@
         ]
       },
       "DisableDefaultBrowserAgent": {
-        "current": [
+        "upstream": [
           "### DisableDefaultBrowserAgent",
           "Prevent the default browser agent from taking any actions. Only applicable to Windows; other platforms don’t have the agent.",
           "",
@@ -1571,7 +1571,7 @@
         ]
       },
       "DisableDeveloperTools": {
-        "current": [
+        "upstream": [
           "### DisableDeveloperTools",
           "Remove access to all developer tools.",
           "",
@@ -1610,7 +1610,7 @@
         ]
       },
       "DisableFeedbackCommands": {
-        "current": [
+        "upstream": [
           "### DisableFeedbackCommands",
           "Disable the menus for reporting sites (Submit Feedback, Report Deceptive Site).",
           "",
@@ -1649,7 +1649,7 @@
         ]
       },
       "DisableFirefoxScreenshots": {
-        "current": [
+        "upstream": [
           "### DisableFirefoxScreenshots",
           "Remove access to Firefox Screenshots.",
           "",
@@ -1688,7 +1688,7 @@
         ]
       },
       "DisableFirefoxAccounts": {
-        "current": [
+        "upstream": [
           "### DisableFirefoxAccounts",
           "Disable Firefox Accounts integration (Sync).",
           "",
@@ -1727,7 +1727,7 @@
         ]
       },
       "DisableFirefoxStudies": {
-        "current": [
+        "upstream": [
           "### DisableFirefoxStudies",
           "Disable Firefox studies (Shield).",
           "",
@@ -1766,7 +1766,7 @@
         ]
       },
       "DisableForgetButton": {
-        "current": [
+        "upstream": [
           "### DisableForgetButton",
           "Disable the \"Forget\" button.",
           "",
@@ -1805,7 +1805,7 @@
         ]
       },
       "DisableFormHistory": {
-        "current": [
+        "upstream": [
           "### DisableFormHistory",
           "Turn off saving information on web forms and the search bar.",
           "",
@@ -1844,7 +1844,7 @@
         ]
       },
       "DisablePasswordReveal": {
-        "current": [
+        "upstream": [
           "### DisablePasswordReveal",
           "Do not allow passwords to be shown in saved logins",
           "",
@@ -1883,7 +1883,7 @@
         ]
       },
       "DisablePocket": {
-        "current": [
+        "upstream": [
           "### DisablePocket",
           "Remove Pocket in the Firefox UI. It does not remove it from the new tab page.",
           "",
@@ -1922,7 +1922,7 @@
         ]
       },
       "DisablePrivateBrowsing": {
-        "current": [
+        "upstream": [
           "### DisablePrivateBrowsing",
           "Remove access to private browsing.",
           "",
@@ -1961,7 +1961,7 @@
         ]
       },
       "DisableProfileImport": {
-        "current": [
+        "upstream": [
           "### DisableProfileImport",
           "Disables the \"Import data from another browser\" option in the bookmarks window.",
           "",
@@ -2000,7 +2000,7 @@
         ]
       },
       "DisableProfileRefresh": {
-        "current": [
+        "upstream": [
           "### DisableProfileRefresh",
           "Disable the Refresh Firefox button on about:support and support.mozilla.org, as well as the prompt that displays offering to refresh Firefox when you haven't used it in a while.",
           "",
@@ -2039,7 +2039,7 @@
         ]
       },
       "DisableSafeMode": {
-        "current": [
+        "upstream": [
           "### DisableSafeMode",
           "Disable safe mode within the browser.",
           "",
@@ -2080,7 +2080,7 @@
         ]
       },
       "DisableSecurityBypass": {
-        "current": [
+        "upstream": [
           "### DisableSecurityBypass",
           "Prevent the user from bypassing security in certain cases.",
           "",
@@ -2141,7 +2141,7 @@
         ]
       },
       "DisableSystemAddonUpdate": {
-        "current": [
+        "upstream": [
           "### DisableSystemAddonUpdate",
           "Prevent system add-ons from being installed or update.",
           "",
@@ -2180,7 +2180,7 @@
         ]
       },
       "DisableTelemetry": {
-        "current": [
+        "upstream": [
           "### DisableTelemetry",
           "Prevent the upload of telemetry data.",
           "",
@@ -2223,7 +2223,7 @@
         ]
       },
       "DisplayBookmarksToolbar": {
-        "current": [
+        "upstream": [
           "### DisplayBookmarksToolbar",
           "Set the initial state of the bookmarks toolbar. A user can still hide it and it will stay hidden.",
           "",
@@ -2262,7 +2262,7 @@
         ]
       },
       "DisplayMenuBar (Deprecated)": {
-        "current": [
+        "upstream": [
           "### DisplayMenuBar (Deprecated)",
           "Set the initial state of the menubar. A user can still hide it and it will stay hidden.",
           "",
@@ -2292,7 +2292,7 @@
         ]
       },
       "DisplayMenuBar": {
-        "current": [
+        "upstream": [
           "### DisplayMenuBar",
           "Set the state of the menubar.",
           "",
@@ -2340,7 +2340,7 @@
         ]
       },
       "DNSOverHTTPS": {
-        "current": [
+        "upstream": [
           "### DNSOverHTTPS",
           "Configure DNS over HTTPS.",
           "",
@@ -2432,7 +2432,7 @@
         ]
       },
       "DontCheckDefaultBrowser": {
-        "current": [
+        "upstream": [
           "### DontCheckDefaultBrowser",
           "Don't check if Firefox is the default browser at startup.",
           "",
@@ -2471,7 +2471,7 @@
         ]
       },
       "DefaultDownloadDirectory": {
-        "current": [
+        "upstream": [
           "### DefaultDownloadDirectory",
           "Set the default download directory.",
           "",
@@ -2519,7 +2519,7 @@
         ]
       },
       "DownloadDirectory": {
-        "current": [
+        "upstream": [
           "### DownloadDirectory",
           "Set and lock the download directory.",
           "",
@@ -2567,7 +2567,7 @@
         ]
       },
       "EnableTrackingProtection": {
-        "current": [
+        "upstream": [
           "### EnableTrackingProtection",
           "Configure tracking protection.",
           "",
@@ -2673,7 +2673,7 @@
         ]
       },
       "EncryptedMediaExtensions": {
-        "current": [
+        "upstream": [
           "### EncryptedMediaExtensions",
           "Enable or disable Encrypted Media Extensions and optionally lock it.",
           "",
@@ -2726,7 +2726,7 @@
         ]
       },
       "EnterprisePoliciesEnabled": {
-        "current": [
+        "upstream": [
           "### EnterprisePoliciesEnabled",
           "Enable policy support on macOS.",
           "",
@@ -2744,7 +2744,7 @@
         ]
       },
       "Extensions": {
-        "current": [
+        "upstream": [
           "### Extensions",
           "Control the installation, uninstallation and locking of extensions.",
           "",
@@ -2831,7 +2831,7 @@
         ]
       },
       "ExtensionSettings": {
-        "current": [
+        "upstream": [
           "### ExtensionSettings",
           "Manage all aspects of extensions. This policy is based heavily on the [Chrome policy](https://dev.chromium.org/administrators/policy-list-3/extension-settings-full) of the same name.",
           "",
@@ -2964,7 +2964,7 @@
         ]
       },
       "ExtensionUpdate": {
-        "current": [
+        "upstream": [
           "### ExtensionUpdate",
           "Control extension updates.",
           "",
@@ -3003,7 +3003,7 @@
         ]
       },
       "FlashPlugin": {
-        "current": [
+        "upstream": [
           "### FlashPlugin",
           "Configure the default Flash plugin policy as well as origins for which Flash is allowed.",
           "",
@@ -3091,7 +3091,7 @@
         ]
       },
       "Handlers": {
-        "current": [
+        "upstream": [
           "### Handlers",
           "Configure default application handlers. This policy is based on the internal format of `handlers.json`.",
           "",
@@ -3277,7 +3277,7 @@
         ]
       },
       "FirefoxHome": {
-        "current": [
+        "upstream": [
           "### FirefoxHome",
           "Customize the Firefox Home page.",
           "",
@@ -3347,7 +3347,7 @@
         ]
       },
       "HardwareAcceleration": {
-        "current": [
+        "upstream": [
           "### HardwareAcceleration",
           "Control hardware acceleration.",
           "",
@@ -3386,7 +3386,7 @@
         ]
       },
       "Homepage": {
-        "current": [
+        "upstream": [
           "### Homepage",
           "Configure the default homepage and how Firefox starts.",
           "",
@@ -3480,7 +3480,7 @@
         ]
       },
       "InstallAddonsPermission": {
-        "current": [
+        "upstream": [
           "### InstallAddonsPermission",
           "Configure the default extension install policy as well as origins for extension installs are allowed. This policy does not override turning off all extension installs.",
           "",
@@ -3546,7 +3546,7 @@
         ]
       },
       "LegacyProfiles": {
-        "current": [
+        "upstream": [
           "### LegacyProfiles",
           "Disable the feature enforcing a separate profile for each installation.",
           "",
@@ -3576,7 +3576,7 @@
         ]
       },
       "LocalFileLinks": {
-        "current": [
+        "upstream": [
           "### LocalFileLinks",
           "Enable linking to local files by origin.",
           "",
@@ -3621,7 +3621,7 @@
         ]
       },
       "ManagedBookmarks": {
-        "current": [
+        "upstream": [
           "### ManagedBookmarks",
           "Configures a list of bookmarks managed by an administrator that cannot be changed by the user.",
           "",
@@ -3784,7 +3784,7 @@
         ]
       },
       "ManualAppUpdateOnly": {
-        "current": [
+        "upstream": [
           "### ManualAppUpdateOnly",
           "",
           "Switch to manual updates only.",
@@ -3811,7 +3811,7 @@
         ]
       },
       "PrimaryPassword": {
-        "current": [
+        "upstream": [
           "### PrimaryPassword",
           "Require or prevent using a primary (formerly master) password.",
           "",
@@ -3854,7 +3854,7 @@
         ]
       },
       "NetworkPrediction": {
-        "current": [
+        "upstream": [
           "### NetworkPrediction",
           "Enable or disable network prediction (DNS prefetching).",
           "",
@@ -3892,7 +3892,7 @@
         ]
       },
       "NewTabPage": {
-        "current": [
+        "upstream": [
           "### NewTabPage",
           "Enable or disable the New Tab page.",
           "",
@@ -3930,7 +3930,7 @@
         ]
       },
       "NoDefaultBookmarks": {
-        "current": [
+        "upstream": [
           "### NoDefaultBookmarks",
           "Disable the creation of default bookmarks.",
           "",
@@ -3971,7 +3971,7 @@
         ]
       },
       "OfferToSaveLogins": {
-        "current": [
+        "upstream": [
           "### OfferToSaveLogins",
           "Control whether or not Firefox offers to save passwords.",
           "",
@@ -4010,7 +4010,7 @@
         ]
       },
       "OfferToSaveLoginsDefault": {
-        "current": [
+        "upstream": [
           "### OfferToSaveLoginsDefault",
           "Sets the default value of signon.rememberSignons without locking it.",
           "",
@@ -4049,7 +4049,7 @@
         ]
       },
       "OverrideFirstRunPage": {
-        "current": [
+        "upstream": [
           "### OverrideFirstRunPage",
           "Override the first run page. If the value is an empty string (\"\"), the first run page is not displayed.",
           "",
@@ -4091,7 +4091,7 @@
         ]
       },
       "OverridePostUpdatePage": {
-        "current": [
+        "upstream": [
           "### OverridePostUpdatePage",
           "Override the upgrade page. If the value is an empty string (\"\"), no extra pages are displayed when Firefox is upgraded.",
           "",
@@ -4131,7 +4131,7 @@
         ]
       },
       "PasswordManagerEnabled": {
-        "current": [
+        "upstream": [
           "### PasswordManagerEnabled",
           "Remove access to the password manager via preferences and blocks about:logins on Firefox 70.",
           "",
@@ -4170,7 +4170,7 @@
         ]
       },
       "PDFjs": {
-        "current": [
+        "upstream": [
           "### PDFjs",
           "Disable or configure PDF.js, the built-in PDF viewer.",
           "",
@@ -4225,7 +4225,7 @@
         ]
       },
       "Permissions": {
-        "current": [
+        "upstream": [
           "### Permissions",
           "Set permissions associated with camera, microphone, location, notifications, autoplay, and virtual reality. Because these are origins, not domains, entries with unique ports must be specified separately. This explicitly means that it is not possible to add wildcards. See examples below.",
           "",
@@ -4508,7 +4508,7 @@
         ]
       },
       "PictureInPicture": {
-        "current": [
+        "upstream": [
           "### PictureInPicture",
           "",
           "Enable or disable Picture-in-Picture as well as prevent the user from enabling or disabling it (Locked).",
@@ -4559,7 +4559,7 @@
         ]
       },
       "PopupBlocking": {
-        "current": [
+        "upstream": [
           "### PopupBlocking",
           "Configure the default pop-up window policy as well as origins for which pop-up windows are allowed.",
           "",
@@ -4811,7 +4811,7 @@
           "}",
           "```"
         ],
-        "current": [
+        "upstream": [
           "### Preferences",
           "Set and lock preferences.",
           "",
@@ -5144,7 +5144,7 @@
           "}",
           "```"
         ],
-        "current": [
+        "upstream": [
           "### Preferences (Deprecated)",
           "Set and lock certain preferences.",
           "",
@@ -5305,7 +5305,7 @@
         ]
       },
       "PromptForDownloadLocation": {
-        "current": [
+        "upstream": [
           "### PromptForDownloadLocation",
           "Ask where to save each file before downloading.",
           "",
@@ -5344,7 +5344,7 @@
         ]
       },
       "Proxy": {
-        "current": [
+        "upstream": [
           "### Proxy",
           "Configure proxy settings. These settings correspond to the connection settings in Firefox preferences.",
           "To specify ports, append them to the hostnames with a colon (:).",
@@ -5469,7 +5469,7 @@
         ]
       },
       "RequestedLocales": {
-        "current": [
+        "upstream": [
           "### RequestedLocales",
           "Set the the list of requested locales for the application in order of preference. It will cause the corresponding language pack to become active.",
           "",
@@ -5536,7 +5536,7 @@
         ]
       },
       "SanitizeOnShutdown (Selective)": {
-        "current": [
+        "upstream": [
           "### SanitizeOnShutdown (Selective)",
           "Clear data on shutdown. Choose from Cache, Cookies, Download History, Form & Search History, Browsing History, Active Logins, Site Preferences and Offline Website Data.",
           "",
@@ -5677,7 +5677,7 @@
         ]
       },
       "SanitizeOnShutdown (All)": {
-        "current": [
+        "upstream": [
           "### SanitizeOnShutdown (All)",
           "Clear all data on shutdown, including Browsing & Download History, Cookies, Active Logins, Cache, Form & Search History, Site Preferences and Offline Website Data.",
           "",
@@ -5715,7 +5715,7 @@
         ]
       },
       "SearchBar": {
-        "current": [
+        "upstream": [
           "### SearchBar",
           "Set whether or not search bar is displayed.",
           "",
@@ -5758,13 +5758,13 @@
         ]
       },
       "SearchEngines (This policy is only available on the ESR.)": {
-        "current": [
+        "upstream": [
           "### SearchEngines (This policy is only available on the ESR.)",
           ""
         ]
       },
       "SearchEngines_Default": {
-        "current": [
+        "upstream": [
           "### SearchEngines | Default",
           "",
           "Set the default search engine. This policy is only available on the ESR.",
@@ -5810,7 +5810,7 @@
         ]
       },
       "SearchEngines_PreventInstalls": {
-        "current": [
+        "upstream": [
           "### SearchEngines | PreventInstalls",
           "",
           "Prevent installing search engines from webpages.",
@@ -5855,7 +5855,7 @@
         ]
       },
       "SearchEngines_Remove": {
-        "current": [
+        "upstream": [
           "### SearchEngines | Remove",
           "",
           "Hide built-in search engines. This policy is only available on the ESR.",
@@ -5903,7 +5903,7 @@
         ]
       },
       "SearchEngines_Add": {
-        "current": [
+        "upstream": [
           "### SearchEngines | Add",
           "",
           "Add new search engines (up to five). This policy is only available on the ESR. `Name` and `URLTemplate` are required.",
@@ -6011,7 +6011,7 @@
         ]
       },
       "SearchSuggestEnabled": {
-        "current": [
+        "upstream": [
           "### SearchSuggestEnabled",
           "",
           "Enable search suggestions.",
@@ -6051,7 +6051,7 @@
         ]
       },
       "SecurityDevices": {
-        "current": [
+        "upstream": [
           "### SecurityDevices",
           "",
           "Install PKCS #11 modules.",
@@ -6098,7 +6098,7 @@
         ]
       },
       "ShowHomeButton": {
-        "current": [
+        "upstream": [
           "### ShowHomeButton",
           "Show the home button on the toolbar.",
           "",
@@ -6139,7 +6139,7 @@
         ]
       },
       "SSLVersionMax": {
-        "current": [
+        "upstream": [
           "### SSLVersionMax",
           "",
           "Set and lock the maximum version of TLS.",
@@ -6181,7 +6181,7 @@
         ]
       },
       "SSLVersionMin": {
-        "current": [
+        "upstream": [
           "### SSLVersionMin",
           "",
           "Set and lock the minimum version of TLS.",
@@ -6223,7 +6223,7 @@
         ]
       },
       "SupportMenu": {
-        "current": [
+        "upstream": [
           "### SupportMenu",
           "Add a menuitem to the help menu for specifying support information.",
           "",
@@ -6278,7 +6278,7 @@
         ]
       },
       "UserMessaging": {
-        "current": [
+        "upstream": [
           "### UserMessaging",
           "",
           "Prevent Firefox from messaging the user in certain situations.",
@@ -6353,7 +6353,7 @@
         ]
       },
       "WebsiteFilter": {
-        "current": [
+        "upstream": [
           "### WebsiteFilter",
           "Block websites from being visited. The parameters take an array of Match Patterns, as documented in https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Match_patterns.",
           "The arrays are limited to 1000 entries each.",
@@ -6422,7 +6422,7 @@
         ]
       },
       "WindowsSSO": {
-        "current": [
+        "upstream": [
           "### WindowsSSO",
           "Allow Windows single sign-on for Microsoft, work, and school accounts.",
           "",
