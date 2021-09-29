@@ -123,15 +123,16 @@ function cleanUp(lines) {
 // -----------------------------------------------------------------------------
 
 /**
- * Download a certain revision of mozilla policy template.
+ * Clone or pull a github repository.
  * 
+ * @param {string} repo - url to the repository
  * @param {string} ref - branch/tag to checkout, "master" or "v3.0"
  * @param {string} dir - directory to store templates in
  * 
  */
-async function updateMozillaPolicyTemplate(ref, dir) {
-	if (!fs.existsSync(`${dir}/README.md`)) {
-		console.log(`Downloading mozilla-policy-template version ${ref}`);
+async function pullGitRepository(repo, ref, dir) {
+	if (!fs.existsSync(dir)) {
+		console.log(`Cloning ${repo} (${ref})`);
 		fs.ensureDirSync(dir);
 		await git.clone({
 			fs,
@@ -143,8 +144,8 @@ async function updateMozillaPolicyTemplate(ref, dir) {
 			depth: 10,
 			force: true
 		});
-	} else if (ref == "master") {
-		console.log(`Updating mozilla-policy-template version ${ref}`);
+	} else {
+		console.log(`Updating ${repo} (${ref})`);
 		await git.pull({
 			author: { name: "generate_policy_template.js" },
 			fs,
@@ -168,7 +169,7 @@ async function updateMozillaPolicyTemplate(ref, dir) {
 async function parseMozillaPolicyReadme(ref, tree) {
 	// https://github.com/mozilla/policy-templates/releases
 	let dir = `${mozilla_template_dir}/${ref}`;
-	await updateMozillaPolicyTemplate(ref, dir);
+	await pullGitRepository("https://github.com/mozilla/policy-templates/",ref, dir);
 
 	// Load last known version of the headers and policy chunks.
 	let readme = fs.existsSync(readme_json_path)
