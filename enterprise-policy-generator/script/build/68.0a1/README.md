@@ -26,7 +26,7 @@ Policies can be specified using the [Group Policy templates on Windows](windows)
 | **[`SSLVersionMax`](#sslversionmax)** | Set and lock the maximum version of TLS.
 | **[`SSLVersionMin`](#sslversionmin)** | Set and lock the minimum version of TLS.
 
-### AppUpdateURL
+## AppUpdateURL
 
 Change the URL for application update.
 
@@ -68,7 +68,7 @@ Value (string):
 | --- | --- |
 | AppUpdateURL | {"esr68":"68.0a1"} |
 
-### BlockAboutAddons
+## BlockAboutAddons
 
 Block access to the Add-ons Manager (about:addons).
 
@@ -109,7 +109,7 @@ Value (string):
 | --- | --- |
 | BlockAboutAddons | {"esr68":"68.0a1"} |
 
-### BlockAboutConfig
+## BlockAboutConfig
 
 Block access to about:config.
 
@@ -150,7 +150,7 @@ Value (string):
 | --- | --- |
 | BlockAboutConfig | {"esr68":"68.0a1"} |
 
-### BlockAboutProfiles
+## BlockAboutProfiles
 
 Block access to About Profiles (about:profiles).
 
@@ -191,7 +191,7 @@ Value (string):
 | --- | --- |
 | BlockAboutProfiles | {"esr68":"68.0a1"} |
 
-### BlockAboutSupport
+## BlockAboutSupport
 
 Block access to Troubleshooting Information (about:support).
 
@@ -232,7 +232,7 @@ Value (string):
 | --- | --- |
 | BlockAboutSupport | {"esr68":"68.0a1"} |
 
-### Certificates
+## Certificates
 
 #### Compatibility
 
@@ -240,7 +240,7 @@ Value (string):
 | --- | --- |
 | Certificates<br>Certificates_ImportEnterpriseRoots<br>Certificates_Install | {"esr68":"68.0a1"} |
 
-### Certificates | ImportEnterpriseRoots
+## Certificates | ImportEnterpriseRoots
 
 Trust certificates that have been added to the operating system certificate store by a user or administrator.
 
@@ -288,7 +288,7 @@ Value (string):
 | --- | --- |
 | Certificates_ImportEnterpriseRoots | {"esr68":"68.0a1"} |
 
-### Certificates | Install
+## Certificates | Install
 
 Install certificates into the Thunderbird certificate store. If only a filename is specified, Thunderbird searches for the file in the following locations:
 
@@ -358,7 +358,7 @@ Value (string):
 | --- | --- |
 | Certificates_Install | {"esr68":"68.0a1"} |
 
-### DisableAppUpdate
+## DisableAppUpdate
 Turn off application updates.
 
 **CCK2 Equivalent:** `disableFirefoxUpdates`\
@@ -398,7 +398,7 @@ Value (string):
 | --- | --- |
 | DisableAppUpdate | {"esr68":"68.0a1"} |
 
-### DisableDeveloperTools
+## DisableDeveloperTools
 Remove access to all developer tools.
 
 **CCK2 Equivalent:** `removeDeveloperTools`\
@@ -438,7 +438,7 @@ Value (string):
 | --- | --- |
 | DisableDeveloperTools | {"esr68":"68.0a1"} |
 
-### DisableMasterPasswordCreation
+## DisableMasterPasswordCreation
 Remove the master password functionality.
 
 **CCK2 Equivalent:** `noMasterPassword`\
@@ -478,7 +478,7 @@ Value (string):
 | --- | --- |
 | DisableMasterPasswordCreation | {"esr68":"68.0a1"} |
 
-### DisableSecurityBypass
+## DisableSecurityBypass
 Prevent the user from bypassing security in certain cases.
 
 `InvalidCertificate` prevents adding an exception when an invalid certificate is shown.
@@ -540,7 +540,7 @@ Value (string):
 | --- | --- |
 | DisableSecurityBypass<br>DisableSecurityBypass_InvalidCertificate<br>DisableSecurityBypass_SafeBrowsing | {"esr68":"68.0a1"} |
 
-### Extensions
+## Extensions
 Control the installation, uninstallation and locking of extensions.
 
 `Install` is a list of URLs or native paths for extensions to be installed. 
@@ -598,7 +598,7 @@ Software\Policies\Mozilla\Thunderbird\Extensions\Locked\1 = "addon_id@mozilla.or
 | --- | --- |
 | Extensions<br>Extensions_Install<br>Extensions_Uninstall<br>Extensions_Locked | {"esr68":"68.0a1"} |
 
-### ExtensionSettings
+## ExtensionSettings
 Manage all aspects of extensions. This policy is based heavily on the [Chrome policy](https://dev.chromium.org/administrators/policy-list-3/extension-settings-full) of the same name.
 
 This policy maps an extension ID to its configuration. With an extension ID, the configuration will be applied to the specified extension only. A default configuration can be set for the special ID "*", which will apply to all extensions that don't have a custom configuration set in this policy.
@@ -713,7 +713,7 @@ Value (string):
 | --- | --- |
 | ExtensionSettings | {"esr68":"68.0a1"} |
 
-### ExtensionUpdate
+## ExtensionUpdate
 Control extension updates.
 
 **CCK2 Equivalent:** N/A\
@@ -753,7 +753,7 @@ Value (string):
 | --- | --- |
 | ExtensionUpdate | {"esr68":"68.0a1"} |
 
-### InstallAddonsPermission
+## InstallAddonsPermission
 Configure the default extension install policy as well as origins for extension installs are allowed. This policy does not override turning off all extension installs.
 
 `Allow` is a list of origins where extension installs are allowed.
@@ -820,7 +820,7 @@ Value (string):
 | --- | --- |
 | InstallAddonsPermission<br>InstallAddonsPermission_Allow<br>InstallAddonsPermission_Default | {"esr68":"68.0a1"} |
 
-### Preferences
+## Preferences
 Set and lock certain preferences.
 
 **CCK2 Equivalent:** `preferences`\
@@ -970,7 +970,7 @@ Value (string):
 | --- | --- |
 | Preferences<br>Preferences_network.IDN_show_punycode<br>Preferences_browser.fixup.dns_first_for_single_words<br>Preferences_browser.cache.disk.parent_directory<br>Preferences_browser.urlbar.suggest.openpage<br>Preferences_browser.urlbar.suggest.history<br>Preferences_browser.urlbar.suggest.bookmark | {"esr68":"68.0a1"} |
 
-### Proxy
+## Proxy
 Configure proxy settings. These settings correspond to the connection settings in Thunderbird preferences.
 To specify ports, append them to the hostnames with a colon (:).
 
@@ -1096,7 +1096,7 @@ Value (string):
 | --- | --- |
 | Proxy<br>Proxy_Mode<br>Proxy_Locked<br>Proxy_AutoConfigURL<br>Proxy_FTPProxy<br>Proxy_HTTPProxy<br>Proxy_SSLProxy<br>Proxy_SOCKSProxy<br>Proxy_SOCKSVersion<br>Proxy_UseHTTPProxyForAllProtocols<br>Proxy_Passthrough<br>Proxy_UseProxyForDNS<br>Proxy_AutoLogin | {"esr68":"68.0a1"} |
 
-### RequestedLocales
+## RequestedLocales
 Set the the list of requested locales for the application in order of preference. It will cause the corresponding language pack to become active.
 
 Note: For Thunderbird 68, this can now be a string so that you can specify an empty value.
@@ -1164,7 +1164,7 @@ or
 | --- | --- |
 | RequestedLocales | {"esr68":"68.0a1"} |
 
-### SSLVersionMax
+## SSLVersionMax
 
 Set and lock the maximum version of TLS.
 
@@ -1207,7 +1207,7 @@ Value (string):
 | --- | --- |
 | SSLVersionMax | {"esr68":"68.0a1"} |
 
-### SSLVersionMin
+## SSLVersionMin
 
 Set and lock the minimum version of TLS.
 

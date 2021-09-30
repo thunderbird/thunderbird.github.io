@@ -41,7 +41,7 @@ Policies can be specified using the [Group Policy templates on Windows](windows)
 | **[`SSLVersionMax`](#sslversionmax)** | Set and lock the maximum version of TLS.
 | **[`SSLVersionMin`](#sslversionmin)** | Set and lock the minimum version of TLS.
 
-### 3rdparty
+## 3rdparty
 
 Allow WebExtensions to configure policy. For more information, see [Adding policy support to your extension](https://extensionworkshop.com/documentation/enterprise/adding-policy-support-to-your-extension/).
 
@@ -51,7 +51,7 @@ Allow WebExtensions to configure policy. For more information, see [Adding polic
 | --- | --- |
 | 3rdparty<br>3rdparty_Extensions | {"esr78":"78.0a1"} |
 
-### AppAutoUpdate
+## AppAutoUpdate
 
 Enable or disable **automatic** application update.
 
@@ -98,7 +98,7 @@ Value (string):
 | --- | --- |
 | AppAutoUpdate | {"esr78":"75.0a1"} |
 
-### AppUpdateURL
+## AppUpdateURL
 
 Change the URL for application update if you are providing Thunderbird updates from a custom update server.
 
@@ -140,7 +140,7 @@ Value (string):
 | --- | --- |
 | AppUpdateURL | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### Authentication
+## Authentication
 
 Configure sites that support integrated authentication.
 
@@ -289,7 +289,7 @@ Value (string):
 | --- | --- |
 | Authentication<br>Authentication_SPNEGO<br>Authentication_Delegated<br>Authentication_NTLM<br>Authentication_AllowNonFQDN<br>Authentication_AllowNonFQDN_SPNEGO<br>Authentication_AllowNonFQDN_NTLM<br>Authentication_AllowProxies<br>Authentication_AllowProxies_SPNEGO<br>Authentication_AllowProxies_NTLM<br>Authentication_Locked<br>Authentication_PrivateBrowsing | {"esr78":"78.0a1"} |
 
-### BlockAboutAddons
+## BlockAboutAddons
 
 Block access to the Add-ons Manager (about:addons).
 
@@ -330,7 +330,7 @@ Value (string):
 | --- | --- |
 | BlockAboutAddons | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### BlockAboutConfig
+## BlockAboutConfig
 
 Block access to about:config.
 
@@ -371,7 +371,7 @@ Value (string):
 | --- | --- |
 | BlockAboutConfig | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### BlockAboutProfiles
+## BlockAboutProfiles
 
 Block access to About Profiles (about:profiles).
 
@@ -412,7 +412,7 @@ Value (string):
 | --- | --- |
 | BlockAboutProfiles | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### BlockAboutSupport
+## BlockAboutSupport
 
 Block access to Troubleshooting Information (about:support).
 
@@ -453,7 +453,7 @@ Value (string):
 | --- | --- |
 | BlockAboutSupport | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### CaptivePortal
+## CaptivePortal
 Enable or disable the detection of captive portals.
 
 **CCK2 Equivalent:** N/A\
@@ -493,7 +493,7 @@ Value (string):
 | --- | --- |
 | CaptivePortal | {"esr78":"78.0a1"} |
 
-### Certificates
+## Certificates
 
 #### Compatibility
 
@@ -501,7 +501,7 @@ Value (string):
 | --- | --- |
 | Certificates<br>Certificates_ImportEnterpriseRoots<br>Certificates_Install | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### Certificates | ImportEnterpriseRoots
+## Certificates | ImportEnterpriseRoots
 
 Trust certificates that have been added to the operating system certificate store by a user or administrator.
 
@@ -551,7 +551,7 @@ Value (string):
 | --- | --- |
 | Certificates_ImportEnterpriseRoots | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### Certificates | Install
+## Certificates | Install
 
 Install certificates into the Thunderbird certificate store. If only a filename is specified, Thunderbird searches for the file in the following locations:
 
@@ -621,7 +621,7 @@ Value (string):
 | --- | --- |
 | Certificates_Install | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### Cookies
+## Cookies
 Configure cookie preferences.
 
 `Allow` is a list of origins (not domains) where cookies are always allowed. You must include http or https.
@@ -776,7 +776,7 @@ Value (string):
 | --- | --- |
 | Cookies<br>Cookies_Allow<br>Cookies_Block<br>Cookies_Default<br>Cookies_AcceptThirdParty<br>Cookies_ExpireAtSessionEnd<br>Cookies_Locked | {"esr78":"78.0a1"} |
 
-### DefaultDownloadDirectory
+## DefaultDownloadDirectory
 Set the default download directory.
 
 You can use ${home} for the native home directory.
@@ -825,7 +825,7 @@ Value (string):
 | --- | --- |
 | DefaultDownloadDirectory | {"esr78":"78.0a1"} |
 
-### DisableAppUpdate
+## DisableAppUpdate
 Turn off application updates within Thunderbird.
 
 **CCK2 Equivalent:** `disableFirefoxUpdates`\
@@ -865,7 +865,7 @@ Value (string):
 | --- | --- |
 | DisableAppUpdate | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### DisabledCiphers
+## DisabledCiphers
 Disable specific cryptographic ciphers.
 
 **Preferences Affected:** `security.ssl3.dhe_rsa_aes_128_sha`, `security.ssl3.dhe_rsa_aes_256_sha`, `security.ssl3.ecdhe_ecdsa_aes_128_gcm_sha256`, `security.ssl3.ecdhe_rsa_aes_128_gcm_sha256`, `security.ssl3.ecdhe_rsa_aes_128_sha`, `security.ssl3.ecdhe_rsa_aes_256_sha`, `security.ssl3.rsa_aes_128_gcm_sha256`, `security.ssl3.rsa_aes_128_sha`, `security.ssl3.rsa_aes_256_gcm_sha384`, `security.ssl3.rsa_aes_256_sha`, `security.ssl3.rsa_des_ede3_sha`
@@ -968,7 +968,7 @@ Value (string):
 | --- | --- |
 | DisabledCiphers<br>DisabledCiphers_TLS_DHE_RSA_WITH_AES_128_CBC_SHA<br>DisabledCiphers_TLS_DHE_RSA_WITH_AES_256_CBC_SHA<br>DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>DisabledCiphers_TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>DisabledCiphers_TLS_RSA_WITH_AES_128_CBC_SHA<br>DisabledCiphers_TLS_RSA_WITH_AES_256_CBC_SHA<br>DisabledCiphers_TLS_RSA_WITH_3DES_EDE_CBC_SHA | {"esr78":"76.0a1"} |
 
-### DisableDeveloperTools
+## DisableDeveloperTools
 Remove access to all developer tools.
 
 **CCK2 Equivalent:** `removeDeveloperTools`\
@@ -1008,7 +1008,7 @@ Value (string):
 | --- | --- |
 | DisableDeveloperTools | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### DisableMasterPasswordCreation
+## DisableMasterPasswordCreation
 Remove the master password functionality.
 
 If this value is true, it works the same as setting [`PrimaryPassword`](#primarypassword) to false and removes the primary password functionality.
@@ -1052,7 +1052,7 @@ Value (string):
 | --- | --- |
 | DisableMasterPasswordCreation | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### DisablePasswordReveal
+## DisablePasswordReveal
 Do not allow passwords to be shown in saved logins
 
 **CCK2 Equivalent:** N/A
@@ -1092,7 +1092,7 @@ Value (string):
 | --- | --- |
 | DisablePasswordReveal | {"esr78":"78.0a1"} |
 
-### DisableSafeMode
+## DisableSafeMode
 Disable safe mode within the browser.
 
 On Windows, this disables safe mode via the command line as well.
@@ -1134,7 +1134,7 @@ Value (string):
 | --- | --- |
 | DisableSafeMode | {"esr78":"78.0a1"} |
 
-### DisableSecurityBypass
+## DisableSecurityBypass
 Prevent the user from bypassing security in certain cases.
 
 `InvalidCertificate` prevents adding an exception when an invalid certificate is shown.
@@ -1196,7 +1196,7 @@ Value (string):
 | --- | --- |
 | DisableSecurityBypass<br>DisableSecurityBypass_InvalidCertificate<br>DisableSecurityBypass_SafeBrowsing | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### DisableSystemAddonUpdate
+## DisableSystemAddonUpdate
 Prevent system add-ons from being installed or update.
 
 **CCK2 Equivalent:** N/A\
@@ -1236,7 +1236,7 @@ Value (string):
 | --- | --- |
 | DisableSystemAddonUpdate | {"esr78":"77.0a1"} |
 
-### DisableTelemetry
+## DisableTelemetry
 Prevent the upload of telemetry data.
 
 As of Thunderbird 83 and Thunderbird ESR 78.5, local storage of telemetry data is disabled as well.
@@ -1280,7 +1280,7 @@ Value (string):
 | --- | --- |
 | DisableTelemetry | {"esr78":"78.0a1"} |
 
-### DownloadDirectory
+## DownloadDirectory
 Set and lock the download directory.
 
 You can use ${home} for the native home directory.
@@ -1329,7 +1329,7 @@ Value (string):
 | --- | --- |
 | DownloadDirectory | {"esr78":"78.0a1"} |
 
-### Extensions
+## Extensions
 Control the installation, uninstallation and locking of extensions.
 
 While this policy is not technically deprecated, it is recommended that you use the **[`ExtensionSettings`](#extensionsettings)** policy. It has the same functionality and adds more. It does not support native paths, though, so you'll have to use file:/// URLs.
@@ -1417,7 +1417,7 @@ Value (string):
 | --- | --- |
 | Extensions<br>Extensions_Install<br>Extensions_Uninstall<br>Extensions_Locked | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### ExtensionSettings
+## ExtensionSettings
 Manage all aspects of extensions. This policy is based heavily on the [Chrome policy](https://dev.chromium.org/administrators/policy-list-3/extension-settings-full) of the same name.
 
 This policy maps an extension ID to its configuration. With an extension ID, the configuration will be applied to the specified extension only. A default configuration can be set for the special ID "*", which will apply to all extensions that don't have a custom configuration set in this policy.
@@ -1552,7 +1552,7 @@ Value (string):
 | ExtensionSettings | {"esr68":"68.0a1","esr78":"68.0a1"} |
 | ExtensionSettings_*<br>ExtensionSettings_*_installation_mode<br>ExtensionSettings_*_allowed_types<br>ExtensionSettings_*_blocked_install_message<br>ExtensionSettings_*_install_sources<br>ExtensionSettings_*_restricted_domains | {"esr78":"78.10.3"} |
 
-### ExtensionUpdate
+## ExtensionUpdate
 Control extension updates.
 
 **CCK2 Equivalent:** N/A\
@@ -1592,7 +1592,7 @@ Value (string):
 | --- | --- |
 | ExtensionUpdate | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### HardwareAcceleration
+## HardwareAcceleration
 Control hardware acceleration.
 
 **CCK2 Equivalent:** N/A\
@@ -1632,7 +1632,7 @@ Value (string):
 | --- | --- |
 | HardwareAcceleration | {"esr78":"78.0a1"} |
 
-### InstallAddonsPermission
+## InstallAddonsPermission
 Configure the default extension install policy as well as origins for extension installs are allowed. This policy does not override turning off all extension installs.
 
 `Allow` is a list of origins where extension installs are allowed.
@@ -1699,7 +1699,7 @@ Value (string):
 | --- | --- |
 | InstallAddonsPermission<br>InstallAddonsPermission_Allow<br>InstallAddonsPermission_Default | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### PasswordManagerEnabled
+## PasswordManagerEnabled
 Remove access to the password manager via preferences and blocks about:logins on Thunderbird 70.
 
 **CCK2 Equivalent:** N/A\
@@ -1895,7 +1895,7 @@ Value (string):
   }
 }
 ```
-### PromptForDownloadLocation
+## PromptForDownloadLocation
 Ask where to save each file before downloading.
 
 **CCK2 Equivalent:** N/A\
@@ -1935,7 +1935,7 @@ Value (string):
 | --- | --- |
 | PromptForDownloadLocation | {"esr78":"78.0a1"} |
 
-### Proxy
+## Proxy
 Configure proxy settings. These settings correspond to the connection settings in Thunderbird preferences.
 To specify ports, append them to the hostnames with a colon (:).
 
@@ -2061,7 +2061,7 @@ Value (string):
 | --- | --- |
 | Proxy<br>Proxy_Mode<br>Proxy_Locked<br>Proxy_AutoConfigURL<br>Proxy_FTPProxy<br>Proxy_HTTPProxy<br>Proxy_SSLProxy<br>Proxy_SOCKSProxy<br>Proxy_SOCKSVersion<br>Proxy_UseHTTPProxyForAllProtocols<br>Proxy_Passthrough<br>Proxy_UseProxyForDNS<br>Proxy_AutoLogin | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### RequestedLocales
+## RequestedLocales
 Set the the list of requested locales for the application in order of preference. It will cause the corresponding language pack to become active.
 
 Note: For Thunderbird 68, this can now be a string so that you can specify an empty value.
@@ -2129,7 +2129,7 @@ or
 | --- | --- |
 | RequestedLocales | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### SSLVersionMax
+## SSLVersionMax
 
 Set and lock the maximum version of TLS.
 
@@ -2172,7 +2172,7 @@ Value (string):
 | --- | --- |
 | SSLVersionMax | {"esr68":"68.0a1","esr78":"68.0a1"} |
 
-### SSLVersionMin
+## SSLVersionMin
 
 Set and lock the minimum version of TLS.
 
