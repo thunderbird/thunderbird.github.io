@@ -60,7 +60,7 @@ Allow WebExtensions to configure policy. For more information, see [Adding polic
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `3rdparty`<br>`3rdparty_Extensions` | Thunderbird 78.0 |
+| <pre>3rdparty</pre><br><pre>3rdparty_Extensions</pre><br><pre>3rdparty_Extensions_^.*$</pre> | Thunderbird 78.0 |
 
 <br>
 
@@ -109,7 +109,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `AppAutoUpdate` | Thunderbird 75.0 |
+| <pre>AppAutoUpdate</pre> | Thunderbird 75.0 |
 
 <br>
 
@@ -153,7 +153,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `AppUpdateURL` | Thunderbird 68.0 |
+| <pre>AppUpdateURL</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -304,7 +304,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `Authentication`<br>`Authentication_SPNEGO`<br>`Authentication_Delegated`<br>`Authentication_NTLM`<br>`Authentication_AllowNonFQDN`<br>`Authentication_AllowNonFQDN_SPNEGO`<br>`Authentication_AllowNonFQDN_NTLM`<br>`Authentication_AllowProxies`<br>`Authentication_AllowProxies_SPNEGO`<br>`Authentication_AllowProxies_NTLM`<br>`Authentication_Locked`<br>`Authentication_PrivateBrowsing` | Thunderbird 78.0 |
+| <pre>Authentication</pre><br><pre>Authentication_SPNEGO</pre><br><pre>Authentication_Delegated</pre><br><pre>Authentication_NTLM</pre><br><pre>Authentication_AllowNonFQDN</pre><br><pre>Authentication_AllowNonFQDN_SPNEGO</pre><br><pre>Authentication_AllowNonFQDN_NTLM</pre><br><pre>Authentication_AllowProxies</pre><br><pre>Authentication_AllowProxies_SPNEGO</pre><br><pre>Authentication_AllowProxies_NTLM</pre><br><pre>Authentication_Locked</pre><br><pre>Authentication_PrivateBrowsing</pre> | Thunderbird 78.0 |
 
 <br>
 
@@ -353,7 +353,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `BackgroundAppUpdate` | Thunderbird 91.0 |
+| <pre>BackgroundAppUpdate</pre> | Thunderbird 91.0 |
 
 <br>
 
@@ -396,7 +396,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `BlockAboutAddons` | Thunderbird 68.0 |
+| <pre>BlockAboutAddons</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -439,7 +439,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `BlockAboutConfig` | Thunderbird 68.0 |
+| <pre>BlockAboutConfig</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -482,7 +482,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `BlockAboutProfiles` | Thunderbird 68.0 |
+| <pre>BlockAboutProfiles</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -525,7 +525,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `BlockAboutSupport` | Thunderbird 68.0 |
+| <pre>BlockAboutSupport</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -567,7 +567,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `CaptivePortal` | Thunderbird 78.0 |
+| <pre>CaptivePortal</pre> | Thunderbird 78.0 |
 
 <br>
 
@@ -577,7 +577,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `Certificates`<br>`Certificates_ImportEnterpriseRoots`<br>`Certificates_Install` | Thunderbird 68.0 |
+| <pre>Certificates</pre><br><pre>Certificates_ImportEnterpriseRoots</pre><br><pre>Certificates_Install</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -629,7 +629,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `Certificates_ImportEnterpriseRoots` | Thunderbird 68.0 |
+| <pre>Certificates_ImportEnterpriseRoots</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -701,7 +701,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `Certificates_Install` | Thunderbird 68.0 |
+| <pre>Certificates_Install</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -858,7 +858,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `Cookies`<br>`Cookies_Allow`<br>`Cookies_Block`<br>`Cookies_Default`<br>`Cookies_AcceptThirdParty`<br>`Cookies_ExpireAtSessionEnd`<br>`Cookies_Locked` | Thunderbird 78.0 |
+| <pre>Cookies</pre><br><pre>Cookies_Allow</pre><br><pre>Cookies_Block</pre><br><pre>Cookies_Default</pre><br><pre>Cookies_AcceptThirdParty</pre><br><pre>Cookies_ExpireAtSessionEnd</pre><br><pre>Cookies_Locked</pre> | Thunderbird 78.0 |
 
 <br>
 
@@ -909,7 +909,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `DefaultDownloadDirectory` | Thunderbird 78.0 |
+| <pre>DefaultDownloadDirectory</pre> | Thunderbird 78.0 |
 
 <br>
 
@@ -951,7 +951,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `DisableAppUpdate` | Thunderbird 68.0 |
+| <pre>DisableAppUpdate</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -993,7 +993,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `DisableBuiltinPDFViewer` | Thunderbird 91.0 |
+| <pre>DisableBuiltinPDFViewer</pre> | Thunderbird 91.0 |
 
 <br>
 
@@ -1098,8 +1098,8 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `DisabledCiphers`<br>`DisabledCiphers_TLS_DHE_RSA_WITH_AES_128_CBC_SHA`<br>`DisabledCiphers_TLS_DHE_RSA_WITH_AES_256_CBC_SHA`<br>`DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA`<br>`DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA`<br>`DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`<br>`DisabledCiphers_TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`<br>`DisabledCiphers_TLS_RSA_WITH_AES_128_CBC_SHA`<br>`DisabledCiphers_TLS_RSA_WITH_AES_256_CBC_SHA`<br>`DisabledCiphers_TLS_RSA_WITH_3DES_EDE_CBC_SHA` | Thunderbird 76.0 |
-| `DisabledCiphers_TLS_RSA_WITH_AES_128_GCM_SHA256`<br>`DisabledCiphers_TLS_RSA_WITH_AES_256_GCM_SHA384` | Thunderbird 91.0 |
+| <pre>DisabledCiphers</pre><br><pre>DisabledCiphers_TLS_DHE_RSA_WITH_AES_128_CBC_SHA</pre><br><pre>DisabledCiphers_TLS_DHE_RSA_WITH_AES_256_CBC_SHA</pre><br><pre>DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</pre><br><pre>DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA</pre><br><pre>DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256</pre><br><pre>DisabledCiphers_TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256</pre><br><pre>DisabledCiphers_TLS_RSA_WITH_AES_128_CBC_SHA</pre><br><pre>DisabledCiphers_TLS_RSA_WITH_AES_256_CBC_SHA</pre><br><pre>DisabledCiphers_TLS_RSA_WITH_3DES_EDE_CBC_SHA</pre> | Thunderbird 76.0 |
+| <pre>DisabledCiphers_TLS_RSA_WITH_AES_128_GCM_SHA256</pre><br><pre>DisabledCiphers_TLS_RSA_WITH_AES_256_GCM_SHA384</pre> | Thunderbird 91.0 |
 
 <br>
 
@@ -1141,7 +1141,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `DisableDeveloperTools` | Thunderbird 68.0 |
+| <pre>DisableDeveloperTools</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -1187,7 +1187,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `DisableMasterPasswordCreation` | Thunderbird 68.0 |
+| <pre>DisableMasterPasswordCreation</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -1229,7 +1229,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `DisablePasswordReveal` | Thunderbird 78.0 |
+| <pre>DisablePasswordReveal</pre> | Thunderbird 78.0 |
 
 <br>
 
@@ -1273,7 +1273,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `DisableSafeMode` | Thunderbird 78.0 |
+| <pre>DisableSafeMode</pre> | Thunderbird 78.0 |
 
 <br>
 
@@ -1337,7 +1337,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `DisableSecurityBypass`<br>`DisableSecurityBypass_InvalidCertificate`<br>`DisableSecurityBypass_SafeBrowsing` | Thunderbird 68.0 |
+| <pre>DisableSecurityBypass</pre><br><pre>DisableSecurityBypass_InvalidCertificate</pre><br><pre>DisableSecurityBypass_SafeBrowsing</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -1379,7 +1379,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `DisableSystemAddonUpdate` | Thunderbird 77.0 |
+| <pre>DisableSystemAddonUpdate</pre> | Thunderbird 77.0 |
 
 <br>
 
@@ -1425,7 +1425,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `DisableTelemetry` | Thunderbird 78.0 |
+| <pre>DisableTelemetry</pre> | Thunderbird 78.0 |
 
 <br>
 
@@ -1520,7 +1520,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `DNSOverHTTPS`<br>`DNSOverHTTPS_Enabled`<br>`DNSOverHTTPS_ProviderURL`<br>`DNSOverHTTPS_ExcludedDomains`<br>`DNSOverHTTPS_Locked` | Thunderbird 91.0 |
+| <pre>DNSOverHTTPS</pre><br><pre>DNSOverHTTPS_Enabled</pre><br><pre>DNSOverHTTPS_ProviderURL</pre><br><pre>DNSOverHTTPS_ExcludedDomains</pre><br><pre>DNSOverHTTPS_Locked</pre> | Thunderbird 91.0 |
 
 <br>
 
@@ -1571,7 +1571,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `DownloadDirectory` | Thunderbird 78.0 |
+| <pre>DownloadDirectory</pre> | Thunderbird 78.0 |
 
 <br>
 
@@ -1661,7 +1661,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `Extensions`<br>`Extensions_Install`<br>`Extensions_Uninstall`<br>`Extensions_Locked` | Thunderbird 68.0 |
+| <pre>Extensions</pre><br><pre>Extensions_Install</pre><br><pre>Extensions_Uninstall</pre><br><pre>Extensions_Locked</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -1797,8 +1797,9 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `ExtensionSettings` | Thunderbird 68.0 |
-| `ExtensionSettings_*`<br>`ExtensionSettings_*_installation_mode`<br>`ExtensionSettings_*_allowed_types`<br>`ExtensionSettings_*_blocked_install_message`<br>`ExtensionSettings_*_install_sources`<br>`ExtensionSettings_*_restricted_domains` | Thunderbird 89.0, Thunderbird 78.10.3 |
+| <pre>ExtensionSettings</pre><br><pre>ExtensionSettings_^.*$</pre><br><pre>ExtensionSettings_^.*$_blocked_install_message</pre> | Thunderbird 68.0 |
+| <pre>ExtensionSettings_*</pre><br><pre>ExtensionSettings_*_installation_mode</pre><br><pre>ExtensionSettings_*_allowed_types</pre><br><pre>ExtensionSettings_*_blocked_install_message</pre><br><pre>ExtensionSettings_*_install_sources</pre><br><pre>ExtensionSettings_*_restricted_domains</pre><br><pre>ExtensionSettings_^.*$_installation_mode</pre><br><pre>ExtensionSettings_^.*$_install_url</pre> | Thunderbird 89.0, Thunderbird 78.10.3 |
+| <pre>ExtensionSettings_^.*$_updates_disabled</pre> | Thunderbird 91.0, Thunderbird 78.10.3 |
 
 <br>
 
@@ -1840,7 +1841,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `ExtensionUpdate` | Thunderbird 68.0 |
+| <pre>ExtensionUpdate</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -2029,7 +2030,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `Handlers` | Thunderbird 91.0 |
+| <pre>Handlers</pre><br><pre>Handlers_^(mimeTypes|extensions|schemes)$</pre><br><pre>Handlers_^(mimeTypes|extensions|schemes)$_^.*$</pre><br><pre>Handlers_^(mimeTypes|extensions|schemes)$_^.*$_action</pre><br><pre>Handlers_^(mimeTypes|extensions|schemes)$_^.*$_ask</pre><br><pre>Handlers_^(mimeTypes|extensions|schemes)$_^.*$_handlers</pre> | Thunderbird 91.0 |
 
 <br>
 
@@ -2071,7 +2072,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `HardwareAcceleration` | Thunderbird 78.0 |
+| <pre>HardwareAcceleration</pre> | Thunderbird 78.0 |
 
 <br>
 
@@ -2140,7 +2141,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `InstallAddonsPermission`<br>`InstallAddonsPermission_Allow`<br>`InstallAddonsPermission_Default` | Thunderbird 68.0 |
+| <pre>InstallAddonsPermission</pre><br><pre>InstallAddonsPermission_Allow</pre><br><pre>InstallAddonsPermission_Default</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -2170,7 +2171,7 @@ This policy is primarily intended for advanced end users, not for enterprises.
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `ManualAppUpdateOnly` | Thunderbird 91.0 |
+| <pre>ManualAppUpdateOnly</pre> | Thunderbird 91.0 |
 
 <br>
 
@@ -2211,7 +2212,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `NetworkPrediction` | Thunderbird 91.0 |
+| <pre>NetworkPrediction</pre> | Thunderbird 91.0 |
 
 <br>
 
@@ -2253,7 +2254,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `OfferToSaveLogins` | Thunderbird 91.0 |
+| <pre>OfferToSaveLogins</pre> | Thunderbird 91.0 |
 
 <br>
 
@@ -2295,7 +2296,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `OfferToSaveLoginsDefault` | Thunderbird 91.0 |
+| <pre>OfferToSaveLoginsDefault</pre> | Thunderbird 91.0 |
 
 <br>
 
@@ -2337,7 +2338,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `PasswordManagerEnabled` | Thunderbird 78.0 |
+| <pre>PasswordManagerEnabled</pre> | Thunderbird 78.0 |
 
 <br>
 
@@ -2395,7 +2396,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `PDFjs`<br>`PDFjs_Enabled`<br>`PDFjs_EnablePermissions` | Thunderbird 91.0 |
+| <pre>PDFjs</pre><br><pre>PDFjs_Enabled</pre><br><pre>PDFjs_EnablePermissions</pre> | Thunderbird 91.0 |
 
 <br>
 
@@ -2572,8 +2573,9 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `Preferences`<br>`Preferences_network.IDN_show_punycode`<br>`Preferences_browser.fixup.dns_first_for_single_words`<br>`Preferences_browser.cache.disk.parent_directory`<br>`Preferences_browser.urlbar.suggest.openpage`<br>`Preferences_browser.urlbar.suggest.history`<br>`Preferences_browser.urlbar.suggest.bookmark` | Thunderbird 68.0 |
-| `Preferences_accessibility.force_disabled`<br>`Preferences_browser.cache.disk.enable`<br>`Preferences_browser.safebrowsing.phishing.enabled`<br>`Preferences_browser.safebrowsing.malware.enabled`<br>`Preferences_browser.search.update`<br>`Preferences_datareporting.policy.dataSubmissionPolicyBypassNotification`<br>`Preferences_dom.allow_scripts_to_close_windows`<br>`Preferences_dom.disable_window_flip`<br>`Preferences_dom.disable_window_move_resize`<br>`Preferences_dom.event.contextmenu.enabled`<br>`Preferences_dom.keyboardevent.keypress.hack.dispatch_non_printable_keys.addl`<br>`Preferences_dom.keyboardevent.keypress.hack.use_legacy_keycode_and_charcode.addl`<br>`Preferences_extensions.blocklist.enabled`<br>`Preferences_geo.enabled`<br>`Preferences_intl.accept_languages`<br>`Preferences_network.dns.disableIPv6`<br>`Preferences_places.history.enabled`<br>`Preferences_print.save_print_settings`<br>`Preferences_security.default_personal_cert`<br>`Preferences_security.mixed_content.block_active_content`<br>`Preferences_security.osclientcerts.autoload`<br>`Preferences_security.ssl.errorReporting.enabled`<br>`Preferences_security.tls.hello_downgrade_check`<br>`Preferences_widget.content.gtk-theme-override` | Thunderbird 78.0 |
+| <pre>Preferences</pre><br><pre>Preferences_network.IDN_show_punycode</pre><br><pre>Preferences_browser.fixup.dns_first_for_single_words</pre><br><pre>Preferences_browser.cache.disk.parent_directory</pre><br><pre>Preferences_browser.urlbar.suggest.openpage</pre><br><pre>Preferences_browser.urlbar.suggest.history</pre><br><pre>Preferences_browser.urlbar.suggest.bookmark</pre> | Thunderbird 68.0 |
+| <pre>Preferences_accessibility.force_disabled</pre><br><pre>Preferences_browser.cache.disk.enable</pre><br><pre>Preferences_browser.safebrowsing.phishing.enabled</pre><br><pre>Preferences_browser.safebrowsing.malware.enabled</pre><br><pre>Preferences_browser.search.update</pre><br><pre>Preferences_datareporting.policy.dataSubmissionPolicyBypassNotification</pre><br><pre>Preferences_dom.allow_scripts_to_close_windows</pre><br><pre>Preferences_dom.disable_window_flip</pre><br><pre>Preferences_dom.disable_window_move_resize</pre><br><pre>Preferences_dom.event.contextmenu.enabled</pre><br><pre>Preferences_dom.keyboardevent.keypress.hack.dispatch_non_printable_keys.addl</pre><br><pre>Preferences_dom.keyboardevent.keypress.hack.use_legacy_keycode_and_charcode.addl</pre><br><pre>Preferences_extensions.blocklist.enabled</pre><br><pre>Preferences_geo.enabled</pre><br><pre>Preferences_intl.accept_languages</pre><br><pre>Preferences_network.dns.disableIPv6</pre><br><pre>Preferences_places.history.enabled</pre><br><pre>Preferences_print.save_print_settings</pre><br><pre>Preferences_security.default_personal_cert</pre><br><pre>Preferences_security.mixed_content.block_active_content</pre><br><pre>Preferences_security.osclientcerts.autoload</pre><br><pre>Preferences_security.ssl.errorReporting.enabled</pre><br><pre>Preferences_security.tls.hello_downgrade_check</pre><br><pre>Preferences_widget.content.gtk-theme-override</pre> | Thunderbird 78.0 |
+| <pre>Preferences_^.*$</pre><br><pre>Preferences_^.*$_Value</pre><br><pre>Preferences_^.*$_Status</pre> | Thunderbird 91.0 |
 
 <br>
 
@@ -2775,7 +2777,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `PrimaryPassword` | Thunderbird 91.0 |
+| <pre>PrimaryPassword</pre> | Thunderbird 91.0 |
 
 <br>
 
@@ -2817,7 +2819,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `PromptForDownloadLocation` | Thunderbird 78.0 |
+| <pre>PromptForDownloadLocation</pre> | Thunderbird 78.0 |
 
 <br>
 
@@ -2945,7 +2947,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `Proxy`<br>`Proxy_Mode`<br>`Proxy_Locked`<br>`Proxy_AutoConfigURL`<br>`Proxy_FTPProxy`<br>`Proxy_HTTPProxy`<br>`Proxy_SSLProxy`<br>`Proxy_SOCKSProxy`<br>`Proxy_SOCKSVersion`<br>`Proxy_UseHTTPProxyForAllProtocols`<br>`Proxy_Passthrough`<br>`Proxy_UseProxyForDNS`<br>`Proxy_AutoLogin` | Thunderbird 68.0 |
+| <pre>Proxy</pre><br><pre>Proxy_Mode</pre><br><pre>Proxy_Locked</pre><br><pre>Proxy_AutoConfigURL</pre><br><pre>Proxy_FTPProxy</pre><br><pre>Proxy_HTTPProxy</pre><br><pre>Proxy_SSLProxy</pre><br><pre>Proxy_SOCKSProxy</pre><br><pre>Proxy_SOCKSVersion</pre><br><pre>Proxy_UseHTTPProxyForAllProtocols</pre><br><pre>Proxy_Passthrough</pre><br><pre>Proxy_UseProxyForDNS</pre><br><pre>Proxy_AutoLogin</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -3015,7 +3017,7 @@ or
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `RequestedLocales` | Thunderbird 68.0 |
+| <pre>RequestedLocales</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -3060,7 +3062,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `SSLVersionMax` | Thunderbird 68.0 |
+| <pre>SSLVersionMax</pre> | Thunderbird 68.0 |
 
 <br>
 
@@ -3105,7 +3107,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| `SSLVersionMin` | Thunderbird 68.0 |
+| <pre>SSLVersionMin</pre> | Thunderbird 68.0 |
 
 <br>
 
