@@ -297,7 +297,7 @@
     "policies": {
       "3rdparty": {
         "upstream": [
-          "### 3rdparty",
+          "## 3rdparty",
           "",
           "Allow WebExtensions to configure policy. For more information, see [Adding policy support to your extension](https://extensionworkshop.com/documentation/enterprise/adding-policy-support-to-your-extension/).",
           ""
@@ -305,7 +305,7 @@
       },
       "AppAutoUpdate": {
         "upstream": [
-          "### AppAutoUpdate",
+          "## AppAutoUpdate",
           "",
           "Enable or disable **automatic** application update.",
           "",
@@ -351,7 +351,7 @@
       },
       "AllowedDomainsForApps": {
         "upstream": [
-          "### AllowedDomainsForApps",
+          "## AllowedDomainsForApps",
           "",
           "Define domains allowed to access Google Workspace.",
           "",
@@ -396,7 +396,7 @@
       },
       "AppUpdateURL": {
         "upstream": [
-          "### AppUpdateURL",
+          "## AppUpdateURL",
           "",
           "Change the URL for application update if you are providing Firefox updates from a custom update server.",
           "",
@@ -437,7 +437,7 @@
       },
       "Authentication": {
         "upstream": [
-          "### Authentication",
+          "## Authentication",
           "",
           "Configure sites that support integrated authentication.",
           "",
@@ -585,7 +585,7 @@
       },
       "AutoLaunchProtocolsFromOrigins": {
         "upstream": [
-          "### AutoLaunchProtocolsFromOrigins",
+          "## AutoLaunchProtocolsFromOrigins",
           "Define a list of external protocols that can be used from listed origins without prompting the user.",
           "",
           "The syntax of this policy is exactly the same as the [Chrome AutoLaunchProtocolsFromOrigins policy](https://cloud.google.com/docs/chrome-enterprise/policies/?policy=AutoLaunchProtocolsFromOrigins) except that you can only use valid origins (not just hostnames). This also means that you cannot specify an asterisk for all origins.",
@@ -681,7 +681,7 @@
       },
       "BackgroundAppUpdate": {
         "upstream": [
-          "### BackgroundAppUpdate",
+          "## BackgroundAppUpdate",
           "",
           "Enable or disable **automatic** application update **in the background**, when the application is not running.",
           "",
@@ -727,7 +727,7 @@
       },
       "BlockAboutAddons": {
         "upstream": [
-          "### BlockAboutAddons",
+          "## BlockAboutAddons",
           "",
           "Block access to the Add-ons Manager (about:addons).",
           "",
@@ -767,7 +767,7 @@
       },
       "BlockAboutConfig": {
         "upstream": [
-          "### BlockAboutConfig",
+          "## BlockAboutConfig",
           "",
           "Block access to about:config.",
           "",
@@ -807,7 +807,7 @@
       },
       "BlockAboutProfiles": {
         "upstream": [
-          "### BlockAboutProfiles",
+          "## BlockAboutProfiles",
           "",
           "Block access to About Profiles (about:profiles).",
           "",
@@ -847,7 +847,7 @@
       },
       "BlockAboutSupport": {
         "upstream": [
-          "### BlockAboutSupport",
+          "## BlockAboutSupport",
           "",
           "Block access to Troubleshooting Information (about:support).",
           "",
@@ -887,7 +887,7 @@
       },
       "Bookmarks": {
         "upstream": [
-          "### Bookmarks",
+          "## Bookmarks",
           "",
           "Note: [`ManagedBookmarks`](#managedbookmarks) is the new recommended way to add bookmarks. This policy will continue to be supported.",
           "",
@@ -959,7 +959,7 @@
       },
       "CaptivePortal": {
         "upstream": [
-          "### CaptivePortal",
+          "## CaptivePortal",
           "Enable or disable the detection of captive portals.",
           "",
           "**Compatibility:** Firefox 67, Firefox ESR 60.7\\",
@@ -998,13 +998,13 @@
       },
       "Certificates": {
         "upstream": [
-          "### Certificates",
+          "## Certificates",
           ""
         ]
       },
       "Certificates_ImportEnterpriseRoots": {
         "upstream": [
-          "### Certificates | ImportEnterpriseRoots",
+          "## Certificates | ImportEnterpriseRoots",
           "",
           "Trust certificates that have been added to the operating system certificate store by a user or administrator.",
           "",
@@ -1053,7 +1053,7 @@
       },
       "Certificates_Install": {
         "upstream": [
-          "### Certificates | Install",
+          "## Certificates | Install",
           "",
           "Install certificates into the Firefox certificate store. If only a filename is specified, Firefox searches for the file in the following locations:",
           "",
@@ -1122,7 +1122,7 @@
       },
       "Cookies": {
         "upstream": [
-          "### Cookies",
+          "## Cookies",
           "Configure cookie preferences.",
           "",
           "`Allow` is a list of origins (not domains) where cookies are always allowed. You must include http or https.",
@@ -1276,7 +1276,7 @@
       },
       "DisableSetDesktopBackground": {
         "upstream": [
-          "### DisableSetDesktopBackground",
+          "## DisableSetDesktopBackground",
           "Remove the \"Set As Desktop Background...\" menuitem when right clicking on an image.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -1315,7 +1315,7 @@
       },
       "DisableMasterPasswordCreation": {
         "upstream": [
-          "### DisableMasterPasswordCreation",
+          "## DisableMasterPasswordCreation",
           "Remove the master password functionality.",
           "",
           "If this value is true, it works the same as setting [`PrimaryPassword`](#primarypassword) to false and removes the primary password functionality.",
@@ -1358,7 +1358,7 @@
       },
       "DisableAppUpdate": {
         "upstream": [
-          "### DisableAppUpdate",
+          "## DisableAppUpdate",
           "Turn off application updates within Firefox.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -1397,7 +1397,7 @@
       },
       "DisableBuiltinPDFViewer": {
         "upstream": [
-          "### DisableBuiltinPDFViewer",
+          "## DisableBuiltinPDFViewer",
           "Disable the built in PDF viewer. PDF files are downloaded and sent externally.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -1436,7 +1436,7 @@
       },
       "DisabledCiphers": {
         "upstream": [
-          "### DisabledCiphers",
+          "## DisabledCiphers",
           "Disable specific cryptographic ciphers.",
           "",
           "**Preferences Affected:** `security.ssl3.dhe_rsa_aes_128_sha`, `security.ssl3.dhe_rsa_aes_256_sha`, `security.ssl3.ecdhe_ecdsa_aes_128_gcm_sha256`, `security.ssl3.ecdhe_rsa_aes_128_gcm_sha256`, `security.ssl3.ecdhe_rsa_aes_128_sha`, `security.ssl3.ecdhe_rsa_aes_256_sha`, `security.ssl3.rsa_aes_128_gcm_sha256`, `security.ssl3.rsa_aes_128_sha`, `security.ssl3.rsa_aes_256_gcm_sha384`, `security.ssl3.rsa_aes_256_sha`, `security.ssl3.rsa_des_ede3_sha`",
@@ -1538,7 +1538,7 @@
       },
       "DisableDefaultBrowserAgent": {
         "upstream": [
-          "### DisableDefaultBrowserAgent",
+          "## DisableDefaultBrowserAgent",
           "Prevent the default browser agent from taking any actions. Only applicable to Windows; other platforms don’t have the agent.",
           "",
           "The browser agent is a Windows-only scheduled task which runs in the background to collect and submit data about the browser that the user has set as their OS default. More information is available [here](https://firefox-source-docs.mozilla.org/toolkit/mozapps/defaultagent/default-browser-agent/index.html).",
@@ -1572,7 +1572,7 @@
       },
       "DisableDeveloperTools": {
         "upstream": [
-          "### DisableDeveloperTools",
+          "## DisableDeveloperTools",
           "Remove access to all developer tools.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -1611,7 +1611,7 @@
       },
       "DisableFeedbackCommands": {
         "upstream": [
-          "### DisableFeedbackCommands",
+          "## DisableFeedbackCommands",
           "Disable the menus for reporting sites (Submit Feedback, Report Deceptive Site).",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -1650,7 +1650,7 @@
       },
       "DisableFirefoxScreenshots": {
         "upstream": [
-          "### DisableFirefoxScreenshots",
+          "## DisableFirefoxScreenshots",
           "Remove access to Firefox Screenshots.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -1689,7 +1689,7 @@
       },
       "DisableFirefoxAccounts": {
         "upstream": [
-          "### DisableFirefoxAccounts",
+          "## DisableFirefoxAccounts",
           "Disable Firefox Accounts integration (Sync).",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -1728,7 +1728,7 @@
       },
       "DisableFirefoxStudies": {
         "upstream": [
-          "### DisableFirefoxStudies",
+          "## DisableFirefoxStudies",
           "Disable Firefox studies (Shield).",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -1767,7 +1767,7 @@
       },
       "DisableForgetButton": {
         "upstream": [
-          "### DisableForgetButton",
+          "## DisableForgetButton",
           "Disable the \"Forget\" button.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -1806,7 +1806,7 @@
       },
       "DisableFormHistory": {
         "upstream": [
-          "### DisableFormHistory",
+          "## DisableFormHistory",
           "Turn off saving information on web forms and the search bar.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -1845,7 +1845,7 @@
       },
       "DisablePasswordReveal": {
         "upstream": [
-          "### DisablePasswordReveal",
+          "## DisablePasswordReveal",
           "Do not allow passwords to be shown in saved logins",
           "",
           "**Compatibility:** Firefox 71, Firefox ESR 68.3\\",
@@ -1884,7 +1884,7 @@
       },
       "DisablePocket": {
         "upstream": [
-          "### DisablePocket",
+          "## DisablePocket",
           "Remove Pocket in the Firefox UI. It does not remove it from the new tab page.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -1923,7 +1923,7 @@
       },
       "DisablePrivateBrowsing": {
         "upstream": [
-          "### DisablePrivateBrowsing",
+          "## DisablePrivateBrowsing",
           "Remove access to private browsing.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -1962,7 +1962,7 @@
       },
       "DisableProfileImport": {
         "upstream": [
-          "### DisableProfileImport",
+          "## DisableProfileImport",
           "Disables the \"Import data from another browser\" option in the bookmarks window.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -2001,7 +2001,7 @@
       },
       "DisableProfileRefresh": {
         "upstream": [
-          "### DisableProfileRefresh",
+          "## DisableProfileRefresh",
           "Disable the Refresh Firefox button on about:support and support.mozilla.org, as well as the prompt that displays offering to refresh Firefox when you haven't used it in a while.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -2040,7 +2040,7 @@
       },
       "DisableSafeMode": {
         "upstream": [
-          "### DisableSafeMode",
+          "## DisableSafeMode",
           "Disable safe mode within the browser.",
           "",
           "On Windows, this disables safe mode via the command line as well.",
@@ -2081,7 +2081,7 @@
       },
       "DisableSecurityBypass": {
         "upstream": [
-          "### DisableSecurityBypass",
+          "## DisableSecurityBypass",
           "Prevent the user from bypassing security in certain cases.",
           "",
           "`InvalidCertificate` prevents adding an exception when an invalid certificate is shown.",
@@ -2142,7 +2142,7 @@
       },
       "DisableSystemAddonUpdate": {
         "upstream": [
-          "### DisableSystemAddonUpdate",
+          "## DisableSystemAddonUpdate",
           "Prevent system add-ons from being installed or update.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -2181,7 +2181,7 @@
       },
       "DisableTelemetry": {
         "upstream": [
-          "### DisableTelemetry",
+          "## DisableTelemetry",
           "Prevent the upload of telemetry data.",
           "",
           "As of Firefox 83 and Firefox ESR 78.5, local storage of telemetry data is disabled as well.",
@@ -2224,7 +2224,7 @@
       },
       "DisplayBookmarksToolbar": {
         "upstream": [
-          "### DisplayBookmarksToolbar",
+          "## DisplayBookmarksToolbar",
           "Set the initial state of the bookmarks toolbar. A user can still hide it and it will stay hidden.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -2263,7 +2263,7 @@
       },
       "DisplayMenuBar (Deprecated)": {
         "upstream": [
-          "### DisplayMenuBar (Deprecated)",
+          "## DisplayMenuBar (Deprecated)",
           "Set the initial state of the menubar. A user can still hide it and it will stay hidden.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60 (Windows, some Linux)\\",
@@ -2293,7 +2293,7 @@
       },
       "DisplayMenuBar": {
         "upstream": [
-          "### DisplayMenuBar",
+          "## DisplayMenuBar",
           "Set the state of the menubar.",
           "",
           "`always` means the menubar is shown and cannot be hidden.",
@@ -2341,7 +2341,7 @@
       },
       "DNSOverHTTPS": {
         "upstream": [
-          "### DNSOverHTTPS",
+          "## DNSOverHTTPS",
           "Configure DNS over HTTPS.",
           "",
           "`Enabled` determines whether DNS over HTTPS is enabled",
@@ -2433,7 +2433,7 @@
       },
       "DontCheckDefaultBrowser": {
         "upstream": [
-          "### DontCheckDefaultBrowser",
+          "## DontCheckDefaultBrowser",
           "Don't check if Firefox is the default browser at startup.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -2472,7 +2472,7 @@
       },
       "DefaultDownloadDirectory": {
         "upstream": [
-          "### DefaultDownloadDirectory",
+          "## DefaultDownloadDirectory",
           "Set the default download directory.",
           "",
           "You can use ${home} for the native home directory.",
@@ -2520,7 +2520,7 @@
       },
       "DownloadDirectory": {
         "upstream": [
-          "### DownloadDirectory",
+          "## DownloadDirectory",
           "Set and lock the download directory.",
           "",
           "You can use ${home} for the native home directory.",
@@ -2568,7 +2568,7 @@
       },
       "EnableTrackingProtection": {
         "upstream": [
-          "### EnableTrackingProtection",
+          "## EnableTrackingProtection",
           "Configure tracking protection.",
           "",
           "If this policy is not configured, tracking protection is not enabled by default in the browser, but it is enabled by default in private browsing and the user can change it.",
@@ -2674,7 +2674,7 @@
       },
       "EncryptedMediaExtensions": {
         "upstream": [
-          "### EncryptedMediaExtensions",
+          "## EncryptedMediaExtensions",
           "Enable or disable Encrypted Media Extensions and optionally lock it.",
           "",
           "If `Enabled` is set to false, encrypted media extensions (like Widevine) are not downloaded by Firefox unless the user consents to installing them.",
@@ -2727,7 +2727,7 @@
       },
       "EnterprisePoliciesEnabled": {
         "upstream": [
-          "### EnterprisePoliciesEnabled",
+          "## EnterprisePoliciesEnabled",
           "Enable policy support on macOS.",
           "",
           "**Compatibility:** Firefox 63, Firefox ESR 60.3 (macOS only)\\",
@@ -2745,7 +2745,7 @@
       },
       "Extensions": {
         "upstream": [
-          "### Extensions",
+          "## Extensions",
           "Control the installation, uninstallation and locking of extensions.",
           "",
           "While this policy is not technically deprecated, it is recommended that you use the **[`ExtensionSettings`](#extensionsettings)** policy. It has the same functionality and adds more. It does not support native paths, though, so you'll have to use file:/// URLs.",
@@ -2832,7 +2832,7 @@
       },
       "ExtensionSettings": {
         "upstream": [
-          "### ExtensionSettings",
+          "## ExtensionSettings",
           "Manage all aspects of extensions. This policy is based heavily on the [Chrome policy](https://dev.chromium.org/administrators/policy-list-3/extension-settings-full) of the same name.",
           "",
           "This policy maps an extension ID to its configuration. With an extension ID, the configuration will be applied to the specified extension only. A default configuration can be set for the special ID \"*\", which will apply to all extensions that don't have a custom configuration set in this policy.",
@@ -2961,11 +2961,143 @@
           "  }",
           "}",
           "```"
-        ]
+        ],
+        "override": [
+          "## ExtensionSettings",
+          "Manage all aspects of extensions. This policy is based heavily on the [Chrome policy](https://dev.chromium.org/administrators/policy-list-3/extension-settings-full) of the same name.",
+          "",
+          "This policy maps an extension ID to its configuration. With an extension ID, the configuration will be applied to the specified extension only. A default configuration can be set for the special ID \"*\", which will apply to all extensions that don't have a custom configuration set in this policy.",
+          "",
+          "To obtain an extension ID, install the extension and go to about:support. You will see the ID in the Extensions section. I've also created an extension that makes it easy to find the ID of extensions on AMO. You can download it [here](https://github.com/mkaply/queryamoid/releases/tag/v0.1).",
+          "",
+          "The configuration for each extension is another dictionary that can contain the fields documented below.",
+          "",
+          "| Name | Description |",
+          "| --- | --- |",
+          "| `installation_mode` | Maps to a string indicating the installation mode for the extension. The valid strings are `allowed`,`blocked`,`force_installed`, and `normal_installed`.",
+          "| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`allowed` | Allows the extension to be installed by the user. This is the default behavior. There is no need for an install_url; it will automatically be allowed based on the ID.",
+          "| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`blocked`| Blocks installation of the extension and removes it from the device if already installed.",
+          "| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`force_installed`| The extension is automatically installed and can't be removed by the user. This option is not valid for the default configuration and requires an install_url.",
+          "| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`normal_installed`| The extension is automatically installed but can be disabled by the user. This option is not valid for the default configuration and requires an install_url.",
+          "| `install_url`| Maps to a URL indicating where Firefox can download a force_installed or normal_installed extension.  If installing from the local file system, use a [```file:///``` URL](https://en.wikipedia.org/wiki/File_URI_scheme). If installing from the addons.mozilla.org, use the following URL (substituting SHORT_NAME from the URL on AMO), https://addons.mozilla.org/firefox/downloads/latest/SHORT_NAME/latest.xpi. Languages packs are available from https://releases.mozilla.org/pub/firefox/releases/VERSION/PLATFORM/xpi/LANGUAGE.xpi. If you need to update the extension, you can change the name of the extension and it will be automatically updated. Extensions installed from file URLs will additional be updated when their internal version changes.",
+          "| `install_sources` | A list of sources from which installing extensions is allowed. **This is unnecessary if you are only allowing the installation of certain extensions by ID.** Each item in this list is an extension-style match pattern. Users will be able to easily install items from any URL that matches an item in this list. Both the location of the *.xpi file and the page where the download is started from (i.e.  the referrer) must be allowed by these patterns. This setting can be used only for the default configuration.",
+          "| `allowed_types` | This setting whitelists the allowed types of extension/apps that can be installed in Firefox. The value is a list of strings, each of which should be one of the following: \"extension\", \"theme\", \"dictionary\", \"locale\" This setting can be used only for the default configuration.",
+          "| `blocked_install_message` | This maps to a string specifying the error message to display to users if they're blocked from installing an extension. This setting allows you to append text to the generic error message displayed when the extension is blocked. This could be be used to direct users to your help desk, explain why a particular extension is blocked, or something else. This setting can be used only for the default configuration.",
+          "| `restricted_domains` | An array of domains on which content scripts can't be run. This setting can be used only for the default configuration.",
+          "| `updates_disabled` | Boolean that indicates whether or not to disable automatic updates for an individual extension.",
+          "",
+          "*As of Firefox 85, Firefox ESR 78.7, installing a theme makes it the default.)\\",
+          "",
+          "**CCK2 Equivalent:** N/A\\",
+          "**Preferences Affected:** N/A",
+          "",
+          "#### Windows (GPO)",
+          "Software\\Policies\\Mozilla\\Firefox\\ExtensionSettings (REG_MULTI_SZ) =",
+          "```",
+          "{",
+          "  \"*\": {",
+          "    \"blocked_install_message\": \"Custom error message.\",",
+          "    \"install_sources\": [\"about:addons\",\"https://addons.mozilla.org/\"],",
+          "    \"installation_mode\": \"blocked\",",
+          "    \"allowed_types\": [\"extension\"]",
+          "  },",
+          "  \"uBlock0@raymondhill.net\": {",
+          "    \"installation_mode\": \"force_installed\",",
+          "    \"install_url\": \"https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi\"",
+          "  },",
+          "  \"https-everywhere@eff.org\": {",
+          "    \"installation_mode\": \"allowed\"",
+          "  }",
+          "}",
+          "```",
+          "#### Windows (Intune)",
+          "OMA-URI:",
+          "```",
+          "./Device/Vendor/MSFT/Policy/Config/Firefox~Policy~firefox~Extensions/ExtensionSettings",
+          "```",
+          "Value (string):",
+          "```",
+          "<enabled/>",
+          "<data id=\"ExtensionSettings\" value='",
+          "{",
+          "  \"*\": {",
+          "    \"blocked_install_message\": \"Custom error message.\",",
+          "    \"install_sources\": [\"about:addons\",\"https://addons.mozilla.org/\"],",
+          "    \"installation_mode\": \"blocked\",",
+          "    \"allowed_types\": [\"extension\"]",
+          "  },",
+          "  \"uBlock0@raymondhill.net\": {",
+          "    \"installation_mode\": \"force_installed\",",
+          "    \"install_url\": \"https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi\"",
+          "  },",
+          "    \"https-everywhere@eff.org\": {",
+          "    \"installation_mode\": \"allowed\"",
+          "  }",
+          "}'/>",
+          "```",
+          "#### macOS",
+          "```",
+          "<dict>",
+          "  <key>ExtensionSettings</key>",
+          "  <dict>",
+          "    <key>*</key>",
+          "    <dict>",
+          "      <key>blocked_install_message</key>",
+          "      <string>Custom error message.</string>",
+          "      <key>install_sources</key>",
+          "      <array>",
+          "        <string>about:addons</string>",
+          "        <string>https://addons.mozilla.org/</string>",
+          "      </array>",
+          "      <key>installation_mode</key>",
+          "      <string>blocked</string>",
+          "      <key>allowed_types</key>",
+          "      <array>",
+          "        <string>extension</string>",
+          "      </array>",
+          "    </dict>",
+          "    <key>uBlock0@raymondhill.net</key>",
+          "    <dict>",
+          "      <key>installation_mode</key>",
+          "       <string>force_installed</string>",
+          "      <key>install_url</key>",
+          "      <string>https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi</string>",
+          "    </dict>",
+          "    <key>https-everywhere@eff.org</key>",
+          "    <dict>",
+          "      <key>installation_mode</key>",
+          "       <string>allowed</string>",
+          "    </dict>",
+          "  </dict>",
+          "</dict>",
+          "```",
+          "#### policies.json",
+          "```",
+          "{",
+          "  \"policies\": {",
+          "    \"ExtensionSettings\": {",
+          "      \"*\": {",
+          "        \"blocked_install_message\": \"Custom error message.\",",
+          "        \"install_sources\": [\"about:addons\",\"https://addons.mozilla.org/\"],",
+          "        \"installation_mode\": \"blocked\",",
+          "        \"allowed_types\": [\"extension\"]",
+          "      },",
+          "      \"uBlock0@raymondhill.net\": {",
+          "        \"installation_mode\": \"force_installed\",",
+          "        \"install_url\": \"https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi\"",
+          "      },",
+          "      \"https-everywhere@eff.org\": {",
+          "        \"installation_mode\": \"allowed\"",
+          "      }",
+          "    }",
+          "  }",
+          "}",
+          "```"
+        ]        
       },
       "ExtensionUpdate": {
         "upstream": [
-          "### ExtensionUpdate",
+          "## ExtensionUpdate",
           "Control extension updates.",
           "",
           "**Compatibility:** Firefox 67, Firefox ESR 60.7\\",
@@ -3004,7 +3136,7 @@
       },
       "FlashPlugin": {
         "upstream": [
-          "### FlashPlugin",
+          "## FlashPlugin",
           "Configure the default Flash plugin policy as well as origins for which Flash is allowed.",
           "",
           "`Allow` is a list of origins where Flash are allowed.",
@@ -3092,7 +3224,7 @@
       },
       "Handlers": {
         "upstream": [
-          "### Handlers",
+          "## Handlers",
           "Configure default application handlers. This policy is based on the internal format of `handlers.json`.",
           "",
           "You can configure handlers based on a mime type (`mimeTypes`), a file's extension (`extensions`), or a protocol (`schemes`).",
@@ -3278,7 +3410,7 @@
       },
       "FirefoxHome": {
         "upstream": [
-          "### FirefoxHome",
+          "## FirefoxHome",
           "Customize the Firefox Home page.",
           "",
           "**Compatibility:** Firefox 68, Firefox ESR 68\\",
@@ -3348,7 +3480,7 @@
       },
       "HardwareAcceleration": {
         "upstream": [
-          "### HardwareAcceleration",
+          "## HardwareAcceleration",
           "Control hardware acceleration.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -3387,7 +3519,7 @@
       },
       "Homepage": {
         "upstream": [
-          "### Homepage",
+          "## Homepage",
           "Configure the default homepage and how Firefox starts.",
           "",
           "`URL` is the default homepage.",
@@ -3481,7 +3613,7 @@
       },
       "InstallAddonsPermission": {
         "upstream": [
-          "### InstallAddonsPermission",
+          "## InstallAddonsPermission",
           "Configure the default extension install policy as well as origins for extension installs are allowed. This policy does not override turning off all extension installs.",
           "",
           "`Allow` is a list of origins where extension installs are allowed.",
@@ -3547,7 +3679,7 @@
       },
       "LegacyProfiles": {
         "upstream": [
-          "### LegacyProfiles",
+          "## LegacyProfiles",
           "Disable the feature enforcing a separate profile for each installation.",
           "",
           "If this policy set to true, Firefox will not try to create different profiles for installations of Firefox in different directories. This is the equivalent of the MOZ_LEGACY_PROFILES environment variable.",
@@ -3577,7 +3709,7 @@
       },
       "LocalFileLinks": {
         "upstream": [
-          "### LocalFileLinks",
+          "## LocalFileLinks",
           "Enable linking to local files by origin.",
           "",
           "**Compatibility:** Firefox 68, Firefox ESR 68\\",
@@ -3622,7 +3754,7 @@
       },
       "ManagedBookmarks": {
         "upstream": [
-          "### ManagedBookmarks",
+          "## ManagedBookmarks",
           "Configures a list of bookmarks managed by an administrator that cannot be changed by the user.",
           "",
           "The bookmarks are only added as a button on the personal toolbar. They are not in the bookmarks folder.",
@@ -3785,7 +3917,7 @@
       },
       "ManualAppUpdateOnly": {
         "upstream": [
-          "### ManualAppUpdateOnly",
+          "## ManualAppUpdateOnly",
           "",
           "Switch to manual updates only.",
           "",
@@ -3812,7 +3944,7 @@
       },
       "PrimaryPassword": {
         "upstream": [
-          "### PrimaryPassword",
+          "## PrimaryPassword",
           "Require or prevent using a primary (formerly master) password.",
           "",
           "If this value is true, a primary password is required. If this value is false, it works the same as if [`DisableMasterPasswordCreation`](#disablemasterpasswordcreation) was true and removes the primary password functionality.",
@@ -3855,7 +3987,7 @@
       },
       "NetworkPrediction": {
         "upstream": [
-          "### NetworkPrediction",
+          "## NetworkPrediction",
           "Enable or disable network prediction (DNS prefetching).",
           "",
           "**Compatibility:** Firefox 67, Firefox ESR 60.7\\",
@@ -3893,7 +4025,7 @@
       },
       "NewTabPage": {
         "upstream": [
-          "### NewTabPage",
+          "## NewTabPage",
           "Enable or disable the New Tab page.",
           "",
           "**Compatibility:** Firefox 68, Firefox ESR 68\\",
@@ -3931,7 +4063,7 @@
       },
       "NoDefaultBookmarks": {
         "upstream": [
-          "### NoDefaultBookmarks",
+          "## NoDefaultBookmarks",
           "Disable the creation of default bookmarks.",
           "",
           "This policy is only effective if the user profile has not been created yet.",
@@ -3972,7 +4104,7 @@
       },
       "OfferToSaveLogins": {
         "upstream": [
-          "### OfferToSaveLogins",
+          "## OfferToSaveLogins",
           "Control whether or not Firefox offers to save passwords.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -4011,7 +4143,7 @@
       },
       "OfferToSaveLoginsDefault": {
         "upstream": [
-          "### OfferToSaveLoginsDefault",
+          "## OfferToSaveLoginsDefault",
           "Sets the default value of signon.rememberSignons without locking it.",
           "",
           "**Compatibility:** Firefox 70, Firefox ESR 60.2\\",
@@ -4050,7 +4182,7 @@
       },
       "OverrideFirstRunPage": {
         "upstream": [
-          "### OverrideFirstRunPage",
+          "## OverrideFirstRunPage",
           "Override the first run page. If the value is an empty string (\"\"), the first run page is not displayed.",
           "",
           "Starting with Firefox 83, Firefox ESR 78.5, you can also specify multiple URLS separated by a vertical bar (|).",
@@ -4092,7 +4224,7 @@
       },
       "OverridePostUpdatePage": {
         "upstream": [
-          "### OverridePostUpdatePage",
+          "## OverridePostUpdatePage",
           "Override the upgrade page. If the value is an empty string (\"\"), no extra pages are displayed when Firefox is upgraded.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -4132,7 +4264,7 @@
       },
       "PasswordManagerEnabled": {
         "upstream": [
-          "### PasswordManagerEnabled",
+          "## PasswordManagerEnabled",
           "Remove access to the password manager via preferences and blocks about:logins on Firefox 70.",
           "",
           "**Compatibility:** Firefox 70, Firefox ESR 60.2\\",
@@ -4167,11 +4299,48 @@
           "  }",
           "}",
           "```"
-        ]
+        ],
+        "override": [
+          "## PasswordManagerEnabled",
+          "Remove access to the password manager via preferences and blocks about:logins.",
+          "",
+          "**Compatibility:** Firefox 70, Firefox ESR 60.2\\",
+          "**CCK2 Equivalent:** N/A\\",
+          "**Preferences Affected:** `pref.privacy.disable_button.view_passwords`",
+          "",
+          "#### Windows (GPO)",
+          "```",
+          "Software\\Policies\\Mozilla\\Firefox\\PasswordManagerEnabled = 0x1 | 0x0",
+          "```",
+          "#### Windows (Intune)",
+          "OMA-URI:",
+          "```",
+          "./Device/Vendor/MSFT/Policy/Config/Firefox~Policy~firefox/PasswordManagerEnabled",
+          "```",
+          "Value (string):",
+          "```",
+          "<enabled/> or <disabled/>",
+          "```",
+          "#### macOS",
+          "```",
+          "<dict>",
+          "  <key>PasswordManagerEnabled</key>",
+          "  <true/> | <false/>",
+          "</dict>",
+          "```",
+          "#### policies.json",
+          "```",
+          "{",
+          "  \"policies\": {",
+          "    \"PasswordManagerEnabled\": true | false",
+          "  }",
+          "}",
+          "```"
+        ]        
       },
       "PDFjs": {
         "upstream": [
-          "### PDFjs",
+          "## PDFjs",
           "Disable or configure PDF.js, the built-in PDF viewer.",
           "",
           "If `Enabled` is set to false, the built-in PDF viewer is disabled.",
@@ -4226,7 +4395,7 @@
       },
       "Permissions": {
         "upstream": [
-          "### Permissions",
+          "## Permissions",
           "Set permissions associated with camera, microphone, location, notifications, autoplay, and virtual reality. Because these are origins, not domains, entries with unique ports must be specified separately. This explicitly means that it is not possible to add wildcards. See examples below.",
           "",
           "`Allow` is a list of origins where the feature is allowed.",
@@ -4509,7 +4678,7 @@
       },
       "PictureInPicture": {
         "upstream": [
-          "### PictureInPicture",
+          "## PictureInPicture",
           "",
           "Enable or disable Picture-in-Picture as well as prevent the user from enabling or disabling it (Locked).",
           "",
@@ -4560,7 +4729,7 @@
       },
       "PopupBlocking": {
         "upstream": [
-          "### PopupBlocking",
+          "## PopupBlocking",
           "Configure the default pop-up window policy as well as origins for which pop-up windows are allowed.",
           "",
           "`Allow` is a list of origins where popup-windows are allowed.",
@@ -4730,10 +4899,6 @@
           "    \"Value\": \"SOME_NATIVE_PATH\",",
           "    \"Status\": \"user\"",
           "  },",
-          "  \"browser.tabs.warnOnClose\": {",
-          "    \"Value\": false,",
-          "    \"Status\": \"locked\"",
-          "  }",
           "}",
           "```",
           "#### Windows (Intune)",
@@ -4754,10 +4919,6 @@
           "    \"Value\": \"SOME_NATIVE_PATH\",",
           "    \"Status\": \"user\"",
           "  },",
-          "  \"browser.tabs.warnOnClose\": {",
-          "    \"Value\": false,",
-          "    \"Status\": \"locked\"",
-          "  }",
           "}'/>",
           "```",
           "#### macOS",
@@ -4779,13 +4940,6 @@
           "      <key>Status</key>",
           "      <string>user</string>",
           "    </dict>",
-          "    <key>browser.tabs.warnOnClose</key>",
-          "    <dict>",
-          "      <key>Value</key>",
-          "      <false/>",
-          "      <key>Status</key>",
-          "      <string>locked</string>",
-          "    </dict>",
           "  </dict>",
           "</dict>",
           "```",
@@ -4802,9 +4956,6 @@
           "        \"Value\": \"SOME_NATIVE_PATH\",",
           "        \"Status\": \"user\"",
           "      },",
-          "      \"browser.tabs.warnOnClose\": {",
-          "        \"Value\": false,",
-          "        \"Status\": \"locked\"",
           "      }",
           "    }",
           "  }",
@@ -4812,7 +4963,7 @@
           "```"
         ],
         "upstream": [
-          "### Preferences",
+          "## Preferences",
           "Set and lock preferences.",
           "",
           "**NOTE** On Windows, in order to use this policy, you must clear all settings in the old **Preferences (Deprecated)** section.",
@@ -4997,36 +5148,18 @@
           "| --- | --- | ---",
           "| accessibility.force_disabled | integer | 0",
           "| &nbsp;&nbsp;&nbsp;&nbsp;If set to 1, platform accessibility is disabled.",
-          "| app.update.auto (Deprecated - Switch to AppAutoUpdate policy) | boolean | true",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If false, Firefox doesn't automatically install update.",
-          "| browser.bookmarks.autoExportHTML | boolean | false",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If true, bookmarks are exported on shutdown.",
-          "| browser.bookmarks.file | string | N/A",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If set, the name of the file where bookmarks are exported and imported.",
-          "| browser.bookmarks.restore_default_bookmarks | boolean | N/A",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If true, bookmarks are restored to their defaults.",
           "| browser.cache.disk.enable | boolean | true",
           "| &nbsp;&nbsp;&nbsp;&nbsp;If false, don't store cache on the hard drive.",
           "| ~browser.cache.disk.parent_directory~ | string | Profile temporary directory",
           "| &nbsp;&nbsp;&nbsp;&nbsp;~If set, changes the location of the disk cache.~ This policy doesn't work. It's being worked on.",
           "| browser.fixup.dns_first_for_single_words | boolean | false",
           "| &nbsp;&nbsp;&nbsp;&nbsp;If true, single words are sent to DNS, not directly to search.",
-          "| browser.newtabpage.activity-stream.default.sites | string | Locale dependent",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If set, a list of URLs to use as the default top sites on the new tab page. Due to Firefox limitations, search sites can't be added. In addition, sites with the same name but different TLDs (example.org/example.com) will not display properly.",
-          "| browser.places.importBookmarksHTML | boolean ",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If true, bookmarks are always imported on startup.",
           "| browser.safebrowsing.phishing.enabled | boolean | true",
           "| &nbsp;&nbsp;&nbsp;&nbsp;If false, phishing protection is not enabled (Not recommended)",
           "| browser.safebrowsing.malware.enabled | boolean | true",
           "| &nbsp;&nbsp;&nbsp;&nbsp;If false, malware protection is not enabled (Not recommended)",
           "| browser.search.update | boolean | true",
           "| &nbsp;&nbsp;&nbsp;&nbsp;If false, updates for search engines are not checked.",
-          "| browser.slowStartup.notificationDisabled | boolean | false",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If true, a notification isn't shown if startup is slow.",
-          "| browser.tabs.warnOnClose | boolean | true",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If false, there is no warning when the browser is closed.",
-          "| browser.taskbar.previews.enable (Windows only) | boolean | false",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If true, tab previews are shown in the Windows taskbar.",
           "| browser.urlbar.suggest.bookmark | boolean | true",
           "| &nbsp;&nbsp;&nbsp;&nbsp;If false, bookmarks aren't suggested when typing in the URL bar.",
           "| browser.urlbar.suggest.history | boolean | true",
@@ -5047,34 +5180,12 @@
           "| &nbsp;&nbsp;&nbsp;&nbsp;See https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-firefox-66",
           "| dom.keyboardevent.keypress.hack.use_legacy_keycode_and_charcode.addl | string | N/A",
           "| &nbsp;&nbsp;&nbsp;&nbsp;See https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-firefox-66",
-          "| dom.xmldocument.load.enabled | boolean | true.",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If false, XMLDocument.load is not available.",
-          "| dom.xmldocument.async.enabled | boolean | true",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If false, XMLDocument.async is not available.",
           "| extensions.blocklist.enabled | boolean | true",
           "| &nbsp;&nbsp;&nbsp;&nbsp;If false, the extensions blocklist is not used (Not recommended)",
-          "| extensions.getAddons.showPane | boolean | N/A",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If false, the Recommendations tab is not displayed in the Add-ons Manager.",
-          "| extensions.htmlaboutaddons.recommendations.enabled | boolean | true",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If false, recommendations are not shown on the Extensions tab in the Add-ons Manager.",
           "| geo.enabled | boolean | true",
           "| &nbsp;&nbsp;&nbsp;&nbsp;If false, the geolocation API is disabled. | Language dependent",
           "| intl.accept_languages | string ",
           "| &nbsp;&nbsp;&nbsp;&nbsp;If set, preferred language for web pages.",
-          "| media.eme.enabled (Deprecated - Switch to EncryptedMediaExtensions policy) | boolean | true",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If false, Encrypted Media Extensions are not enabled.",
-          "| media.gmp-gmpopenh264.enabled | boolean | true",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If false, the OpenH264  plugin is not downloaded.",
-          "| media.gmp-widevinecdm.enabled | boolean | true",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If false, the Widevine plugin is not downloaded.",
-          "| media.peerconnection.enabled | boolean | true",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If false, WebRTC is disabled",
-          "| media.peerconnection.ice.obfuscate_host_addresses.whitelist (Deprecated) | string | N/A",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If set, a list of domains for which mDNS hostname obfuscation is",
-          "disabled",
-          "| media.peerconnection.ice.obfuscate_host_addresses.blocklist | string | N/A",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If set, a list of domains for which mDNS hostname obfuscation is",
-          "disabled",
           "| network.dns.disableIPv6 | boolean | false",
           "| &nbsp;&nbsp;&nbsp;&nbsp;If true, IPv6 DNS lokoups are disabled.",
           "| network.IDN_show_punycode | boolean | false",
@@ -5093,8 +5204,6 @@
           "| &nbsp;&nbsp;&nbsp;&nbsp;If false, SSL errors cannot be sent to Mozilla.",
           "| security.tls.hello_downgrade_check | boolean | true",
           "| &nbsp;&nbsp;&nbsp;&nbsp;If false, the TLS 1.3 downgrade check is disabled.",
-          "| ui.key.menuAccessKeyFocuses | boolean | true",
-          "| &nbsp;&nbsp;&nbsp;&nbsp;If false, the Alt key doesn't show the menubar on Windows.",
           "| widget.content.gtk-theme-override | string | N/A",
           "| &nbsp;&nbsp;&nbsp;&nbsp;If set, overrides the GTK theme for widgets.",
           "#### Windows (GPO)",
@@ -5145,7 +5254,7 @@
           "```"
         ],
         "upstream": [
-          "### Preferences (Deprecated)",
+          "## Preferences (Deprecated)",
           "Set and lock certain preferences.",
           "",
           "**Compatibility:** See below\\",
@@ -5306,7 +5415,7 @@
       },
       "PromptForDownloadLocation": {
         "upstream": [
-          "### PromptForDownloadLocation",
+          "## PromptForDownloadLocation",
           "Ask where to save each file before downloading.",
           "",
           "**Compatibility:** Firefox 68, Firefox ESR 68\\",
@@ -5345,7 +5454,7 @@
       },
       "Proxy": {
         "upstream": [
-          "### Proxy",
+          "## Proxy",
           "Configure proxy settings. These settings correspond to the connection settings in Firefox preferences.",
           "To specify ports, append them to the hostnames with a colon (:).",
           "",
@@ -5470,7 +5579,7 @@
       },
       "RequestedLocales": {
         "upstream": [
-          "### RequestedLocales",
+          "## RequestedLocales",
           "Set the the list of requested locales for the application in order of preference. It will cause the corresponding language pack to become active.",
           "",
           "Note: For Firefox 68, this can now be a string so that you can specify an empty value.",
@@ -5537,7 +5646,7 @@
       },
       "SanitizeOnShutdown (Selective)": {
         "upstream": [
-          "### SanitizeOnShutdown (Selective)",
+          "## SanitizeOnShutdown (Selective)",
           "Clear data on shutdown. Choose from Cache, Cookies, Download History, Form & Search History, Browsing History, Active Logins, Site Preferences and Offline Website Data.",
           "",
           "Previously, these values were always locked. Starting with Firefox 74 and Firefox ESR 68.6, you can use the `Locked` option to either keep the values unlocked (set it to false), or lock only the values you set (set it to true). If you want the old behavior of locking everything, do not set `Locked` at all.",
@@ -5678,7 +5787,7 @@
       },
       "SanitizeOnShutdown (All)": {
         "upstream": [
-          "### SanitizeOnShutdown (All)",
+          "## SanitizeOnShutdown (All)",
           "Clear all data on shutdown, including Browsing & Download History, Cookies, Active Logins, Cache, Form & Search History, Site Preferences and Offline Website Data.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -5716,7 +5825,7 @@
       },
       "SearchBar": {
         "upstream": [
-          "### SearchBar",
+          "## SearchBar",
           "Set whether or not search bar is displayed.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -5759,13 +5868,13 @@
       },
       "SearchEngines (This policy is only available on the ESR.)": {
         "upstream": [
-          "### SearchEngines (This policy is only available on the ESR.)",
+          "## SearchEngines (This policy is only available on the ESR.)",
           ""
         ]
       },
       "SearchEngines_Default": {
         "upstream": [
-          "### SearchEngines | Default",
+          "## SearchEngines | Default",
           "",
           "Set the default search engine. This policy is only available on the ESR.",
           "",
@@ -5811,7 +5920,7 @@
       },
       "SearchEngines_PreventInstalls": {
         "upstream": [
-          "### SearchEngines | PreventInstalls",
+          "## SearchEngines | PreventInstalls",
           "",
           "Prevent installing search engines from webpages.",
           "",
@@ -5856,7 +5965,7 @@
       },
       "SearchEngines_Remove": {
         "upstream": [
-          "### SearchEngines | Remove",
+          "## SearchEngines | Remove",
           "",
           "Hide built-in search engines. This policy is only available on the ESR.",
           "",
@@ -5904,7 +6013,7 @@
       },
       "SearchEngines_Add": {
         "upstream": [
-          "### SearchEngines | Add",
+          "## SearchEngines | Add",
           "",
           "Add new search engines (up to five). This policy is only available on the ESR. `Name` and `URLTemplate` are required.",
           "",
@@ -6012,7 +6121,7 @@
       },
       "SearchSuggestEnabled": {
         "upstream": [
-          "### SearchSuggestEnabled",
+          "## SearchSuggestEnabled",
           "",
           "Enable search suggestions.",
           "",
@@ -6052,7 +6161,7 @@
       },
       "SecurityDevices": {
         "upstream": [
-          "### SecurityDevices",
+          "## SecurityDevices",
           "",
           "Install PKCS #11 modules.",
           "",
@@ -6099,7 +6208,7 @@
       },
       "ShowHomeButton": {
         "upstream": [
-          "### ShowHomeButton",
+          "## ShowHomeButton",
           "Show the home button on the toolbar.",
           "",
           "Future versions of Firefox will not show the home button by default.",
@@ -6140,7 +6249,7 @@
       },
       "SSLVersionMax": {
         "upstream": [
-          "### SSLVersionMax",
+          "## SSLVersionMax",
           "",
           "Set and lock the maximum version of TLS.",
           "",
@@ -6182,7 +6291,7 @@
       },
       "SSLVersionMin": {
         "upstream": [
-          "### SSLVersionMin",
+          "## SSLVersionMin",
           "",
           "Set and lock the minimum version of TLS.",
           "",
@@ -6224,7 +6333,7 @@
       },
       "SupportMenu": {
         "upstream": [
-          "### SupportMenu",
+          "## SupportMenu",
           "Add a menuitem to the help menu for specifying support information.",
           "",
           "**Compatibility:** Firefox 68.0.1, Firefox ESR 68.0.1\\",
@@ -6279,7 +6388,7 @@
       },
       "UserMessaging": {
         "upstream": [
-          "### UserMessaging",
+          "## UserMessaging",
           "",
           "Prevent Firefox from messaging the user in certain situations.",
           "",
@@ -6354,7 +6463,7 @@
       },
       "WebsiteFilter": {
         "upstream": [
-          "### WebsiteFilter",
+          "## WebsiteFilter",
           "Block websites from being visited. The parameters take an array of Match Patterns, as documented in https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Match_patterns.",
           "The arrays are limited to 1000 entries each.",
           "",
@@ -6423,7 +6532,7 @@
       },
       "WindowsSSO": {
         "upstream": [
-          "### WindowsSSO",
+          "## WindowsSSO",
           "Allow Windows single sign-on for Microsoft, work, and school accounts.",
           "",
           "If this policy is set to true, Firefox will use credentials stored in Windows to sign in to Microsoft, work, and school accounts.",
@@ -6755,7 +6864,7 @@
     "policies": {
       "3rdparty": {
         "upstream": [
-          "### 3rdparty",
+          "## 3rdparty",
           "",
           "Allow WebExtensions to configure policy. For more information, see [Adding policy support to your extension](https://extensionworkshop.com/documentation/enterprise/adding-policy-support-to-your-extension/).",
           ""
@@ -6763,7 +6872,7 @@
       },
       "AppAutoUpdate": {
         "upstream": [
-          "### AppAutoUpdate",
+          "## AppAutoUpdate",
           "",
           "Enable or disable **automatic** application update.",
           "",
@@ -6809,7 +6918,7 @@
       },
       "AllowedDomainsForApps": {
         "upstream": [
-          "### AllowedDomainsForApps",
+          "## AllowedDomainsForApps",
           "",
           "Define domains allowed to access Google Workspace.",
           "",
@@ -6854,7 +6963,7 @@
       },
       "AppUpdateURL": {
         "upstream": [
-          "### AppUpdateURL",
+          "## AppUpdateURL",
           "",
           "Change the URL for application update if you are providing Firefox updates from a custom update server.",
           "",
@@ -6895,7 +7004,7 @@
       },
       "Authentication": {
         "upstream": [
-          "### Authentication",
+          "## Authentication",
           "",
           "Configure sites that support integrated authentication.",
           "",
@@ -7043,7 +7152,7 @@
       },
       "AutoLaunchProtocolsFromOrigins": {
         "upstream": [
-          "### AutoLaunchProtocolsFromOrigins",
+          "## AutoLaunchProtocolsFromOrigins",
           "Define a list of external protocols that can be used from listed origins without prompting the user.",
           "",
           "The syntax of this policy is exactly the same as the [Chrome AutoLaunchProtocolsFromOrigins policy](https://cloud.google.com/docs/chrome-enterprise/policies/?policy=AutoLaunchProtocolsFromOrigins) except that you can only use valid origins (not just hostnames). This also means that you cannot specify an asterisk for all origins.",
@@ -7139,7 +7248,7 @@
       },
       "BackgroundAppUpdate": {
         "upstream": [
-          "### BackgroundAppUpdate",
+          "## BackgroundAppUpdate",
           "",
           "Enable or disable **automatic** application update **in the background**, when the application is not running.",
           "",
@@ -7185,7 +7294,7 @@
       },
       "BlockAboutAddons": {
         "upstream": [
-          "### BlockAboutAddons",
+          "## BlockAboutAddons",
           "",
           "Block access to the Add-ons Manager (about:addons).",
           "",
@@ -7225,7 +7334,7 @@
       },
       "BlockAboutConfig": {
         "upstream": [
-          "### BlockAboutConfig",
+          "## BlockAboutConfig",
           "",
           "Block access to about:config.",
           "",
@@ -7265,7 +7374,7 @@
       },
       "BlockAboutProfiles": {
         "upstream": [
-          "### BlockAboutProfiles",
+          "## BlockAboutProfiles",
           "",
           "Block access to About Profiles (about:profiles).",
           "",
@@ -7305,7 +7414,7 @@
       },
       "BlockAboutSupport": {
         "upstream": [
-          "### BlockAboutSupport",
+          "## BlockAboutSupport",
           "",
           "Block access to Troubleshooting Information (about:support).",
           "",
@@ -7345,7 +7454,7 @@
       },
       "Bookmarks": {
         "upstream": [
-          "### Bookmarks",
+          "## Bookmarks",
           "",
           "Note: [`ManagedBookmarks`](#managedbookmarks) is the new recommended way to add bookmarks. This policy will continue to be supported.",
           "",
@@ -7417,7 +7526,7 @@
       },
       "CaptivePortal": {
         "upstream": [
-          "### CaptivePortal",
+          "## CaptivePortal",
           "Enable or disable the detection of captive portals.",
           "",
           "**Compatibility:** Firefox 67, Firefox ESR 60.7\\",
@@ -7456,13 +7565,13 @@
       },
       "Certificates": {
         "upstream": [
-          "### Certificates",
+          "## Certificates",
           ""
         ]
       },
       "Certificates_ImportEnterpriseRoots": {
         "upstream": [
-          "### Certificates | ImportEnterpriseRoots",
+          "## Certificates | ImportEnterpriseRoots",
           "",
           "Trust certificates that have been added to the operating system certificate store by a user or administrator.",
           "",
@@ -7511,7 +7620,7 @@
       },
       "Certificates_Install": {
         "upstream": [
-          "### Certificates | Install",
+          "## Certificates | Install",
           "",
           "Install certificates into the Firefox certificate store. If only a filename is specified, Firefox searches for the file in the following locations:",
           "",
@@ -7580,7 +7689,7 @@
       },
       "Cookies": {
         "upstream": [
-          "### Cookies",
+          "## Cookies",
           "Configure cookie preferences.",
           "",
           "`Allow` is a list of origins (not domains) where cookies are always allowed. You must include http or https.",
@@ -7734,7 +7843,7 @@
       },
       "DisableSetDesktopBackground": {
         "upstream": [
-          "### DisableSetDesktopBackground",
+          "## DisableSetDesktopBackground",
           "Remove the \"Set As Desktop Background...\" menuitem when right clicking on an image.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -7773,7 +7882,7 @@
       },
       "DisableMasterPasswordCreation": {
         "upstream": [
-          "### DisableMasterPasswordCreation",
+          "## DisableMasterPasswordCreation",
           "Remove the master password functionality.",
           "",
           "If this value is true, it works the same as setting [`PrimaryPassword`](#primarypassword) to false and removes the primary password functionality.",
@@ -7816,7 +7925,7 @@
       },
       "DisableAppUpdate": {
         "upstream": [
-          "### DisableAppUpdate",
+          "## DisableAppUpdate",
           "Turn off application updates within Firefox.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -7855,7 +7964,7 @@
       },
       "DisableBuiltinPDFViewer": {
         "upstream": [
-          "### DisableBuiltinPDFViewer",
+          "## DisableBuiltinPDFViewer",
           "Disable the built in PDF viewer. PDF files are downloaded and sent externally.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -7894,7 +8003,7 @@
       },
       "DisabledCiphers": {
         "upstream": [
-          "### DisabledCiphers",
+          "## DisabledCiphers",
           "Disable specific cryptographic ciphers.",
           "",
           "**Preferences Affected:** `security.ssl3.dhe_rsa_aes_128_sha`, `security.ssl3.dhe_rsa_aes_256_sha`, `security.ssl3.ecdhe_ecdsa_aes_128_gcm_sha256`, `security.ssl3.ecdhe_rsa_aes_128_gcm_sha256`, `security.ssl3.ecdhe_rsa_aes_128_sha`, `security.ssl3.ecdhe_rsa_aes_256_sha`, `security.ssl3.rsa_aes_128_gcm_sha256`, `security.ssl3.rsa_aes_128_sha`, `security.ssl3.rsa_aes_256_gcm_sha384`, `security.ssl3.rsa_aes_256_sha`, `security.ssl3.rsa_des_ede3_sha`",
@@ -7996,7 +8105,7 @@
       },
       "DisableDefaultBrowserAgent": {
         "upstream": [
-          "### DisableDefaultBrowserAgent",
+          "## DisableDefaultBrowserAgent",
           "Prevent the default browser agent from taking any actions. Only applicable to Windows; other platforms don’t have the agent.",
           "",
           "The browser agent is a Windows-only scheduled task which runs in the background to collect and submit data about the browser that the user has set as their OS default. More information is available [here](https://firefox-source-docs.mozilla.org/toolkit/mozapps/defaultagent/default-browser-agent/index.html).",
@@ -8030,7 +8139,7 @@
       },
       "DisableDeveloperTools": {
         "upstream": [
-          "### DisableDeveloperTools",
+          "## DisableDeveloperTools",
           "Remove access to all developer tools.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -8069,7 +8178,7 @@
       },
       "DisableFeedbackCommands": {
         "upstream": [
-          "### DisableFeedbackCommands",
+          "## DisableFeedbackCommands",
           "Disable the menus for reporting sites (Submit Feedback, Report Deceptive Site).",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -8108,7 +8217,7 @@
       },
       "DisableFirefoxScreenshots": {
         "upstream": [
-          "### DisableFirefoxScreenshots",
+          "## DisableFirefoxScreenshots",
           "Remove access to Firefox Screenshots.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -8147,7 +8256,7 @@
       },
       "DisableFirefoxAccounts": {
         "upstream": [
-          "### DisableFirefoxAccounts",
+          "## DisableFirefoxAccounts",
           "Disable Firefox Accounts integration (Sync).",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -8186,7 +8295,7 @@
       },
       "DisableFirefoxStudies": {
         "upstream": [
-          "### DisableFirefoxStudies",
+          "## DisableFirefoxStudies",
           "Disable Firefox studies (Shield).",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -8225,7 +8334,7 @@
       },
       "DisableForgetButton": {
         "upstream": [
-          "### DisableForgetButton",
+          "## DisableForgetButton",
           "Disable the \"Forget\" button.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -8264,7 +8373,7 @@
       },
       "DisableFormHistory": {
         "upstream": [
-          "### DisableFormHistory",
+          "## DisableFormHistory",
           "Turn off saving information on web forms and the search bar.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -8303,7 +8412,7 @@
       },
       "DisablePasswordReveal": {
         "upstream": [
-          "### DisablePasswordReveal",
+          "## DisablePasswordReveal",
           "Do not allow passwords to be shown in saved logins",
           "",
           "**Compatibility:** Firefox 71, Firefox ESR 68.3\\",
@@ -8342,7 +8451,7 @@
       },
       "DisablePocket": {
         "upstream": [
-          "### DisablePocket",
+          "## DisablePocket",
           "Remove Pocket in the Firefox UI. It does not remove it from the new tab page.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -8381,7 +8490,7 @@
       },
       "DisablePrivateBrowsing": {
         "upstream": [
-          "### DisablePrivateBrowsing",
+          "## DisablePrivateBrowsing",
           "Remove access to private browsing.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -8420,7 +8529,7 @@
       },
       "DisableProfileImport": {
         "upstream": [
-          "### DisableProfileImport",
+          "## DisableProfileImport",
           "Disables the \"Import data from another browser\" option in the bookmarks window.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -8459,7 +8568,7 @@
       },
       "DisableProfileRefresh": {
         "upstream": [
-          "### DisableProfileRefresh",
+          "## DisableProfileRefresh",
           "Disable the Refresh Firefox button on about:support and support.mozilla.org, as well as the prompt that displays offering to refresh Firefox when you haven't used it in a while.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -8498,7 +8607,7 @@
       },
       "DisableSafeMode": {
         "upstream": [
-          "### DisableSafeMode",
+          "## DisableSafeMode",
           "Disable safe mode within the browser.",
           "",
           "On Windows, this disables safe mode via the command line as well.",
@@ -8539,7 +8648,7 @@
       },
       "DisableSecurityBypass": {
         "upstream": [
-          "### DisableSecurityBypass",
+          "## DisableSecurityBypass",
           "Prevent the user from bypassing security in certain cases.",
           "",
           "`InvalidCertificate` prevents adding an exception when an invalid certificate is shown.",
@@ -8600,7 +8709,7 @@
       },
       "DisableSystemAddonUpdate": {
         "upstream": [
-          "### DisableSystemAddonUpdate",
+          "## DisableSystemAddonUpdate",
           "Prevent system add-ons from being installed or update.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -8639,7 +8748,7 @@
       },
       "DisableTelemetry": {
         "upstream": [
-          "### DisableTelemetry",
+          "## DisableTelemetry",
           "Prevent the upload of telemetry data.",
           "",
           "As of Firefox 83 and Firefox ESR 78.5, local storage of telemetry data is disabled as well.",
@@ -8682,7 +8791,7 @@
       },
       "DisplayBookmarksToolbar": {
         "upstream": [
-          "### DisplayBookmarksToolbar",
+          "## DisplayBookmarksToolbar",
           "Set the initial state of the bookmarks toolbar. A user can still hide it and it will stay hidden.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -8721,7 +8830,7 @@
       },
       "DisplayMenuBar (Deprecated)": {
         "upstream": [
-          "### DisplayMenuBar (Deprecated)",
+          "## DisplayMenuBar (Deprecated)",
           "Set the initial state of the menubar. A user can still hide it and it will stay hidden.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60 (Windows, some Linux)\\",
@@ -8751,7 +8860,7 @@
       },
       "DisplayMenuBar": {
         "upstream": [
-          "### DisplayMenuBar",
+          "## DisplayMenuBar",
           "Set the state of the menubar.",
           "",
           "`always` means the menubar is shown and cannot be hidden.",
@@ -8799,7 +8908,7 @@
       },
       "DNSOverHTTPS": {
         "upstream": [
-          "### DNSOverHTTPS",
+          "## DNSOverHTTPS",
           "Configure DNS over HTTPS.",
           "",
           "`Enabled` determines whether DNS over HTTPS is enabled",
@@ -8891,7 +9000,7 @@
       },
       "DontCheckDefaultBrowser": {
         "upstream": [
-          "### DontCheckDefaultBrowser",
+          "## DontCheckDefaultBrowser",
           "Don't check if Firefox is the default browser at startup.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -8930,7 +9039,7 @@
       },
       "DefaultDownloadDirectory": {
         "upstream": [
-          "### DefaultDownloadDirectory",
+          "## DefaultDownloadDirectory",
           "Set the default download directory.",
           "",
           "You can use ${home} for the native home directory.",
@@ -8978,7 +9087,7 @@
       },
       "DownloadDirectory": {
         "upstream": [
-          "### DownloadDirectory",
+          "## DownloadDirectory",
           "Set and lock the download directory.",
           "",
           "You can use ${home} for the native home directory.",
@@ -9026,7 +9135,7 @@
       },
       "EnableTrackingProtection": {
         "upstream": [
-          "### EnableTrackingProtection",
+          "## EnableTrackingProtection",
           "Configure tracking protection.",
           "",
           "If this policy is not configured, tracking protection is not enabled by default in the browser, but it is enabled by default in private browsing and the user can change it.",
@@ -9132,7 +9241,7 @@
       },
       "EncryptedMediaExtensions": {
         "upstream": [
-          "### EncryptedMediaExtensions",
+          "## EncryptedMediaExtensions",
           "Enable or disable Encrypted Media Extensions and optionally lock it.",
           "",
           "If `Enabled` is set to false, encrypted media extensions (like Widevine) are not downloaded by Firefox unless the user consents to installing them.",
@@ -9185,7 +9294,7 @@
       },
       "EnterprisePoliciesEnabled": {
         "upstream": [
-          "### EnterprisePoliciesEnabled",
+          "## EnterprisePoliciesEnabled",
           "Enable policy support on macOS.",
           "",
           "**Compatibility:** Firefox 63, Firefox ESR 60.3 (macOS only)\\",
@@ -9203,7 +9312,7 @@
       },
       "Extensions": {
         "upstream": [
-          "### Extensions",
+          "## Extensions",
           "Control the installation, uninstallation and locking of extensions.",
           "",
           "While this policy is not technically deprecated, it is recommended that you use the **[`ExtensionSettings`](#extensionsettings)** policy. It has the same functionality and adds more. It does not support native paths, though, so you'll have to use file:/// URLs.",
@@ -9290,7 +9399,7 @@
       },
       "ExtensionSettings": {
         "upstream": [
-          "### ExtensionSettings",
+          "## ExtensionSettings",
           "Manage all aspects of extensions. This policy is based heavily on the [Chrome policy](https://dev.chromium.org/administrators/policy-list-3/extension-settings-full) of the same name.",
           "",
           "This policy maps an extension ID to its configuration. With an extension ID, the configuration will be applied to the specified extension only. A default configuration can be set for the special ID \"*\", which will apply to all extensions that don't have a custom configuration set in this policy.",
@@ -9423,7 +9532,7 @@
       },
       "ExtensionUpdate": {
         "upstream": [
-          "### ExtensionUpdate",
+          "## ExtensionUpdate",
           "Control extension updates.",
           "",
           "**Compatibility:** Firefox 67, Firefox ESR 60.7\\",
@@ -9462,7 +9571,7 @@
       },
       "FlashPlugin": {
         "upstream": [
-          "### FlashPlugin",
+          "## FlashPlugin",
           "Configure the default Flash plugin policy as well as origins for which Flash is allowed.",
           "",
           "`Allow` is a list of origins where Flash are allowed.",
@@ -9550,7 +9659,7 @@
       },
       "Handlers": {
         "upstream": [
-          "### Handlers",
+          "## Handlers",
           "Configure default application handlers. This policy is based on the internal format of `handlers.json`.",
           "",
           "You can configure handlers based on a mime type (`mimeTypes`), a file's extension (`extensions`), or a protocol (`schemes`).",
@@ -9736,7 +9845,7 @@
       },
       "FirefoxHome": {
         "upstream": [
-          "### FirefoxHome",
+          "## FirefoxHome",
           "Customize the Firefox Home page.",
           "",
           "**Compatibility:** Firefox 68, Firefox ESR 68\\",
@@ -9806,7 +9915,7 @@
       },
       "HardwareAcceleration": {
         "upstream": [
-          "### HardwareAcceleration",
+          "## HardwareAcceleration",
           "Control hardware acceleration.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -9845,7 +9954,7 @@
       },
       "Homepage": {
         "upstream": [
-          "### Homepage",
+          "## Homepage",
           "Configure the default homepage and how Firefox starts.",
           "",
           "`URL` is the default homepage.",
@@ -9939,7 +10048,7 @@
       },
       "InstallAddonsPermission": {
         "upstream": [
-          "### InstallAddonsPermission",
+          "## InstallAddonsPermission",
           "Configure the default extension install policy as well as origins for extension installs are allowed. This policy does not override turning off all extension installs.",
           "",
           "`Allow` is a list of origins where extension installs are allowed.",
@@ -10005,7 +10114,7 @@
       },
       "LegacyProfiles": {
         "upstream": [
-          "### LegacyProfiles",
+          "## LegacyProfiles",
           "Disable the feature enforcing a separate profile for each installation.",
           "",
           "If this policy set to true, Firefox will not try to create different profiles for installations of Firefox in different directories. This is the equivalent of the MOZ_LEGACY_PROFILES environment variable.",
@@ -10035,7 +10144,7 @@
       },
       "LocalFileLinks": {
         "upstream": [
-          "### LocalFileLinks",
+          "## LocalFileLinks",
           "Enable linking to local files by origin.",
           "",
           "**Compatibility:** Firefox 68, Firefox ESR 68\\",
@@ -10080,7 +10189,7 @@
       },
       "ManagedBookmarks": {
         "upstream": [
-          "### ManagedBookmarks",
+          "## ManagedBookmarks",
           "Configures a list of bookmarks managed by an administrator that cannot be changed by the user.",
           "",
           "The bookmarks are only added as a button on the personal toolbar. They are not in the bookmarks folder.",
@@ -10243,7 +10352,7 @@
       },
       "ManualAppUpdateOnly": {
         "upstream": [
-          "### ManualAppUpdateOnly",
+          "## ManualAppUpdateOnly",
           "",
           "Switch to manual updates only.",
           "",
@@ -10270,7 +10379,7 @@
       },
       "PrimaryPassword": {
         "upstream": [
-          "### PrimaryPassword",
+          "## PrimaryPassword",
           "Require or prevent using a primary (formerly master) password.",
           "",
           "If this value is true, a primary password is required. If this value is false, it works the same as if [`DisableMasterPasswordCreation`](#disablemasterpasswordcreation) was true and removes the primary password functionality.",
@@ -10313,7 +10422,7 @@
       },
       "NetworkPrediction": {
         "upstream": [
-          "### NetworkPrediction",
+          "## NetworkPrediction",
           "Enable or disable network prediction (DNS prefetching).",
           "",
           "**Compatibility:** Firefox 67, Firefox ESR 60.7\\",
@@ -10351,7 +10460,7 @@
       },
       "NewTabPage": {
         "upstream": [
-          "### NewTabPage",
+          "## NewTabPage",
           "Enable or disable the New Tab page.",
           "",
           "**Compatibility:** Firefox 68, Firefox ESR 68\\",
@@ -10389,7 +10498,7 @@
       },
       "NoDefaultBookmarks": {
         "upstream": [
-          "### NoDefaultBookmarks",
+          "## NoDefaultBookmarks",
           "Disable the creation of default bookmarks.",
           "",
           "This policy is only effective if the user profile has not been created yet.",
@@ -10430,7 +10539,7 @@
       },
       "OfferToSaveLogins": {
         "upstream": [
-          "### OfferToSaveLogins",
+          "## OfferToSaveLogins",
           "Control whether or not Firefox offers to save passwords.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -10469,7 +10578,7 @@
       },
       "OfferToSaveLoginsDefault": {
         "upstream": [
-          "### OfferToSaveLoginsDefault",
+          "## OfferToSaveLoginsDefault",
           "Sets the default value of signon.rememberSignons without locking it.",
           "",
           "**Compatibility:** Firefox 70, Firefox ESR 60.2\\",
@@ -10508,7 +10617,7 @@
       },
       "OverrideFirstRunPage": {
         "upstream": [
-          "### OverrideFirstRunPage",
+          "## OverrideFirstRunPage",
           "Override the first run page. If the value is an empty string (\"\"), the first run page is not displayed.",
           "",
           "Starting with Firefox 83, Firefox ESR 78.5, you can also specify multiple URLS separated by a vertical bar (|).",
@@ -10550,7 +10659,7 @@
       },
       "OverridePostUpdatePage": {
         "upstream": [
-          "### OverridePostUpdatePage",
+          "## OverridePostUpdatePage",
           "Override the upgrade page. If the value is an empty string (\"\"), no extra pages are displayed when Firefox is upgraded.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -10590,7 +10699,7 @@
       },
       "PasswordManagerEnabled": {
         "upstream": [
-          "### PasswordManagerEnabled",
+          "## PasswordManagerEnabled",
           "Remove access to the password manager via preferences and blocks about:logins on Firefox 70.",
           "",
           "**Compatibility:** Firefox 70, Firefox ESR 60.2\\",
@@ -10629,7 +10738,7 @@
       },
       "PDFjs": {
         "upstream": [
-          "### PDFjs",
+          "## PDFjs",
           "Disable or configure PDF.js, the built-in PDF viewer.",
           "",
           "If `Enabled` is set to false, the built-in PDF viewer is disabled.",
@@ -10684,7 +10793,7 @@
       },
       "Permissions": {
         "upstream": [
-          "### Permissions",
+          "## Permissions",
           "Set permissions associated with camera, microphone, location, notifications, autoplay, and virtual reality. Because these are origins, not domains, entries with unique ports must be specified separately. This explicitly means that it is not possible to add wildcards. See examples below.",
           "",
           "`Allow` is a list of origins where the feature is allowed.",
@@ -10967,7 +11076,7 @@
       },
       "PictureInPicture": {
         "upstream": [
-          "### PictureInPicture",
+          "## PictureInPicture",
           "",
           "Enable or disable Picture-in-Picture as well as prevent the user from enabling or disabling it (Locked).",
           "",
@@ -11018,7 +11127,7 @@
       },
       "PopupBlocking": {
         "upstream": [
-          "### PopupBlocking",
+          "## PopupBlocking",
           "Configure the default pop-up window policy as well as origins for which pop-up windows are allowed.",
           "",
           "`Allow` is a list of origins where popup-windows are allowed.",
@@ -11188,10 +11297,6 @@
           "    \"Value\": \"SOME_NATIVE_PATH\",",
           "    \"Status\": \"user\"",
           "  },",
-          "  \"browser.tabs.warnOnClose\": {",
-          "    \"Value\": false,",
-          "    \"Status\": \"locked\"",
-          "  }",
           "}",
           "```",
           "#### Windows (Intune)",
@@ -11212,10 +11317,6 @@
           "    \"Value\": \"SOME_NATIVE_PATH\",",
           "    \"Status\": \"user\"",
           "  },",
-          "  \"browser.tabs.warnOnClose\": {",
-          "    \"Value\": false,",
-          "    \"Status\": \"locked\"",
-          "  }",
           "}'/>",
           "```",
           "#### macOS",
@@ -11237,13 +11338,6 @@
           "      <key>Status</key>",
           "      <string>user</string>",
           "    </dict>",
-          "    <key>browser.tabs.warnOnClose</key>",
-          "    <dict>",
-          "      <key>Value</key>",
-          "      <false/>",
-          "      <key>Status</key>",
-          "      <string>locked</string>",
-          "    </dict>",
           "  </dict>",
           "</dict>",
           "```",
@@ -11260,17 +11354,13 @@
           "        \"Value\": \"SOME_NATIVE_PATH\",",
           "        \"Status\": \"user\"",
           "      },",
-          "      \"browser.tabs.warnOnClose\": {",
-          "        \"Value\": false,",
-          "        \"Status\": \"locked\"",
-          "      }",
           "    }",
           "  }",
           "}",
           "```"
         ],
         "upstream": [
-          "### Preferences",
+          "## Preferences",
           "Set and lock preferences.",
           "",
           "**NOTE** On Windows, in order to use this policy, you must clear all settings in the old **Preferences (Deprecated)** section.",
@@ -11603,7 +11693,7 @@
           "```"
         ],
         "upstream": [
-          "### Preferences (Deprecated)",
+          "## Preferences (Deprecated)",
           "Set and lock certain preferences.",
           "",
           "**Compatibility:** See below\\",
@@ -11764,7 +11854,7 @@
       },
       "PromptForDownloadLocation": {
         "upstream": [
-          "### PromptForDownloadLocation",
+          "## PromptForDownloadLocation",
           "Ask where to save each file before downloading.",
           "",
           "**Compatibility:** Firefox 68, Firefox ESR 68\\",
@@ -11803,7 +11893,7 @@
       },
       "Proxy": {
         "upstream": [
-          "### Proxy",
+          "## Proxy",
           "Configure proxy settings. These settings correspond to the connection settings in Firefox preferences.",
           "To specify ports, append them to the hostnames with a colon (:).",
           "",
@@ -11928,7 +12018,7 @@
       },
       "RequestedLocales": {
         "upstream": [
-          "### RequestedLocales",
+          "## RequestedLocales",
           "Set the the list of requested locales for the application in order of preference. It will cause the corresponding language pack to become active.",
           "",
           "Note: For Firefox 68, this can now be a string so that you can specify an empty value.",
@@ -11995,7 +12085,7 @@
       },
       "SanitizeOnShutdown (Selective)": {
         "upstream": [
-          "### SanitizeOnShutdown (Selective)",
+          "## SanitizeOnShutdown (Selective)",
           "Clear data on shutdown. Choose from Cache, Cookies, Download History, Form & Search History, Browsing History, Active Logins, Site Preferences and Offline Website Data.",
           "",
           "Previously, these values were always locked. Starting with Firefox 74 and Firefox ESR 68.6, you can use the `Locked` option to either keep the values unlocked (set it to false), or lock only the values you set (set it to true). If you want the old behavior of locking everything, do not set `Locked` at all.",
@@ -12136,7 +12226,7 @@
       },
       "SanitizeOnShutdown (All)": {
         "upstream": [
-          "### SanitizeOnShutdown (All)",
+          "## SanitizeOnShutdown (All)",
           "Clear all data on shutdown, including Browsing & Download History, Cookies, Active Logins, Cache, Form & Search History, Site Preferences and Offline Website Data.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -12174,7 +12264,7 @@
       },
       "SearchBar": {
         "upstream": [
-          "### SearchBar",
+          "## SearchBar",
           "Set whether or not search bar is displayed.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -12217,13 +12307,13 @@
       },
       "SearchEngines (This policy is only available on the ESR.)": {
         "upstream": [
-          "### SearchEngines (This policy is only available on the ESR.)",
+          "## SearchEngines (This policy is only available on the ESR.)",
           ""
         ]
       },
       "SearchEngines_Default": {
         "upstream": [
-          "### SearchEngines | Default",
+          "## SearchEngines | Default",
           "",
           "Set the default search engine. This policy is only available on the ESR.",
           "",
@@ -12269,7 +12359,7 @@
       },
       "SearchEngines_PreventInstalls": {
         "upstream": [
-          "### SearchEngines | PreventInstalls",
+          "## SearchEngines | PreventInstalls",
           "",
           "Prevent installing search engines from webpages.",
           "",
@@ -12314,7 +12404,7 @@
       },
       "SearchEngines_Remove": {
         "upstream": [
-          "### SearchEngines | Remove",
+          "## SearchEngines | Remove",
           "",
           "Hide built-in search engines. This policy is only available on the ESR.",
           "",
@@ -12362,7 +12452,7 @@
       },
       "SearchEngines_Add": {
         "upstream": [
-          "### SearchEngines | Add",
+          "## SearchEngines | Add",
           "",
           "Add new search engines (up to five). This policy is only available on the ESR. `Name` and `URLTemplate` are required.",
           "",
@@ -12470,7 +12560,7 @@
       },
       "SearchSuggestEnabled": {
         "upstream": [
-          "### SearchSuggestEnabled",
+          "## SearchSuggestEnabled",
           "",
           "Enable search suggestions.",
           "",
@@ -12510,7 +12600,7 @@
       },
       "SecurityDevices": {
         "upstream": [
-          "### SecurityDevices",
+          "## SecurityDevices",
           "",
           "Install PKCS #11 modules.",
           "",
@@ -12557,7 +12647,7 @@
       },
       "ShowHomeButton": {
         "upstream": [
-          "### ShowHomeButton",
+          "## ShowHomeButton",
           "Show the home button on the toolbar.",
           "",
           "Future versions of Firefox will not show the home button by default.",
@@ -12598,7 +12688,7 @@
       },
       "SSLVersionMax": {
         "upstream": [
-          "### SSLVersionMax",
+          "## SSLVersionMax",
           "",
           "Set and lock the maximum version of TLS.",
           "",
@@ -12640,7 +12730,7 @@
       },
       "SSLVersionMin": {
         "upstream": [
-          "### SSLVersionMin",
+          "## SSLVersionMin",
           "",
           "Set and lock the minimum version of TLS.",
           "",
@@ -12682,7 +12772,7 @@
       },
       "SupportMenu": {
         "upstream": [
-          "### SupportMenu",
+          "## SupportMenu",
           "Add a menuitem to the help menu for specifying support information.",
           "",
           "**Compatibility:** Firefox 68.0.1, Firefox ESR 68.0.1\\",
@@ -12737,7 +12827,7 @@
       },
       "UserMessaging": {
         "upstream": [
-          "### UserMessaging",
+          "## UserMessaging",
           "",
           "Prevent Firefox from messaging the user in certain situations.",
           "",
@@ -12812,7 +12902,7 @@
       },
       "WebsiteFilter": {
         "upstream": [
-          "### WebsiteFilter",
+          "## WebsiteFilter",
           "Block websites from being visited. The parameters take an array of Match Patterns, as documented in https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Match_patterns.",
           "The arrays are limited to 1000 entries each.",
           "",
@@ -12881,7 +12971,7 @@
       },
       "WindowsSSO": {
         "upstream": [
-          "### WindowsSSO",
+          "## WindowsSSO",
           "Allow Windows single sign-on for Microsoft, work, and school accounts.",
           "",
           "If this policy is set to true, Firefox will use credentials stored in Windows to sign in to Microsoft, work, and school accounts.",
@@ -13211,7 +13301,7 @@
     "policies": {
       "3rdparty": {
         "upstream": [
-          "### 3rdparty",
+          "## 3rdparty",
           "",
           "Allow WebExtensions to configure policy. For more information, see [Adding policy support to your extension](https://extensionworkshop.com/documentation/enterprise/adding-policy-support-to-your-extension/).",
           ""
@@ -13219,7 +13309,7 @@
       },
       "AppAutoUpdate": {
         "upstream": [
-          "### AppAutoUpdate",
+          "## AppAutoUpdate",
           "",
           "Enable or disable **automatic** application update.",
           "",
@@ -13265,7 +13355,7 @@
       },
       "AllowedDomainsForApps": {
         "upstream": [
-          "### AllowedDomainsForApps",
+          "## AllowedDomainsForApps",
           "",
           "Define domains allowed to access Google Workspace.",
           "",
@@ -13310,7 +13400,7 @@
       },
       "AppUpdateURL": {
         "upstream": [
-          "### AppUpdateURL",
+          "## AppUpdateURL",
           "",
           "Change the URL for application update if you are providing Firefox updates from a custom update server.",
           "",
@@ -13351,7 +13441,7 @@
       },
       "Authentication": {
         "upstream": [
-          "### Authentication",
+          "## Authentication",
           "",
           "Configure sites that support integrated authentication.",
           "",
@@ -13499,7 +13589,7 @@
       },
       "AutoLaunchProtocolsFromOrigins": {
         "upstream": [
-          "### AutoLaunchProtocolsFromOrigins",
+          "## AutoLaunchProtocolsFromOrigins",
           "Define a list of external protocols that can be used from listed origins without prompting the user.",
           "",
           "The syntax of this policy is exactly the same as the [Chrome AutoLaunchProtocolsFromOrigins policy](https://cloud.google.com/docs/chrome-enterprise/policies/?policy=AutoLaunchProtocolsFromOrigins) except that you can only use valid origins (not just hostnames). This also means that you cannot specify an asterisk for all origins.",
@@ -13595,7 +13685,7 @@
       },
       "BackgroundAppUpdate": {
         "upstream": [
-          "### BackgroundAppUpdate",
+          "## BackgroundAppUpdate",
           "",
           "Enable or disable **automatic** application update **in the background**, when the application is not running.",
           "",
@@ -13641,7 +13731,7 @@
       },
       "BlockAboutAddons": {
         "upstream": [
-          "### BlockAboutAddons",
+          "## BlockAboutAddons",
           "",
           "Block access to the Add-ons Manager (about:addons).",
           "",
@@ -13681,7 +13771,7 @@
       },
       "BlockAboutConfig": {
         "upstream": [
-          "### BlockAboutConfig",
+          "## BlockAboutConfig",
           "",
           "Block access to about:config.",
           "",
@@ -13721,7 +13811,7 @@
       },
       "BlockAboutProfiles": {
         "upstream": [
-          "### BlockAboutProfiles",
+          "## BlockAboutProfiles",
           "",
           "Block access to About Profiles (about:profiles).",
           "",
@@ -13761,7 +13851,7 @@
       },
       "BlockAboutSupport": {
         "upstream": [
-          "### BlockAboutSupport",
+          "## BlockAboutSupport",
           "",
           "Block access to Troubleshooting Information (about:support).",
           "",
@@ -13801,7 +13891,7 @@
       },
       "Bookmarks": {
         "upstream": [
-          "### Bookmarks",
+          "## Bookmarks",
           "",
           "Note: [`ManagedBookmarks`](#managedbookmarks) is the new recommended way to add bookmarks. This policy will continue to be supported.",
           "",
@@ -13873,7 +13963,7 @@
       },
       "CaptivePortal": {
         "upstream": [
-          "### CaptivePortal",
+          "## CaptivePortal",
           "Enable or disable the detection of captive portals.",
           "",
           "**Compatibility:** Firefox 67, Firefox ESR 60.7\\",
@@ -13912,13 +14002,13 @@
       },
       "Certificates": {
         "upstream": [
-          "### Certificates",
+          "## Certificates",
           ""
         ]
       },
       "Certificates_ImportEnterpriseRoots": {
         "upstream": [
-          "### Certificates | ImportEnterpriseRoots",
+          "## Certificates | ImportEnterpriseRoots",
           "",
           "Trust certificates that have been added to the operating system certificate store by a user or administrator.",
           "",
@@ -13967,7 +14057,7 @@
       },
       "Certificates_Install": {
         "upstream": [
-          "### Certificates | Install",
+          "## Certificates | Install",
           "",
           "Install certificates into the Firefox certificate store. If only a filename is specified, Firefox searches for the file in the following locations:",
           "",
@@ -14036,7 +14126,7 @@
       },
       "Cookies": {
         "upstream": [
-          "### Cookies",
+          "## Cookies",
           "Configure cookie preferences.",
           "",
           "`Allow` is a list of origins (not domains) where cookies are always allowed. You must include http or https.",
@@ -14190,7 +14280,7 @@
       },
       "DisableSetDesktopBackground": {
         "upstream": [
-          "### DisableSetDesktopBackground",
+          "## DisableSetDesktopBackground",
           "Remove the \"Set As Desktop Background...\" menuitem when right clicking on an image.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -14229,7 +14319,7 @@
       },
       "DisableMasterPasswordCreation": {
         "upstream": [
-          "### DisableMasterPasswordCreation",
+          "## DisableMasterPasswordCreation",
           "Remove the master password functionality.",
           "",
           "If this value is true, it works the same as setting [`PrimaryPassword`](#primarypassword) to false and removes the primary password functionality.",
@@ -14272,7 +14362,7 @@
       },
       "DisableAppUpdate": {
         "upstream": [
-          "### DisableAppUpdate",
+          "## DisableAppUpdate",
           "Turn off application updates within Firefox.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -14311,7 +14401,7 @@
       },
       "DisableBuiltinPDFViewer": {
         "upstream": [
-          "### DisableBuiltinPDFViewer",
+          "## DisableBuiltinPDFViewer",
           "Disable the built in PDF viewer. PDF files are downloaded and sent externally.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -14350,7 +14440,7 @@
       },
       "DisabledCiphers": {
         "upstream": [
-          "### DisabledCiphers",
+          "## DisabledCiphers",
           "Disable specific cryptographic ciphers.",
           "",
           "**Preferences Affected:** `security.ssl3.dhe_rsa_aes_128_sha`, `security.ssl3.dhe_rsa_aes_256_sha`, `security.ssl3.ecdhe_ecdsa_aes_128_gcm_sha256`, `security.ssl3.ecdhe_rsa_aes_128_gcm_sha256`, `security.ssl3.ecdhe_rsa_aes_128_sha`, `security.ssl3.ecdhe_rsa_aes_256_sha`, `security.ssl3.rsa_aes_128_gcm_sha256`, `security.ssl3.rsa_aes_128_sha`, `security.ssl3.rsa_aes_256_gcm_sha384`, `security.ssl3.rsa_aes_256_sha`, `security.ssl3.rsa_des_ede3_sha`",
@@ -14452,7 +14542,7 @@
       },
       "DisableDefaultBrowserAgent": {
         "upstream": [
-          "### DisableDefaultBrowserAgent",
+          "## DisableDefaultBrowserAgent",
           "Prevent the default browser agent from taking any actions. Only applicable to Windows; other platforms don’t have the agent.",
           "",
           "The browser agent is a Windows-only scheduled task which runs in the background to collect and submit data about the browser that the user has set as their OS default. More information is available [here](https://firefox-source-docs.mozilla.org/toolkit/mozapps/defaultagent/default-browser-agent/index.html).",
@@ -14486,7 +14576,7 @@
       },
       "DisableDeveloperTools": {
         "upstream": [
-          "### DisableDeveloperTools",
+          "## DisableDeveloperTools",
           "Remove access to all developer tools.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -14525,7 +14615,7 @@
       },
       "DisableFeedbackCommands": {
         "upstream": [
-          "### DisableFeedbackCommands",
+          "## DisableFeedbackCommands",
           "Disable the menus for reporting sites (Submit Feedback, Report Deceptive Site).",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -14564,7 +14654,7 @@
       },
       "DisableFirefoxScreenshots": {
         "upstream": [
-          "### DisableFirefoxScreenshots",
+          "## DisableFirefoxScreenshots",
           "Remove access to Firefox Screenshots.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -14603,7 +14693,7 @@
       },
       "DisableFirefoxAccounts": {
         "upstream": [
-          "### DisableFirefoxAccounts",
+          "## DisableFirefoxAccounts",
           "Disable Firefox Accounts integration (Sync).",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -14642,7 +14732,7 @@
       },
       "DisableFirefoxStudies": {
         "upstream": [
-          "### DisableFirefoxStudies",
+          "## DisableFirefoxStudies",
           "Disable Firefox studies (Shield).",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -14681,7 +14771,7 @@
       },
       "DisableForgetButton": {
         "upstream": [
-          "### DisableForgetButton",
+          "## DisableForgetButton",
           "Disable the \"Forget\" button.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -14720,7 +14810,7 @@
       },
       "DisableFormHistory": {
         "upstream": [
-          "### DisableFormHistory",
+          "## DisableFormHistory",
           "Turn off saving information on web forms and the search bar.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -14759,7 +14849,7 @@
       },
       "DisablePasswordReveal": {
         "upstream": [
-          "### DisablePasswordReveal",
+          "## DisablePasswordReveal",
           "Do not allow passwords to be shown in saved logins",
           "",
           "**Compatibility:** Firefox 71, Firefox ESR 68.3\\",
@@ -14798,7 +14888,7 @@
       },
       "DisablePocket": {
         "upstream": [
-          "### DisablePocket",
+          "## DisablePocket",
           "Remove Pocket in the Firefox UI. It does not remove it from the new tab page.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -14837,7 +14927,7 @@
       },
       "DisablePrivateBrowsing": {
         "upstream": [
-          "### DisablePrivateBrowsing",
+          "## DisablePrivateBrowsing",
           "Remove access to private browsing.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -14876,7 +14966,7 @@
       },
       "DisableProfileImport": {
         "upstream": [
-          "### DisableProfileImport",
+          "## DisableProfileImport",
           "Disables the \"Import data from another browser\" option in the bookmarks window.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -14915,7 +15005,7 @@
       },
       "DisableProfileRefresh": {
         "upstream": [
-          "### DisableProfileRefresh",
+          "## DisableProfileRefresh",
           "Disable the Refresh Firefox button on about:support and support.mozilla.org, as well as the prompt that displays offering to refresh Firefox when you haven't used it in a while.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -14954,7 +15044,7 @@
       },
       "DisableSafeMode": {
         "upstream": [
-          "### DisableSafeMode",
+          "## DisableSafeMode",
           "Disable safe mode within the browser.",
           "",
           "On Windows, this disables safe mode via the command line as well.",
@@ -14995,7 +15085,7 @@
       },
       "DisableSecurityBypass": {
         "upstream": [
-          "### DisableSecurityBypass",
+          "## DisableSecurityBypass",
           "Prevent the user from bypassing security in certain cases.",
           "",
           "`InvalidCertificate` prevents adding an exception when an invalid certificate is shown.",
@@ -15056,7 +15146,7 @@
       },
       "DisableSystemAddonUpdate": {
         "upstream": [
-          "### DisableSystemAddonUpdate",
+          "## DisableSystemAddonUpdate",
           "Prevent system add-ons from being installed or update.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -15095,7 +15185,7 @@
       },
       "DisableTelemetry": {
         "upstream": [
-          "### DisableTelemetry",
+          "## DisableTelemetry",
           "Prevent the upload of telemetry data.",
           "",
           "As of Firefox 83 and Firefox ESR 78.5, local storage of telemetry data is disabled as well.",
@@ -15138,7 +15228,7 @@
       },
       "DisplayBookmarksToolbar": {
         "upstream": [
-          "### DisplayBookmarksToolbar",
+          "## DisplayBookmarksToolbar",
           "Set the initial state of the bookmarks toolbar. A user can still hide it and it will stay hidden.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -15177,7 +15267,7 @@
       },
       "DisplayMenuBar (Deprecated)": {
         "upstream": [
-          "### DisplayMenuBar (Deprecated)",
+          "## DisplayMenuBar (Deprecated)",
           "Set the initial state of the menubar. A user can still hide it and it will stay hidden.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60 (Windows, some Linux)\\",
@@ -15207,7 +15297,7 @@
       },
       "DisplayMenuBar": {
         "upstream": [
-          "### DisplayMenuBar",
+          "## DisplayMenuBar",
           "Set the state of the menubar.",
           "",
           "`always` means the menubar is shown and cannot be hidden.",
@@ -15255,7 +15345,7 @@
       },
       "DNSOverHTTPS": {
         "upstream": [
-          "### DNSOverHTTPS",
+          "## DNSOverHTTPS",
           "Configure DNS over HTTPS.",
           "",
           "`Enabled` determines whether DNS over HTTPS is enabled",
@@ -15347,7 +15437,7 @@
       },
       "DontCheckDefaultBrowser": {
         "upstream": [
-          "### DontCheckDefaultBrowser",
+          "## DontCheckDefaultBrowser",
           "Don't check if Firefox is the default browser at startup.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -15386,7 +15476,7 @@
       },
       "DefaultDownloadDirectory": {
         "upstream": [
-          "### DefaultDownloadDirectory",
+          "## DefaultDownloadDirectory",
           "Set the default download directory.",
           "",
           "You can use ${home} for the native home directory.",
@@ -15434,7 +15524,7 @@
       },
       "DownloadDirectory": {
         "upstream": [
-          "### DownloadDirectory",
+          "## DownloadDirectory",
           "Set and lock the download directory.",
           "",
           "You can use ${home} for the native home directory.",
@@ -15482,7 +15572,7 @@
       },
       "EnableTrackingProtection": {
         "upstream": [
-          "### EnableTrackingProtection",
+          "## EnableTrackingProtection",
           "Configure tracking protection.",
           "",
           "If this policy is not configured, tracking protection is not enabled by default in the browser, but it is enabled by default in private browsing and the user can change it.",
@@ -15588,7 +15678,7 @@
       },
       "EncryptedMediaExtensions": {
         "upstream": [
-          "### EncryptedMediaExtensions",
+          "## EncryptedMediaExtensions",
           "Enable or disable Encrypted Media Extensions and optionally lock it.",
           "",
           "If `Enabled` is set to false, encrypted media extensions (like Widevine) are not downloaded by Firefox unless the user consents to installing them.",
@@ -15641,7 +15731,7 @@
       },
       "EnterprisePoliciesEnabled": {
         "upstream": [
-          "### EnterprisePoliciesEnabled",
+          "## EnterprisePoliciesEnabled",
           "Enable policy support on macOS.",
           "",
           "**Compatibility:** Firefox 63, Firefox ESR 60.3 (macOS only)\\",
@@ -15659,7 +15749,7 @@
       },
       "Extensions": {
         "upstream": [
-          "### Extensions",
+          "## Extensions",
           "Control the installation, uninstallation and locking of extensions.",
           "",
           "While this policy is not technically deprecated, it is recommended that you use the **[`ExtensionSettings`](#extensionsettings)** policy. It has the same functionality and adds more. It does not support native paths, though, so you'll have to use file:/// URLs.",
@@ -15746,7 +15836,7 @@
       },
       "ExtensionSettings": {
         "upstream": [
-          "### ExtensionSettings",
+          "## ExtensionSettings",
           "Manage all aspects of extensions. This policy is based heavily on the [Chrome policy](https://dev.chromium.org/administrators/policy-list-3/extension-settings-full) of the same name.",
           "",
           "This policy maps an extension ID to its configuration. With an extension ID, the configuration will be applied to the specified extension only. A default configuration can be set for the special ID \"*\", which will apply to all extensions that don't have a custom configuration set in this policy.",
@@ -15879,7 +15969,7 @@
       },
       "ExtensionUpdate": {
         "upstream": [
-          "### ExtensionUpdate",
+          "## ExtensionUpdate",
           "Control extension updates.",
           "",
           "**Compatibility:** Firefox 67, Firefox ESR 60.7\\",
@@ -15918,7 +16008,7 @@
       },
       "FlashPlugin": {
         "upstream": [
-          "### FlashPlugin",
+          "## FlashPlugin",
           "Configure the default Flash plugin policy as well as origins for which Flash is allowed.",
           "",
           "`Allow` is a list of origins where Flash are allowed.",
@@ -16006,7 +16096,7 @@
       },
       "Handlers": {
         "upstream": [
-          "### Handlers",
+          "## Handlers",
           "Configure default application handlers. This policy is based on the internal format of `handlers.json`.",
           "",
           "You can configure handlers based on a mime type (`mimeTypes`), a file's extension (`extensions`), or a protocol (`schemes`).",
@@ -16192,7 +16282,7 @@
       },
       "FirefoxHome": {
         "upstream": [
-          "### FirefoxHome",
+          "## FirefoxHome",
           "Customize the Firefox Home page.",
           "",
           "**Compatibility:** Firefox 68, Firefox ESR 68\\",
@@ -16262,7 +16352,7 @@
       },
       "HardwareAcceleration": {
         "upstream": [
-          "### HardwareAcceleration",
+          "## HardwareAcceleration",
           "Control hardware acceleration.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -16301,7 +16391,7 @@
       },
       "Homepage": {
         "upstream": [
-          "### Homepage",
+          "## Homepage",
           "Configure the default homepage and how Firefox starts.",
           "",
           "`URL` is the default homepage.",
@@ -16395,7 +16485,7 @@
       },
       "InstallAddonsPermission": {
         "upstream": [
-          "### InstallAddonsPermission",
+          "## InstallAddonsPermission",
           "Configure the default extension install policy as well as origins for extension installs are allowed. This policy does not override turning off all extension installs.",
           "",
           "`Allow` is a list of origins where extension installs are allowed.",
@@ -16461,7 +16551,7 @@
       },
       "LegacyProfiles": {
         "upstream": [
-          "### LegacyProfiles",
+          "## LegacyProfiles",
           "Disable the feature enforcing a separate profile for each installation.",
           "",
           "If this policy set to true, Firefox will not try to create different profiles for installations of Firefox in different directories. This is the equivalent of the MOZ_LEGACY_PROFILES environment variable.",
@@ -16491,7 +16581,7 @@
       },
       "LocalFileLinks": {
         "upstream": [
-          "### LocalFileLinks",
+          "## LocalFileLinks",
           "Enable linking to local files by origin.",
           "",
           "**Compatibility:** Firefox 68, Firefox ESR 68\\",
@@ -16536,7 +16626,7 @@
       },
       "ManagedBookmarks": {
         "upstream": [
-          "### ManagedBookmarks",
+          "## ManagedBookmarks",
           "Configures a list of bookmarks managed by an administrator that cannot be changed by the user.",
           "",
           "The bookmarks are only added as a button on the personal toolbar. They are not in the bookmarks folder.",
@@ -16699,7 +16789,7 @@
       },
       "ManualAppUpdateOnly": {
         "upstream": [
-          "### ManualAppUpdateOnly",
+          "## ManualAppUpdateOnly",
           "",
           "Switch to manual updates only.",
           "",
@@ -16726,7 +16816,7 @@
       },
       "PrimaryPassword": {
         "upstream": [
-          "### PrimaryPassword",
+          "## PrimaryPassword",
           "Require or prevent using a primary (formerly master) password.",
           "",
           "If this value is true, a primary password is required. If this value is false, it works the same as if [`DisableMasterPasswordCreation`](#disablemasterpasswordcreation) was true and removes the primary password functionality.",
@@ -16769,7 +16859,7 @@
       },
       "NetworkPrediction": {
         "upstream": [
-          "### NetworkPrediction",
+          "## NetworkPrediction",
           "Enable or disable network prediction (DNS prefetching).",
           "",
           "**Compatibility:** Firefox 67, Firefox ESR 60.7\\",
@@ -16807,7 +16897,7 @@
       },
       "NewTabPage": {
         "upstream": [
-          "### NewTabPage",
+          "## NewTabPage",
           "Enable or disable the New Tab page.",
           "",
           "**Compatibility:** Firefox 68, Firefox ESR 68\\",
@@ -16845,7 +16935,7 @@
       },
       "NoDefaultBookmarks": {
         "upstream": [
-          "### NoDefaultBookmarks",
+          "## NoDefaultBookmarks",
           "Disable the creation of default bookmarks.",
           "",
           "This policy is only effective if the user profile has not been created yet.",
@@ -16886,7 +16976,7 @@
       },
       "OfferToSaveLogins": {
         "upstream": [
-          "### OfferToSaveLogins",
+          "## OfferToSaveLogins",
           "Control whether or not Firefox offers to save passwords.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -16925,7 +17015,7 @@
       },
       "OfferToSaveLoginsDefault": {
         "upstream": [
-          "### OfferToSaveLoginsDefault",
+          "## OfferToSaveLoginsDefault",
           "Sets the default value of signon.rememberSignons without locking it.",
           "",
           "**Compatibility:** Firefox 70, Firefox ESR 60.2\\",
@@ -16964,7 +17054,7 @@
       },
       "OverrideFirstRunPage": {
         "upstream": [
-          "### OverrideFirstRunPage",
+          "## OverrideFirstRunPage",
           "Override the first run page. If the value is an empty string (\"\"), the first run page is not displayed.",
           "",
           "Starting with Firefox 83, Firefox ESR 78.5, you can also specify multiple URLS separated by a vertical bar (|).",
@@ -17006,7 +17096,7 @@
       },
       "OverridePostUpdatePage": {
         "upstream": [
-          "### OverridePostUpdatePage",
+          "## OverridePostUpdatePage",
           "Override the upgrade page. If the value is an empty string (\"\"), no extra pages are displayed when Firefox is upgraded.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -17046,7 +17136,7 @@
       },
       "PasswordManagerEnabled": {
         "upstream": [
-          "### PasswordManagerEnabled",
+          "## PasswordManagerEnabled",
           "Remove access to the password manager via preferences and blocks about:logins on Firefox 70.",
           "",
           "**Compatibility:** Firefox 70, Firefox ESR 60.2\\",
@@ -17085,7 +17175,7 @@
       },
       "PDFjs": {
         "upstream": [
-          "### PDFjs",
+          "## PDFjs",
           "Disable or configure PDF.js, the built-in PDF viewer.",
           "",
           "If `Enabled` is set to false, the built-in PDF viewer is disabled.",
@@ -17140,7 +17230,7 @@
       },
       "Permissions": {
         "upstream": [
-          "### Permissions",
+          "## Permissions",
           "Set permissions associated with camera, microphone, location, notifications, autoplay, and virtual reality. Because these are origins, not domains, entries with unique ports must be specified separately. This explicitly means that it is not possible to add wildcards. See examples below.",
           "",
           "`Allow` is a list of origins where the feature is allowed.",
@@ -17423,7 +17513,7 @@
       },
       "PictureInPicture": {
         "upstream": [
-          "### PictureInPicture",
+          "## PictureInPicture",
           "",
           "Enable or disable Picture-in-Picture as well as prevent the user from enabling or disabling it (Locked).",
           "",
@@ -17474,7 +17564,7 @@
       },
       "PopupBlocking": {
         "upstream": [
-          "### PopupBlocking",
+          "## PopupBlocking",
           "Configure the default pop-up window policy as well as origins for which pop-up windows are allowed.",
           "",
           "`Allow` is a list of origins where popup-windows are allowed.",
@@ -17555,7 +17645,7 @@
       "Preferences": {
         "override": "skip",
         "upstream": [
-          "### Preferences",
+          "## Preferences",
           "Set and lock preferences.",
           "",
           "**NOTE** On Windows, in order to use this policy, you must clear all settings in the old **Preferences (Deprecated)** section.",
@@ -17888,7 +17978,7 @@
           "```"
         ],
         "upstream": [
-          "### Preferences (Deprecated)",
+          "## Preferences (Deprecated)",
           "Set and lock certain preferences.",
           "",
           "**Compatibility:** See below\\",
@@ -18049,7 +18139,7 @@
       },
       "PromptForDownloadLocation": {
         "upstream": [
-          "### PromptForDownloadLocation",
+          "## PromptForDownloadLocation",
           "Ask where to save each file before downloading.",
           "",
           "**Compatibility:** Firefox 68, Firefox ESR 68\\",
@@ -18088,7 +18178,7 @@
       },
       "Proxy": {
         "upstream": [
-          "### Proxy",
+          "## Proxy",
           "Configure proxy settings. These settings correspond to the connection settings in Firefox preferences.",
           "To specify ports, append them to the hostnames with a colon (:).",
           "",
@@ -18213,7 +18303,7 @@
       },
       "RequestedLocales": {
         "upstream": [
-          "### RequestedLocales",
+          "## RequestedLocales",
           "Set the the list of requested locales for the application in order of preference. It will cause the corresponding language pack to become active.",
           "",
           "Note: For Firefox 68, this can now be a string so that you can specify an empty value.",
@@ -18280,7 +18370,7 @@
       },
       "SanitizeOnShutdown (Selective)": {
         "upstream": [
-          "### SanitizeOnShutdown (Selective)",
+          "## SanitizeOnShutdown (Selective)",
           "Clear data on shutdown. Choose from Cache, Cookies, Download History, Form & Search History, Browsing History, Active Logins, Site Preferences and Offline Website Data.",
           "",
           "Previously, these values were always locked. Starting with Firefox 74 and Firefox ESR 68.6, you can use the `Locked` option to either keep the values unlocked (set it to false), or lock only the values you set (set it to true). If you want the old behavior of locking everything, do not set `Locked` at all.",
@@ -18421,7 +18511,7 @@
       },
       "SanitizeOnShutdown (All)": {
         "upstream": [
-          "### SanitizeOnShutdown (All)",
+          "## SanitizeOnShutdown (All)",
           "Clear all data on shutdown, including Browsing & Download History, Cookies, Active Logins, Cache, Form & Search History, Site Preferences and Offline Website Data.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -18459,7 +18549,7 @@
       },
       "SearchBar": {
         "upstream": [
-          "### SearchBar",
+          "## SearchBar",
           "Set whether or not search bar is displayed.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -18502,13 +18592,13 @@
       },
       "SearchEngines (This policy is only available on the ESR.)": {
         "upstream": [
-          "### SearchEngines (This policy is only available on the ESR.)",
+          "## SearchEngines (This policy is only available on the ESR.)",
           ""
         ]
       },
       "SearchEngines_Default": {
         "upstream": [
-          "### SearchEngines | Default",
+          "## SearchEngines | Default",
           "",
           "Set the default search engine. This policy is only available on the ESR.",
           "",
@@ -18554,7 +18644,7 @@
       },
       "SearchEngines_PreventInstalls": {
         "upstream": [
-          "### SearchEngines | PreventInstalls",
+          "## SearchEngines | PreventInstalls",
           "",
           "Prevent installing search engines from webpages.",
           "",
@@ -18599,7 +18689,7 @@
       },
       "SearchEngines_Remove": {
         "upstream": [
-          "### SearchEngines | Remove",
+          "## SearchEngines | Remove",
           "",
           "Hide built-in search engines. This policy is only available on the ESR.",
           "",
@@ -18647,7 +18737,7 @@
       },
       "SearchEngines_Add": {
         "upstream": [
-          "### SearchEngines | Add",
+          "## SearchEngines | Add",
           "",
           "Add new search engines (up to five). This policy is only available on the ESR. `Name` and `URLTemplate` are required.",
           "",
@@ -18753,7 +18843,7 @@
       },
       "SearchSuggestEnabled": {
         "upstream": [
-          "### SearchSuggestEnabled",
+          "## SearchSuggestEnabled",
           "",
           "Enable search suggestions.",
           "",
@@ -18793,7 +18883,7 @@
       },
       "SecurityDevices": {
         "upstream": [
-          "### SecurityDevices",
+          "## SecurityDevices",
           "",
           "Install PKCS #11 modules.",
           "",
@@ -18840,7 +18930,7 @@
       },
       "ShowHomeButton": {
         "upstream": [
-          "### ShowHomeButton",
+          "## ShowHomeButton",
           "Show the home button on the toolbar.",
           "",
           "Future versions of Firefox will not show the home button by default.",
@@ -18881,7 +18971,7 @@
       },
       "SSLVersionMax": {
         "upstream": [
-          "### SSLVersionMax",
+          "## SSLVersionMax",
           "",
           "Set and lock the maximum version of TLS.",
           "",
@@ -18923,7 +19013,7 @@
       },
       "SSLVersionMin": {
         "upstream": [
-          "### SSLVersionMin",
+          "## SSLVersionMin",
           "",
           "Set and lock the minimum version of TLS.",
           "",
@@ -18965,7 +19055,7 @@
       },
       "SupportMenu": {
         "upstream": [
-          "### SupportMenu",
+          "## SupportMenu",
           "Add a menuitem to the help menu for specifying support information.",
           "",
           "**Compatibility:** Firefox 68.0.1, Firefox ESR 68.0.1\\",
@@ -19020,7 +19110,7 @@
       },
       "UserMessaging": {
         "upstream": [
-          "### UserMessaging",
+          "## UserMessaging",
           "",
           "Prevent Firefox from messaging the user in certain situations.",
           "",
@@ -19095,7 +19185,7 @@
       },
       "WebsiteFilter": {
         "upstream": [
-          "### WebsiteFilter",
+          "## WebsiteFilter",
           "Block websites from being visited. The parameters take an array of Match Patterns, as documented in https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Match_patterns.",
           "The arrays are limited to 1000 entries each.",
           "",
@@ -19423,7 +19513,7 @@
     "policies": {
       "AppAutoUpdate": {
         "upstream": [
-          "### AppAutoUpdate",
+          "## AppAutoUpdate",
           "",
           "Enable or disable **automatic** application update.",
           "",
@@ -19469,7 +19559,7 @@
       },
       "AppUpdateURL": {
         "upstream": [
-          "### AppUpdateURL",
+          "## AppUpdateURL",
           "",
           "Change the URL for application update.",
           "",
@@ -19510,7 +19600,7 @@
       },
       "Authentication": {
         "upstream": [
-          "### Authentication",
+          "## Authentication",
           "",
           "Configure sites that support integrated authentication.",
           "",
@@ -19658,7 +19748,7 @@
       },
       "BlockAboutAddons": {
         "upstream": [
-          "### BlockAboutAddons",
+          "## BlockAboutAddons",
           "",
           "Block access to the Add-ons Manager (about:addons).",
           "",
@@ -19698,7 +19788,7 @@
       },
       "BlockAboutConfig": {
         "upstream": [
-          "### BlockAboutConfig",
+          "## BlockAboutConfig",
           "",
           "Block access to about:config.",
           "",
@@ -19738,7 +19828,7 @@
       },
       "BlockAboutProfiles": {
         "upstream": [
-          "### BlockAboutProfiles",
+          "## BlockAboutProfiles",
           "",
           "Block access to About Profiles (about:profiles).",
           "",
@@ -19778,7 +19868,7 @@
       },
       "BlockAboutSupport": {
         "upstream": [
-          "### BlockAboutSupport",
+          "## BlockAboutSupport",
           "",
           "Block access to Troubleshooting Information (about:support).",
           "",
@@ -19818,7 +19908,7 @@
       },
       "Bookmarks": {
         "upstream": [
-          "### Bookmarks",
+          "## Bookmarks",
           "",
           "Add bookmarks in either the bookmarks toolbar or menu. Only `Title` and `URL` are required. If `Placement` is not specified, the bookmark will be placed on the toolbar. If `Folder` is specified, it is automatically created and bookmarks with the same folder name are grouped together.",
           "",
@@ -19888,7 +19978,7 @@
       },
       "CaptivePortal": {
         "upstream": [
-          "### CaptivePortal",
+          "## CaptivePortal",
           "Enable or disable the detection of captive portals.",
           "",
           "**Compatibility:** Firefox 67, Firefox ESR 60.7\\",
@@ -19927,13 +20017,13 @@
       },
       "Certificates": {
         "upstream": [
-          "### Certificates",
+          "## Certificates",
           ""
         ]
       },
       "Certificates_ImportEnterpriseRoots": {
         "upstream": [
-          "### Certificates | ImportEnterpriseRoots",
+          "## Certificates | ImportEnterpriseRoots",
           "",
           "Trust certificates that have been added to the operating system certificate store by a user or administrator.",
           "",
@@ -19980,7 +20070,7 @@
       },
       "Certificates_Install": {
         "upstream": [
-          "### Certificates | Install",
+          "## Certificates | Install",
           "",
           "Install certificates into the Firefox certificate store. If only a filename is specified, Firefox searches for the file in the following locations:",
           "",
@@ -20049,7 +20139,7 @@
       },
       "Cookies": {
         "upstream": [
-          "### Cookies",
+          "## Cookies",
           "Configure cookie preferences.",
           "",
           "`Allow` is a list of origins (not domains) where cookies are always allowed. You must include http or https.",
@@ -20186,7 +20276,7 @@
       },
       "DisableSetDesktopBackground": {
         "upstream": [
-          "### DisableSetDesktopBackground",
+          "## DisableSetDesktopBackground",
           "Remove the \"Set As Desktop Background...\" menuitem when right clicking on an image.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -20225,7 +20315,7 @@
       },
       "DisableMasterPasswordCreation": {
         "upstream": [
-          "### DisableMasterPasswordCreation",
+          "## DisableMasterPasswordCreation",
           "Remove the master password functionality.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -20264,7 +20354,7 @@
       },
       "DisableAppUpdate": {
         "upstream": [
-          "### DisableAppUpdate",
+          "## DisableAppUpdate",
           "Turn off application updates.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -20303,7 +20393,7 @@
       },
       "DisableBuiltinPDFViewer": {
         "upstream": [
-          "### DisableBuiltinPDFViewer",
+          "## DisableBuiltinPDFViewer",
           "Disable the built in PDF viewer. PDF files are downloaded and sent externally.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -20342,7 +20432,7 @@
       },
       "DisabledCiphers": {
         "upstream": [
-          "### DisabledCiphers",
+          "## DisabledCiphers",
           "Disable specific cryptographic ciphers.",
           "",
           "**Compatibility:** Firefox 76, Firefox ESR 68.8\\",
@@ -20426,7 +20516,7 @@
       },
       "DisableDefaultBrowserAgent": {
         "upstream": [
-          "### DisableDefaultBrowserAgent",
+          "## DisableDefaultBrowserAgent",
           "Prevent the default browser agent from taking any actions. Only applicable to Windows; other platforms don’t have the agent.",
           "",
           "**Compatibility:** Firefox 75, Firefox ESR 68.7 (Windows only)\\",
@@ -20458,7 +20548,7 @@
       },
       "DisableDeveloperTools": {
         "upstream": [
-          "### DisableDeveloperTools",
+          "## DisableDeveloperTools",
           "Remove access to all developer tools.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -20497,7 +20587,7 @@
       },
       "DisableFeedbackCommands": {
         "upstream": [
-          "### DisableFeedbackCommands",
+          "## DisableFeedbackCommands",
           "Disable the menus for reporting sites (Submit Feedback, Report Deceptive Site).",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -20536,7 +20626,7 @@
       },
       "DisableFirefoxScreenshots": {
         "upstream": [
-          "### DisableFirefoxScreenshots",
+          "## DisableFirefoxScreenshots",
           "Remove access to Firefox Screenshots.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -20575,7 +20665,7 @@
       },
       "DisableFirefoxAccounts": {
         "upstream": [
-          "### DisableFirefoxAccounts",
+          "## DisableFirefoxAccounts",
           "Disable Firefox Accounts integration (Sync).",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -20614,7 +20704,7 @@
       },
       "DisableFirefoxStudies": {
         "upstream": [
-          "### DisableFirefoxStudies",
+          "## DisableFirefoxStudies",
           "Disable Firefox studies (Shield).",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -20653,7 +20743,7 @@
       },
       "DisableForgetButton": {
         "upstream": [
-          "### DisableForgetButton",
+          "## DisableForgetButton",
           "Disable the \"Forget\" button.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -20692,7 +20782,7 @@
       },
       "DisableFormHistory": {
         "upstream": [
-          "### DisableFormHistory",
+          "## DisableFormHistory",
           "Turn off saving information on web forms and the search bar.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -20731,7 +20821,7 @@
       },
       "DisablePasswordReveal": {
         "upstream": [
-          "### DisablePasswordReveal",
+          "## DisablePasswordReveal",
           "Do not allow passwords to be shown in saved logins",
           "",
           "**Compatibility:** Firefox 71, Firefox ESR 68.3\\",
@@ -20770,7 +20860,7 @@
       },
       "DisablePocket": {
         "upstream": [
-          "### DisablePocket",
+          "## DisablePocket",
           "Remove Pocket in the Firefox UI. It does not remove it from the new tab page.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -20809,7 +20899,7 @@
       },
       "DisablePrivateBrowsing": {
         "upstream": [
-          "### DisablePrivateBrowsing",
+          "## DisablePrivateBrowsing",
           "Remove access to private browsing.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -20848,7 +20938,7 @@
       },
       "DisableProfileImport": {
         "upstream": [
-          "### DisableProfileImport",
+          "## DisableProfileImport",
           "Disables the \"Import data from another browser\" option in the bookmarks window.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -20887,7 +20977,7 @@
       },
       "DisableProfileRefresh": {
         "upstream": [
-          "### DisableProfileRefresh",
+          "## DisableProfileRefresh",
           "Disable the Refresh Firefox button on about:support and support.mozilla.org, as well as the prompt that displays offering to refresh Firefox when you haven't used it in a while.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -20926,7 +21016,7 @@
       },
       "DisableSafeMode": {
         "upstream": [
-          "### DisableSafeMode",
+          "## DisableSafeMode",
           "Disable safe mode within the browser.",
           "",
           "On Windows, this disables safe mode via the command line as well.",
@@ -20967,7 +21057,7 @@
       },
       "DisableSecurityBypass": {
         "upstream": [
-          "### DisableSecurityBypass",
+          "## DisableSecurityBypass",
           "Prevent the user from bypassing security in certain cases.",
           "",
           "`InvalidCertificate` prevents adding an exception when an invalid certificate is shown.",
@@ -21028,7 +21118,7 @@
       },
       "DisableSystemAddonUpdate": {
         "upstream": [
-          "### DisableSystemAddonUpdate",
+          "## DisableSystemAddonUpdate",
           "Prevent system add-ons from being installed or update.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -21067,7 +21157,7 @@
       },
       "DisableTelemetry": {
         "upstream": [
-          "### DisableTelemetry",
+          "## DisableTelemetry",
           "Prevent the upload of telemetry data.",
           "",
           "Mozilla recommends that you do not disable telemetry. Information collected through telemetry helps us build a better product for businesses like yours.",
@@ -21108,7 +21198,7 @@
       },
       "DisplayBookmarksToolbar": {
         "upstream": [
-          "### DisplayBookmarksToolbar",
+          "## DisplayBookmarksToolbar",
           "Set the initial state of the bookmarks toolbar. A user can still hide it and it will stay hidden.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -21147,7 +21237,7 @@
       },
       "DisplayMenuBar (Deprecated)": {
         "upstream": [
-          "### DisplayMenuBar (Deprecated)",
+          "## DisplayMenuBar (Deprecated)",
           "Set the initial state of the menubar. A user can still hide it and it will stay hidden.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60 (Windows, some Linux)\\",
@@ -21177,7 +21267,7 @@
       },
       "DisplayMenuBar": {
         "upstream": [
-          "### DisplayMenuBar",
+          "## DisplayMenuBar",
           "Set the state of the menubar.",
           "",
           "`always` means the menubar is shown and cannot be hidden.",
@@ -21225,7 +21315,7 @@
       },
       "DNSOverHTTPS": {
         "upstream": [
-          "### DNSOverHTTPS",
+          "## DNSOverHTTPS",
           "Configure DNS over HTTPS.",
           "",
           "`Enabled` determines whether DNS over HTTPS is enabled",
@@ -21317,7 +21407,7 @@
       },
       "DontCheckDefaultBrowser": {
         "upstream": [
-          "### DontCheckDefaultBrowser",
+          "## DontCheckDefaultBrowser",
           "Don't check if Firefox is the default browser at startup.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -21356,7 +21446,7 @@
       },
       "DefaultDownloadDirectory": {
         "upstream": [
-          "### DefaultDownloadDirectory",
+          "## DefaultDownloadDirectory",
           "Set the default download directory.",
           "",
           "You can use ${home} for the native home directory.",
@@ -21404,7 +21494,7 @@
       },
       "DownloadDirectory": {
         "upstream": [
-          "### DownloadDirectory",
+          "## DownloadDirectory",
           "Set and lock the download directory.",
           "",
           "You can use ${home} for the native home directory.",
@@ -21452,7 +21542,7 @@
       },
       "EnableTrackingProtection": {
         "upstream": [
-          "### EnableTrackingProtection",
+          "## EnableTrackingProtection",
           "Configure tracking protection.",
           "",
           "If this policy is not configured, tracking protection is not enabled by default in the browser, but it is enabled by default in private browsing and the user can change it.",
@@ -21529,7 +21619,7 @@
       },
       "EncryptedMediaExtensions": {
         "upstream": [
-          "### EncryptedMediaExtensions",
+          "## EncryptedMediaExtensions",
           "Enable or disable Encrypted Media Extensions and optionally lock it.",
           "",
           "If `Enabled` is set to false, encrypted media extensions (like Widevine) are not downloaded by Firefox unless the user consents to installing them.",
@@ -21581,7 +21671,7 @@
       },
       "EnterprisePoliciesEnabled": {
         "upstream": [
-          "### EnterprisePoliciesEnabled",
+          "## EnterprisePoliciesEnabled",
           "Enable policy support on macOS.",
           "",
           "**Compatibility:** Firefox 63, Firefox ESR 60.3 (macOS only)\\",
@@ -21599,7 +21689,7 @@
       },
       "Extensions": {
         "upstream": [
-          "### Extensions",
+          "## Extensions",
           "Control the installation, uninstallation and locking of extensions.",
           "",
           "`Install` is a list of URLs or native paths for extensions to be installed. ",
@@ -21656,7 +21746,7 @@
       },
       "ExtensionSettings": {
         "upstream": [
-          "### ExtensionSettings",
+          "## ExtensionSettings",
           "Manage all aspects of extensions. This policy is based heavily on the [Chrome policy](https://dev.chromium.org/administrators/policy-list-3/extension-settings-full) of the same name.",
           "",
           "This policy maps an extension ID to its configuration. With an extension ID, the configuration will be applied to the specified extension only. A default configuration can be set for the special ID \"*\", which will apply to all extensions that don't have a custom configuration set in this policy.",
@@ -21770,7 +21860,7 @@
       },
       "ExtensionUpdate": {
         "upstream": [
-          "### ExtensionUpdate",
+          "## ExtensionUpdate",
           "Control extension updates.",
           "",
           "**Compatibility:** Firefox 67, Firefox ESR 60.7\\",
@@ -21809,7 +21899,7 @@
       },
       "FlashPlugin": {
         "upstream": [
-          "### FlashPlugin",
+          "## FlashPlugin",
           "Configure the default Flash plugin policy as well as origins for which Flash is allowed.",
           "",
           "`Allow` is a list of origins where Flash are allowed.",
@@ -21894,7 +21984,7 @@
       },
       "FirefoxHome": {
         "upstream": [
-          "### FirefoxHome",
+          "## FirefoxHome",
           "Customize the Firefox Home page.",
           "",
           "**Compatibility:** Firefox 68, Firefox ESR 68\\",
@@ -21964,7 +22054,7 @@
       },
       "HardwareAcceleration": {
         "upstream": [
-          "### HardwareAcceleration",
+          "## HardwareAcceleration",
           "Control hardware acceleration.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -22003,7 +22093,7 @@
       },
       "Homepage": {
         "upstream": [
-          "### Homepage",
+          "## Homepage",
           "Configure the default homepage and how Firefox starts.",
           "",
           "`URL` is the default homepage.",
@@ -22095,7 +22185,7 @@
       },
       "InstallAddonsPermission": {
         "upstream": [
-          "### InstallAddonsPermission",
+          "## InstallAddonsPermission",
           "Configure the default extension install policy as well as origins for extension installs are allowed. This policy does not override turning off all extension installs.",
           "",
           "`Allow` is a list of origins where extension installs are allowed.",
@@ -22161,7 +22251,7 @@
       },
       "LegacyProfiles": {
         "upstream": [
-          "### LegacyProfiles",
+          "## LegacyProfiles",
           "Disable the feature enforcing a separate profile for each installation.",
           "",
           "If this policy set to true, Firefox will not try to create different profiles for installations of Firefox in different directories. This is the equivalent of the MOZ_LEGACY_PROFILES environment variable.",
@@ -22191,7 +22281,7 @@
       },
       "LocalFileLinks": {
         "upstream": [
-          "### LocalFileLinks",
+          "## LocalFileLinks",
           "Enable linking to local files by origin.",
           "",
           "**Compatibility:** Firefox 68, Firefox ESR 68\\",
@@ -22236,7 +22326,7 @@
       },
       "NetworkPrediction": {
         "upstream": [
-          "### NetworkPrediction",
+          "## NetworkPrediction",
           "Enable or disable network prediction (DNS prefetching).",
           "",
           "**Compatibility:** Firefox 67, Firefox ESR 60.7\\",
@@ -22274,7 +22364,7 @@
       },
       "NewTabPage": {
         "upstream": [
-          "### NewTabPage",
+          "## NewTabPage",
           "Enable or disable the New Tab page.",
           "",
           "**Compatibility:** Firefox 68, Firefox ESR 68\\",
@@ -22312,7 +22402,7 @@
       },
       "NoDefaultBookmarks": {
         "upstream": [
-          "### NoDefaultBookmarks",
+          "## NoDefaultBookmarks",
           "Disable the creation of default bookmarks.",
           "",
           "This policy is only effective if the user profile has not been created yet.",
@@ -22353,7 +22443,7 @@
       },
       "OfferToSaveLogins": {
         "upstream": [
-          "### OfferToSaveLogins",
+          "## OfferToSaveLogins",
           "Control whether or not Firefox offers to save passwords.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -22392,7 +22482,7 @@
       },
       "OfferToSaveLoginsDefault": {
         "upstream": [
-          "### OfferToSaveLoginsDefault",
+          "## OfferToSaveLoginsDefault",
           "Sets the default value of signon.rememberSignons without locking it.",
           "",
           "**Compatibility:** Firefox 70, Firefox ESR 60.2\\",
@@ -22431,7 +22521,7 @@
       },
       "OverrideFirstRunPage": {
         "upstream": [
-          "### OverrideFirstRunPage",
+          "## OverrideFirstRunPage",
           "Override the first run page. If the value is blank, no first run page is displayed.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -22470,7 +22560,7 @@
       },
       "OverridePostUpdatePage": {
         "upstream": [
-          "### OverridePostUpdatePage",
+          "## OverridePostUpdatePage",
           "Override the upgrade page. If the value is blank, no upgrade page is displayed.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -22509,7 +22599,7 @@
       },
       "PasswordManagerEnabled": {
         "upstream": [
-          "### PasswordManagerEnabled",
+          "## PasswordManagerEnabled",
           "Remove access to the password manager via preferences and blocks about:logins on Firefox 70.",
           "",
           "**Compatibility:** Firefox 70, Firefox ESR 60.2\\",
@@ -22548,7 +22638,7 @@
       },
       "PDFjs": {
         "upstream": [
-          "### PDFjs",
+          "## PDFjs",
           "Disable or configure PDF.js, the built-in PDF viewer.",
           "",
           "If `Enabled` is set to false, the built-in PDF viewer is disabled.",
@@ -22600,7 +22690,7 @@
       },
       "Permissions": {
         "upstream": [
-          "### Permissions",
+          "## Permissions",
           "Set permissions associated with camera, microphone, location, notifications, and autoplay. Because these are origins, not domains, entries with unique ports must be specified separately. See examples below.",
           "",
           "`Allow` is a list of origins where the feature is allowed.",
@@ -22845,7 +22935,7 @@
       },
       "PopupBlocking": {
         "upstream": [
-          "### PopupBlocking",
+          "## PopupBlocking",
           "Configure the default pop-up window policy as well as origins for which pop-up windows are allowed.",
           "",
           "`Allow` is a list of origins where popup-windows are allowed.",
@@ -22925,7 +23015,7 @@
       },
       "Preferences": {
         "upstream": [
-          "### Preferences",
+          "## Preferences",
           "Set and lock certain preferences.",
           "",
           "**Compatibility:** See below\\",
@@ -23074,7 +23164,7 @@
       },
       "PromptForDownloadLocation": {
         "upstream": [
-          "### PromptForDownloadLocation",
+          "## PromptForDownloadLocation",
           "Ask where to save each file before downloading.",
           "",
           "**Compatibility:** Firefox 68, Firefox ESR 68\\",
@@ -23113,7 +23203,7 @@
       },
       "Proxy": {
         "upstream": [
-          "### Proxy",
+          "## Proxy",
           "Configure proxy settings. These settings correspond to the connection settings in Firefox preferences.",
           "To specify ports, append them to the hostnames with a colon (:).",
           "",
@@ -23238,7 +23328,7 @@
       },
       "RequestedLocales": {
         "upstream": [
-          "### RequestedLocales",
+          "## RequestedLocales",
           "Set the the list of requested locales for the application in order of preference. It will cause the corresponding language pack to become active.",
           "",
           "Note: For Firefox 68, this can now be a string so that you can specify an empty value.",
@@ -23305,7 +23395,7 @@
       },
       "SanitizeOnShutdown (Selective)": {
         "upstream": [
-          "### SanitizeOnShutdown (Selective)",
+          "## SanitizeOnShutdown (Selective)",
           "Clear data on shutdown. Choose from Cache, Cookies, Download History, Form & Search History, Browsing History, Active Logins, Site Preferences and Offline Website Data.",
           "",
           "Previously, these values were always locked. Starting with Firefox 74 and Firefox ESR 68.6, you can use the `Locked` option to either keep the values unlocked (set it to false), or lock only the values you set (set it to true). If you want the old behavior of locking everything, do not set `Locked` at all.",
@@ -23382,7 +23472,7 @@
       },
       "SanitizeOnShutdown (All)": {
         "upstream": [
-          "### SanitizeOnShutdown (All)",
+          "## SanitizeOnShutdown (All)",
           "Clear all data on shutdown, including Browsing & Download History, Cookies, Active Logins, Cache, Form & Search History, Site Preferences and Offline Website Data.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -23420,7 +23510,7 @@
       },
       "SearchBar": {
         "upstream": [
-          "### SearchBar",
+          "## SearchBar",
           "Set whether or not search bar is displayed.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
@@ -23462,13 +23552,13 @@
       },
       "SearchEngines (This policy is only available on the ESR.)": {
         "upstream": [
-          "### SearchEngines (This policy is only available on the ESR.)",
+          "## SearchEngines (This policy is only available on the ESR.)",
           ""
         ]
       },
       "SearchEngines_Default": {
         "upstream": [
-          "### SearchEngines | Default",
+          "## SearchEngines | Default",
           "",
           "Set the default search engine. This policy is only available on the ESR.",
           "",
@@ -23514,7 +23604,7 @@
       },
       "SearchEngines_PreventInstalls": {
         "upstream": [
-          "### SearchEngines | PreventInstalls",
+          "## SearchEngines | PreventInstalls",
           "",
           "Prevent installing search engines from webpages.",
           "",
@@ -23559,7 +23649,7 @@
       },
       "SearchEngines_Remove": {
         "upstream": [
-          "### SearchEngines | Remove",
+          "## SearchEngines | Remove",
           "",
           "Hide built-in search engines. This policy is only available on the ESR.",
           "",
@@ -23607,7 +23697,7 @@
       },
       "SearchEngines_Add": {
         "upstream": [
-          "### SearchEngines | Add",
+          "## SearchEngines | Add",
           "",
           "Add new search engines (up to five). This policy is only available on the ESR. `Name` and `URLTemplate` are required.",
           "",
@@ -23713,7 +23803,7 @@
       },
       "SearchSuggestEnabled": {
         "upstream": [
-          "### SearchSuggestEnabled",
+          "## SearchSuggestEnabled",
           "",
           "Enable search suggestions.",
           "",
@@ -23753,7 +23843,7 @@
       },
       "SecurityDevices": {
         "upstream": [
-          "### SecurityDevices",
+          "## SecurityDevices",
           "",
           "Install PKCS #11 modules.",
           "",
@@ -23800,7 +23890,7 @@
       },
       "SSLVersionMax": {
         "upstream": [
-          "### SSLVersionMax",
+          "## SSLVersionMax",
           "",
           "Set and lock the maximum version of TLS.",
           "",
@@ -23842,7 +23932,7 @@
       },
       "SSLVersionMin": {
         "upstream": [
-          "### SSLVersionMin",
+          "## SSLVersionMin",
           "",
           "Set and lock the minimum version of TLS.",
           "",
@@ -23884,7 +23974,7 @@
       },
       "SupportMenu": {
         "upstream": [
-          "### SupportMenu",
+          "## SupportMenu",
           "Add a menuitem to the help menu for specifying support information.",
           "",
           "**Compatibility:** Firefox 68.0.1, Firefox ESR 68.0.1\\",
@@ -23939,7 +24029,7 @@
       },
       "UserMessaging": {
         "upstream": [
-          "### UserMessaging",
+          "## UserMessaging",
           "",
           "Prevent installing search engines from webpages.",
           "",
@@ -24007,7 +24097,7 @@
       },
       "WebsiteFilter": {
         "upstream": [
-          "### WebsiteFilter",
+          "## WebsiteFilter",
           "Block websites from being visited. The parameters take an array of Match Patterns, as documented in https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Match_patterns. Only http/https addresses are supported at the moment. The arrays are limited to 1000 entries each.",
           "",
           "**Compatibility:** Firefox 60, Firefox ESR 60\\",
