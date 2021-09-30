@@ -66,7 +66,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| AppUpdateURL | Thunderbird 68.0 |
+| `AppUpdateURL` | Thunderbird 68.0 |
 
 <br>
 
@@ -109,7 +109,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BlockAboutAddons | Thunderbird 68.0 |
+| `BlockAboutAddons` | Thunderbird 68.0 |
 
 <br>
 
@@ -152,7 +152,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BlockAboutConfig | Thunderbird 68.0 |
+| `BlockAboutConfig` | Thunderbird 68.0 |
 
 <br>
 
@@ -195,7 +195,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BlockAboutProfiles | Thunderbird 68.0 |
+| `BlockAboutProfiles` | Thunderbird 68.0 |
 
 <br>
 
@@ -238,7 +238,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BlockAboutSupport | Thunderbird 68.0 |
+| `BlockAboutSupport` | Thunderbird 68.0 |
 
 <br>
 
@@ -248,7 +248,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Certificates<br>Certificates_ImportEnterpriseRoots<br>Certificates_Install | Thunderbird 68.0 |
+| `Certificates`<br>`Certificates_ImportEnterpriseRoots`<br>`Certificates_Install` | Thunderbird 68.0 |
 
 <br>
 
@@ -298,7 +298,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Certificates_ImportEnterpriseRoots | Thunderbird 68.0 |
+| `Certificates_ImportEnterpriseRoots` | Thunderbird 68.0 |
 
 <br>
 
@@ -370,7 +370,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Certificates_Install | Thunderbird 68.0 |
+| `Certificates_Install` | Thunderbird 68.0 |
 
 <br>
 
@@ -412,7 +412,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableAppUpdate | Thunderbird 68.0 |
+| `DisableAppUpdate` | Thunderbird 68.0 |
 
 <br>
 
@@ -454,7 +454,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableDeveloperTools | Thunderbird 68.0 |
+| `DisableDeveloperTools` | Thunderbird 68.0 |
 
 <br>
 
@@ -496,7 +496,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableMasterPasswordCreation | Thunderbird 68.0 |
+| `DisableMasterPasswordCreation` | Thunderbird 68.0 |
 
 <br>
 
@@ -560,7 +560,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableSecurityBypass<br>DisableSecurityBypass_InvalidCertificate<br>DisableSecurityBypass_SafeBrowsing | Thunderbird 68.0 |
+| `DisableSecurityBypass`<br>`DisableSecurityBypass_InvalidCertificate`<br>`DisableSecurityBypass_SafeBrowsing` | Thunderbird 68.0 |
 
 <br>
 
@@ -620,7 +620,7 @@ Software\Policies\Mozilla\Thunderbird\Extensions\Locked\1 = "addon_id@mozilla.or
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Extensions<br>Extensions_Install<br>Extensions_Uninstall<br>Extensions_Locked | Thunderbird 68.0 |
+| `Extensions`<br>`Extensions_Install`<br>`Extensions_Uninstall`<br>`Extensions_Locked` | Thunderbird 68.0 |
 
 <br>
 
@@ -737,7 +737,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| ExtensionSettings | Thunderbird 68.0 |
+| `ExtensionSettings` | Thunderbird 68.0 |
 
 <br>
 
@@ -779,7 +779,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| ExtensionUpdate | Thunderbird 68.0 |
+| `ExtensionUpdate` | Thunderbird 68.0 |
 
 <br>
 
@@ -848,7 +848,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| InstallAddonsPermission<br>InstallAddonsPermission_Allow<br>InstallAddonsPermission_Default | Thunderbird 68.0 |
+| `InstallAddonsPermission`<br>`InstallAddonsPermission_Allow`<br>`InstallAddonsPermission_Default` | Thunderbird 68.0 |
 
 <br>
 
@@ -1000,7 +1000,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Preferences<br>Preferences_network.IDN_show_punycode<br>Preferences_browser.fixup.dns_first_for_single_words<br>Preferences_browser.cache.disk.parent_directory<br>Preferences_browser.urlbar.suggest.openpage<br>Preferences_browser.urlbar.suggest.history<br>Preferences_browser.urlbar.suggest.bookmark | Thunderbird 68.0 |
+| `Preferences`<br>`Preferences_network.IDN_show_punycode`<br>`Preferences_browser.fixup.dns_first_for_single_words`<br>`Preferences_browser.cache.disk.parent_directory`<br>`Preferences_browser.urlbar.suggest.openpage`<br>`Preferences_browser.urlbar.suggest.history`<br>`Preferences_browser.urlbar.suggest.bookmark` | Thunderbird 68.0 |
 
 <br>
 
@@ -1128,7 +1128,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Proxy<br>Proxy_Mode<br>Proxy_Locked<br>Proxy_AutoConfigURL<br>Proxy_FTPProxy<br>Proxy_HTTPProxy<br>Proxy_SSLProxy<br>Proxy_SOCKSProxy<br>Proxy_SOCKSVersion<br>Proxy_UseHTTPProxyForAllProtocols<br>Proxy_Passthrough<br>Proxy_UseProxyForDNS<br>Proxy_AutoLogin | Thunderbird 68.0 |
+| `Proxy`<br>`Proxy_Mode`<br>`Proxy_Locked`<br>`Proxy_AutoConfigURL`<br>`Proxy_FTPProxy`<br>`Proxy_HTTPProxy`<br>`Proxy_SSLProxy`<br>`Proxy_SOCKSProxy`<br>`Proxy_SOCKSVersion`<br>`Proxy_UseHTTPProxyForAllProtocols`<br>`Proxy_Passthrough`<br>`Proxy_UseProxyForDNS`<br>`Proxy_AutoLogin` | Thunderbird 68.0 |
 
 <br>
 
@@ -1198,7 +1198,7 @@ or
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| RequestedLocales | Thunderbird 68.0 |
+| `RequestedLocales` | Thunderbird 68.0 |
 
 <br>
 
@@ -1243,7 +1243,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| SSLVersionMax | Thunderbird 68.0 |
+| `SSLVersionMax` | Thunderbird 68.0 |
 
 <br>
 
@@ -1288,7 +1288,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| SSLVersionMin | Thunderbird 68.0 |
+| `SSLVersionMin` | Thunderbird 68.0 |
 
 <br>
 
