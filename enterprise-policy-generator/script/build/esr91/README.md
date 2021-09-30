@@ -2403,7 +2403,7 @@ Value (string):
 ## Preferences
 Set and lock preferences.
 
-### Preferences v2 (TB91 and newer)
+### Modern Preferences (TB91 and newer)
 
 **NOTE** On Windows, in order to use this policy, you must clear all settings in the old **Preferences (Deprecated)** section.
 
@@ -2553,7 +2553,7 @@ Value (string):
 }
 ```
 
-### Preferences v1 (TB78 and older)
+### Deprecated Preferences (TB78 and older)
 
 **CCK2 Equivalent:** `preferences`\
 **Preferences Affected:** See below
