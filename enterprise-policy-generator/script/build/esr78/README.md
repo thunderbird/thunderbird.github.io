@@ -1,6 +1,7 @@
 ## Enterprise policy descriptions and templates for Thunderbird 78 (and older)
 
 Policies can be specified using the [Group Policy templates on Windows](windows), [Intune on Windows](https://support.mozilla.org/kb/managing-firefox-intune), [configuration profiles on macOS](mac), or by creating a file called `policies.json`.
+
 On Windows, create a directory called `distribution` where the EXE is located and place the file there. On Mac, the file goes into `Thunderbird.app/Contents/Resources/distribution`.  On Linux, the file goes into `thunderbird/distribution`, where `thunderbird` is the installation directory for Thunderbird, which varies by distribution or you can specify system-wide policy by placing the file in `/etc/thunderbird/policies`.
 
 | Policy Name | Description
@@ -34,7 +35,7 @@ On Windows, create a directory called `distribution` where the EXE is located an
 | **[`HardwareAcceleration`](#hardwareacceleration)** | Control hardware acceleration.
 | **[`InstallAddonsPermission`](#installaddonspermission)** | Configure the default extension install policy as well as origins for extension installs are allowed.
 | **[`PasswordManagerEnabled`](#passwordmanagerenabled)** | Remove (some) access to the password manager.
-| **[`Preferences`](#preferences)** | Set and lock some preferences.
+| **[`Preferences`](#preferences)** | Set and lock preferences.
 | **[`PromptForDownloadLocation`](#promptfordownloadlocation)** | Ask where to save each file before downloading.
 | **[`Proxy`](#proxy)** | Configure proxy settings.
 | **[`RequestedLocales`](#requestedlocales)** | Set the the list of requested locales for the application in order of preference.
@@ -1893,6 +1894,12 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| Policy/Property Name | Compatibility Information |
+|:--- |:--- |
+| `Preferences`<br>`Preferences_network.IDN_show_punycode`<br>`Preferences_browser.fixup.dns_first_for_single_words`<br>`Preferences_browser.cache.disk.parent_directory`<br>`Preferences_browser.urlbar.suggest.openpage`<br>`Preferences_browser.urlbar.suggest.history`<br>`Preferences_browser.urlbar.suggest.bookmark` | Thunderbird 68.0 |
+| `Preferences_accessibility.force_disabled`<br>`Preferences_browser.cache.disk.enable`<br>`Preferences_browser.safebrowsing.phishing.enabled`<br>`Preferences_browser.safebrowsing.malware.enabled`<br>`Preferences_browser.search.update`<br>`Preferences_datareporting.policy.dataSubmissionPolicyBypassNotification`<br>`Preferences_dom.allow_scripts_to_close_windows`<br>`Preferences_dom.disable_window_flip`<br>`Preferences_dom.disable_window_move_resize`<br>`Preferences_dom.event.contextmenu.enabled`<br>`Preferences_dom.keyboardevent.keypress.hack.dispatch_non_printable_keys.addl`<br>`Preferences_dom.keyboardevent.keypress.hack.use_legacy_keycode_and_charcode.addl`<br>`Preferences_extensions.blocklist.enabled`<br>`Preferences_geo.enabled`<br>`Preferences_intl.accept_languages`<br>`Preferences_network.dns.disableIPv6`<br>`Preferences_places.history.enabled`<br>`Preferences_print.save_print_settings`<br>`Preferences_security.default_personal_cert`<br>`Preferences_security.mixed_content.block_active_content`<br>`Preferences_security.osclientcerts.autoload`<br>`Preferences_security.ssl.errorReporting.enabled`<br>`Preferences_security.tls.hello_downgrade_check`<br>`Preferences_widget.content.gtk-theme-override` | Thunderbird 78.0 |
 
 <br>
 
