@@ -35,7 +35,8 @@
       "upstream": "| **[`CaptivePortal`](#captiveportal)** | Enable or disable the detection of captive portals."
     },
     "Certificates": {
-      "upstream": "| **[`Certificates`](#certificates)** |"
+      "upstream": "| **[`Certificates`](#certificates)** |",
+      "override": "skip"
     },
     "Certificates_ImportEnterpriseRoots": {
       "upstream": "| **[`Certificates -> ImportEnterpriseRoots`](#certificates--importenterpriseroots)** | Trust certificates that have been added to the operating system certificate store by a user or administrator."
@@ -769,6 +770,7 @@
       ]
     },
     "Certificates": {
+      "override": "skip",
       "upstream": [
         "## Certificates",
         ""

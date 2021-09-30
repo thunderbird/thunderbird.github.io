@@ -10,7 +10,6 @@ On Windows, create a directory called `distribution` where the EXE is located an
 | **[`BlockAboutConfig`](#blockaboutconfig)** | Block access to about:config.
 | **[`BlockAboutProfiles`](#blockaboutprofiles)** | Block access to About Profiles (about:profiles).
 | **[`BlockAboutSupport`](#blockaboutsupport)** | Block access to Troubleshooting Information (about:support).
-| **[`Certificates`](#certificates)** |
 | **[`Certificates -> ImportEnterpriseRoots`](#certificates--importenterpriseroots)** | Trust certificates that have been added to the operating system certificate store by a user or administrator.
 | **[`Certificates -> Install`](#certificates--install)** | Install certificates into the Thunderbird certificate store.
 | **[`DisableAppUpdate`](#disableappupdate)** | Turn off application updates.
@@ -240,16 +239,6 @@ Value (string):
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
 | `BlockAboutSupport` | Thunderbird 68.0 |
-
-<br>
-
-## Certificates
-
-#### Compatibility
-
-| Policy/Property Name | Compatibility Information |
-| --- | --- |
-| `Certificates`<br>`Certificates_ImportEnterpriseRoots`<br>`Certificates_Install` | Thunderbird 68.0 |
 
 <br>
 
