@@ -60,7 +60,7 @@ Allow WebExtensions to configure policy. For more information, see [Adding polic
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| 3rdparty<br>3rdparty_Extensions | {"esr78":"78.0a1","esr91":"78.0a1"} |
+| 3rdparty<br>3rdparty_Extensions | Thunderbird 78.0 |
 
 <br>
 
@@ -109,7 +109,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| AppAutoUpdate | {"esr78":"75.0a1","esr91":"75.0a1"} |
+| AppAutoUpdate | Thunderbird 75.0 |
 
 <br>
 
@@ -153,7 +153,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| AppUpdateURL | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| AppUpdateURL | Thunderbird 68.0 |
 
 <br>
 
@@ -304,7 +304,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Authentication<br>Authentication_SPNEGO<br>Authentication_Delegated<br>Authentication_NTLM<br>Authentication_AllowNonFQDN<br>Authentication_AllowNonFQDN_SPNEGO<br>Authentication_AllowNonFQDN_NTLM<br>Authentication_AllowProxies<br>Authentication_AllowProxies_SPNEGO<br>Authentication_AllowProxies_NTLM<br>Authentication_Locked<br>Authentication_PrivateBrowsing | {"esr78":"78.0a1","esr91":"78.0a1"} |
+| Authentication<br>Authentication_SPNEGO<br>Authentication_Delegated<br>Authentication_NTLM<br>Authentication_AllowNonFQDN<br>Authentication_AllowNonFQDN_SPNEGO<br>Authentication_AllowNonFQDN_NTLM<br>Authentication_AllowProxies<br>Authentication_AllowProxies_SPNEGO<br>Authentication_AllowProxies_NTLM<br>Authentication_Locked<br>Authentication_PrivateBrowsing | Thunderbird 78.0 |
 
 <br>
 
@@ -353,7 +353,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BackgroundAppUpdate | {"esr91":"91.0"} |
+| BackgroundAppUpdate | Thunderbird 91.0 |
 
 <br>
 
@@ -396,7 +396,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BlockAboutAddons | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| BlockAboutAddons | Thunderbird 68.0 |
 
 <br>
 
@@ -439,7 +439,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BlockAboutConfig | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| BlockAboutConfig | Thunderbird 68.0 |
 
 <br>
 
@@ -482,7 +482,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BlockAboutProfiles | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| BlockAboutProfiles | Thunderbird 68.0 |
 
 <br>
 
@@ -525,7 +525,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BlockAboutSupport | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| BlockAboutSupport | Thunderbird 68.0 |
 
 <br>
 
@@ -567,7 +567,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| CaptivePortal | {"esr78":"78.0a1","esr91":"78.0a1"} |
+| CaptivePortal | Thunderbird 78.0 |
 
 <br>
 
@@ -577,7 +577,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Certificates<br>Certificates_ImportEnterpriseRoots<br>Certificates_Install | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| Certificates<br>Certificates_ImportEnterpriseRoots<br>Certificates_Install | Thunderbird 68.0 |
 
 <br>
 
@@ -629,7 +629,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Certificates_ImportEnterpriseRoots | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| Certificates_ImportEnterpriseRoots | Thunderbird 68.0 |
 
 <br>
 
@@ -701,7 +701,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Certificates_Install | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| Certificates_Install | Thunderbird 68.0 |
 
 <br>
 
@@ -858,7 +858,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Cookies<br>Cookies_Allow<br>Cookies_Block<br>Cookies_Default<br>Cookies_AcceptThirdParty<br>Cookies_ExpireAtSessionEnd<br>Cookies_Locked | {"esr78":"78.0a1","esr91":"78.0a1"} |
+| Cookies<br>Cookies_Allow<br>Cookies_Block<br>Cookies_Default<br>Cookies_AcceptThirdParty<br>Cookies_ExpireAtSessionEnd<br>Cookies_Locked | Thunderbird 78.0 |
 
 <br>
 
@@ -909,7 +909,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DefaultDownloadDirectory | {"esr78":"78.0a1","esr91":"78.0a1"} |
+| DefaultDownloadDirectory | Thunderbird 78.0 |
 
 <br>
 
@@ -951,7 +951,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableAppUpdate | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| DisableAppUpdate | Thunderbird 68.0 |
 
 <br>
 
@@ -993,7 +993,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableBuiltinPDFViewer | {"esr91":"91.0"} |
+| DisableBuiltinPDFViewer | Thunderbird 91.0 |
 
 <br>
 
@@ -1098,8 +1098,8 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisabledCiphers<br>DisabledCiphers_TLS_DHE_RSA_WITH_AES_128_CBC_SHA<br>DisabledCiphers_TLS_DHE_RSA_WITH_AES_256_CBC_SHA<br>DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>DisabledCiphers_TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>DisabledCiphers_TLS_RSA_WITH_AES_128_CBC_SHA<br>DisabledCiphers_TLS_RSA_WITH_AES_256_CBC_SHA<br>DisabledCiphers_TLS_RSA_WITH_3DES_EDE_CBC_SHA | {"esr78":"76.0a1","esr91":"76.0a1"} |
-| DisabledCiphers_TLS_RSA_WITH_AES_128_GCM_SHA256<br>DisabledCiphers_TLS_RSA_WITH_AES_256_GCM_SHA384 | {"esr91":"91.0"} |
+| DisabledCiphers<br>DisabledCiphers_TLS_DHE_RSA_WITH_AES_128_CBC_SHA<br>DisabledCiphers_TLS_DHE_RSA_WITH_AES_256_CBC_SHA<br>DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>DisabledCiphers_TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>DisabledCiphers_TLS_RSA_WITH_AES_128_CBC_SHA<br>DisabledCiphers_TLS_RSA_WITH_AES_256_CBC_SHA<br>DisabledCiphers_TLS_RSA_WITH_3DES_EDE_CBC_SHA | Thunderbird 76.0 |
+| DisabledCiphers_TLS_RSA_WITH_AES_128_GCM_SHA256<br>DisabledCiphers_TLS_RSA_WITH_AES_256_GCM_SHA384 | Thunderbird 91.0 |
 
 <br>
 
@@ -1141,7 +1141,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableDeveloperTools | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| DisableDeveloperTools | Thunderbird 68.0 |
 
 <br>
 
@@ -1187,7 +1187,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableMasterPasswordCreation | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| DisableMasterPasswordCreation | Thunderbird 68.0 |
 
 <br>
 
@@ -1229,7 +1229,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisablePasswordReveal | {"esr78":"78.0a1","esr91":"78.0a1"} |
+| DisablePasswordReveal | Thunderbird 78.0 |
 
 <br>
 
@@ -1273,7 +1273,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableSafeMode | {"esr78":"78.0a1","esr91":"78.0a1"} |
+| DisableSafeMode | Thunderbird 78.0 |
 
 <br>
 
@@ -1337,7 +1337,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableSecurityBypass<br>DisableSecurityBypass_InvalidCertificate<br>DisableSecurityBypass_SafeBrowsing | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| DisableSecurityBypass<br>DisableSecurityBypass_InvalidCertificate<br>DisableSecurityBypass_SafeBrowsing | Thunderbird 68.0 |
 
 <br>
 
@@ -1379,7 +1379,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableSystemAddonUpdate | {"esr78":"77.0a1","esr91":"77.0a1"} |
+| DisableSystemAddonUpdate | Thunderbird 77.0 |
 
 <br>
 
@@ -1425,7 +1425,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableTelemetry | {"esr78":"78.0a1","esr91":"78.0a1"} |
+| DisableTelemetry | Thunderbird 78.0 |
 
 <br>
 
@@ -1520,7 +1520,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DNSOverHTTPS<br>DNSOverHTTPS_Enabled<br>DNSOverHTTPS_ProviderURL<br>DNSOverHTTPS_ExcludedDomains<br>DNSOverHTTPS_Locked | {"esr91":"91.0"} |
+| DNSOverHTTPS<br>DNSOverHTTPS_Enabled<br>DNSOverHTTPS_ProviderURL<br>DNSOverHTTPS_ExcludedDomains<br>DNSOverHTTPS_Locked | Thunderbird 91.0 |
 
 <br>
 
@@ -1571,7 +1571,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DownloadDirectory | {"esr78":"78.0a1","esr91":"78.0a1"} |
+| DownloadDirectory | Thunderbird 78.0 |
 
 <br>
 
@@ -1661,7 +1661,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Extensions<br>Extensions_Install<br>Extensions_Uninstall<br>Extensions_Locked | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| Extensions<br>Extensions_Install<br>Extensions_Uninstall<br>Extensions_Locked | Thunderbird 68.0 |
 
 <br>
 
@@ -1797,8 +1797,8 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| ExtensionSettings | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
-| ExtensionSettings_*<br>ExtensionSettings_*_installation_mode<br>ExtensionSettings_*_allowed_types<br>ExtensionSettings_*_blocked_install_message<br>ExtensionSettings_*_install_sources<br>ExtensionSettings_*_restricted_domains | {"esr78":"78.10.3","esr91":"89.0a1"} |
+| ExtensionSettings | Thunderbird 68.0 |
+| ExtensionSettings_*<br>ExtensionSettings_*_installation_mode<br>ExtensionSettings_*_allowed_types<br>ExtensionSettings_*_blocked_install_message<br>ExtensionSettings_*_install_sources<br>ExtensionSettings_*_restricted_domains | Thunderbird 89.0, Thunderbird 78.10.3 |
 
 <br>
 
@@ -1840,7 +1840,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| ExtensionUpdate | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| ExtensionUpdate | Thunderbird 68.0 |
 
 <br>
 
@@ -2029,7 +2029,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Handlers | {"esr91":"91.0"} |
+| Handlers | Thunderbird 91.0 |
 
 <br>
 
@@ -2071,7 +2071,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| HardwareAcceleration | {"esr78":"78.0a1","esr91":"78.0a1"} |
+| HardwareAcceleration | Thunderbird 78.0 |
 
 <br>
 
@@ -2140,7 +2140,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| InstallAddonsPermission<br>InstallAddonsPermission_Allow<br>InstallAddonsPermission_Default | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| InstallAddonsPermission<br>InstallAddonsPermission_Allow<br>InstallAddonsPermission_Default | Thunderbird 68.0 |
 
 <br>
 
@@ -2170,7 +2170,7 @@ This policy is primarily intended for advanced end users, not for enterprises.
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| ManualAppUpdateOnly | {"esr91":"91.0"} |
+| ManualAppUpdateOnly | Thunderbird 91.0 |
 
 <br>
 
@@ -2211,7 +2211,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| NetworkPrediction | {"esr91":"91.0"} |
+| NetworkPrediction | Thunderbird 91.0 |
 
 <br>
 
@@ -2253,7 +2253,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| OfferToSaveLogins | {"esr91":"91.0"} |
+| OfferToSaveLogins | Thunderbird 91.0 |
 
 <br>
 
@@ -2295,7 +2295,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| OfferToSaveLoginsDefault | {"esr91":"91.0"} |
+| OfferToSaveLoginsDefault | Thunderbird 91.0 |
 
 <br>
 
@@ -2337,7 +2337,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| PasswordManagerEnabled | {"esr78":"78.0a1","esr91":"78.0a1"} |
+| PasswordManagerEnabled | Thunderbird 78.0 |
 
 <br>
 
@@ -2395,7 +2395,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| PDFjs<br>PDFjs_Enabled<br>PDFjs_EnablePermissions | {"esr91":"91.0"} |
+| PDFjs<br>PDFjs_Enabled<br>PDFjs_EnablePermissions | Thunderbird 91.0 |
 
 <br>
 
@@ -2572,8 +2572,8 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Preferences<br>Preferences_network.IDN_show_punycode<br>Preferences_browser.fixup.dns_first_for_single_words<br>Preferences_browser.cache.disk.parent_directory<br>Preferences_browser.urlbar.suggest.openpage<br>Preferences_browser.urlbar.suggest.history<br>Preferences_browser.urlbar.suggest.bookmark | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
-| Preferences_accessibility.force_disabled<br>Preferences_browser.cache.disk.enable<br>Preferences_browser.safebrowsing.phishing.enabled<br>Preferences_browser.safebrowsing.malware.enabled<br>Preferences_browser.search.update<br>Preferences_datareporting.policy.dataSubmissionPolicyBypassNotification<br>Preferences_dom.allow_scripts_to_close_windows<br>Preferences_dom.disable_window_flip<br>Preferences_dom.disable_window_move_resize<br>Preferences_dom.event.contextmenu.enabled<br>Preferences_dom.keyboardevent.keypress.hack.dispatch_non_printable_keys.addl<br>Preferences_dom.keyboardevent.keypress.hack.use_legacy_keycode_and_charcode.addl<br>Preferences_extensions.blocklist.enabled<br>Preferences_geo.enabled<br>Preferences_intl.accept_languages<br>Preferences_network.dns.disableIPv6<br>Preferences_places.history.enabled<br>Preferences_print.save_print_settings<br>Preferences_security.default_personal_cert<br>Preferences_security.mixed_content.block_active_content<br>Preferences_security.osclientcerts.autoload<br>Preferences_security.ssl.errorReporting.enabled<br>Preferences_security.tls.hello_downgrade_check<br>Preferences_widget.content.gtk-theme-override | {"esr78":"78.0a1","esr91":"78.0a1"} |
+| Preferences<br>Preferences_network.IDN_show_punycode<br>Preferences_browser.fixup.dns_first_for_single_words<br>Preferences_browser.cache.disk.parent_directory<br>Preferences_browser.urlbar.suggest.openpage<br>Preferences_browser.urlbar.suggest.history<br>Preferences_browser.urlbar.suggest.bookmark | Thunderbird 68.0 |
+| Preferences_accessibility.force_disabled<br>Preferences_browser.cache.disk.enable<br>Preferences_browser.safebrowsing.phishing.enabled<br>Preferences_browser.safebrowsing.malware.enabled<br>Preferences_browser.search.update<br>Preferences_datareporting.policy.dataSubmissionPolicyBypassNotification<br>Preferences_dom.allow_scripts_to_close_windows<br>Preferences_dom.disable_window_flip<br>Preferences_dom.disable_window_move_resize<br>Preferences_dom.event.contextmenu.enabled<br>Preferences_dom.keyboardevent.keypress.hack.dispatch_non_printable_keys.addl<br>Preferences_dom.keyboardevent.keypress.hack.use_legacy_keycode_and_charcode.addl<br>Preferences_extensions.blocklist.enabled<br>Preferences_geo.enabled<br>Preferences_intl.accept_languages<br>Preferences_network.dns.disableIPv6<br>Preferences_places.history.enabled<br>Preferences_print.save_print_settings<br>Preferences_security.default_personal_cert<br>Preferences_security.mixed_content.block_active_content<br>Preferences_security.osclientcerts.autoload<br>Preferences_security.ssl.errorReporting.enabled<br>Preferences_security.tls.hello_downgrade_check<br>Preferences_widget.content.gtk-theme-override | Thunderbird 78.0 |
 
 <br>
 
@@ -2775,7 +2775,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| PrimaryPassword | {"esr91":"91.0"} |
+| PrimaryPassword | Thunderbird 91.0 |
 
 <br>
 
@@ -2817,7 +2817,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| PromptForDownloadLocation | {"esr78":"78.0a1","esr91":"78.0a1"} |
+| PromptForDownloadLocation | Thunderbird 78.0 |
 
 <br>
 
@@ -2945,7 +2945,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Proxy<br>Proxy_Mode<br>Proxy_Locked<br>Proxy_AutoConfigURL<br>Proxy_FTPProxy<br>Proxy_HTTPProxy<br>Proxy_SSLProxy<br>Proxy_SOCKSProxy<br>Proxy_SOCKSVersion<br>Proxy_UseHTTPProxyForAllProtocols<br>Proxy_Passthrough<br>Proxy_UseProxyForDNS<br>Proxy_AutoLogin | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| Proxy<br>Proxy_Mode<br>Proxy_Locked<br>Proxy_AutoConfigURL<br>Proxy_FTPProxy<br>Proxy_HTTPProxy<br>Proxy_SSLProxy<br>Proxy_SOCKSProxy<br>Proxy_SOCKSVersion<br>Proxy_UseHTTPProxyForAllProtocols<br>Proxy_Passthrough<br>Proxy_UseProxyForDNS<br>Proxy_AutoLogin | Thunderbird 68.0 |
 
 <br>
 
@@ -3015,7 +3015,7 @@ or
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| RequestedLocales | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| RequestedLocales | Thunderbird 68.0 |
 
 <br>
 
@@ -3060,7 +3060,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| SSLVersionMax | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| SSLVersionMax | Thunderbird 68.0 |
 
 <br>
 
@@ -3105,7 +3105,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| SSLVersionMin | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| SSLVersionMin | Thunderbird 68.0 |
 
 <br>
 
