@@ -64,8 +64,10 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | AppUpdateURL | {"esr68":"68.0a1"} |
+
 ### BlockAboutAddons
 
 Block access to the Add-ons Manager (about:addons).
@@ -103,8 +105,10 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | BlockAboutAddons | {"esr68":"68.0a1"} |
+
 ### BlockAboutConfig
 
 Block access to about:config.
@@ -142,8 +146,10 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | BlockAboutConfig | {"esr68":"68.0a1"} |
+
 ### BlockAboutProfiles
 
 Block access to About Profiles (about:profiles).
@@ -181,8 +187,10 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | BlockAboutProfiles | {"esr68":"68.0a1"} |
+
 ### BlockAboutSupport
 
 Block access to Troubleshooting Information (about:support).
@@ -220,14 +228,18 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | BlockAboutSupport | {"esr68":"68.0a1"} |
+
 ### Certificates
 
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | Certificates<br>Certificates_ImportEnterpriseRoots<br>Certificates_Install | {"esr68":"68.0a1"} |
+
 ### Certificates | ImportEnterpriseRoots
 
 Trust certificates that have been added to the operating system certificate store by a user or administrator.
@@ -272,8 +284,10 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | Certificates_ImportEnterpriseRoots | {"esr68":"68.0a1"} |
+
 ### Certificates | Install
 
 Install certificates into the Thunderbird certificate store. If only a filename is specified, Thunderbird searches for the file in the following locations:
@@ -340,8 +354,10 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | Certificates_Install | {"esr68":"68.0a1"} |
+
 ### DisableAppUpdate
 Turn off application updates.
 
@@ -378,8 +394,10 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | DisableAppUpdate | {"esr68":"68.0a1"} |
+
 ### DisableDeveloperTools
 Remove access to all developer tools.
 
@@ -416,8 +434,10 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | DisableDeveloperTools | {"esr68":"68.0a1"} |
+
 ### DisableMasterPasswordCreation
 Remove the master password functionality.
 
@@ -454,8 +474,10 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | DisableMasterPasswordCreation | {"esr68":"68.0a1"} |
+
 ### DisableSecurityBypass
 Prevent the user from bypassing security in certain cases.
 
@@ -514,8 +536,10 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | DisableSecurityBypass<br>DisableSecurityBypass_InvalidCertificate<br>DisableSecurityBypass_SafeBrowsing | {"esr68":"68.0a1"} |
+
 ### Extensions
 Control the installation, uninstallation and locking of extensions.
 
@@ -570,8 +594,10 @@ Software\Policies\Mozilla\Thunderbird\Extensions\Locked\1 = "addon_id@mozilla.or
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | Extensions<br>Extensions_Install<br>Extensions_Uninstall<br>Extensions_Locked | {"esr68":"68.0a1"} |
+
 ### ExtensionSettings
 Manage all aspects of extensions. This policy is based heavily on the [Chrome policy](https://dev.chromium.org/administrators/policy-list-3/extension-settings-full) of the same name.
 
@@ -683,8 +709,10 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | ExtensionSettings | {"esr68":"68.0a1"} |
+
 ### ExtensionUpdate
 Control extension updates.
 
@@ -721,8 +749,10 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | ExtensionUpdate | {"esr68":"68.0a1"} |
+
 ### InstallAddonsPermission
 Configure the default extension install policy as well as origins for extension installs are allowed. This policy does not override turning off all extension installs.
 
@@ -786,8 +816,10 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | InstallAddonsPermission<br>InstallAddonsPermission_Allow<br>InstallAddonsPermission_Default | {"esr68":"68.0a1"} |
+
 ### Preferences
 Set and lock certain preferences.
 
@@ -934,8 +966,10 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | Preferences<br>Preferences_network.IDN_show_punycode<br>Preferences_browser.fixup.dns_first_for_single_words<br>Preferences_browser.cache.disk.parent_directory<br>Preferences_browser.urlbar.suggest.openpage<br>Preferences_browser.urlbar.suggest.history<br>Preferences_browser.urlbar.suggest.bookmark | {"esr68":"68.0a1"} |
+
 ### Proxy
 Configure proxy settings. These settings correspond to the connection settings in Thunderbird preferences.
 To specify ports, append them to the hostnames with a colon (:).
@@ -1058,8 +1092,10 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | Proxy<br>Proxy_Mode<br>Proxy_Locked<br>Proxy_AutoConfigURL<br>Proxy_FTPProxy<br>Proxy_HTTPProxy<br>Proxy_SSLProxy<br>Proxy_SOCKSProxy<br>Proxy_SOCKSVersion<br>Proxy_UseHTTPProxyForAllProtocols<br>Proxy_Passthrough<br>Proxy_UseProxyForDNS<br>Proxy_AutoLogin | {"esr68":"68.0a1"} |
+
 ### RequestedLocales
 Set the the list of requested locales for the application in order of preference. It will cause the corresponding language pack to become active.
 
@@ -1124,8 +1160,10 @@ or
 
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | RequestedLocales | {"esr68":"68.0a1"} |
+
 ### SSLVersionMax
 
 Set and lock the maximum version of TLS.
@@ -1165,8 +1203,10 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | SSLVersionMax | {"esr68":"68.0a1"} |
+
 ### SSLVersionMin
 
 Set and lock the minimum version of TLS.
@@ -1206,6 +1246,8 @@ Value (string):
 ```
 #### Compatibility
 
+| Policy/Property Name | Compatibility Information |
 | --- | --- |
 | SSLVersionMin | {"esr68":"68.0a1"} |
+
 
