@@ -1,6 +1,7 @@
 ## Enterprise policy descriptions and templates for Thunderbird 78 (and older)
 
-Policies can be specified using the [Group Policy templates on Windows](windows), [Intune on Windows](https://support.mozilla.org/kb/managing-firefox-intune), [configuration profiles on macOS](mac), or by creating a file called `policies.json`. On Windows, create a directory called `distribution` where the EXE is located and place the file there. On Mac, the file goes into `Thunderbird.app/Contents/Resources/distribution`.  On Linux, the file goes into `thunderbird/distribution`, where `thunderbird` is the installation directory for Thunderbird, which varies by distribution or you can specify system-wide policy by placing the file in `/etc/thunderbird/policies`.
+Policies can be specified using the [Group Policy templates on Windows](windows), [Intune on Windows](https://support.mozilla.org/kb/managing-firefox-intune), [configuration profiles on macOS](mac), or by creating a file called `policies.json`.
+On Windows, create a directory called `distribution` where the EXE is located and place the file there. On Mac, the file goes into `Thunderbird.app/Contents/Resources/distribution`.  On Linux, the file goes into `thunderbird/distribution`, where `thunderbird` is the installation directory for Thunderbird, which varies by distribution or you can specify system-wide policy by placing the file in `/etc/thunderbird/policies`.
 
 | Policy Name | Description
 | --- | --- |
@@ -13,7 +14,6 @@ Policies can be specified using the [Group Policy templates on Windows](windows)
 | **[`BlockAboutProfiles`](#blockaboutprofiles)** | Block access to About Profiles (about:profiles).
 | **[`BlockAboutSupport`](#blockaboutsupport)** | Block access to Troubleshooting Information (about:support).
 | **[`CaptivePortal`](#captiveportal)** | Enable or disable the detection of captive portals.
-| **[`Certificates`](#certificates)** |
 | **[`Certificates -> ImportEnterpriseRoots`](#certificates--importenterpriseroots)** | Trust certificates that have been added to the operating system certificate store by a user or administrator.
 | **[`Certificates -> Install`](#certificates--install)** | Install certificates into the Thunderbird certificate store.
 | **[`Cookies`](#cookies)** | Configure cookie preferences.
@@ -511,16 +511,6 @@ Value (string):
 
 <br>
 
-## Certificates
-
-#### Compatibility
-
-| Policy/Property Name | Compatibility Information |
-| --- | --- |
-| `Certificates`<br>`Certificates_ImportEnterpriseRoots`<br>`Certificates_Install` | Thunderbird 68.0 |
-
-<br>
-
 ## Certificates | ImportEnterpriseRoots
 
 Trust certificates that have been added to the operating system certificate store by a user or administrator.
@@ -920,8 +910,6 @@ Software\Policies\Mozilla\Thunderbird\DisabledCiphers\TLS_ECDHE_ECDSA_WITH_AES_1
 Software\Policies\Mozilla\Thunderbird\DisabledCiphers\TLS_RSA_WITH_AES_128_CBC_SHA = 0x1 | 0x0
 Software\Policies\Mozilla\Thunderbird\DisabledCiphers\TLS_RSA_WITH_AES_256_CBC_SHA = 0x1 | 0x0
 Software\Policies\Mozilla\Thunderbird\DisabledCiphers\TLS_RSA_WITH_3DES_EDE_CBC_SHA = 0x1 | 0x0
-Software\Policies\Mozilla\Thunderbird\DisabledCiphers\TLS_RSA_WITH_AES_128_GCM_SHA256 = 0x1 | 0x0
-Software\Policies\Mozilla\Thunderbird\DisabledCiphers\TLS_RSA_WITH_AES_256_GCM_SHA384 = 0x1 | 0x0
 ```
 #### Windows (Intune)
 OMA-URI:
@@ -935,8 +923,6 @@ OMA-URI:
 ./Device/Vendor/MSFT/Policy/Config/Thunderbird~Policy~thunderbird~DisabledCiphers/DisabledCiphers_TLS_RSA_WITH_AES_128_CBC_SHA
 ./Device/Vendor/MSFT/Policy/Config/Thunderbird~Policy~thunderbird~DisabledCiphers/DisabledCiphers_TLS_RSA_WITH_AES_256_CBC_SHA
 ./Device/Vendor/MSFT/Policy/Config/Thunderbird~Policy~thunderbird~DisabledCiphers/DisabledCiphers_TLS_RSA_WITH_3DES_EDE_CBC_SHA
-./Device/Vendor/MSFT/Policy/Config/Thunderbird~Policy~thunderbird~DisabledCiphers/DisabledCiphers_TLS_RSA_WITH_AES_128_GCM_SHA256
-./Device/Vendor/MSFT/Policy/Config/Thunderbird~Policy~thunderbird~DisabledCiphers/DisabledCiphers_TLS_RSA_WITH_AES_256_GCM_SHA384
 ```
 Value (string):
 ```
@@ -965,10 +951,6 @@ Value (string):
       <true/> | <false/>
       <key>TLS_RSA_WITH_3DES_EDE_CBC_SHA</key>
       <true/> | <false/>
-      <key>TLS_RSA_WITH_AES_128_GCM_SHA256</key>
-      <true/> | <false/>
-      <key>TLS_RSA_WITH_AES_256_GCM_SHA384</key>
-      <true/> | <false/>
     </dict>
 </dict>
 ```
@@ -986,8 +968,6 @@ Value (string):
       "TLS_RSA_WITH_AES_128_CBC_SHA": true | false,
       "TLS_RSA_WITH_AES_256_CBC_SHA": true | false,
       "TLS_RSA_WITH_3DES_EDE_CBC_SHA": true | false,
-      "TLS_RSA_WITH_AES_128_GCM_SHA256": true | false,
-      "TLS_RSA_WITH_AES_256_GCM_SHA384": true | false
     }
   }
 }
@@ -1913,6 +1893,9 @@ Value (string):
   }
 }
 ```
+
+<br>
+
 ## PromptForDownloadLocation
 Ask where to save each file before downloading.
 
