@@ -66,7 +66,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| AppUpdateURL | Thunderbird 68.0 |
+| `AppUpdateURL` | Thunderbird 68.0 |
 
 <br>
 
@@ -109,7 +109,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BlockAboutAddons | Thunderbird 68.0 |
+| `BlockAboutAddons` | Thunderbird 68.0 |
 
 <br>
 
@@ -152,7 +152,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BlockAboutConfig | Thunderbird 68.0 |
+| `BlockAboutConfig` | Thunderbird 68.0 |
 
 <br>
 
@@ -195,7 +195,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BlockAboutProfiles | Thunderbird 68.0 |
+| `BlockAboutProfiles` | Thunderbird 68.0 |
 
 <br>
 
@@ -238,7 +238,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BlockAboutSupport | Thunderbird 68.0 |
+| `BlockAboutSupport` | Thunderbird 68.0 |
 
 <br>
 
@@ -248,7 +248,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Certificates<br>Certificates\_ImportEnterpriseRoots<br>Certificates\_Install | Thunderbird 68.0 |
+| `Certificates`<br>`Certificates_ImportEnterpriseRoots`<br>`Certificates_Install` | Thunderbird 68.0 |
 
 <br>
 
@@ -298,7 +298,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Certificates\_ImportEnterpriseRoots | Thunderbird 68.0 |
+| `Certificates_ImportEnterpriseRoots` | Thunderbird 68.0 |
 
 <br>
 
@@ -370,7 +370,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Certificates\_Install | Thunderbird 68.0 |
+| `Certificates_Install` | Thunderbird 68.0 |
 
 <br>
 
@@ -412,7 +412,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableAppUpdate | Thunderbird 68.0 |
+| `DisableAppUpdate` | Thunderbird 68.0 |
 
 <br>
 
@@ -454,7 +454,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableDeveloperTools | Thunderbird 68.0 |
+| `DisableDeveloperTools` | Thunderbird 68.0 |
 
 <br>
 
@@ -496,7 +496,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableMasterPasswordCreation | Thunderbird 68.0 |
+| `DisableMasterPasswordCreation` | Thunderbird 68.0 |
 
 <br>
 
@@ -560,7 +560,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableSecurityBypass<br>DisableSecurityBypass\_InvalidCertificate<br>DisableSecurityBypass\_SafeBrowsing | Thunderbird 68.0 |
+| `DisableSecurityBypass`<br>`DisableSecurityBypass_InvalidCertificate`<br>`DisableSecurityBypass_SafeBrowsing` | Thunderbird 68.0 |
 
 <br>
 
@@ -620,7 +620,7 @@ Software\Policies\Mozilla\Thunderbird\Extensions\Locked\1 = "addon_id@mozilla.or
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Extensions<br>Extensions\_Install<br>Extensions\_Uninstall<br>Extensions\_Locked | Thunderbird 68.0 |
+| `Extensions`<br>`Extensions_Install`<br>`Extensions_Uninstall`<br>`Extensions_Locked` | Thunderbird 68.0 |
 
 <br>
 
@@ -737,7 +737,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| ExtensionSettings<br>ExtensionSettings\_\[name\]<br>ExtensionSettings\_\[name\]\_blocked\_install\_message | Thunderbird 68.0 |
+| `ExtensionSettings`<br>`ExtensionSettings_[name]`<br>`ExtensionSettings_[name]_blocked_install_message` | Thunderbird 68.0 |
 
 <br>
 
@@ -779,7 +779,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| ExtensionUpdate | Thunderbird 68.0 |
+| `ExtensionUpdate` | Thunderbird 68.0 |
 
 <br>
 
@@ -848,7 +848,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| InstallAddonsPermission<br>InstallAddonsPermission\_Allow<br>InstallAddonsPermission\_Default | Thunderbird 68.0 |
+| `InstallAddonsPermission`<br>`InstallAddonsPermission_Allow`<br>`InstallAddonsPermission_Default` | Thunderbird 68.0 |
 
 <br>
 
@@ -858,106 +858,67 @@ Set and lock certain preferences.
 **CCK2 Equivalent:** `preferences`\
 **Preferences Affected:** See below
 
-| Preference | Type | Compatibility | Default
-| --- | --- | --- | ---
-| accessibility.force_disabled | integer | Thunderbird 70, Thunderbird ESR 68.2 | 0
+| Preference | Type | Default
+| --- | --- | ---
+| accessibility.force_disabled | integer | 0
 | &nbsp;&nbsp;&nbsp;&nbsp;If set to 1, platform accessibility is disabled.
-| app.update.auto (Deprecated - Switch to AppAutoUpdate policy) | boolean | Thunderbird 68, Thunderbird ESR 68 | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, Thunderbird doesn't automatically install update.
-| browser.bookmarks.autoExportHTML | boolean | Thunderbird 70, Thunderbird ESR 68.2 | false
-| &nbsp;&nbsp;&nbsp;&nbsp;If true, bookmarks are exported on shutdown.
-| browser.bookmarks.file | string | Thunderbird 70, Thunderbird ESR 68.2 | N/A
-| &nbsp;&nbsp;&nbsp;&nbsp;If set, the name of the file where bookmarks are exported and imported.
-| browser.bookmarks.restore_default_bookmarks | boolean | Thunderbird 70, Thunderbird ESR 68.2 | N/A
-| &nbsp;&nbsp;&nbsp;&nbsp;If true, bookmarks are restored to their defaults.
-| browser.cache.disk.enable | boolean | Thunderbird 68, Thunderbird ESR 68 | true
+| browser.cache.disk.enable | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, don't store cache on the hard drive.
-| ~browser.cache.disk.parent_directory~ | string | Thunderbird 68, Thunderbird ESR 68 | Profile temporary directory
+| ~browser.cache.disk.parent_directory~ | string | Profile temporary directory
 | &nbsp;&nbsp;&nbsp;&nbsp;~If set, changes the location of the disk cache.~ This policy doesn't work. It's being worked on.
-| browser.fixup.dns_first_for_single_words | boolean | Thunderbird 68, Thunderbird ESR 68 | false
+| browser.fixup.dns_first_for_single_words | boolean | false
 | &nbsp;&nbsp;&nbsp;&nbsp;If true, single words are sent to DNS, not directly to search.
-| browser.newtabpage.activity-stream.default.sites | string | Thunderbird 72, ESR 68.4 | Locale dependent
-| &nbsp;&nbsp;&nbsp;&nbsp;If set, a list of URLs to use as the default top sites on the new tab page.
-| browser.places.importBookmarksHTML | boolean | Thunderbird 70, Thunderbird ESR 68.2
-| &nbsp;&nbsp;&nbsp;&nbsp;If true, bookmarks are always imported on startup.
-| browser.safebrowsing.phishing.enabled | boolean | Thunderbird 70, Thunderbird ESR 68.2 | true
+| browser.safebrowsing.phishing.enabled | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, phishing protection is not enabled (Not recommended)
-| browser.safebrowsing.malware.enabled | boolean | Thunderbird 70, Thunderbird ESR 68.2 | true
+| browser.safebrowsing.malware.enabled | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, malware protection is not enabled (Not recommended)
-| browser.search.update | boolean | Thunderbird 68, Thunderbird ESR 68 | true
+| browser.search.update | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, updates for search engines are not checked.
-| browser.slowStartup.notificationDisabled | boolean | Thunderbird 70, Thunderbird ESR 68.2 | false
-| &nbsp;&nbsp;&nbsp;&nbsp;If true, a notification isn't shown if startup is slow.
-| browser.tabs.warnOnClose | boolean | Thunderbird 68, Thunderbird ESR 68 | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, there is no warning when the browser is closed.
-| browser.taskbar.previews.enable | boolean | Thunderbird 70, Thunderbird ESR 68.2 (Windows only) | false
-| &nbsp;&nbsp;&nbsp;&nbsp;If true, tab previews are shown in the Windows taskbar.
-| browser.urlbar.suggest.bookmark | boolean | Thunderbird 68, Thunderbird ESR 68 | true
+| browser.urlbar.suggest.bookmark | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, bookmarks aren't suggested when typing in the URL bar.
-| browser.urlbar.suggest.history | boolean | Thunderbird 68, Thunderbird ESR 68 | true
+| browser.urlbar.suggest.history | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, history isn't suggested when typing in the URL bar.
-| browser.urlbar.suggest.openpage | boolean | Thunderbird 68, Thunderbird ESR 68 | true
+| browser.urlbar.suggest.openpage | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, open tabs aren't suggested when typing in the URL bar.
-| datareporting.policy.dataSubmissionPolicyBypassNotification | boolean | Thunderbird 68, Thunderbird ESR 68 | false
+| datareporting.policy.dataSubmissionPolicyBypassNotification | boolean | false
 | &nbsp;&nbsp;&nbsp;&nbsp;If true, don't show the privacy policy tab on first run.
-| dom.allow_scripts_to_close_windows | boolean | Thunderbird 70, Thunderbird ESR 68.2 | false
+| dom.allow_scripts_to_close_windows | boolean | false
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, web page can close windows.
-| dom.disable_window_flip | boolean | Thunderbird 68, Thunderbird ESR 68 | true
+| dom.disable_window_flip | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, web pages can focus and activate windows.
-| dom.disable_window_move_resize | boolean | Thunderbird 68, Thunderbird ESR 68 | false
+| dom.disable_window_move_resize | boolean | false
 | &nbsp;&nbsp;&nbsp;&nbsp;If true, web pages can't move or resize windows.
-| dom.event.contextmenu.enabled | boolean | Thunderbird 68, Thunderbird ESR 68 | true
+| dom.event.contextmenu.enabled | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, web pages can't override context menus.
-| dom.keyboardevent.keypress.hack.dispatch_non_printable_keys.addl | string | Thunderbird 68, Thunderbird ESR 68 | N/A
+| dom.keyboardevent.keypress.hack.dispatch_non_printable_keys.addl | string | N/A
 | &nbsp;&nbsp;&nbsp;&nbsp;See https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-firefox-66
-| dom.keyboardevent.keypress.hack.use_legacy_keycode_and_charcode.addl | string | Thunderbird 68, Thunderbird ESR 68 | N/A
+| dom.keyboardevent.keypress.hack.use_legacy_keycode_and_charcode.addl | string | N/A
 | &nbsp;&nbsp;&nbsp;&nbsp;See https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-firefox-66
-| dom.xmldocument.load.enabled | boolean | Thunderbird ESR 68.5 | true.
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, XMLDocument.load is not available.
-| dom.xmldocument.async.enabled | boolean | Thunderbird ESR 68.5 | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, XMLDocument.async is not available.
-| extensions.blocklist.enabled | boolean | Thunderbird 70, Thunderbird ESR 68.2 | true
+| extensions.blocklist.enabled | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, the extensions blocklist is not used (Not recommended)
-| extensions.getAddons.showPane | boolean | Thunderbird 68, Thunderbird ESR 68 | N/A
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, the Recommendations tab is not displayed in the Add-ons Manager.
-| extensions.htmlaboutaddons.recommendations.enabled | boolean | Thunderbird 72, Thunderbird ESR 68.4 | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, recommendations are not shown on the Extensions tab in the Add-ons Manager.
-| geo.enabled | boolean | Thunderbird 70, Thunderbird ESR 68.2 | true
+| geo.enabled | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, the geolocation API is disabled. | Language dependent
-| intl.accept_languages | string | Thunderbird 70, Thunderbird ESR 68.2
+| intl.accept_languages | string 
 | &nbsp;&nbsp;&nbsp;&nbsp;If set, preferred language for web pages.
-| media.eme.enabled (Deprecated - Switch to EncryptedMediaExtensions policy) | boolean | Thunderbird 70, Thunderbird ESR 68.2 | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, Encrypted Media Extensions are not enabled.
-| media.gmp-gmpopenh264.enabled | boolean | Thunderbird 68, Thunderbird ESR 68 | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, the OpenH264  plugin is not downloaded.
-| media.gmp-widevinecdm.enabled | boolean | Thunderbird 68, Thunderbird ESR 68 | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, the Widevine plugin is not downloaded.
-| media.peerconnection.enabled | boolean | Thunderbird 72, Thunderbird ESR 68.4 | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, WebRTC is disabled
-| media.peerconnection.ice.obfuscate_host_addresses.whitelist | string | Thunderbird 72, Thunderbird ESR 68.4 | N/A
-| &nbsp;&nbsp;&nbsp;&nbsp;If set, a list of domains for which mDNS hostname obfuscation is
-disabled
-| network.dns.disableIPv6 | boolean | Thunderbird 68, Thunderbird ESR 68 | false
+| network.dns.disableIPv6 | boolean | false
 | &nbsp;&nbsp;&nbsp;&nbsp;If true, IPv6 DNS lokoups are disabled.
-| network.IDN_show_punycode | boolean | Thunderbird 68, Thunderbird ESR 68 | false
-| &nbsp;&nbsp;&nbsp;&nbsp;If true, display the punycode version of internationalized domain names. 
-| places.history.enabled | boolean | Thunderbird 68, Thunderbird ESR 68 | true
+| network.IDN_show_punycode | boolean | false
+| &nbsp;&nbsp;&nbsp;&nbsp;If true, display the punycode version of internationalized domain names.
+| places.history.enabled | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, history is not enabled.
-| print.save_print_settings | boolean | Thunderbird 70, Thunderbird ESR 68.2 | true
+| print.save_print_settings | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, print settings are not saved between jobs.
-| security.default_personal_cert | string | Thunderbird 68, Thunderbird ESR 68 | Ask Every Time
+| security.default_personal_cert | string | Ask Every Time
 | &nbsp;&nbsp;&nbsp;&nbsp;If set to Select Automatically, Thunderbird automatically chooses the default personal certificate.
-| security.mixed_content.block_active_content | boolean | Thunderbird 70, Thunderbird ESR 68.2 | true
+| security.mixed_content.block_active_content | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, mixed active content (HTTP and HTTPS) is not blocked.
-| security.osclientcerts.autoload | boolean | Thunderbird 72 (Windows), Thunderbird 75 (macOS)  | false
+| security.osclientcerts.autoload | boolean | false
 | &nbsp;&nbsp;&nbsp;&nbsp;If true, client certificates are loaded from the operating system certificate store.
-| security.ssl.errorReporting.enabled | boolean | Thunderbird 68, Thunderbird ESR 68 | true
+| security.ssl.errorReporting.enabled | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, SSL errors cannot be sent to Mozilla.
-| security.tls.hello_downgrade_check | boolean | Thunderbird 72, Thunderbird ESR 68.4 | true
+| security.tls.hello_downgrade_check | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, the TLS 1.3 downgrade check is disabled.
-| ui.key.menuAccessKeyFocuses | boolean | Thunderbird 68, Thunderbird ESR 68 | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, the Alt key doesn't show the menubar on Windows.
-| widget.content.gtk-theme-override | string | Thunderbird 72, Thunderbird ESR 68.4 (Linux only) | N/A
+| widget.content.gtk-theme-override | string | N/A
 | &nbsp;&nbsp;&nbsp;&nbsp;If set, overrides the GTK theme for widgets.
 #### Windows (GPO)
 ```
@@ -1000,7 +961,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Preferences<br>Preferences\_network\.IDN\_show\_punycode<br>Preferences\_browser\.fixup\.dns\_first\_for\_single\_words<br>Preferences\_browser\.cache\.disk\.parent\_directory<br>Preferences\_browser\.urlbar\.suggest\.openpage<br>Preferences\_browser\.urlbar\.suggest\.history<br>Preferences\_browser\.urlbar\.suggest\.bookmark | Thunderbird 68.0 |
+| `Preferences`<br>`Preferences_network.IDN_show_punycode`<br>`Preferences_browser.fixup.dns_first_for_single_words`<br>`Preferences_browser.cache.disk.parent_directory`<br>`Preferences_browser.urlbar.suggest.openpage`<br>`Preferences_browser.urlbar.suggest.history`<br>`Preferences_browser.urlbar.suggest.bookmark` | Thunderbird 68.0 |
 
 <br>
 
@@ -1128,7 +1089,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Proxy<br>Proxy\_Mode<br>Proxy\_Locked<br>Proxy\_AutoConfigURL<br>Proxy\_FTPProxy<br>Proxy\_HTTPProxy<br>Proxy\_SSLProxy<br>Proxy\_SOCKSProxy<br>Proxy\_SOCKSVersion<br>Proxy\_UseHTTPProxyForAllProtocols<br>Proxy\_Passthrough<br>Proxy\_UseProxyForDNS<br>Proxy\_AutoLogin | Thunderbird 68.0 |
+| `Proxy`<br>`Proxy_Mode`<br>`Proxy_Locked`<br>`Proxy_AutoConfigURL`<br>`Proxy_FTPProxy`<br>`Proxy_HTTPProxy`<br>`Proxy_SSLProxy`<br>`Proxy_SOCKSProxy`<br>`Proxy_SOCKSVersion`<br>`Proxy_UseHTTPProxyForAllProtocols`<br>`Proxy_Passthrough`<br>`Proxy_UseProxyForDNS`<br>`Proxy_AutoLogin` | Thunderbird 68.0 |
 
 <br>
 
@@ -1198,7 +1159,7 @@ or
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| RequestedLocales | Thunderbird 68.0 |
+| `RequestedLocales` | Thunderbird 68.0 |
 
 <br>
 
@@ -1243,7 +1204,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| SSLVersionMax | Thunderbird 68.0 |
+| `SSLVersionMax` | Thunderbird 68.0 |
 
 <br>
 
@@ -1288,7 +1249,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| SSLVersionMin | Thunderbird 68.0 |
+| `SSLVersionMin` | Thunderbird 68.0 |
 
 <br>
 

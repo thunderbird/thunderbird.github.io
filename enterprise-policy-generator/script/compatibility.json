@@ -17,6 +17,18 @@
     "esr91": "68.0a1",
     "central": "68.0a1"
   },
+  "ExtensionSettings_^.*$": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
+  "ExtensionSettings_^.*$_blocked_install_message": {
+    "esr68": "68.0a1",
+    "esr78": "68.0a1",
+    "esr91": "68.0a1",
+    "central": "68.0a1"
+  },
   "Preferences": {
     "esr68": "68.0a1",
     "esr78": "68.0a1",
@@ -345,6 +357,11 @@
     "esr91": "78.0a1",
     "central": "78.0a1"
   },
+  "3rdparty_Extensions_^.*$": {
+    "esr78": "78.0a1",
+    "esr91": "78.0a1",
+    "central": "78.0a1"
+  },
   "Authentication": {
     "esr78": "78.0a1",
     "esr91": "78.0a1",
@@ -635,6 +652,21 @@
     "esr91": "89.0a1",
     "central": "89.0a1"
   },
+  "ExtensionSettings_^.*$_installation_mode": {
+    "esr78": "78.10.3",
+    "esr91": "89.0a1",
+    "central": "89.0a1"
+  },
+  "ExtensionSettings_^.*$_install_url": {
+    "esr78": "78.10.3",
+    "esr91": "89.0a1",
+    "central": "89.0a1"
+  },
+  "ExtensionSettings_^.*$_updates_disabled": {
+    "esr78": "78.10.3",
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
   "BackgroundAppUpdate": {
     "esr91": "91.0",
     "central": "92.0a1"
@@ -675,6 +707,26 @@
     "esr91": "91.0",
     "central": "92.0a1"
   },
+  "Handlers_^(mimeTypes|extensions|schemes)$": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "Handlers_^(mimeTypes|extensions|schemes)$_^.*$": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "Handlers_^(mimeTypes|extensions|schemes)$_^.*$_action": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "Handlers_^(mimeTypes|extensions|schemes)$_^.*$_ask": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "Handlers_^(mimeTypes|extensions|schemes)$_^.*$_handlers": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
   "ManualAppUpdateOnly": {
     "esr91": "91.0",
     "central": "92.0a1"
@@ -700,6 +752,18 @@
     "central": "92.0a1"
   },
   "PDFjs_EnablePermissions": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "Preferences_^.*$": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "Preferences_^.*$_Value": {
+    "esr91": "91.0",
+    "central": "92.0a1"
+  },
+  "Preferences_^.*$_Status": {
     "esr91": "91.0",
     "central": "92.0a1"
   },

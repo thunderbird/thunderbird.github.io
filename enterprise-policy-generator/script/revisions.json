@@ -3,7 +3,7 @@
     "tree": "esr68",
     "name": "Thunderbird 68",
     "desc": [
-      "Policies can be specified using the [Group Policy templates on Windows](windows), [Intune on Windows](https://support.mozilla.org/kb/managing-firefox-intune), [configuration profiles on macOS](mac), or by creating a file called `policies.json`. On Windows, create a directory called `distribution` where the EXE is located and place the file there. On Mac, the file goes into `Thunderbird.app/Contents/Resources/distribution`.  On Linux, the file goes into `thunderbird/distribution`, where `thunderbird` is the installation directory for Thunderbird, which varies by distribution or you can specify system-wide policy by placing the file in `/etc/thunderbird/policies`."
+      "Policies can be specified using the [Group Policy templates on Windows](windows), [Intune on Windows](https://support.mozilla.org/kb/managing-firefox-intune), [configuration profiles on macOS](mac), or by creating a file called `policies.json`. On Windows, create a directory called `distribution` where the EXE is located and place the file there. On Mac, the file goes into `Thunderbird.app/Contents/Resources/distribution`.  On Linux, the file goes into `thunderbird/distribution`, where `thunderbird` is the installation directory for Thunderbird, which varies by distribution."
     ],
     "mozillaReferencePolicyRevision": "1b0a29b456b432d1c8bef09c233b84205ec9e13c",
     "mozillaReferenceTemplates": "v1.17"

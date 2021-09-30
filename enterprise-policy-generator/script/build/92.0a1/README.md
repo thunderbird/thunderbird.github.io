@@ -62,7 +62,7 @@ Allow WebExtensions to configure policy. For more information, see [Adding polic
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| 3rdparty<br>3rdparty\_Extensions<br>3rdparty\_Extensions\_\[name\] | Thunderbird 78.0 |
+| `3rdparty`<br>`3rdparty_Extensions`<br>`3rdparty_Extensions_[name]` | Thunderbird 78.0 |
 
 <br>
 
@@ -111,7 +111,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| AppAutoUpdate | Thunderbird 75.0 |
+| `AppAutoUpdate` | Thunderbird 75.0 |
 
 <br>
 
@@ -155,7 +155,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| AppUpdateURL | Thunderbird 68.0 |
+| `AppUpdateURL` | Thunderbird 68.0 |
 
 <br>
 
@@ -306,7 +306,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Authentication<br>Authentication\_SPNEGO<br>Authentication\_Delegated<br>Authentication\_NTLM<br>Authentication\_AllowNonFQDN<br>Authentication\_AllowNonFQDN\_SPNEGO<br>Authentication\_AllowNonFQDN\_NTLM<br>Authentication\_AllowProxies<br>Authentication\_AllowProxies\_SPNEGO<br>Authentication\_AllowProxies\_NTLM<br>Authentication\_Locked<br>Authentication\_PrivateBrowsing | Thunderbird 78.0 |
+| `Authentication`<br>`Authentication_SPNEGO`<br>`Authentication_Delegated`<br>`Authentication_NTLM`<br>`Authentication_AllowNonFQDN`<br>`Authentication_AllowNonFQDN_SPNEGO`<br>`Authentication_AllowNonFQDN_NTLM`<br>`Authentication_AllowProxies`<br>`Authentication_AllowProxies_SPNEGO`<br>`Authentication_AllowProxies_NTLM`<br>`Authentication_Locked`<br>`Authentication_PrivateBrowsing` | Thunderbird 78.0 |
 
 <br>
 
@@ -355,7 +355,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BackgroundAppUpdate | Thunderbird 91.0 |
+| `BackgroundAppUpdate` | Thunderbird 91.0 |
 
 <br>
 
@@ -398,7 +398,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BlockAboutAddons | Thunderbird 68.0 |
+| `BlockAboutAddons` | Thunderbird 68.0 |
 
 <br>
 
@@ -441,7 +441,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BlockAboutConfig | Thunderbird 68.0 |
+| `BlockAboutConfig` | Thunderbird 68.0 |
 
 <br>
 
@@ -484,7 +484,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BlockAboutProfiles | Thunderbird 68.0 |
+| `BlockAboutProfiles` | Thunderbird 68.0 |
 
 <br>
 
@@ -527,7 +527,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| BlockAboutSupport | Thunderbird 68.0 |
+| `BlockAboutSupport` | Thunderbird 68.0 |
 
 <br>
 
@@ -569,7 +569,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| CaptivePortal | Thunderbird 78.0 |
+| `CaptivePortal` | Thunderbird 78.0 |
 
 <br>
 
@@ -579,7 +579,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Certificates<br>Certificates\_ImportEnterpriseRoots<br>Certificates\_Install | Thunderbird 68.0 |
+| `Certificates`<br>`Certificates_ImportEnterpriseRoots`<br>`Certificates_Install` | Thunderbird 68.0 |
 
 <br>
 
@@ -631,7 +631,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Certificates\_ImportEnterpriseRoots | Thunderbird 68.0 |
+| `Certificates_ImportEnterpriseRoots` | Thunderbird 68.0 |
 
 <br>
 
@@ -703,7 +703,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Certificates\_Install | Thunderbird 68.0 |
+| `Certificates_Install` | Thunderbird 68.0 |
 
 <br>
 
@@ -860,7 +860,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Cookies<br>Cookies\_Allow<br>Cookies\_Block<br>Cookies\_Default<br>Cookies\_AcceptThirdParty<br>Cookies\_ExpireAtSessionEnd<br>Cookies\_Locked | Thunderbird 78.0 |
+| `Cookies`<br>`Cookies_Allow`<br>`Cookies_Block`<br>`Cookies_Default`<br>`Cookies_AcceptThirdParty`<br>`Cookies_ExpireAtSessionEnd`<br>`Cookies_Locked` | Thunderbird 78.0 |
 
 <br>
 
@@ -911,7 +911,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DefaultDownloadDirectory | Thunderbird 78.0 |
+| `DefaultDownloadDirectory` | Thunderbird 78.0 |
 
 <br>
 
@@ -953,7 +953,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableAppUpdate | Thunderbird 68.0 |
+| `DisableAppUpdate` | Thunderbird 68.0 |
 
 <br>
 
@@ -995,7 +995,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableBuiltinPDFViewer | Thunderbird 91.0 |
+| `DisableBuiltinPDFViewer` | Thunderbird 91.0 |
 
 <br>
 
@@ -1100,8 +1100,8 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisabledCiphers<br>DisabledCiphers\_TLS\_DHE\_RSA\_WITH\_AES\_128\_CBC\_SHA<br>DisabledCiphers\_TLS\_DHE\_RSA\_WITH\_AES\_256\_CBC\_SHA<br>DisabledCiphers\_TLS\_ECDHE\_RSA\_WITH\_AES\_128\_CBC\_SHA<br>DisabledCiphers\_TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA<br>DisabledCiphers\_TLS\_ECDHE\_RSA\_WITH\_AES\_128\_GCM\_SHA256<br>DisabledCiphers\_TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256<br>DisabledCiphers\_TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA<br>DisabledCiphers\_TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA<br>DisabledCiphers\_TLS\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA | Thunderbird 76.0 |
-| DisabledCiphers\_TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256<br>DisabledCiphers\_TLS\_RSA\_WITH\_AES\_256\_GCM\_SHA384 | Thunderbird 91.0 |
+| `DisabledCiphers`<br>`DisabledCiphers_TLS_DHE_RSA_WITH_AES_128_CBC_SHA`<br>`DisabledCiphers_TLS_DHE_RSA_WITH_AES_256_CBC_SHA`<br>`DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA`<br>`DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA`<br>`DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`<br>`DisabledCiphers_TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`<br>`DisabledCiphers_TLS_RSA_WITH_AES_128_CBC_SHA`<br>`DisabledCiphers_TLS_RSA_WITH_AES_256_CBC_SHA`<br>`DisabledCiphers_TLS_RSA_WITH_3DES_EDE_CBC_SHA` | Thunderbird 76.0 |
+| `DisabledCiphers_TLS_RSA_WITH_AES_128_GCM_SHA256`<br>`DisabledCiphers_TLS_RSA_WITH_AES_256_GCM_SHA384` | Thunderbird 91.0 |
 
 <br>
 
@@ -1143,7 +1143,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableDeveloperTools | Thunderbird 68.0 |
+| `DisableDeveloperTools` | Thunderbird 68.0 |
 
 <br>
 
@@ -1189,7 +1189,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableMasterPasswordCreation | Thunderbird 68.0 |
+| `DisableMasterPasswordCreation` | Thunderbird 68.0 |
 
 <br>
 
@@ -1231,7 +1231,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisablePasswordReveal | Thunderbird 78.0 |
+| `DisablePasswordReveal` | Thunderbird 78.0 |
 
 <br>
 
@@ -1275,7 +1275,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableSafeMode | Thunderbird 78.0 |
+| `DisableSafeMode` | Thunderbird 78.0 |
 
 <br>
 
@@ -1339,7 +1339,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableSecurityBypass<br>DisableSecurityBypass\_InvalidCertificate<br>DisableSecurityBypass\_SafeBrowsing | Thunderbird 68.0 |
+| `DisableSecurityBypass`<br>`DisableSecurityBypass_InvalidCertificate`<br>`DisableSecurityBypass_SafeBrowsing` | Thunderbird 68.0 |
 
 <br>
 
@@ -1381,7 +1381,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableSystemAddonUpdate | Thunderbird 77.0 |
+| `DisableSystemAddonUpdate` | Thunderbird 77.0 |
 
 <br>
 
@@ -1427,7 +1427,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DisableTelemetry | Thunderbird 78.0 |
+| `DisableTelemetry` | Thunderbird 78.0 |
 
 <br>
 
@@ -1522,7 +1522,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DNSOverHTTPS<br>DNSOverHTTPS\_Enabled<br>DNSOverHTTPS\_ProviderURL<br>DNSOverHTTPS\_ExcludedDomains<br>DNSOverHTTPS\_Locked | Thunderbird 91.0 |
+| `DNSOverHTTPS`<br>`DNSOverHTTPS_Enabled`<br>`DNSOverHTTPS_ProviderURL`<br>`DNSOverHTTPS_ExcludedDomains`<br>`DNSOverHTTPS_Locked` | Thunderbird 91.0 |
 
 <br>
 
@@ -1573,7 +1573,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| DownloadDirectory | Thunderbird 78.0 |
+| `DownloadDirectory` | Thunderbird 78.0 |
 
 <br>
 
@@ -1663,7 +1663,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Extensions<br>Extensions\_Install<br>Extensions\_Uninstall<br>Extensions\_Locked | Thunderbird 68.0 |
+| `Extensions`<br>`Extensions_Install`<br>`Extensions_Uninstall`<br>`Extensions_Locked` | Thunderbird 68.0 |
 
 <br>
 
@@ -1688,7 +1688,9 @@ The configuration for each extension is another dictionary that can contain the 
 | `allowed_types` | This setting whitelists the allowed types of extension/apps that can be installed in Thunderbird. The value is a list of strings, each of which should be one of the following: "extension", "theme", "dictionary", "locale" This setting can be used only for the default configuration.
 | `blocked_install_message` | This maps to a string specifying the error message to display to users if they're blocked from installing an extension. This setting allows you to append text to the generic error message displayed when the extension is blocked. This could be be used to direct users to your help desk, explain why a particular extension is blocked, or something else. This setting can be used only for the default configuration.
 | `restricted_domains` | An array of domains on which content scripts can't be run. This setting can be used only for the default configuration.
-| `updates_disabled` | (Thunderbird 89, Thunderbird ESR 78.11) Boolean that indicates whether or not to disable automatic updates for an individual extension.
+| `updates_disabled` | Boolean that indicates whether or not to disable automatic updates for an individual extension.
+
+*As of Thunderbird 85, Thunderbird ESR 78.7, installing a theme makes it the default.)\
 
 **CCK2 Equivalent:** N/A\
 **Preferences Affected:** N/A
@@ -1799,9 +1801,9 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| ExtensionSettings<br>ExtensionSettings\_\[name\]<br>ExtensionSettings\_\[name\]\_blocked\_install\_message | Thunderbird 68.0 |
-| ExtensionSettings\_\*<br>ExtensionSettings\_\*\_installation\_mode<br>ExtensionSettings\_\*\_allowed\_types<br>ExtensionSettings\_\*\_blocked\_install\_message<br>ExtensionSettings\_\*\_install\_sources<br>ExtensionSettings\_\*\_restricted\_domains<br>ExtensionSettings\_\[name\]\_installation\_mode<br>ExtensionSettings\_\[name\]\_install\_url | Thunderbird 89.0, Thunderbird 78.10.3 |
-| ExtensionSettings\_\[name\]\_updates\_disabled | Thunderbird 91.0 |
+| `ExtensionSettings`<br>`ExtensionSettings_[name]`<br>`ExtensionSettings_[name]_blocked_install_message` | Thunderbird 68.0 |
+| `ExtensionSettings_*`<br>`ExtensionSettings_*_installation_mode`<br>`ExtensionSettings_*_allowed_types`<br>`ExtensionSettings_*_blocked_install_message`<br>`ExtensionSettings_*_install_sources`<br>`ExtensionSettings_*_restricted_domains`<br>`ExtensionSettings_[name]_installation_mode`<br>`ExtensionSettings_[name]_install_url` | Thunderbird 89.0, Thunderbird 78.10.3 |
+| `ExtensionSettings_[name]_updates_disabled` | Thunderbird 91.0 |
 
 <br>
 
@@ -1843,7 +1845,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| ExtensionUpdate | Thunderbird 68.0 |
+| `ExtensionUpdate` | Thunderbird 68.0 |
 
 <br>
 
@@ -2032,7 +2034,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Handlers<br>Handlers\_\(mimeTypes|extensions|schemes\)<br>Handlers\_\(mimeTypes|extensions|schemes\)\_\[name\]<br>Handlers\_\(mimeTypes|extensions|schemes\)\_\[name\]\_action<br>Handlers\_\(mimeTypes|extensions|schemes\)\_\[name\]\_ask<br>Handlers\_\(mimeTypes|extensions|schemes\)\_\[name\]\_handlers | Thunderbird 91.0 |
+| `Handlers`<br>`Handlers_(mimeTypes\|extensions\|schemes)`<br>`Handlers_(mimeTypes\|extensions\|schemes)_[name]`<br>`Handlers_(mimeTypes\|extensions\|schemes)_[name]_action`<br>`Handlers_(mimeTypes\|extensions\|schemes)_[name]_ask`<br>`Handlers_(mimeTypes\|extensions\|schemes)_[name]_handlers` | Thunderbird 91.0 |
 
 <br>
 
@@ -2074,7 +2076,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| HardwareAcceleration | Thunderbird 78.0 |
+| `HardwareAcceleration` | Thunderbird 78.0 |
 
 <br>
 
@@ -2143,7 +2145,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| InstallAddonsPermission<br>InstallAddonsPermission\_Allow<br>InstallAddonsPermission\_Default | Thunderbird 68.0 |
+| `InstallAddonsPermission`<br>`InstallAddonsPermission_Allow`<br>`InstallAddonsPermission_Default` | Thunderbird 68.0 |
 
 <br>
 
@@ -2173,7 +2175,7 @@ This policy is primarily intended for advanced end users, not for enterprises.
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| ManualAppUpdateOnly | Thunderbird 91.0 |
+| `ManualAppUpdateOnly` | Thunderbird 91.0 |
 
 <br>
 
@@ -2214,7 +2216,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| NetworkPrediction | Thunderbird 91.0 |
+| `NetworkPrediction` | Thunderbird 91.0 |
 
 <br>
 
@@ -2256,7 +2258,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| OfferToSaveLogins | Thunderbird 91.0 |
+| `OfferToSaveLogins` | Thunderbird 91.0 |
 
 <br>
 
@@ -2298,12 +2300,12 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| OfferToSaveLoginsDefault | Thunderbird 91.0 |
+| `OfferToSaveLoginsDefault` | Thunderbird 91.0 |
 
 <br>
 
 ## PasswordManagerEnabled
-Remove access to the password manager via preferences and blocks about:logins on Thunderbird 70.
+Remove access to the password manager via preferences and blocks about:logins.
 
 **CCK2 Equivalent:** N/A\
 **Preferences Affected:** `pref.privacy.disable_button.view_passwords`
@@ -2340,7 +2342,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| PasswordManagerEnabled | Thunderbird 78.0 |
+| `PasswordManagerEnabled` | Thunderbird 78.0 |
 
 <br>
 
@@ -2398,11 +2400,11 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| PDFjs<br>PDFjs\_Enabled<br>PDFjs\_EnablePermissions | Thunderbird 91.0 |
+| `PDFjs`<br>`PDFjs_Enabled`<br>`PDFjs_EnablePermissions` | Thunderbird 91.0 |
 
 <br>
 
-### Preferences (TB91+)
+## Preferences (TB91+)
 Set and lock preferences.
 
 **NOTE** On Windows, in order to use this policy, you must clear all settings in the old **Preferences (Deprecated)** section.
@@ -2491,10 +2493,6 @@ Software\Policies\Mozilla\Thunderbird\Preferences (REG_MULTI_SZ) =
     "Value": "SOME_NATIVE_PATH",
     "Status": "user"
   },
-  "browser.tabs.warnOnClose": {
-    "Value": false,
-    "Status": "locked"
-  }
 }
 ```
 #### Windows (Intune)
@@ -2515,10 +2513,6 @@ Value (string):
     "Value": "SOME_NATIVE_PATH",
     "Status": "user"
   },
-  "browser.tabs.warnOnClose": {
-    "Value": false,
-    "Status": "locked"
-  }
 }'/>
 ```
 #### macOS
@@ -2540,13 +2534,6 @@ Value (string):
       <key>Status</key>
       <string>user</string>
     </dict>
-    <key>browser.tabs.warnOnClose</key>
-    <dict>
-      <key>Value</key>
-      <false/>
-      <key>Status</key>
-      <string>locked</string>
-    </dict>
   </dict>
 </dict>
 ```
@@ -2563,9 +2550,6 @@ Value (string):
         "Value": "SOME_NATIVE_PATH",
         "Status": "user"
       },
-      "browser.tabs.warnOnClose": {
-        "Value": false,
-        "Status": "locked"
       }
     }
   }
@@ -2575,13 +2559,13 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Preferences<br>Preferences\_network\.IDN\_show\_punycode<br>Preferences\_browser\.fixup\.dns\_first\_for\_single\_words<br>Preferences\_browser\.cache\.disk\.parent\_directory<br>Preferences\_browser\.urlbar\.suggest\.openpage<br>Preferences\_browser\.urlbar\.suggest\.history<br>Preferences\_browser\.urlbar\.suggest\.bookmark | Thunderbird 68.0 |
-| Preferences\_accessibility\.force\_disabled<br>Preferences\_browser\.cache\.disk\.enable<br>Preferences\_browser\.safebrowsing\.phishing\.enabled<br>Preferences\_browser\.safebrowsing\.malware\.enabled<br>Preferences\_browser\.search\.update<br>Preferences\_datareporting\.policy\.dataSubmissionPolicyBypassNotification<br>Preferences\_dom\.allow\_scripts\_to\_close\_windows<br>Preferences\_dom\.disable\_window\_flip<br>Preferences\_dom\.disable\_window\_move\_resize<br>Preferences\_dom\.event\.contextmenu\.enabled<br>Preferences\_dom\.keyboardevent\.keypress\.hack\.dispatch\_non\_printable\_keys\.addl<br>Preferences\_dom\.keyboardevent\.keypress\.hack\.use\_legacy\_keycode\_and\_charcode\.addl<br>Preferences\_extensions\.blocklist\.enabled<br>Preferences\_geo\.enabled<br>Preferences\_intl\.accept\_languages<br>Preferences\_network\.dns\.disableIPv6<br>Preferences\_places\.history\.enabled<br>Preferences\_print\.save\_print\_settings<br>Preferences\_security\.default\_personal\_cert<br>Preferences\_security\.mixed\_content\.block\_active\_content<br>Preferences\_security\.osclientcerts\.autoload<br>Preferences\_security\.ssl\.errorReporting\.enabled<br>Preferences\_security\.tls\.hello\_downgrade\_check<br>Preferences\_widget\.content\.gtk\-theme\-override | Thunderbird 78.0 |
-| Preferences\_\[name\]<br>Preferences\_\[name\]\_Value<br>Preferences\_\[name\]\_Status | Thunderbird 91.0 |
+| `Preferences`<br>`Preferences_network.IDN_show_punycode`<br>`Preferences_browser.fixup.dns_first_for_single_words`<br>`Preferences_browser.cache.disk.parent_directory`<br>`Preferences_browser.urlbar.suggest.openpage`<br>`Preferences_browser.urlbar.suggest.history`<br>`Preferences_browser.urlbar.suggest.bookmark` | Thunderbird 68.0 |
+| `Preferences_accessibility.force_disabled`<br>`Preferences_browser.cache.disk.enable`<br>`Preferences_browser.safebrowsing.phishing.enabled`<br>`Preferences_browser.safebrowsing.malware.enabled`<br>`Preferences_browser.search.update`<br>`Preferences_datareporting.policy.dataSubmissionPolicyBypassNotification`<br>`Preferences_dom.allow_scripts_to_close_windows`<br>`Preferences_dom.disable_window_flip`<br>`Preferences_dom.disable_window_move_resize`<br>`Preferences_dom.event.contextmenu.enabled`<br>`Preferences_dom.keyboardevent.keypress.hack.dispatch_non_printable_keys.addl`<br>`Preferences_dom.keyboardevent.keypress.hack.use_legacy_keycode_and_charcode.addl`<br>`Preferences_extensions.blocklist.enabled`<br>`Preferences_geo.enabled`<br>`Preferences_intl.accept_languages`<br>`Preferences_network.dns.disableIPv6`<br>`Preferences_places.history.enabled`<br>`Preferences_print.save_print_settings`<br>`Preferences_security.default_personal_cert`<br>`Preferences_security.mixed_content.block_active_content`<br>`Preferences_security.osclientcerts.autoload`<br>`Preferences_security.ssl.errorReporting.enabled`<br>`Preferences_security.tls.hello_downgrade_check`<br>`Preferences_widget.content.gtk-theme-override` | Thunderbird 78.0 |
+| `Preferences_[name]`<br>`Preferences_[name]_Value`<br>`Preferences_[name]_Status` | Thunderbird 91.0 |
 
 <br>
 
-### Preferences (Deprecated)
+## Preferences (Deprecated)
 Set and lock certain preferences.
 
 **CCK2 Equivalent:** `preferences`\
@@ -2591,36 +2575,18 @@ Set and lock certain preferences.
 | --- | --- | ---
 | accessibility.force_disabled | integer | 0
 | &nbsp;&nbsp;&nbsp;&nbsp;If set to 1, platform accessibility is disabled.
-| app.update.auto (Deprecated - Switch to AppAutoUpdate policy) | boolean | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, Thunderbird doesn't automatically install update.
-| browser.bookmarks.autoExportHTML | boolean | false
-| &nbsp;&nbsp;&nbsp;&nbsp;If true, bookmarks are exported on shutdown.
-| browser.bookmarks.file | string | N/A
-| &nbsp;&nbsp;&nbsp;&nbsp;If set, the name of the file where bookmarks are exported and imported.
-| browser.bookmarks.restore_default_bookmarks | boolean | N/A
-| &nbsp;&nbsp;&nbsp;&nbsp;If true, bookmarks are restored to their defaults.
 | browser.cache.disk.enable | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, don't store cache on the hard drive.
 | ~browser.cache.disk.parent_directory~ | string | Profile temporary directory
 | &nbsp;&nbsp;&nbsp;&nbsp;~If set, changes the location of the disk cache.~ This policy doesn't work. It's being worked on.
 | browser.fixup.dns_first_for_single_words | boolean | false
 | &nbsp;&nbsp;&nbsp;&nbsp;If true, single words are sent to DNS, not directly to search.
-| browser.newtabpage.activity-stream.default.sites | string | Locale dependent
-| &nbsp;&nbsp;&nbsp;&nbsp;If set, a list of URLs to use as the default top sites on the new tab page. Due to Thunderbird limitations, search sites can't be added. In addition, sites with the same name but different TLDs (example.org/example.com) will not display properly.
-| browser.places.importBookmarksHTML | boolean 
-| &nbsp;&nbsp;&nbsp;&nbsp;If true, bookmarks are always imported on startup.
 | browser.safebrowsing.phishing.enabled | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, phishing protection is not enabled (Not recommended)
 | browser.safebrowsing.malware.enabled | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, malware protection is not enabled (Not recommended)
 | browser.search.update | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, updates for search engines are not checked.
-| browser.slowStartup.notificationDisabled | boolean | false
-| &nbsp;&nbsp;&nbsp;&nbsp;If true, a notification isn't shown if startup is slow.
-| browser.tabs.warnOnClose | boolean | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, there is no warning when the browser is closed.
-| browser.taskbar.previews.enable (Windows only) | boolean | false
-| &nbsp;&nbsp;&nbsp;&nbsp;If true, tab previews are shown in the Windows taskbar.
 | browser.urlbar.suggest.bookmark | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, bookmarks aren't suggested when typing in the URL bar.
 | browser.urlbar.suggest.history | boolean | true
@@ -2641,34 +2607,12 @@ Set and lock certain preferences.
 | &nbsp;&nbsp;&nbsp;&nbsp;See https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-firefox-66
 | dom.keyboardevent.keypress.hack.use_legacy_keycode_and_charcode.addl | string | N/A
 | &nbsp;&nbsp;&nbsp;&nbsp;See https://support.mozilla.org/en-US/kb/dom-events-changes-introduced-firefox-66
-| dom.xmldocument.load.enabled | boolean | true.
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, XMLDocument.load is not available.
-| dom.xmldocument.async.enabled | boolean | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, XMLDocument.async is not available.
 | extensions.blocklist.enabled | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, the extensions blocklist is not used (Not recommended)
-| extensions.getAddons.showPane | boolean | N/A
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, the Recommendations tab is not displayed in the Add-ons Manager.
-| extensions.htmlaboutaddons.recommendations.enabled | boolean | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, recommendations are not shown on the Extensions tab in the Add-ons Manager.
 | geo.enabled | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, the geolocation API is disabled. | Language dependent
 | intl.accept_languages | string 
 | &nbsp;&nbsp;&nbsp;&nbsp;If set, preferred language for web pages.
-| media.eme.enabled (Deprecated - Switch to EncryptedMediaExtensions policy) | boolean | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, Encrypted Media Extensions are not enabled.
-| media.gmp-gmpopenh264.enabled | boolean | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, the OpenH264  plugin is not downloaded.
-| media.gmp-widevinecdm.enabled | boolean | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, the Widevine plugin is not downloaded.
-| media.peerconnection.enabled | boolean | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, WebRTC is disabled
-| media.peerconnection.ice.obfuscate_host_addresses.whitelist (Deprecated) | string | N/A
-| &nbsp;&nbsp;&nbsp;&nbsp;If set, a list of domains for which mDNS hostname obfuscation is
-disabled
-| media.peerconnection.ice.obfuscate_host_addresses.blocklist | string | N/A
-| &nbsp;&nbsp;&nbsp;&nbsp;If set, a list of domains for which mDNS hostname obfuscation is
-disabled
 | network.dns.disableIPv6 | boolean | false
 | &nbsp;&nbsp;&nbsp;&nbsp;If true, IPv6 DNS lokoups are disabled.
 | network.IDN_show_punycode | boolean | false
@@ -2687,8 +2631,6 @@ disabled
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, SSL errors cannot be sent to Mozilla.
 | security.tls.hello_downgrade_check | boolean | true
 | &nbsp;&nbsp;&nbsp;&nbsp;If false, the TLS 1.3 downgrade check is disabled.
-| ui.key.menuAccessKeyFocuses | boolean | true
-| &nbsp;&nbsp;&nbsp;&nbsp;If false, the Alt key doesn't show the menubar on Windows.
 | widget.content.gtk-theme-override | string | N/A
 | &nbsp;&nbsp;&nbsp;&nbsp;If set, overrides the GTK theme for widgets.
 #### Windows (GPO)
@@ -2779,7 +2721,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| PrimaryPassword | Thunderbird 91.0 |
+| `PrimaryPassword` | Thunderbird 91.0 |
 
 <br>
 
@@ -2821,7 +2763,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| PromptForDownloadLocation | Thunderbird 78.0 |
+| `PromptForDownloadLocation` | Thunderbird 78.0 |
 
 <br>
 
@@ -2949,7 +2891,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| Proxy<br>Proxy\_Mode<br>Proxy\_Locked<br>Proxy\_AutoConfigURL<br>Proxy\_FTPProxy<br>Proxy\_HTTPProxy<br>Proxy\_SSLProxy<br>Proxy\_SOCKSProxy<br>Proxy\_SOCKSVersion<br>Proxy\_UseHTTPProxyForAllProtocols<br>Proxy\_Passthrough<br>Proxy\_UseProxyForDNS<br>Proxy\_AutoLogin | Thunderbird 68.0 |
+| `Proxy`<br>`Proxy_Mode`<br>`Proxy_Locked`<br>`Proxy_AutoConfigURL`<br>`Proxy_FTPProxy`<br>`Proxy_HTTPProxy`<br>`Proxy_SSLProxy`<br>`Proxy_SOCKSProxy`<br>`Proxy_SOCKSVersion`<br>`Proxy_UseHTTPProxyForAllProtocols`<br>`Proxy_Passthrough`<br>`Proxy_UseProxyForDNS`<br>`Proxy_AutoLogin` | Thunderbird 68.0 |
 
 <br>
 
@@ -3019,7 +2961,7 @@ or
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| RequestedLocales | Thunderbird 68.0 |
+| `RequestedLocales` | Thunderbird 68.0 |
 
 <br>
 
@@ -3064,7 +3006,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| SSLVersionMax | Thunderbird 68.0 |
+| `SSLVersionMax` | Thunderbird 68.0 |
 
 <br>
 
@@ -3109,7 +3051,7 @@ Value (string):
 
 | Policy/Property Name | Compatibility Information |
 | --- | --- |
-| SSLVersionMin | Thunderbird 68.0 |
+| `SSLVersionMin` | Thunderbird 68.0 |
 
 <br>
 
