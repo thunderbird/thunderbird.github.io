@@ -2301,7 +2301,7 @@ Value (string):
 <br>
 
 ## PasswordManagerEnabled
-Remove access to the password manager via preferences and blocks about:logins on Thunderbird 70.
+Remove access to the password manager via preferences and blocks about:logins.
 
 **CCK2 Equivalent:** N/A\
 **Preferences Affected:** `pref.privacy.disable_button.view_passwords`
