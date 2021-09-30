@@ -1,7 +1,7 @@
-## Enterprise policy descriptions and templates for Thunderbird 91 and older
+## Enterprise policy descriptions and templates for Thunderbird 91 (and older)
 
 Policies can be specified using the [Group Policy templates on Windows](windows), [Intune on Windows](https://support.mozilla.org/kb/managing-firefox-intune), [configuration profiles on macOS](mac), or by creating a file called `policies.json`. On Windows, create a directory called `distribution` where the EXE is located and place the file there. On Mac, the file goes into `Thunderbird.app/Contents/Resources/distribution`.  On Linux, the file goes into `thunderbird/distribution`, where `thunderbird` is the installation directory for Thunderbird, which varies by distribution or you can specify system-wide policy by placing the file in `/etc/thunderbird/policies`.
-		
+
 | Policy Name | Description
 | --- | --- |
 | **[`3rdparty`](#3rdparty)** | Set policies that WebExtensions can access via chrome.storage.managed.
@@ -56,6 +56,10 @@ Policies can be specified using the [Group Policy templates on Windows](windows)
 
 Allow WebExtensions to configure policy. For more information, see [Adding policy support to your extension](https://extensionworkshop.com/documentation/enterprise/adding-policy-support-to-your-extension/).
 
+#### Compatibility
+
+| --- | --- |
+| 3rdparty<br>3rdparty_Extensions | {"esr78":"78.0a1","esr91":"78.0a1"} |
 ### AppAutoUpdate
 
 Enable or disable **automatic** application update.
@@ -97,6 +101,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| AppAutoUpdate | {"esr78":"75.0a1","esr91":"75.0a1"} |
 ### AppUpdateURL
 
 Change the URL for application update if you are providing Thunderbird updates from a custom update server.
@@ -133,6 +141,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| AppUpdateURL | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### Authentication
 
 Configure sites that support integrated authentication.
@@ -276,6 +288,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| Authentication<br>Authentication_SPNEGO<br>Authentication_Delegated<br>Authentication_NTLM<br>Authentication_AllowNonFQDN<br>Authentication_AllowNonFQDN_SPNEGO<br>Authentication_AllowNonFQDN_NTLM<br>Authentication_AllowProxies<br>Authentication_AllowProxies_SPNEGO<br>Authentication_AllowProxies_NTLM<br>Authentication_Locked<br>Authentication_PrivateBrowsing | {"esr78":"78.0a1","esr91":"78.0a1"} |
 ### BackgroundAppUpdate
 
 Enable or disable **automatic** application update **in the background**, when the application is not running.
@@ -317,6 +333,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| BackgroundAppUpdate | {"esr91":"91.0"} |
 ### BlockAboutAddons
 
 Block access to the Add-ons Manager (about:addons).
@@ -352,6 +372,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| BlockAboutAddons | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### BlockAboutConfig
 
 Block access to about:config.
@@ -387,6 +411,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| BlockAboutConfig | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### BlockAboutProfiles
 
 Block access to About Profiles (about:profiles).
@@ -422,6 +450,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| BlockAboutProfiles | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### BlockAboutSupport
 
 Block access to Troubleshooting Information (about:support).
@@ -457,6 +489,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| BlockAboutSupport | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### CaptivePortal
 Enable or disable the detection of captive portals.
 
@@ -491,8 +527,16 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| CaptivePortal | {"esr78":"78.0a1","esr91":"78.0a1"} |
 ### Certificates
 
+#### Compatibility
+
+| --- | --- |
+| Certificates<br>Certificates_ImportEnterpriseRoots<br>Certificates_Install | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### Certificates | ImportEnterpriseRoots
 
 Trust certificates that have been added to the operating system certificate store by a user or administrator.
@@ -537,6 +581,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| Certificates_ImportEnterpriseRoots | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### Certificates | Install
 
 Install certificates into the Thunderbird certificate store. If only a filename is specified, Thunderbird searches for the file in the following locations:
@@ -601,6 +649,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| Certificates_Install | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### Cookies
 Configure cookie preferences.
 
@@ -750,6 +802,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| Cookies<br>Cookies_Allow<br>Cookies_Block<br>Cookies_Default<br>Cookies_AcceptThirdParty<br>Cookies_ExpireAtSessionEnd<br>Cookies_Locked | {"esr78":"78.0a1","esr91":"78.0a1"} |
 ### DefaultDownloadDirectory
 Set the default download directory.
 
@@ -793,6 +849,10 @@ Value (string):
     "DefaultDownloadDirectory": "${home}\\Downloads"
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| DefaultDownloadDirectory | {"esr78":"78.0a1","esr91":"78.0a1"} |
 ### DisableAppUpdate
 Turn off application updates within Thunderbird.
 
@@ -827,6 +887,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| DisableAppUpdate | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### DisableBuiltinPDFViewer
 Disable the built in PDF viewer. PDF files are downloaded and sent externally.
 
@@ -861,6 +925,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| DisableBuiltinPDFViewer | {"esr91":"91.0"} |
 ### DisabledCiphers
 Disable specific cryptographic ciphers.
 
@@ -958,6 +1026,11 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| DisabledCiphers<br>DisabledCiphers_TLS_DHE_RSA_WITH_AES_128_CBC_SHA<br>DisabledCiphers_TLS_DHE_RSA_WITH_AES_256_CBC_SHA<br>DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>DisabledCiphers_TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>DisabledCiphers_TLS_RSA_WITH_AES_128_CBC_SHA<br>DisabledCiphers_TLS_RSA_WITH_AES_256_CBC_SHA<br>DisabledCiphers_TLS_RSA_WITH_3DES_EDE_CBC_SHA | {"esr78":"76.0a1","esr91":"76.0a1"} |
+| DisabledCiphers_TLS_RSA_WITH_AES_128_GCM_SHA256<br>DisabledCiphers_TLS_RSA_WITH_AES_256_GCM_SHA384 | {"esr91":"91.0"} |
 ### DisableDeveloperTools
 Remove access to all developer tools.
 
@@ -992,6 +1065,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| DisableDeveloperTools | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### DisableMasterPasswordCreation
 Remove the master password functionality.
 
@@ -1030,6 +1107,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| DisableMasterPasswordCreation | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### DisablePasswordReveal
 Do not allow passwords to be shown in saved logins
 
@@ -1064,6 +1145,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| DisablePasswordReveal | {"esr78":"78.0a1","esr91":"78.0a1"} |
 ### DisableSafeMode
 Disable safe mode within the browser.
 
@@ -1100,6 +1185,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| DisableSafeMode | {"esr78":"78.0a1","esr91":"78.0a1"} |
 ### DisableSecurityBypass
 Prevent the user from bypassing security in certain cases.
 
@@ -1156,6 +1245,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| DisableSecurityBypass<br>DisableSecurityBypass_InvalidCertificate<br>DisableSecurityBypass_SafeBrowsing | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### DisableSystemAddonUpdate
 Prevent system add-ons from being installed or update.
 
@@ -1190,6 +1283,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| DisableSystemAddonUpdate | {"esr78":"77.0a1","esr91":"77.0a1"} |
 ### DisableTelemetry
 Prevent the upload of telemetry data.
 
@@ -1228,6 +1325,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| DisableTelemetry | {"esr78":"78.0a1","esr91":"78.0a1"} |
 ### DNSOverHTTPS
 Configure DNS over HTTPS.
 
@@ -1315,6 +1416,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| DNSOverHTTPS<br>DNSOverHTTPS_Enabled<br>DNSOverHTTPS_ProviderURL<br>DNSOverHTTPS_ExcludedDomains<br>DNSOverHTTPS_Locked | {"esr91":"91.0"} |
 ### DownloadDirectory
 Set and lock the download directory.
 
@@ -1358,6 +1463,10 @@ Value (string):
     "DownloadDirectory": "${home}\\Downloads"
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| DownloadDirectory | {"esr78":"78.0a1","esr91":"78.0a1"} |
 ### Extensions
 Control the installation, uninstallation and locking of extensions.
 
@@ -1440,6 +1549,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| Extensions<br>Extensions_Install<br>Extensions_Uninstall<br>Extensions_Locked | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### ExtensionSettings
 Manage all aspects of extensions. This policy is based heavily on the [Chrome policy](https://dev.chromium.org/administrators/policy-list-3/extension-settings-full) of the same name.
 
@@ -1568,6 +1681,11 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| ExtensionSettings | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| ExtensionSettings_*<br>ExtensionSettings_*_installation_mode<br>ExtensionSettings_*_allowed_types<br>ExtensionSettings_*_blocked_install_message<br>ExtensionSettings_*_install_sources<br>ExtensionSettings_*_restricted_domains | {"esr78":"78.10.3","esr91":"89.0a1"} |
 ### ExtensionUpdate
 Control extension updates.
 
@@ -1602,6 +1720,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| ExtensionUpdate | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### Handlers
 Configure default application handlers. This policy is based on the internal format of `handlers.json`.
 
@@ -1783,6 +1905,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| Handlers | {"esr91":"91.0"} |
 ### HardwareAcceleration
 Control hardware acceleration.
 
@@ -1817,6 +1943,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| HardwareAcceleration | {"esr78":"78.0a1","esr91":"78.0a1"} |
 ### InstallAddonsPermission
 Configure the default extension install policy as well as origins for extension installs are allowed. This policy does not override turning off all extension installs.
 
@@ -1878,6 +2008,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| InstallAddonsPermission<br>InstallAddonsPermission_Allow<br>InstallAddonsPermission_Default | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### ManualAppUpdateOnly
 
 Switch to manual updates only.
@@ -1900,6 +2034,10 @@ This policy is primarily intended for advanced end users, not for enterprises.
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| ManualAppUpdateOnly | {"esr91":"91.0"} |
 ### NetworkPrediction
 Enable or disable network prediction (DNS prefetching).
 
@@ -1933,6 +2071,10 @@ Value (string):
     "NetworkPrediction": true | false
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| NetworkPrediction | {"esr91":"91.0"} |
 ### OfferToSaveLogins
 Control whether or not Thunderbird offers to save passwords.
 
@@ -1967,6 +2109,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| OfferToSaveLogins | {"esr91":"91.0"} |
 ### OfferToSaveLoginsDefault
 Sets the default value of signon.rememberSignons without locking it.
 
@@ -2001,6 +2147,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| OfferToSaveLoginsDefault | {"esr91":"91.0"} |
 ### PasswordManagerEnabled
 Remove access to the password manager via preferences and blocks about:logins on Thunderbird 70.
 
@@ -2035,6 +2185,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| PasswordManagerEnabled | {"esr78":"78.0a1","esr91":"78.0a1"} |
 ### PDFjs
 Disable or configure PDF.js, the built-in PDF viewer.
 
@@ -2085,6 +2239,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| PDFjs<br>PDFjs_Enabled<br>PDFjs_EnablePermissions | {"esr91":"91.0"} |
 ### Preferences (TB91+)
 Set and lock preferences.
 
@@ -2254,6 +2412,11 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| Preferences<br>Preferences_network.IDN_show_punycode<br>Preferences_browser.fixup.dns_first_for_single_words<br>Preferences_browser.cache.disk.parent_directory<br>Preferences_browser.urlbar.suggest.openpage<br>Preferences_browser.urlbar.suggest.history<br>Preferences_browser.urlbar.suggest.bookmark | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
+| Preferences_accessibility.force_disabled<br>Preferences_browser.cache.disk.enable<br>Preferences_browser.safebrowsing.phishing.enabled<br>Preferences_browser.safebrowsing.malware.enabled<br>Preferences_browser.search.update<br>Preferences_datareporting.policy.dataSubmissionPolicyBypassNotification<br>Preferences_dom.allow_scripts_to_close_windows<br>Preferences_dom.disable_window_flip<br>Preferences_dom.disable_window_move_resize<br>Preferences_dom.event.contextmenu.enabled<br>Preferences_dom.keyboardevent.keypress.hack.dispatch_non_printable_keys.addl<br>Preferences_dom.keyboardevent.keypress.hack.use_legacy_keycode_and_charcode.addl<br>Preferences_extensions.blocklist.enabled<br>Preferences_geo.enabled<br>Preferences_intl.accept_languages<br>Preferences_network.dns.disableIPv6<br>Preferences_places.history.enabled<br>Preferences_print.save_print_settings<br>Preferences_security.default_personal_cert<br>Preferences_security.mixed_content.block_active_content<br>Preferences_security.osclientcerts.autoload<br>Preferences_security.ssl.errorReporting.enabled<br>Preferences_security.tls.hello_downgrade_check<br>Preferences_widget.content.gtk-theme-override | {"esr78":"78.0a1","esr91":"78.0a1"} |
 ### Preferences (Deprecated)
 Set and lock certain preferences.
 
@@ -2448,6 +2611,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| PrimaryPassword | {"esr91":"91.0"} |
 ### PromptForDownloadLocation
 Ask where to save each file before downloading.
 
@@ -2482,6 +2649,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| PromptForDownloadLocation | {"esr78":"78.0a1","esr91":"78.0a1"} |
 ### Proxy
 Configure proxy settings. These settings correspond to the connection settings in Thunderbird preferences.
 To specify ports, append them to the hostnames with a colon (:).
@@ -2602,6 +2773,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| Proxy<br>Proxy_Mode<br>Proxy_Locked<br>Proxy_AutoConfigURL<br>Proxy_FTPProxy<br>Proxy_HTTPProxy<br>Proxy_SSLProxy<br>Proxy_SOCKSProxy<br>Proxy_SOCKSVersion<br>Proxy_UseHTTPProxyForAllProtocols<br>Proxy_Passthrough<br>Proxy_UseProxyForDNS<br>Proxy_AutoLogin | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### RequestedLocales
 Set the the list of requested locales for the application in order of preference. It will cause the corresponding language pack to become active.
 
@@ -2664,6 +2839,10 @@ or
 ```
 <a name="SanitizeOnShutdown"></a>
 
+#### Compatibility
+
+| --- | --- |
+| RequestedLocales | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### SSLVersionMax
 
 Set and lock the maximum version of TLS.
@@ -2701,6 +2880,10 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| SSLVersionMax | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 ### SSLVersionMin
 
 Set and lock the minimum version of TLS.
@@ -2738,4 +2921,8 @@ Value (string):
   }
 }
 ```
+#### Compatibility
+
+| --- | --- |
+| SSLVersionMin | {"esr68":"68.0a1","esr78":"68.0a1","esr91":"68.0a1"} |
 
