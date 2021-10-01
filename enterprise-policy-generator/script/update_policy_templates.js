@@ -28,6 +28,7 @@ const xml2js = require('xml2js');
 const util = require('util');
 const fs = require('fs-extra');
 const path = require("path");
+const plist = require('plist');
 
 const {
 	parse,
@@ -143,7 +144,7 @@ function compareVersion(a, b) {
 	}
 	a = prep(a);
 	b = prep(b);
-	for (var i = 0; i < Math.max(a.length, b.length); i++) {
+	for (let i = 0; i < Math.max(a.length, b.length); i++) {
 		//convert to integer the most efficient way
 		a[i] = ~~a[i];
 		b[i] = ~~b[i];
@@ -251,7 +252,7 @@ async function pullGitRepository(url, ref, dir) {
  * 
  * @return - parsed data from readme.json, updated with upstream changes
  */
-async function parseMozillaPolicyReadme(tree) {
+async function parseMozillaPolicyTemplate(tree) {
 	// Load last known version of the headers and policy chunks of the readme.
 	let readme_file_name = readme_json_path.replace("#tree#", tree);
 	let readmeData = fs.existsSync(readme_file_name)
@@ -272,7 +273,7 @@ async function parseMozillaPolicyReadme(tree) {
 	// Detailed descriptions are below level 3 headings (###) with potential subsections.
 
 	// Split on ### heading to get chunks of policy descriptions.
-	let file = fs.readFileSync(`${dir}/README.md`, 'utf8');
+	let file = fs.readFileSync(`${dir}/README.md`, 'utf8').toString();
 	let data = file.split("\n### ");
 
 	// Shift out the header and process it.
@@ -301,6 +302,15 @@ async function parseMozillaPolicyReadme(tree) {
 		} else if (!readmeData.policies[name].upstream || stringify(readmeData.policies[name].upstream) != stringify(lines)) {
 			readmeData.policies[name].upstream = lines;
 		}
+	}
+
+	// Process MacOS PLIST files
+	let mac = fs.readFileSync(`${dir}/mac/README.md`, 'utf8').toString().split("\n");
+
+	if (!readmeData.macReadme) {
+		readmeData.macReadme = { upstream: mac };
+	} else if (!readmeData.macReadme.upstream || stringify(readmeData.macReadme.upstream) != stringify(mac)) {
+		readmeData.macReadme.upstream = mac;
 	}
 
 	fs.writeFileSync(readme_file_name, stringify(readmeData, null, 2));
@@ -553,11 +563,11 @@ function buildCompatibilityTable(tree, policy) {
 }
 
 /**
- * Build the ADMX/ADML files.
+ * Build the Windows ADMX/ADML files.
  */
 async function buildAdmxFiles(template, thunderbirdPolicies, output_dir) {
 	// Read ADMX files - https://www.npmjs.com/package/xml2js
-	var parser = new xml2js.Parser();
+	let parser = new xml2js.Parser();
 	let admx_file = fs.readFileSync(`${mozilla_template_dir}/${template.mozillaReferenceTemplates}/windows/firefox.admx`);
 	let admx_obj = await parser.parseStringPromise(
 		rebrand(admx_file).replace(/">">/g, '">'), // issue https://github.com/mozilla/policy-templates/issues/801
@@ -613,8 +623,8 @@ async function buildAdmxFiles(template, thunderbirdPolicies, output_dir) {
 	admx_obj.policyDefinitions.policies[0].policy = admxPolicies.filter(p => !p.unsupported);
 
 	// Rebuild thunderbird.admx file.
-	var builder = new xml2js.Builder();
-	var xml = builder.buildObject(admx_obj);
+	let builder = new xml2js.Builder();
+	let xml = builder.buildObject(admx_obj);
 	fs.ensureDirSync(`${output_dir}/windows`);
 	fs.writeFileSync(`${output_dir}/windows/thunderbird.admx`, xml);
 
@@ -634,6 +644,45 @@ async function buildAdmxFiles(template, thunderbirdPolicies, output_dir) {
 		file = fs.readFileSync(`${mozilla_template_dir}/${template.mozillaReferenceTemplates}/windows/${folder}/mozilla.adml`);
 		fs.writeFileSync(`${output_dir}/windows/${folder}/mozilla.adml`, file);
 	}
+}
+
+/**
+ * Build the MasOS PLIST files.
+ */
+async function buildPlistFiles(template, thunderbirdPolicies, output_dir) {
+	// Read PLIST files - https://www.npmjs.com/package/plist
+	let plist_file = fs.readFileSync(`${mozilla_template_dir}/${template.mozillaReferenceTemplates}/mac/org.mozilla.firefox.plist`).toString();
+	let plist_obj = plist.parse(plist_file);
+
+	function isObject(v) {
+		return typeof v === 'object' && !Array.isArray(v) && v !== null;
+	}
+	function removeUnsupportedEntries(plist, base_name = "") {
+		for (let key of Object.keys(plist)) {
+			let policy_name = base_name
+				? `${base_name}_${key}`
+				: key;
+
+			if (!isObject(plist[key])) {
+				// This is a final entry, check if this is a supported policy
+				//console.log(policy_name, thunderbirdPolicies.includes(policy_name))
+				if (!thunderbirdPolicies.includes(policy_name) && policy_name != "EnterprisePoliciesEnabled") {
+					delete plist[key];				
+				}
+			} else {
+				removeUnsupportedEntries(plist[key], policy_name);
+				if (Object.keys(plist[key]).length == 0) {
+					delete plist[key];
+				}
+			}
+		}
+	}
+
+	removeUnsupportedEntries(plist_obj);
+	let plist_tb = plist.build(plist_obj);
+	fs.ensureDirSync(`${output_dir}/mac`);
+	fs.writeFileSync(`${output_dir}/mac/org.mozilla.thunderbird.plist`, rebrand(plist_tb));
+	fs.writeFileSync(`${output_dir}/mac/README.md`, rebrand(template.macReadme.override || template.macReadme.upstream));
 }
 
 /**
@@ -746,7 +795,7 @@ async function buildThunderbirdTemplates(settings) {
 	// Update thr global compatibility object
 	extractCompatibilityInformation(data, settings.tree);
 
-	let template = await parseMozillaPolicyReadme(settings.tree);
+	let template = await parseMozillaPolicyTemplate(settings.tree);
 	let thunderbirdPolicies = Object.keys(gCompatibilityData)
 		.filter(p => !gCompatibilityData[p].unsupported)
 		.sort(function (a, b) {
@@ -755,7 +804,7 @@ async function buildThunderbirdTemplates(settings) {
 
 	await buildReadme(settings.tree, template, thunderbirdPolicies, output_dir);
 	await buildAdmxFiles(template, thunderbirdPolicies, output_dir);
-	// TODO: Mac
+	await buildPlistFiles(template, thunderbirdPolicies, output_dir);
 
 	if (settings.tree == "central") {
 		gMainTemplateEntries.unshift(` * [${template.name}](templates/${settings.tree})`);
