@@ -651,9 +651,9 @@ async function buildThunderbirdTemplates(settings) {
 	// TODO: Mac
 	
 	if (settings.tree == "central") {
-		gMainTemplateEntries.unshift(` * [${template.name}](/templates/${settings.tree})`);
+		gMainTemplateEntries.unshift(` * [${template.name}](templates/${settings.tree})`);
 	} else {
-		gMainTemplateEntries.unshift(` * [${template.name}](/templates/${settings.tree}) (${template.mozillaReferenceTemplates}) `);
+		gMainTemplateEntries.unshift(` * [${template.name}](templates/${settings.tree}) (${template.mozillaReferenceTemplates}) `);
 	}
 }
 
