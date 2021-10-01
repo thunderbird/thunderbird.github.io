@@ -9,13 +9,13 @@
 // Debug logging (0 - errors and basic logs only, 1 - verbose debug)
 const debugLevel = 0;
 
-const build_dir = "./build";
+const build_dir = "../templates";
 const state_dir = "./data/gitstate";
 const schema_dir = "./data/schema";
 const mozilla_template_dir = "./data/mozilla-policy-templates";
 
 const readme_json_path = "./readme_#tree#.json";
-const compatibility_json_path = `${build_dir}/compatibility.json`;
+const compatibility_json_path = `./compatibility.json`;
 const revisions_json_write_path = "./revisions.json";
 const revisions_json_read_path = `${state_dir}/enterprise-policy-generator/script/revisions.json`;
 
