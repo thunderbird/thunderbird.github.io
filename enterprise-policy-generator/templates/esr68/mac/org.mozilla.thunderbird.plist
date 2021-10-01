@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
   <dict>
+    <key>EnterprisePoliciesEnabled</key>
+    <true/>
     <key>AppUpdateURL</key>
     <string>https://www.example.com/update.xml</string>
     <key>BlockAboutAddons</key>
@@ -39,13 +41,13 @@
     <dict>
       <key>Install</key>
       <array>
-        <string>https://addons.mozilla.org/firefox/downloads/file/1053714/ghostery_privacy_ad_blocker-8.2.4-an+fx.xpi</string>
+        <string>https://addons.thunderbird.net/thunderbird/downloads/file/1053714/ghostery_privacy_ad_blocker-8.2.4-an+fx.xpi</string>
       </array>
       <key>Uninstall</key>
       <array/>
       <key>Locked</key>
       <array>
-        <string>firefox@ghostery.com</string>
+        <string>thunderbird@ghostery.com</string>
       </array>
     </dict>
     <key>ExtensionUpdate</key>
