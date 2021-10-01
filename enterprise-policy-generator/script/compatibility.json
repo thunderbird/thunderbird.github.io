@@ -13,7 +13,231 @@
       "min": "68.0a1"
     }
   },
+  "BlockAboutAddons": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "BlockAboutConfig": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "BlockAboutProfiles": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "BlockAboutSupport": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "Certificates": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "Certificates_ImportEnterpriseRoots": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "Certificates_Install": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "DisableAppUpdate": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "DisableDeveloperTools": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
   "DisableMasterPasswordCreation": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "DisableSecurityBypass": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "DisableSecurityBypass_InvalidCertificate": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "DisableSecurityBypass_SafeBrowsing": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "Extensions": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "Extensions_Install": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "Extensions_Uninstall": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "Extensions_Locked": {
     "esr68": {
       "min": "68.0a1"
     },
@@ -56,6 +280,62 @@
     }
   },
   "ExtensionSettings_^.*$_blocked_install_message": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "ExtensionUpdate": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "InstallAddonsPermission": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "InstallAddonsPermission_Allow": {
+    "esr68": {
+      "min": "68.0a1"
+    },
+    "esr78": {
+      "min": "68.0a1"
+    },
+    "esr91": {
+      "min": "68.0a1"
+    },
+    "central": {
+      "min": "68.0a1"
+    }
+  },
+  "InstallAddonsPermission_Default": {
     "esr68": {
       "min": "68.0a1"
     },
@@ -407,418 +687,6 @@
       "min": "68.0a1"
     }
   },
-  "BlockAboutAddons": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "BlockAboutConfig": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "BlockAboutProfiles": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "BlockAboutSupport": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "Certificates": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "Certificates_ImportEnterpriseRoots": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "Certificates_Install": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "DisableAppUpdate": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "DisableDeveloperTools": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "DisableSecurityBypass": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "DisableSecurityBypass_InvalidCertificate": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "DisableSecurityBypass_SafeBrowsing": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "Extensions": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "Extensions_Install": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "Extensions_Uninstall": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "Extensions_Locked": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "ExtensionUpdate": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "InstallAddonsPermission": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "InstallAddonsPermission_Allow": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "InstallAddonsPermission_Default": {
-    "esr68": {
-      "min": "68.0a1"
-    },
-    "esr78": {
-      "min": "68.0a1"
-    },
-    "esr91": {
-      "min": "68.0a1"
-    },
-    "central": {
-      "min": "68.0a1"
-    }
-  },
-  "AppAutoUpdate": {
-    "esr78": {
-      "min": "75.0a1"
-    },
-    "esr91": {
-      "min": "75.0a1"
-    },
-    "central": {
-      "min": "75.0a1"
-    }
-  },
-  "DisabledCiphers": {
-    "esr78": {
-      "min": "76.0a1"
-    },
-    "esr91": {
-      "min": "76.0a1"
-    },
-    "central": {
-      "min": "76.0a1"
-    }
-  },
-  "DisabledCiphers_TLS_DHE_RSA_WITH_AES_128_CBC_SHA": {
-    "esr78": {
-      "min": "76.0a1"
-    },
-    "esr91": {
-      "min": "76.0a1"
-    },
-    "central": {
-      "min": "76.0a1"
-    }
-  },
-  "DisabledCiphers_TLS_DHE_RSA_WITH_AES_256_CBC_SHA": {
-    "esr78": {
-      "min": "76.0a1"
-    },
-    "esr91": {
-      "min": "76.0a1"
-    },
-    "central": {
-      "min": "76.0a1"
-    }
-  },
-  "DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA": {
-    "esr78": {
-      "min": "76.0a1"
-    },
-    "esr91": {
-      "min": "76.0a1"
-    },
-    "central": {
-      "min": "76.0a1"
-    }
-  },
-  "DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA": {
-    "esr78": {
-      "min": "76.0a1"
-    },
-    "esr91": {
-      "min": "76.0a1"
-    },
-    "central": {
-      "min": "76.0a1"
-    }
-  },
-  "DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256": {
-    "esr78": {
-      "min": "76.0a1"
-    },
-    "esr91": {
-      "min": "76.0a1"
-    },
-    "central": {
-      "min": "76.0a1"
-    }
-  },
-  "DisabledCiphers_TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256": {
-    "esr78": {
-      "min": "76.0a1"
-    },
-    "esr91": {
-      "min": "76.0a1"
-    },
-    "central": {
-      "min": "76.0a1"
-    }
-  },
-  "DisabledCiphers_TLS_RSA_WITH_AES_128_CBC_SHA": {
-    "esr78": {
-      "min": "76.0a1"
-    },
-    "esr91": {
-      "min": "76.0a1"
-    },
-    "central": {
-      "min": "76.0a1"
-    }
-  },
-  "DisabledCiphers_TLS_RSA_WITH_AES_256_CBC_SHA": {
-    "esr78": {
-      "min": "76.0a1"
-    },
-    "esr91": {
-      "min": "76.0a1"
-    },
-    "central": {
-      "min": "76.0a1"
-    }
-  },
-  "DisabledCiphers_TLS_RSA_WITH_3DES_EDE_CBC_SHA": {
-    "esr78": {
-      "min": "76.0a1"
-    },
-    "esr91": {
-      "min": "76.0a1"
-    },
-    "central": {
-      "min": "76.0a1"
-    }
-  },
-  "DisableSystemAddonUpdate": {
-    "esr78": {
-      "min": "77.0a1"
-    },
-    "esr91": {
-      "min": "77.0a1"
-    },
-    "central": {
-      "min": "77.0a1"
-    }
-  },
   "3rdparty": {
     "esr78": {
       "min": "78.0a1"
@@ -850,6 +718,17 @@
     },
     "central": {
       "min": "78.0a1"
+    }
+  },
+  "AppAutoUpdate": {
+    "esr78": {
+      "min": "75.0a1"
+    },
+    "esr91": {
+      "min": "75.0a1"
+    },
+    "central": {
+      "min": "75.0a1"
     }
   },
   "Authentication": {
@@ -1083,6 +962,116 @@
       "min": "78.0a1"
     }
   },
+  "DisabledCiphers": {
+    "esr78": {
+      "min": "76.0a1"
+    },
+    "esr91": {
+      "min": "76.0a1"
+    },
+    "central": {
+      "min": "76.0a1"
+    }
+  },
+  "DisabledCiphers_TLS_DHE_RSA_WITH_AES_128_CBC_SHA": {
+    "esr78": {
+      "min": "76.0a1"
+    },
+    "esr91": {
+      "min": "76.0a1"
+    },
+    "central": {
+      "min": "76.0a1"
+    }
+  },
+  "DisabledCiphers_TLS_DHE_RSA_WITH_AES_256_CBC_SHA": {
+    "esr78": {
+      "min": "76.0a1"
+    },
+    "esr91": {
+      "min": "76.0a1"
+    },
+    "central": {
+      "min": "76.0a1"
+    }
+  },
+  "DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA": {
+    "esr78": {
+      "min": "76.0a1"
+    },
+    "esr91": {
+      "min": "76.0a1"
+    },
+    "central": {
+      "min": "76.0a1"
+    }
+  },
+  "DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA": {
+    "esr78": {
+      "min": "76.0a1"
+    },
+    "esr91": {
+      "min": "76.0a1"
+    },
+    "central": {
+      "min": "76.0a1"
+    }
+  },
+  "DisabledCiphers_TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256": {
+    "esr78": {
+      "min": "76.0a1"
+    },
+    "esr91": {
+      "min": "76.0a1"
+    },
+    "central": {
+      "min": "76.0a1"
+    }
+  },
+  "DisabledCiphers_TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256": {
+    "esr78": {
+      "min": "76.0a1"
+    },
+    "esr91": {
+      "min": "76.0a1"
+    },
+    "central": {
+      "min": "76.0a1"
+    }
+  },
+  "DisabledCiphers_TLS_RSA_WITH_AES_128_CBC_SHA": {
+    "esr78": {
+      "min": "76.0a1"
+    },
+    "esr91": {
+      "min": "76.0a1"
+    },
+    "central": {
+      "min": "76.0a1"
+    }
+  },
+  "DisabledCiphers_TLS_RSA_WITH_AES_256_CBC_SHA": {
+    "esr78": {
+      "min": "76.0a1"
+    },
+    "esr91": {
+      "min": "76.0a1"
+    },
+    "central": {
+      "min": "76.0a1"
+    }
+  },
+  "DisabledCiphers_TLS_RSA_WITH_3DES_EDE_CBC_SHA": {
+    "esr78": {
+      "min": "76.0a1"
+    },
+    "esr91": {
+      "min": "76.0a1"
+    },
+    "central": {
+      "min": "76.0a1"
+    }
+  },
   "DisablePasswordReveal": {
     "esr78": {
       "min": "78.0a1"
@@ -1105,6 +1094,17 @@
       "min": "78.0a1"
     }
   },
+  "DisableSystemAddonUpdate": {
+    "esr78": {
+      "min": "77.0a1"
+    },
+    "esr91": {
+      "min": "77.0a1"
+    },
+    "central": {
+      "min": "77.0a1"
+    }
+  },
   "DisableTelemetry": {
     "esr78": {
       "min": "78.0a1"
@@ -1125,6 +1125,105 @@
     },
     "central": {
       "min": "78.0a1"
+    }
+  },
+  "ExtensionSettings_*": {
+    "esr78": {
+      "min": "78.10.3"
+    },
+    "esr91": {
+      "min": "89.0a1"
+    },
+    "central": {
+      "min": "89.0a1"
+    }
+  },
+  "ExtensionSettings_*_installation_mode": {
+    "esr78": {
+      "min": "78.10.3"
+    },
+    "esr91": {
+      "min": "89.0a1"
+    },
+    "central": {
+      "min": "89.0a1"
+    }
+  },
+  "ExtensionSettings_*_allowed_types": {
+    "esr78": {
+      "min": "78.10.3"
+    },
+    "esr91": {
+      "min": "89.0a1"
+    },
+    "central": {
+      "min": "89.0a1"
+    }
+  },
+  "ExtensionSettings_*_blocked_install_message": {
+    "esr78": {
+      "min": "78.10.3"
+    },
+    "esr91": {
+      "min": "89.0a1"
+    },
+    "central": {
+      "min": "89.0a1"
+    }
+  },
+  "ExtensionSettings_*_install_sources": {
+    "esr78": {
+      "min": "78.10.3"
+    },
+    "esr91": {
+      "min": "89.0a1"
+    },
+    "central": {
+      "min": "89.0a1"
+    }
+  },
+  "ExtensionSettings_*_restricted_domains": {
+    "esr78": {
+      "min": "78.10.3"
+    },
+    "esr91": {
+      "min": "89.0a1"
+    },
+    "central": {
+      "min": "89.0a1"
+    }
+  },
+  "ExtensionSettings_^.*$_installation_mode": {
+    "esr78": {
+      "min": "78.10.3"
+    },
+    "esr91": {
+      "min": "89.0a1"
+    },
+    "central": {
+      "min": "89.0a1"
+    }
+  },
+  "ExtensionSettings_^.*$_install_url": {
+    "esr78": {
+      "min": "78.10.3"
+    },
+    "esr91": {
+      "min": "89.0a1"
+    },
+    "central": {
+      "min": "89.0a1"
+    }
+  },
+  "ExtensionSettings_^.*$_updates_disabled": {
+    "esr78": {
+      "min": "78.10.3"
+    },
+    "esr91": {
+      "min": "91.0"
+    },
+    "central": {
+      "min": "92.0a1"
     }
   },
   "HardwareAcceleration": {
@@ -1470,105 +1569,6 @@
     },
     "central": {
       "min": "78.0a1"
-    }
-  },
-  "ExtensionSettings_*": {
-    "esr78": {
-      "min": "78.10.3"
-    },
-    "esr91": {
-      "min": "89.0a1"
-    },
-    "central": {
-      "min": "89.0a1"
-    }
-  },
-  "ExtensionSettings_*_installation_mode": {
-    "esr78": {
-      "min": "78.10.3"
-    },
-    "esr91": {
-      "min": "89.0a1"
-    },
-    "central": {
-      "min": "89.0a1"
-    }
-  },
-  "ExtensionSettings_*_allowed_types": {
-    "esr78": {
-      "min": "78.10.3"
-    },
-    "esr91": {
-      "min": "89.0a1"
-    },
-    "central": {
-      "min": "89.0a1"
-    }
-  },
-  "ExtensionSettings_*_blocked_install_message": {
-    "esr78": {
-      "min": "78.10.3"
-    },
-    "esr91": {
-      "min": "89.0a1"
-    },
-    "central": {
-      "min": "89.0a1"
-    }
-  },
-  "ExtensionSettings_*_install_sources": {
-    "esr78": {
-      "min": "78.10.3"
-    },
-    "esr91": {
-      "min": "89.0a1"
-    },
-    "central": {
-      "min": "89.0a1"
-    }
-  },
-  "ExtensionSettings_*_restricted_domains": {
-    "esr78": {
-      "min": "78.10.3"
-    },
-    "esr91": {
-      "min": "89.0a1"
-    },
-    "central": {
-      "min": "89.0a1"
-    }
-  },
-  "ExtensionSettings_^.*$_installation_mode": {
-    "esr78": {
-      "min": "78.10.3"
-    },
-    "esr91": {
-      "min": "89.0a1"
-    },
-    "central": {
-      "min": "89.0a1"
-    }
-  },
-  "ExtensionSettings_^.*$_install_url": {
-    "esr78": {
-      "min": "78.10.3"
-    },
-    "esr91": {
-      "min": "89.0a1"
-    },
-    "central": {
-      "min": "89.0a1"
-    }
-  },
-  "ExtensionSettings_^.*$_updates_disabled": {
-    "esr78": {
-      "min": "78.10.3"
-    },
-    "esr91": {
-      "min": "91.0"
-    },
-    "central": {
-      "min": "92.0a1"
     }
   },
   "BackgroundAppUpdate": {

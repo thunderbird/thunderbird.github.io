@@ -44,6 +44,12 @@ While the templates for the most recent version of Thunderbird will probably als
 
 __list__
 
+## List of supported policies
+
+The following table states for each policy, when Thunderbird started to support it, or when it has been deprecated. It also includes all policies currently supported by Firefox, which are not supported by Thunderbird.
+
+__compatibility__
+
 `
 
 const gTreeTemplate = `## Enterprise policy descriptions and templates for __name__
@@ -117,6 +123,33 @@ function escape_code_markdown(str) {
 }
 
 /**
+ * Compare version numbers, taken from https://jsfiddle.net/vanowm/p7uvtbor/
+ */
+function compareVersion(a, b) {
+	function prep(t) {
+		return ("" + t)
+			//treat non-numerical characters as lower version
+			//replacing them with a negative number based on charcode of first character
+			.replace(/[^0-9\.]+/g, function (c) { return "." + ((c = c.replace(/[\W_]+/, "")) ? c.toLowerCase().charCodeAt(0) - 65536 : "") + "." })
+			//remove trailing "." and "0" if followed by non-numerical characters (1.0.0b);
+			.replace(/(?:\.0+)*(\.-[0-9]+)(\.[0-9]+)?\.*$/g, "$1$2")
+			.split('.');
+	}
+	a = prep(a);
+	b = prep(b);
+	for (var i = 0; i < Math.max(a.length, b.length); i++) {
+		//convert to integer the most efficient way
+		a[i] = ~~a[i];
+		b[i] = ~~b[i];
+		if (a[i] > b[i])
+			return 1;
+		else if (a[i] < b[i])
+			return -1;
+	}
+	return 0;
+}
+
+/**
  * Rebrand from Firefox to Thunderbird.
  * 
  * @param {*} lines - string or array of strings which need to be rebranded.
@@ -177,6 +210,7 @@ function rebrand(lines) {
  * 
  */
 async function pullGitRepository(url, ref, dir) {
+	return;
 	if (!fs.existsSync(dir)) {
 		console.log(`Cloning ${url} (${ref})`);
 		fs.ensureDirSync(dir);
@@ -349,6 +383,56 @@ function extractFlatPolicyNamesFromPolicySchema(data) {
 	return properties;
 }
 
+
+/**
+ * Extract compatibility information.
+ */
+function extractCompatibilityInformation(data, tree) {
+	let absolute_max = 0;
+	for (let revision of data.comm.revisions) {
+		let policies = extractFlatPolicyNamesFromPolicySchema(revision);
+		if (compareVersion(revision.version, absolute_max) > 0) {
+			absolute_max = revision.version;
+		}
+
+		for (let raw_policy of policies) {
+			let policy = raw_policy.trim().replace(/'/g, "");
+			if (!gCompatibilityData[policy]) {
+				gCompatibilityData[policy] = {};
+			}
+			if (!gCompatibilityData[policy][tree]) {
+				gCompatibilityData[policy][tree] = {};
+			}
+			let min = gCompatibilityData[policy][tree].min || 10000;
+			let max = gCompatibilityData[policy][tree].max || 0;
+
+			if (compareVersion(revision.version, min) < 0)
+				gCompatibilityData[policy][tree].min = revision.version;
+			if (compareVersion(revision.version, max) > 0)
+				gCompatibilityData[policy][tree].max = revision.version;
+		}
+	}
+	for (let policy of Object.keys(gCompatibilityData)) {
+		if (gCompatibilityData[policy][tree].max == absolute_max)
+			delete gCompatibilityData[policy][tree].max;
+	}
+
+	if (tree == "central") {
+		let policies = extractFlatPolicyNamesFromPolicySchema(data.mozilla.revisions[0]);
+		for (let raw_policy of policies) {
+			let policy = raw_policy.trim().replace(/'/g, "");
+			if (!gCompatibilityData[policy]) {
+				gCompatibilityData[policy] = {};
+			}
+			if (!gCompatibilityData[policy][tree]) {
+				gCompatibilityData[policy][tree] = {
+					unsupported: true
+				};
+			}
+		}
+	}
+}
+
 /**
 * Check for changes in the policy schema files between two revisions.
 * 
@@ -378,60 +462,80 @@ function checkPolicySchemaChanges(file1, file2) {
  * @param {*} tree 
  * @returns 
  */
-function buildCompatibilityTable(policy, tree) {
+function buildCompatibilityTable(tree, policy) {
 	let details = [];
 
 	// Get all entries found in gCompatibilityData which are related to policy.
-	let entries = Object.keys(gCompatibilityData).filter(k => k == policy || k.startsWith(policy + "_"));
+	let entries = policy
+		? Object.keys(gCompatibilityData).filter(k => k == policy || k.startsWith(policy + "_"))
+		: Object.keys(gCompatibilityData)
 
 	// Group filtered entries by identical compat data.
 	let distinct = [];
 	for (let entry of entries) {
-		// Generate the compatibility information, which will be used as key. Primary
-		// information is the one from this tree, but if it was backported to one version
-		// prior (92.0a1 -> 91.0) only list the backported one.
-		let added = gCompatibilityData[entry][tree].replace(".0a1", ".0");
-		let added_parts = added.split(".");
-		let backported = Object.keys(gCompatibilityData[entry])
-			.filter(e => e != tree)
-			.filter(e => gCompatibilityData[entry][e] != gCompatibilityData[entry][tree])
-			.map(e => gCompatibilityData[entry][e])
-			.pop();
-
-		if (backported
-			&& added_parts.length == 2
-			&& added_parts[1] == "0"
-			&& `${parseInt(added_parts[0], 10) - 1}.0` == backported
-		) {
-			key = `Thunderbird ${backported}`;
-		} else if (backported) {
-			key = `Thunderbird ${added}, Thunderbird ${backported}`;
-		} else {
-			key = `Thunderbird ${added}`;
-		}
-
-		let distinctEntry = distinct.find(e => e.key == key);
 		let humanReadableEntry = "`" + escape_code_markdown(entry
 			.replace("^.*$", "[name]")
 			.replace("^(", "(")
 			.replace(")$", ")")) + "`";
 
-		if (!distinctEntry) {
+		// Generate the compatibility information. Primary information is the one from this tree, 
+		// but if it was backported to one version prior (92.0a1 -> 91.0) only list the backported one.
+		let added = gCompatibilityData[entry][tree].min.replace(".0a1", ".0");
+		let added_parts = added.split(".");
+		let backported = Object.keys(gCompatibilityData[entry])
+			.filter(e => e != tree)
+			.filter(e => gCompatibilityData[entry][e].min != gCompatibilityData[entry][tree].min)
+			.map(e => gCompatibilityData[entry][e].min)
+			.pop();
+
+		let first = "";
+		if (backported
+			&& added_parts.length == 2
+			&& added_parts[1] == "0"
+			&& `${parseInt(added_parts[0], 10) - 1}.0` == backported
+		) {
+			//first = `Thunderbird ${backported}`;
+			first = `${backported}`;
+		} else if (backported) {
+			//first = `Thunderbird ${added}<br>(Thunderbird ${backported})`;
+			first = `${backported}, ${added}`;
+		} else {
+			//first = `Thunderbird ${added}`;
+			first = `${added}`;
+		}
+		let last = (gCompatibilityData[entry][tree].max || "").replace(".0a1", ".0");
+		let key = `${first} - ${last}`;
+
+		let distinctEntry = distinct.find(e => e.key == key);
+		if (!policy || !distinctEntry) {
 			distinct.push({
 				key,
+				first,
+				last,
 				policies: [humanReadableEntry],
 			})
 		} else {
 			distinctEntry.policies.push(humanReadableEntry);
 		}
 	}
-	// Build compatibility chart.
-	if (distinct.length > 0) {
-		details.push("#### Compatibility", "", "| Policy/Property Name | Compatibility Information |", "|:--- |:--- |");
-		for (let distinctEntry of distinct) {
-			details.push(`| ${distinctEntry.policies.join("<br>")} | ${distinctEntry.key} |`);
-		}
+
+	// Sort if this is the full table.
+	if (!policy) {
+		distinct.sort((a, b) => {
+			let aa = a.policies.join("<br>");
+			let bb = b.policies.join("<br>");
+			if (aa < bb) return -1;
+			if (aa > bb) return 1;
+			return 0;
+		});
 	}
+
+	// Build compatibility chart.
+	details.push("", "| Policy/Property Name | supported since | deprecated after |", "|:--- | ---:| ---:|");
+	for (let distinctEntry of distinct) {
+		details.push(`| ${distinctEntry.policies.join("<br>")} | ${distinctEntry.first} | ${distinctEntry.last} |`);
+	}
+	details.push("");
 	return details;
 }
 
@@ -523,50 +627,51 @@ async function buildAdmxFiles(template, thunderbirdPolicies, output_dir) {
  * Build the README file.
  */
 async function buildReadme(tree, template, thunderbirdPolicies, output_dir) {
-	 let header = [];
-	 let details = [];
-	 let printed_main_policies = [];
-	 let skipped_main_policies = [];
-	 // Loop over all policies found in the thunderbird policy schema file and rebuild the readme.
-	 for (let policy of thunderbirdPolicies) {
-		 // Get the policy header from the template (or its override).
-		 if (template.headers[policy]) {
-			 let content = template.headers[policy].override || template.headers[policy].upstream;
-			 if (content && content != "skip") {
-				 header.push(content);
+	let header = [];
+	let details = [];
+	let printed_main_policies = [];
+	let skipped_main_policies = [];
+	// Loop over all policies found in the thunderbird policy schema file and rebuild the readme.
+	for (let policy of thunderbirdPolicies) {
+		// Get the policy header from the template (or its override).
+		if (template.headers[policy]) {
+			let content = template.headers[policy].override || template.headers[policy].upstream;
+			if (content && content != "skip") {
+				header.push(content);
 			}
 			printed_main_policies.push(policy.split("_").shift());
 		} else {
-			 // Keep track of policies which are not mentioned directly in the readme.
-			 let skipped = policy.split("_").shift();
-			 if (!skipped_main_policies.includes(skipped)) skipped_main_policies.push(skipped);
-		 }
- 
-		 // Get the policy details from the template (or its override).
-		 if (template.policies[policy]) {
-			 let content = template.policies[policy].override || template.policies[policy].upstream;
-			 if (content && content != "skip") {
-				 details.push(...content.filter(e => !e.includes("**Compatibility:**")));
-				 details.push(...buildCompatibilityTable(policy, tree));
-				 details.push("", "<br>", "");
-			 }
-		 }
-	 }
- 
-	 for (let skipped of skipped_main_policies) {
+			// Keep track of policies which are not mentioned directly in the readme.
+			let skipped = policy.split("_").shift();
+			if (!skipped_main_policies.includes(skipped)) skipped_main_policies.push(skipped);
+		}
+
+		// Get the policy details from the template (or its override).
+		if (template.policies[policy]) {
+			let content = template.policies[policy].override || template.policies[policy].upstream;
+			if (content && content != "skip") {
+				details.push(...content.filter(e => !e.includes("**Compatibility:**")));
+				details.push("#### Compatibility");
+				details.push(...buildCompatibilityTable(tree, policy));
+				details.push("<br>", "");
+			}
+		}
+	}
+
+	for (let skipped of skipped_main_policies) {
 		if (!printed_main_policies.includes(skipped)) {
 			console.error(`  --> WARNING: Supported policy not present in readme: ${skipped}\n`);
 		}
-	 }
+	}
 
-	 let md = gTreeTemplate
-		 .replace("__name__", template.name)
-		 .replace("__desc__", template.desc.join("\n"))
-		 .replace("__list_of_policies__", rebrand(header))
-		 .replace("__details__", rebrand(details));
- 
-	 fs.ensureDirSync(output_dir);
-	 fs.writeFileSync(`${output_dir}/README.md`, md); 
+	let md = gTreeTemplate
+		.replace("__name__", template.name)
+		.replace("__desc__", template.desc.join("\n"))
+		.replace("__list_of_policies__", rebrand(header))
+		.replace("__details__", rebrand(details));
+
+	fs.ensureDirSync(output_dir);
+	fs.writeFileSync(`${output_dir}/README.md`, md);
 }
 
 /**
@@ -625,21 +730,8 @@ async function buildThunderbirdTemplates(settings) {
 		}
 	*/
 
-	/**
-	 * Extract compatibility information.
-	 */
-	for (let r = data.comm.revisions.length; r > 0; r--) {
-		let policies = extractFlatPolicyNamesFromPolicySchema(data.comm.revisions[r - 1]);
-		for (let raw_policy of policies) {
-			let policy = raw_policy.trim().replace(/'/g,"");
-			if (!gCompatibilityData[policy]) {
-				gCompatibilityData[policy] = {};
-			}
-			if (!gCompatibilityData[policy][settings.tree]) {
-				gCompatibilityData[policy][settings.tree] = data.comm.revisions[r - 1].version;
-			}
-		}
-	}
+	// Update thr global compatibility object
+	extractCompatibilityInformation(data, settings.tree);
 
 	let template = await parseMozillaPolicyReadme(settings.tree);
 	let thunderbirdPolicies = Object.keys(gCompatibilityData).sort(function (a, b) {
@@ -649,7 +741,7 @@ async function buildThunderbirdTemplates(settings) {
 	await buildReadme(settings.tree, template, thunderbirdPolicies, output_dir);
 	await buildAdmxFiles(template, thunderbirdPolicies, output_dir);
 	// TODO: Mac
-	
+
 	if (settings.tree == "central") {
 		gMainTemplateEntries.unshift(` * [${template.name}](templates/${settings.tree})`);
 	} else {
@@ -691,7 +783,12 @@ async function main() {
 	// Update files.
 	fs.writeFileSync(compatibility_json_path, stringify(gCompatibilityData, null, 2));
 	fs.writeFileSync(revisions_json_write_path, stringify(revisionData, null, 2));
-	fs.writeFileSync(main_readme, gMainTemplate.replace("__list__", gMainTemplateEntries.join("\n")));
+
+
+	fs.writeFileSync(main_readme, gMainTemplate
+		.replace("__list__", gMainTemplateEntries.join("\n"))
+		.replace("__compatibility__", buildCompatibilityTable("central").join("\n"))
+	);
 }
 
 main();
