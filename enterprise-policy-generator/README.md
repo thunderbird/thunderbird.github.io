@@ -17,6 +17,7 @@ The following table states for each policy, when Thunderbird started to support 
 | `3rdparty_Extensions_[name]` | 78.0 |  |
 | `3rdparty_Extensions` | 78.0 |  |
 | `3rdparty` | 78.0 |  |
+| *`AllowedDomainsForApps`* |  |  |
 | `AppAutoUpdate` | 75.0 |  |
 | `AppUpdateURL` | 68.0 |  |
 | `Authentication_AllowNonFQDN_NTLM` | 78.0 |  |
@@ -31,21 +32,25 @@ The following table states for each policy, when Thunderbird started to support 
 | `Authentication_PrivateBrowsing` | 78.0 |  |
 | `Authentication_SPNEGO` | 78.0 |  |
 | `Authentication` | 78.0 |  |
+| *`AutoLaunchProtocolsFromOrigins`* |  |  |
 | `BackgroundAppUpdate` | 91.0 |  |
 | `BlockAboutAddons` | 68.0 |  |
 | `BlockAboutConfig` | 68.0 |  |
 | `BlockAboutProfiles` | 68.0 |  |
 | `BlockAboutSupport` | 68.0 |  |
+| *`Bookmarks`* |  |  |
 | `CaptivePortal` | 78.0 |  |
 | `Certificates_ImportEnterpriseRoots` | 68.0 |  |
 | `Certificates_Install` | 68.0 |  |
 | `Certificates` | 68.0 |  |
 | `Cookies_AcceptThirdParty` | 78.0 |  |
+| *`Cookies_AllowSession`* |  |  |
 | `Cookies_Allow` | 78.0 |  |
 | `Cookies_Block` | 78.0 |  |
 | `Cookies_Default` | 78.0 |  |
 | `Cookies_ExpireAtSessionEnd` | 78.0 |  |
 | `Cookies_Locked` | 78.0 |  |
+| *`Cookies_RejectTracker`* |  |  |
 | `Cookies` | 78.0 |  |
 | `DNSOverHTTPS_Enabled` | 91.0 |  |
 | `DNSOverHTTPS_ExcludedDomains` | 91.0 |  |
@@ -55,13 +60,25 @@ The following table states for each policy, when Thunderbird started to support 
 | `DefaultDownloadDirectory` | 78.0 |  |
 | `DisableAppUpdate` | 68.0 |  |
 | `DisableBuiltinPDFViewer` | 91.0 |  |
+| *`DisableDefaultBrowserAgent`* |  |  |
 | `DisableDeveloperTools` | 68.0 |  |
+| *`DisableFeedbackCommands`* |  |  |
+| *`DisableFirefoxAccounts`* |  |  |
+| *`DisableFirefoxScreenshots`* |  |  |
+| *`DisableFirefoxStudies`* |  |  |
+| *`DisableForgetButton`* |  |  |
+| *`DisableFormHistory`* |  |  |
 | `DisableMasterPasswordCreation` | 68.0 |  |
 | `DisablePasswordReveal` | 78.0 |  |
+| *`DisablePocket`* |  |  |
+| *`DisablePrivateBrowsing`* |  |  |
+| *`DisableProfileImport`* |  |  |
+| *`DisableProfileRefresh`* |  |  |
 | `DisableSafeMode` | 78.0 |  |
 | `DisableSecurityBypass_InvalidCertificate` | 68.0 |  |
 | `DisableSecurityBypass_SafeBrowsing` | 68.0 |  |
 | `DisableSecurityBypass` | 68.0 |  |
+| *`DisableSetDesktopBackground`* |  |  |
 | `DisableSystemAddonUpdate` | 77.0 |  |
 | `DisableTelemetry` | 78.0 |  |
 | `DisabledCiphers_TLS_DHE_RSA_WITH_AES_128_CBC_SHA` | 76.0 |  |
@@ -76,7 +93,12 @@ The following table states for each policy, when Thunderbird started to support 
 | `DisabledCiphers_TLS_RSA_WITH_AES_256_CBC_SHA` | 76.0 |  |
 | `DisabledCiphers_TLS_RSA_WITH_AES_256_GCM_SHA384` | 91.0 |  |
 | `DisabledCiphers` | 76.0 |  |
+| *`DisplayBookmarksToolbar`* |  |  |
+| *`DisplayMenuBar`* |  |  |
+| *`DontCheckDefaultBrowser`* |  |  |
 | `DownloadDirectory` | 78.0 |  |
+| *`EnableTrackingProtection`* |  |  |
+| *`EncryptedMediaExtensions`* |  |  |
 | `ExtensionSettings_*_allowed_types` | 78.10.3, 89.0 |  |
 | `ExtensionSettings_*_blocked_install_message` | 78.10.3, 89.0 |  |
 | `ExtensionSettings_*_install_sources` | 78.10.3, 89.0 |  |
@@ -94,6 +116,8 @@ The following table states for each policy, when Thunderbird started to support 
 | `Extensions_Locked` | 68.0 |  |
 | `Extensions_Uninstall` | 68.0 |  |
 | `Extensions` | 68.0 |  |
+| *`FirefoxHome`* |  |  |
+| *`FlashPlugin`* |  |  |
 | `Handlers_(mimeTypes\|extensions\|schemes)_[name]_action` | 91.0 |  |
 | `Handlers_(mimeTypes\|extensions\|schemes)_[name]_ask` | 91.0 |  |
 | `Handlers_(mimeTypes\|extensions\|schemes)_[name]_handlers` | 91.0 |  |
@@ -101,17 +125,30 @@ The following table states for each policy, when Thunderbird started to support 
 | `Handlers_(mimeTypes\|extensions\|schemes)` | 91.0 |  |
 | `Handlers` | 91.0 |  |
 | `HardwareAcceleration` | 78.0 |  |
+| *`Homepage`* |  |  |
 | `InstallAddonsPermission_Allow` | 68.0 |  |
 | `InstallAddonsPermission_Default` | 68.0 |  |
 | `InstallAddonsPermission` | 68.0 |  |
+| *`LegacyProfiles`* |  |  |
+| *`LegacySameSiteCookieBehaviorEnabledForDomainList`* |  |  |
+| *`LegacySameSiteCookieBehaviorEnabled`* |  |  |
+| *`LocalFileLinks`* |  |  |
+| *`ManagedBookmarks`* |  |  |
 | `ManualAppUpdateOnly` | 91.0 |  |
 | `NetworkPrediction` | 91.0 |  |
+| *`NewTabPage`* |  |  |
+| *`NoDefaultBookmarks`* |  |  |
 | `OfferToSaveLoginsDefault` | 91.0 |  |
 | `OfferToSaveLogins` | 91.0 |  |
+| *`OverrideFirstRunPage`* |  |  |
+| *`OverridePostUpdatePage`* |  |  |
 | `PDFjs_EnablePermissions` | 91.0 |  |
 | `PDFjs_Enabled` | 91.0 |  |
 | `PDFjs` | 91.0 |  |
 | `PasswordManagerEnabled` | 78.0 |  |
+| *`Permissions`* |  |  |
+| *`PictureInPicture`* |  |  |
+| *`PopupBlocking`* |  |  |
 | `Preferences_[name]_Status` | 91.0 |  |
 | `Preferences_[name]_Value` | 91.0 |  |
 | `Preferences_[name]` | 91.0 |  |
@@ -164,5 +201,15 @@ The following table states for each policy, when Thunderbird started to support 
 | `RequestedLocales` | 68.0 |  |
 | `SSLVersionMax` | 68.0 |  |
 | `SSLVersionMin` | 68.0 |  |
+| *`SanitizeOnShutdown`* |  |  |
+| *`SearchBar`* |  |  |
+| *`SearchEngines`* |  |  |
+| *`SearchSuggestEnabled`* |  |  |
+| *`SecurityDevices`* |  |  |
+| *`ShowHomeButton`* |  |  |
+| *`SupportMenu`* |  |  |
+| *`UserMessaging`* |  |  |
+| *`WebsiteFilter`* |  |  |
+| *`WindowsSSO`* |  |  |
 
 

@@ -1778,5 +1778,392 @@
     "central": {
       "min": "92.0a1"
     }
+  },
+  "AllowedDomainsForApps": {
+    "unsupported": true
+  },
+  "AutoLaunchProtocolsFromOrigins": {
+    "unsupported": true
+  },
+  "Bookmarks": {
+    "unsupported": true
+  },
+  "Cookies_AllowSession": {
+    "unsupported": true
+  },
+  "Cookies_RejectTracker": {
+    "unsupported": true
+  },
+  "DisableDefaultBrowserAgent": {
+    "unsupported": true
+  },
+  "DisableFeedbackCommands": {
+    "unsupported": true
+  },
+  "DisableFirefoxAccounts": {
+    "unsupported": true
+  },
+  "DisableFirefoxScreenshots": {
+    "unsupported": true
+  },
+  "DisableFirefoxStudies": {
+    "unsupported": true
+  },
+  "DisableForgetButton": {
+    "unsupported": true
+  },
+  "DisableFormHistory": {
+    "unsupported": true
+  },
+  "DisablePocket": {
+    "unsupported": true
+  },
+  "DisablePrivateBrowsing": {
+    "unsupported": true
+  },
+  "DisableProfileImport": {
+    "unsupported": true
+  },
+  "DisableProfileRefresh": {
+    "unsupported": true
+  },
+  "DisableSetDesktopBackground": {
+    "unsupported": true
+  },
+  "DisplayBookmarksToolbar": {
+    "unsupported": true
+  },
+  "DisplayMenuBar": {
+    "unsupported": true
+  },
+  "DontCheckDefaultBrowser": {
+    "unsupported": true
+  },
+  "EnableTrackingProtection": {
+    "unsupported": true
+  },
+  "EnableTrackingProtection_Value": {
+    "unsupported": true
+  },
+  "EnableTrackingProtection_Locked": {
+    "unsupported": true
+  },
+  "EnableTrackingProtection_Cryptomining": {
+    "unsupported": true
+  },
+  "EnableTrackingProtection_Fingerprinting": {
+    "unsupported": true
+  },
+  "EnableTrackingProtection_Exceptions": {
+    "unsupported": true
+  },
+  "EncryptedMediaExtensions": {
+    "unsupported": true
+  },
+  "EncryptedMediaExtensions_Enabled": {
+    "unsupported": true
+  },
+  "EncryptedMediaExtensions_Locked": {
+    "unsupported": true
+  },
+  "FirefoxHome": {
+    "unsupported": true
+  },
+  "FirefoxHome_Search": {
+    "unsupported": true
+  },
+  "FirefoxHome_TopSites": {
+    "unsupported": true
+  },
+  "FirefoxHome_Highlights": {
+    "unsupported": true
+  },
+  "FirefoxHome_Pocket": {
+    "unsupported": true
+  },
+  "FirefoxHome_Snippets": {
+    "unsupported": true
+  },
+  "FirefoxHome_Locked": {
+    "unsupported": true
+  },
+  "FlashPlugin": {
+    "unsupported": true
+  },
+  "FlashPlugin_Allow": {
+    "unsupported": true
+  },
+  "FlashPlugin_Block": {
+    "unsupported": true
+  },
+  "FlashPlugin_Default": {
+    "unsupported": true
+  },
+  "FlashPlugin_Locked": {
+    "unsupported": true
+  },
+  "Homepage": {
+    "unsupported": true
+  },
+  "Homepage_URL": {
+    "unsupported": true
+  },
+  "Homepage_Locked": {
+    "unsupported": true
+  },
+  "Homepage_Additional": {
+    "unsupported": true
+  },
+  "Homepage_StartPage": {
+    "unsupported": true
+  },
+  "LegacyProfiles": {
+    "unsupported": true
+  },
+  "LegacySameSiteCookieBehaviorEnabled": {
+    "unsupported": true
+  },
+  "LegacySameSiteCookieBehaviorEnabledForDomainList": {
+    "unsupported": true
+  },
+  "LocalFileLinks": {
+    "unsupported": true
+  },
+  "ManagedBookmarks": {
+    "unsupported": true
+  },
+  "NewTabPage": {
+    "unsupported": true
+  },
+  "NoDefaultBookmarks": {
+    "unsupported": true
+  },
+  "OverrideFirstRunPage": {
+    "unsupported": true
+  },
+  "OverridePostUpdatePage": {
+    "unsupported": true
+  },
+  "Permissions": {
+    "unsupported": true
+  },
+  "Permissions_Camera": {
+    "unsupported": true
+  },
+  "Permissions_Camera_Allow": {
+    "unsupported": true
+  },
+  "Permissions_Camera_Block": {
+    "unsupported": true
+  },
+  "Permissions_Camera_BlockNewRequests": {
+    "unsupported": true
+  },
+  "Permissions_Camera_Locked": {
+    "unsupported": true
+  },
+  "Permissions_Microphone": {
+    "unsupported": true
+  },
+  "Permissions_Microphone_Allow": {
+    "unsupported": true
+  },
+  "Permissions_Microphone_Block": {
+    "unsupported": true
+  },
+  "Permissions_Microphone_BlockNewRequests": {
+    "unsupported": true
+  },
+  "Permissions_Microphone_Locked": {
+    "unsupported": true
+  },
+  "Permissions_Autoplay": {
+    "unsupported": true
+  },
+  "Permissions_Autoplay_Default": {
+    "unsupported": true
+  },
+  "Permissions_Autoplay_Allow": {
+    "unsupported": true
+  },
+  "Permissions_Autoplay_Block": {
+    "unsupported": true
+  },
+  "Permissions_Autoplay_Locked": {
+    "unsupported": true
+  },
+  "Permissions_Location": {
+    "unsupported": true
+  },
+  "Permissions_Location_Allow": {
+    "unsupported": true
+  },
+  "Permissions_Location_Block": {
+    "unsupported": true
+  },
+  "Permissions_Location_BlockNewRequests": {
+    "unsupported": true
+  },
+  "Permissions_Location_Locked": {
+    "unsupported": true
+  },
+  "Permissions_Notifications": {
+    "unsupported": true
+  },
+  "Permissions_Notifications_Allow": {
+    "unsupported": true
+  },
+  "Permissions_Notifications_Block": {
+    "unsupported": true
+  },
+  "Permissions_Notifications_BlockNewRequests": {
+    "unsupported": true
+  },
+  "Permissions_Notifications_Locked": {
+    "unsupported": true
+  },
+  "Permissions_VirtualReality": {
+    "unsupported": true
+  },
+  "Permissions_VirtualReality_Allow": {
+    "unsupported": true
+  },
+  "Permissions_VirtualReality_Block": {
+    "unsupported": true
+  },
+  "Permissions_VirtualReality_BlockNewRequests": {
+    "unsupported": true
+  },
+  "Permissions_VirtualReality_Locked": {
+    "unsupported": true
+  },
+  "PictureInPicture": {
+    "unsupported": true
+  },
+  "PictureInPicture_Enabled": {
+    "unsupported": true
+  },
+  "PictureInPicture_Locked": {
+    "unsupported": true
+  },
+  "PopupBlocking": {
+    "unsupported": true
+  },
+  "PopupBlocking_Allow": {
+    "unsupported": true
+  },
+  "PopupBlocking_Default": {
+    "unsupported": true
+  },
+  "PopupBlocking_Locked": {
+    "unsupported": true
+  },
+  "SanitizeOnShutdown": {
+    "unsupported": true
+  },
+  "SanitizeOnShutdown_Cache": {
+    "unsupported": true
+  },
+  "SanitizeOnShutdown_Cookies": {
+    "unsupported": true
+  },
+  "SanitizeOnShutdown_Downloads": {
+    "unsupported": true
+  },
+  "SanitizeOnShutdown_FormData": {
+    "unsupported": true
+  },
+  "SanitizeOnShutdown_History": {
+    "unsupported": true
+  },
+  "SanitizeOnShutdown_Sessions": {
+    "unsupported": true
+  },
+  "SanitizeOnShutdown_SiteSettings": {
+    "unsupported": true
+  },
+  "SanitizeOnShutdown_OfflineApps": {
+    "unsupported": true
+  },
+  "SanitizeOnShutdown_Locked": {
+    "unsupported": true
+  },
+  "SearchBar": {
+    "unsupported": true
+  },
+  "SearchEngines": {
+    "unsupported": true
+  },
+  "SearchEngines_Add": {
+    "unsupported": true
+  },
+  "SearchEngines_Default": {
+    "unsupported": true
+  },
+  "SearchEngines_DefaultPrivate": {
+    "unsupported": true
+  },
+  "SearchEngines_PreventInstalls": {
+    "unsupported": true
+  },
+  "SearchEngines_Remove": {
+    "unsupported": true
+  },
+  "SearchSuggestEnabled": {
+    "unsupported": true
+  },
+  "SecurityDevices": {
+    "unsupported": true
+  },
+  "SecurityDevices_^.*$": {
+    "unsupported": true
+  },
+  "ShowHomeButton": {
+    "unsupported": true
+  },
+  "SupportMenu": {
+    "unsupported": true
+  },
+  "SupportMenu_Title": {
+    "unsupported": true
+  },
+  "SupportMenu_URL": {
+    "unsupported": true
+  },
+  "SupportMenu_AccessKey": {
+    "unsupported": true
+  },
+  "UserMessaging": {
+    "unsupported": true
+  },
+  "UserMessaging_WhatsNew": {
+    "unsupported": true
+  },
+  "UserMessaging_ExtensionRecommendations": {
+    "unsupported": true
+  },
+  "UserMessaging_FeatureRecommendations": {
+    "unsupported": true
+  },
+  "UserMessaging_UrlbarInterventions": {
+    "unsupported": true
+  },
+  "UserMessaging_SkipOnboarding": {
+    "unsupported": true
+  },
+  "UserMessaging_Locked": {
+    "unsupported": true
+  },
+  "WebsiteFilter": {
+    "unsupported": true
+  },
+  "WebsiteFilter_Block": {
+    "unsupported": true
+  },
+  "WebsiteFilter_Exceptions": {
+    "unsupported": true
+  },
+  "WindowsSSO": {
+    "unsupported": true
   }
 }
