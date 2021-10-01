@@ -44,6 +44,8 @@ While the templates for the most recent version of Thunderbird will probably als
 
 __list__
 
+<br>
+
 ## List of supported policies
 
 The following table states for each policy, when Thunderbird started to support it, or when it has been deprecated. It also includes all policies currently supported by Firefox, which are not supported by Thunderbird.
@@ -56,9 +58,13 @@ const gTreeTemplate = `## Enterprise policy descriptions and templates for __nam
 
 __desc__
 
+<br>
+
 | Policy Name | Description
 |:--- |:--- |
 __list_of_policies__
+
+<br>
 
 __details__
 
@@ -422,10 +428,7 @@ function extractCompatibilityInformation(data, tree) {
 		for (let raw_policy of policies) {
 			let policy = raw_policy.trim().replace(/'/g, "");
 			if (!gCompatibilityData[policy]) {
-				gCompatibilityData[policy] = {};
-			}
-			if (!gCompatibilityData[policy][tree]) {
-				gCompatibilityData[policy][tree] = {
+				gCompatibilityData[policy] = {
 					unsupported: true
 				};
 			}
@@ -473,6 +476,10 @@ function buildCompatibilityTable(tree, policy) {
 	// Group filtered entries by identical compat data.
 	let distinct = [];
 	for (let entry of entries) {
+		// Skip unsupported policy properties, if the root policy itself is not supported as well.
+		let root = entry.split("_").shift();
+		if (root != entry && gCompatibilityData[entry].unsupported && gCompatibilityData[root].unsupported) continue;
+
 		let humanReadableEntry = "`" + escape_code_markdown(entry
 			.replace("^.*$", "[name]")
 			.replace("^(", "(")
@@ -480,32 +487,37 @@ function buildCompatibilityTable(tree, policy) {
 
 		// Generate the compatibility information. Primary information is the one from this tree, 
 		// but if it was backported to one version prior (92.0a1 -> 91.0) only list the backported one.
-		let added = gCompatibilityData[entry][tree].min.replace(".0a1", ".0");
-		let added_parts = added.split(".");
-		let backported = Object.keys(gCompatibilityData[entry])
-			.filter(e => e != tree)
-			.filter(e => gCompatibilityData[entry][e].min != gCompatibilityData[entry][tree].min)
-			.map(e => gCompatibilityData[entry][e].min)
-			.pop();
-
 		let first = "";
-		if (backported
-			&& added_parts.length == 2
-			&& added_parts[1] == "0"
-			&& `${parseInt(added_parts[0], 10) - 1}.0` == backported
-		) {
-			//first = `Thunderbird ${backported}`;
-			first = `${backported}`;
-		} else if (backported) {
-			//first = `Thunderbird ${added}<br>(Thunderbird ${backported})`;
-			first = `${backported}, ${added}`;
-		} else {
-			//first = `Thunderbird ${added}`;
-			first = `${added}`;
-		}
-		let last = (gCompatibilityData[entry][tree].max || "").replace(".0a1", ".0");
-		let key = `${first} - ${last}`;
+		let last = "";
+		if (gCompatibilityData[entry][tree]) {
+			if (gCompatibilityData[entry][tree].min) {
+				let added = gCompatibilityData[entry][tree].min.replace(".0a1", ".0");
+				let added_parts = added.split(".");
+				let backported = Object.keys(gCompatibilityData[entry])
+					.filter(e => e != tree)
+					.filter(e => gCompatibilityData[entry][e].min != gCompatibilityData[entry][tree].min)
+					.map(e => gCompatibilityData[entry][e].min)
+					.pop();
 
+				if (backported
+					&& added_parts.length == 2
+					&& added_parts[1] == "0"
+					&& `${parseInt(added_parts[0], 10) - 1}.0` == backported
+				) {
+					//first = `Thunderbird ${backported}`;
+					first = `${backported}`;
+				} else if (backported) {
+					//first = `Thunderbird ${added}<br>(Thunderbird ${backported})`;
+					first = `${backported}, ${added}`;
+				} else {
+					//first = `Thunderbird ${added}`;
+					first = `${added}`;
+				}
+			}
+			last = (gCompatibilityData[entry][tree].max || "").replace(".0a1", ".0");
+		}
+
+		let key = `${first} - ${last}`;
 		let distinctEntry = distinct.find(e => e.key == key);
 		if (!policy || !distinctEntry) {
 			distinct.push({
@@ -533,7 +545,8 @@ function buildCompatibilityTable(tree, policy) {
 	// Build compatibility chart.
 	details.push("", "| Policy/Property Name | supported since | deprecated after |", "|:--- | ---:| ---:|");
 	for (let distinctEntry of distinct) {
-		details.push(`| ${distinctEntry.policies.join("<br>")} | ${distinctEntry.first} | ${distinctEntry.last} |`);
+		let format = distinctEntry.first ? "" : "*";
+		details.push(`| ${format}${distinctEntry.policies.join("<br>")}${format} | ${distinctEntry.first} | ${distinctEntry.last} |`);
 	}
 	details.push("");
 	return details;
@@ -734,9 +747,11 @@ async function buildThunderbirdTemplates(settings) {
 	extractCompatibilityInformation(data, settings.tree);
 
 	let template = await parseMozillaPolicyReadme(settings.tree);
-	let thunderbirdPolicies = Object.keys(gCompatibilityData).sort(function (a, b) {
-		return a.toLowerCase().localeCompare(b.toLowerCase());
-	});
+	let thunderbirdPolicies = Object.keys(gCompatibilityData)
+		.filter(p => !gCompatibilityData[p].unsupported)
+		.sort(function (a, b) {
+			return a.toLowerCase().localeCompare(b.toLowerCase());
+		});
 
 	await buildReadme(settings.tree, template, thunderbirdPolicies, output_dir);
 	await buildAdmxFiles(template, thunderbirdPolicies, output_dir);

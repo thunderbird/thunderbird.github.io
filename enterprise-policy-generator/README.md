@@ -7,6 +7,8 @@ While the templates for the most recent version of Thunderbird will probably als
  * [Thunderbird 78 (and older)](templates/esr78) (v2.12) 
  * [Thunderbird 68](templates/esr68) (v1.17) 
 
+<br>
+
 ## List of supported policies
 
 The following table states for each policy, when Thunderbird started to support it, or when it has been deprecated. It also includes all policies currently supported by Firefox, which are not supported by Thunderbird.

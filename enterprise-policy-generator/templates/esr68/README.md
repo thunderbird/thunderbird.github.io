@@ -4,6 +4,8 @@ Policies can be specified using the [Group Policy templates on Windows](windows)
 
 On Windows, create a directory called `distribution` where the EXE is located and place the file there. On Mac, the file goes into `Thunderbird.app/Contents/Resources/distribution`.  On Linux, the file goes into `thunderbird/distribution`, where `thunderbird` is the installation directory for Thunderbird, which varies by distribution.
 
+<br>
+
 | Policy Name | Description
 |:--- |:--- |
 | **[`AppUpdateURL`](#appupdateurl)** | Change the URL for application update.
@@ -26,6 +28,8 @@ On Windows, create a directory called `distribution` where the EXE is located an
 | **[`RequestedLocales`](#requestedlocales)** | Set the the list of requested locales for the application in order of preference.
 | **[`SSLVersionMax`](#sslversionmax)** | Set and lock the maximum version of TLS.
 | **[`SSLVersionMin`](#sslversionmin)** | Set and lock the minimum version of TLS.
+
+<br>
 
 ## AppUpdateURL
 
