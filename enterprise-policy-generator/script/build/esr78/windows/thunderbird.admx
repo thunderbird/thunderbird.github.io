@@ -734,6 +734,16 @@
         <decimal value="0"/>
       </disabledValue>
     </policy>
+    <policy name="browser_fixup_dns_first_for_single_words" class="Both" displayName="$(string.browser_fixup_dns_first_for_single_words)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="browser.fixup.dns_first_for_single_words">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
     <policy name="browser_safebrowsing_phishing_enabled" class="Both" displayName="$(string.browser_safebrowsing_phishing_enabled)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="browser.safebrowsing.phishing.enabled">
       <parentCategory ref="Preferences"/>
       <supportedOn ref="SUPPORTED_TB70"/>
@@ -755,6 +765,36 @@
       </disabledValue>
     </policy>
     <policy name="browser_search_update" class="Both" displayName="$(string.browser_search_update)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="browser.search.update">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="browser_urlbar_suggest_bookmark" class="Both" displayName="$(string.browser_urlbar_suggest_bookmark)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="browser.urlbar.suggest.bookmark">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="browser_urlbar_suggest_history" class="Both" displayName="$(string.browser_urlbar_suggest_history)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="browser.urlbar.suggest.history">
+      <parentCategory ref="Preferences"/>
+      <supportedOn ref="SUPPORTED_TB68"/>
+      <enabledValue>
+        <decimal value="1"/>
+      </enabledValue>
+      <disabledValue>
+        <decimal value="0"/>
+      </disabledValue>
+    </policy>
+    <policy name="browser_urlbar_suggest_openpage" class="Both" displayName="$(string.browser_urlbar_suggest_openpage)" explainText="$(string.Preferences_Boolean_Explain)" key="Software\Policies\Mozilla\Thunderbird\Preferences" valueName="browser.urlbar.suggest.openpage">
       <parentCategory ref="Preferences"/>
       <supportedOn ref="SUPPORTED_TB68"/>
       <enabledValue>

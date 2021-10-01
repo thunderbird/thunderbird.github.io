@@ -635,7 +635,9 @@ async function buildThunderbirdTemplates(settings) {
 	}
 
 	let template = await parseMozillaPolicyReadme(settings.tree);
-	let thunderbirdPolicies = extractFlatPolicyNamesFromPolicySchema(data.comm.revisions[0]);
+	let thunderbirdPolicies = Object.keys(gCompatibilityData).sort(function (a, b) {
+		return a.toLowerCase().localeCompare(b.toLowerCase());
+	});
 
 	await buildReadme(settings.tree, template, thunderbirdPolicies, output_dir);
 	await buildAdmxFiles(template, thunderbirdPolicies, output_dir);
