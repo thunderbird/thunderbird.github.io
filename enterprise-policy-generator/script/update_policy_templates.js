@@ -1,9 +1,6 @@
 /**
  * See https://bugzilla.mozilla.org/show_bug.cgi?id=1732258
  * 
- * TODO:
- *  - check for new templates released for older TB versions
- * 
  */
 
 // Debug logging (0 - errors and basic logs only, 1 - verbose debug)
@@ -14,6 +11,7 @@ const state_dir = "./data/gitstate";
 const schema_dir = "./data/schema";
 const mozilla_template_dir = "./data/mozilla-policy-templates";
 
+const main_readme = "../README.md";
 const readme_json_path = "./readme_#tree#.json";
 const compatibility_json_path = `./compatibility.json`;
 const revisions_json_write_path = "./revisions.json";
@@ -39,7 +37,16 @@ const {
 
 var gCompatibilityData = {};
 
-const gTemplate = `## Enterprise policy descriptions and templates for __name__
+var gMainTemplateEntries = [];
+const gMainTemplate = `## Enterprise policy descriptions and templates for Thunderbird
+
+While the templates for the most recent version of Thunderbird will probably also work with older releases of Thunderbird, they may contain new policies which are not supported in older releases. We suggest to use the templates which correspond to the highest version of Thunderbird you are actually deploying.
+
+__list__
+
+`
+
+const gTreeTemplate = `## Enterprise policy descriptions and templates for __name__
 
 __desc__
 
@@ -552,7 +559,7 @@ async function buildReadme(tree, template, thunderbirdPolicies, output_dir) {
 		}
 	 }
 
-	 let md = gTemplate
+	 let md = gTreeTemplate
 		 .replace("__name__", template.name)
 		 .replace("__desc__", template.desc.join("\n"))
 		 .replace("__list_of_policies__", rebrand(header))
@@ -642,6 +649,12 @@ async function buildThunderbirdTemplates(settings) {
 	await buildReadme(settings.tree, template, thunderbirdPolicies, output_dir);
 	await buildAdmxFiles(template, thunderbirdPolicies, output_dir);
 	// TODO: Mac
+	
+	if (settings.tree == "central") {
+		gMainTemplateEntries.unshift(` * [${template.name}](/templates/${settings.tree})`);
+	} else {
+		gMainTemplateEntries.unshift(` * [${template.name}](/templates/${settings.tree}) (${template.mozillaReferenceTemplates}) `);
+	}
 }
 
 async function main() {
@@ -675,9 +688,10 @@ async function main() {
 		await buildThunderbirdTemplates(revision);
 	}
 
-	// Update config files.
+	// Update files.
 	fs.writeFileSync(compatibility_json_path, stringify(gCompatibilityData, null, 2));
 	fs.writeFileSync(revisions_json_write_path, stringify(revisionData, null, 2));
+	fs.writeFileSync(main_readme, gMainTemplate.replace("__list__", gMainTemplateEntries.join("\n")));
 }
 
 main();
