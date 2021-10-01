@@ -9,18 +9,15 @@
 // Debug logging (0 - errors and basic logs only, 1 - verbose debug)
 const debugLevel = 0;
 
-const mozilla_template_dir = "./data/mozilla-policy-templates";
 const build_dir = "./build";
+const state_dir = "./data/gitstate";
 const schema_dir = "./data/schema";
+const mozilla_template_dir = "./data/mozilla-policy-templates";
 
 const readme_json_path = "./readme_#tree#.json";
-const compatibility_json_path = "./compatibility.json";
-
-// These are read from the state dir and written to the root
-const state_dir = "./data/gitstate";
-const read_dir = "./data/gitstate/enterprise-policy-generator/script/";
-const write_dir = "./";
-const revisions_json_path = "revisions.json";
+const compatibility_json_path = `${build_dir}/compatibility.json`;
+const revisions_json_write_path = "./revisions.json";
+const revisions_json_read_path = `${state_dir}/enterprise-policy-generator/script/revisions.json`;
 
 // replacement for deprecated request
 const bent = require('bent');
@@ -96,6 +93,12 @@ async function request(url) {
 	return rv;
 }
 
+/**
+ * Escape illegal chars from markdown code.
+ * 
+ * @param {string} str - markdown code string
+ * @returns - escaped string
+ */
 function escape_code_markdown(str) {
 	let chars = [
 		"\\|",
@@ -106,7 +109,13 @@ function escape_code_markdown(str) {
 	return str;
 }
 
-function cleanUp(lines) {
+/**
+ * Rebrand from Firefox to Thunderbird.
+ * 
+ * @param {*} lines - string or array of strings which need to be rebranded.
+ * @returns - rebranded string (input array is joined by \n)
+ */
+function rebrand(lines) {
 	if (!Array.isArray(lines))
 		lines = [lines.toString()];
 
@@ -193,7 +202,7 @@ async function pullGitRepository(url, ref, dir) {
  * 
  * @param {string} tree - "central" or "esr91"
  * 
- * @return - {headers ({}), policies ({})} 
+ * @return - parsed data from readme.json, updated with upstream changes
  */
 async function parseMozillaPolicyReadme(tree) {
 	// Load last known version of the headers and policy chunks of the readme.
@@ -334,7 +343,7 @@ function extractFlatPolicyNamesFromPolicySchema(data) {
 }
 
 /**
-* Check for changes in the policy schema files in m-c and c-c tree.
+* Check for changes in the policy schema files between two revisions.
 * 
 * @param {object} data - Object returned by downloadPolicySchemaFiles
 */
@@ -354,6 +363,14 @@ function checkPolicySchemaChanges(file1, file2) {
 }
 
 // -----------------------------------------------------------------------------
+
+/**
+ * Generate the compatibility table.
+ * 
+ * @param {*} policy 
+ * @param {*} tree 
+ * @returns 
+ */
 function buildCompatibilityTable(policy, tree) {
 	let details = [];
 
@@ -411,15 +428,15 @@ function buildCompatibilityTable(policy, tree) {
 	return details;
 }
 
-
 /**
+ * Generate the Thunderbird templates.
  * 
  * @param {*} settings 
  *  settings.tree - 
  *  settings.mozillaReferencePolicyRevision -
  * @returns 
  */
-async function buildThunderbirdTemplate(settings) {
+async function buildThunderbirdTemplates(settings) {
 	// Download schema from https://hg.mozilla.org/
 	let data = await downloadPolicySchemaFiles(settings.tree);
 	if (!data)
@@ -447,7 +464,7 @@ async function buildThunderbirdTemplate(settings) {
 			console.log(` - currently acknowledged policy revision (${mozillaReferencePolicyFile.revision} / ${mozillaReferencePolicyFile.version}): \n\t${path.resolve(getPolicySchemaFilename("mozilla", settings.tree, mozillaReferencePolicyFile.revision))}\n`);
 			console.log(` - latest available policy revision (${data.mozilla.revisions[0].revision} / ${data.mozilla.revisions[0].version}): \n\t${path.resolve(getPolicySchemaFilename("mozilla", settings.tree, data.mozilla.revisions[0].revision))}\n`);
 			console.log(` - hg change log for mozilla-${settings.tree}: \n\t${data.mozilla.hgLogUrl}\n`);
-			console.log(` If those changes are not needed for Thunderbird, check-in the updated ${revisions_json_path} file to acknowledge the change. Otherwise port the changes first.\n`);
+			console.log(` If those changes are not needed for Thunderbird, check-in the updated ${revisions_json_write_path} file to acknowledge the change. Otherwise port the changes first.\n`);
 		}
 	}
 
@@ -533,8 +550,8 @@ async function buildThunderbirdTemplate(settings) {
 	let md = gTemplate
 		.replace("__name__", template.name)
 		.replace("__desc__", template.desc.join("\n"))
-		.replace("__list_of_policies__", cleanUp(header))
-		.replace("__details__", cleanUp(details));
+		.replace("__list_of_policies__", rebrand(header))
+		.replace("__details__", rebrand(details));
 
 	fs.ensureDirSync(output_dir);
 	fs.writeFileSync(`${output_dir}/README.md`, md);
@@ -548,7 +565,7 @@ async function buildThunderbirdTemplate(settings) {
 	var parser = new xml2js.Parser();
 	let admx_file = fs.readFileSync(`${mozilla_template_dir}/${template.mozillaReferenceTemplates}/windows/firefox.admx`);
 	let admx_obj = await parser.parseStringPromise(
-		cleanUp(admx_file).replace(/">">/g, '">'), // issue https://github.com/mozilla/policy-templates/issues/801
+		rebrand(admx_file).replace(/">">/g, '">'), // issue https://github.com/mozilla/policy-templates/issues/801
 	);
 
 	function getNameFromKey(key) {
@@ -617,7 +634,7 @@ async function buildThunderbirdTemplate(settings) {
 	for (let folder of folders) {
 		fs.ensureDirSync(`${output_dir}/windows/${folder}`);
 		let file = fs.readFileSync(`${mozilla_template_dir}/${template.mozillaReferenceTemplates}/windows/${folder}/firefox.adml`);
-		fs.writeFileSync(`${output_dir}/windows/${folder}/thunderbird.adml`, cleanUp(file));
+		fs.writeFileSync(`${output_dir}/windows/${folder}/thunderbird.adml`, rebrand(file));
 		// This file probably does not need to change
 		file = fs.readFileSync(`${mozilla_template_dir}/${template.mozillaReferenceTemplates}/windows/${folder}/mozilla.adml`);
 		fs.writeFileSync(`${output_dir}/windows/${folder}/mozilla.adml`, file);
@@ -631,10 +648,10 @@ async function main() {
 	await pullGitRepository("https://github.com/thundernest/thundernest.github.io", "main", state_dir);
 
 	// Load revision data (to see if any new revisions have been added to the tree).
-	let revisionData = fs.existsSync(read_dir + revisions_json_path)
-		? parse(fs.readFileSync(read_dir + revisions_json_path).toString())
+	let revisionData = fs.existsSync(revisions_json_read_path)
+		? parse(fs.readFileSync(revisions_json_read_path).toString())
 		: [
-			{ // A starter set, if revision config file is missing.
+			{ // A starter set, if the revision config file is missing.
 				tree: "esr68",
 				mozillaReferencePolicyRevision: "1b0a29b456b432d1c8bef09c233b84205ec9e13c",
 			},
@@ -654,12 +671,12 @@ async function main() {
 		];
 
 	for (let revision of revisionData) {
-		await buildThunderbirdTemplate(revision);
+		await buildThunderbirdTemplates(revision);
 	}
 
 	// Update config files.
 	fs.writeFileSync(compatibility_json_path, stringify(gCompatibilityData, null, 2));
-	fs.writeFileSync(write_dir + revisions_json_path, stringify(revisionData, null, 2));
+	fs.writeFileSync(revisions_json_write_path, stringify(revisionData, null, 2));
 }
 
 main();
