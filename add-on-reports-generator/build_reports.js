@@ -18,23 +18,20 @@ const extsAllJsonFileName = `${rootDir}/xall.json`;
 
 const badge_definitions = {
 	"permission": { bLeftText: 'p', bColor: 'orange', bTooltip: "Requested permission" },
-	"probably_compatible": { bRightText: 'probably compatible', bLeftText: 'TB91', bColor: 'darkgreen' },
-	"alternative_available": { bRightText: 'alternative available', bLeftText: 'TB91', bColor: 'darkgreen' },
-	"work_in_progress": { bRightText: 'work in progress', bLeftText: 'TB91', bColor: 'yellow' },
-	"incompatible": { bRightText: 'incompatible', bLeftText: 'TB91', bColor: 'c90016' },
-	"probably_incompatible": { bRightText: 'probably incompatible', bLeftText: 'TB91', bColor: 'c90016' },
+	"alternative_available": { bRightText: 'alternative available', bLeftText: '*', bColor: 'darkgreen' },
+	"work_in_progress": { bRightText: 'work in progress', bLeftText: 'TB102', bColor: 'yellow' },
+	"incompatible91": { bRightText: 'incompatible', bLeftText: 'TB91', bColor: 'c90016' },
+	"incompatible102": { bRightText: 'incompatible', bLeftText: 'TB102', bColor: 'c90016' },
 }
 
 const wip = {
-	331319: "-", //Folder Pane Switcher
-	988100: "-", //Glodaquilla-NG
 }
 
 const false_negatives = [
 ];
 
 
-const knownToWork = `4631
+const knownToWork91 = `4631
 15102
 711780
 640
@@ -139,6 +136,8 @@ const knownToWork = `4631
  987989
  534258`.split("\n").map(e => e.trim());
 
+const knownToWork102 = [];
+
 var gAlternativeData;
 
 var groups = [
@@ -147,21 +146,26 @@ var groups = [
 		header: "Extensions with invalid ATN settings"
 	},
 	{
+		id: "all",
+		header: "General reports"
+	},
+	{
+		id: "102",
+		header: "Thunderbird 102 reports"
+	},
+	{
 		id: "91",
 		header: "Thunderbird 91 reports"
 	},
 	{
-		id: "lost",
-		header: "ATN lost extension reports"
+		id: "78",
+		header: "Thunderbird 78 reports"
 	},
 	{
-		id: "atn",
-		header: "ATN compatibility reports"
+		id: "68",
+		header: "Thunderbird 68 reports"
 	},
-	{
-		id: "all",
-		header: "General reports"
-	},
+
 ]
 var reports = {
 	"all": {
@@ -171,7 +175,8 @@ var reports = {
 		enabled: true,
 		generate: genStandardReport,
 		rowData: function (extJson) {
-			let vHighest = getExtData(extJson, "91").version ||
+			let vHighest = getExtData(extJson, "102").version ||
+				getExtData(extJson, "91").version ||
 				getExtData(extJson, "78").version ||
 				getExtData(extJson, "68").version ||
 				getExtData(extJson, "60").version;
@@ -209,6 +214,25 @@ var reports = {
 			return { include: false };
 		}
 	},
+	"max-atn-value-raised-above-max-xpi-value": {
+		group: "all",
+		header: "Extensions whose max version has been raised in ATN above the XPI value (excluding legacy extensions).",
+		template: "report-template.html",
+		enabled: true,
+		generate: genStandardReport,
+		rowData: function (extJson) {
+			let vCurrent = getExtData(extJson, "current").data;
+			if (!vCurrent)
+				return { include: false };
+
+			let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max || "*";
+			let strict_max = vCurrent.manifest?.applications?.gecko?.strict_max_version ||
+				vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
+				"*";
+
+			return { include: vCurrent.mext && !vCurrent.legacy && (compareVer(strict_max, atn_max) < 0) };
+		}
+	},
 	// -- ATN error reports ------------------------------------------------------------------------
 	"wrong-order": {
 		group: "atn-errors",
@@ -217,6 +241,7 @@ var reports = {
 		enabled: true,
 		generate: genStandardReport,
 		rowData: function (extJson) {
+			let v102 = getExtData(extJson, "102").version;
 			let v91 = getExtData(extJson, "91").version;
 			let v78 = getExtData(extJson, "78").version;
 			let v68 = getExtData(extJson, "68").version;
@@ -225,11 +250,16 @@ var reports = {
 			if (v60 && v68 && compareVer(v60, v68) > 0) return { include: true };
 			if (v60 && v78 && compareVer(v60, v78) > 0) return { include: true };
 			if (v60 && v91 && compareVer(v60, v91) > 0) return { include: true };
+			if (v60 && v102 && compareVer(v60, v102) > 0) return { include: true };
 
 			if (v68 && v78 && compareVer(v68, v78) > 0) return { include: true };
 			if (v68 && v91 && compareVer(v68, v91) > 0) return { include: true };
+			if (v68 && v102 && compareVer(v68, v102) > 0) return { include: true };
 
 			if (v78 && v91 && compareVer(v78, v91) > 0) return { include: true };
+			if (v78 && v102 && compareVer(v78, v102) > 0) return { include: true };
+
+			if (v91 && v102 && compareVer(v91, v102) > 0) return { include: true };
 
 			return { include: false };
 		},
@@ -260,7 +290,8 @@ var reports = {
 		enabled: true,
 		generate: genStandardReport,
 		rowData: function (extJson) {
-			let vHighest = getExtData(extJson, "91").version ||
+			let vHighest = getExtData(extJson, "102").version ||
+				getExtData(extJson, "91").version ||
 				getExtData(extJson, "78").version ||
 				getExtData(extJson, "68").version ||
 				getExtData(extJson, "60").version;
@@ -291,7 +322,117 @@ var reports = {
 			return { include: !!data && data.legacy };
 		}
 	},
-	// -- Specials v91 -----------------------------------------------------------------------------
+	// -- v102 -------------------------------------------------------------------------------------
+	"atn-tb102": {
+		group: "102",
+		header: "Extensions compatible with Thunderbird 102 as seen by ATN.",
+		template: "report-template.html",
+		enabled: true,
+		generate: genStandardReport,
+		rowData: function (extJson) {
+			let badges = [];
+			if (wip[extJson.id]) {
+				badges.push({ link: wip[extJson.id], badge: "work_in_progress" });
+			}
+
+			return {
+				include: !!(getExtData(extJson, "102").version),
+				badges
+			};
+		}
+	},
+	"tb102-requested-permissions": {
+		group: "102",
+		header: "Extensions for TB102 requesting WebExtension permissions.",
+		template: "report-template.html",
+		enabled: true,
+		generate: genStandardReport,
+		rowData: function (extJson) {
+			let data = getExtData(extJson, "102").data;
+			let badges = [];
+
+			let permissions = data?.manifest?.permissions;
+			if (Array.isArray(permissions)) {
+				for (let permission of permissions) {
+					// We do not see each individal contentScript definition
+					if (permission.includes(":/") || permission == "<all_urls>") {
+						if (badges.filter(e => e.badge == "permission.contentScript").length == 0) {
+							badges.push({ badge: `permission.contentScript` });
+						}
+					} else {
+						badges.push({ badge: `permission.${permission}` });
+					}
+				}
+			}
+
+			let manifest = data?.manifest;
+			const keys = ["compose_action", "browser_action", "message_display_action", "cloud_file", "commands"];
+			if (manifest) {
+				for (let key of keys)
+					if (manifest[key])
+						badges.push({ badge: `permission.${key}` });
+			}
+
+			return {
+				include: !!permissions,
+				badges
+			};
+		},
+	},
+	"tb102-experiments-without-upper-limit": {
+		group: "102",
+		header: "Experiments without upper limit in ATN, which might not be compatible with TB102 (excluding confirmed positives).",
+		template: "report-template.html",
+		enabled: true,
+		generate: genStandardReport,
+		rowData: function (extJson) {
+			let v102 = getExtData(extJson, "102").data;
+			let atn_max = v102?.atn?.compatibility?.thunderbird?.max || "*";
+			let atn_min = v102?.atn?.compatibility?.thunderbird?.min || "*";
+			return { include: !knownToWork102.includes(`${extJson.id}`) && !!v102 && v102.mext && v102.experiment && compareVer("101", atn_min) > 0 && atn_max == "*" };
+		}
+	},
+	"lost-tb91-to-tb102": {
+		group: "102",
+		header: "Extensions which have been lost from TB91 to TB102, as seen by ATN.",
+		template: "report-template.html",
+		enabled: true,
+		generate: genStandardReport,
+		rowData: function (extJson) {
+			let v102 = getExtData(extJson, "102").version;
+			let v91 = getExtData(extJson, "91").version;
+			let include = !!v91 && !v102;
+
+			let badges = [];
+			if (include) {
+				if (getAlternative(extJson)) {
+					badges.push({ badge: "alternative_available" });
+				} else if (wip[extJson.id]) {
+					badges.push({ link: wip[extJson.id], badge: "work_in_progress" });
+				} else {
+					badges.push({ badge: "incompatible102" });
+				}
+			}
+			return { include, badges };
+		}
+	},
+
+	// -- v91 --------------------------------------------------------------------------------------
+	"atn-tb91": {
+		group: "91",
+		header: "Extensions compatible with Thunderbird 91 as seen by ATN.",
+		template: "report-template.html",
+		enabled: true,
+		generate: genStandardReport,
+		rowData: function (extJson) {
+			let badges = [];
+
+			return {
+				include: !!(getExtData(extJson, "91").version),
+				badges
+			};
+		}
+	},
 	"tb91-requested-permissions": {
 		group: "91",
 		header: "Extensions for TB91 requesting WebExtension permissions.",
@@ -319,83 +460,16 @@ var reports = {
 			let manifest = data?.manifest;
 			const keys = ["compose_action", "browser_action", "message_display_action", "cloud_file", "commands"];
 			if (manifest) {
-				for (let key of keys) 
+				for (let key of keys)
 					if (manifest[key])
 						badges.push({ badge: `permission.${key}` });
-			}			
+			}
 
 			return {
 				include: !!permissions,
 				badges
 			};
 		},
-	},
-	"tb91-worst-case-lost-tb78-to-tb91": {
-		group: "91",
-		header: "Extensions which have been lost from TB78 to TB91 (including alternatives, possible false positives and possible false negatives).",
-		template: "report-template.html",
-		enabled: true,
-		generate: genStandardReport,
-		rowData: function (extJson) {
-			let badges = [];
-
-			if (reports['lost-tb78-to-tb91'].rowData(extJson).include) {
-				if (reports['tb91-pure-mx-incompatible'].rowData(extJson).include || false_negatives.includes(extJson.id)) {
-					badges.push({ badge: "probably_compatible" });
-				} else if (getAlternative(extJson)) {
-					badges.push({ badge: "alternative_available" });
-				} else if (wip[extJson.id]) {
-					badges.push({ link: wip[extJson.id], badge: "work_in_progress" });
-				} else {
-					badges.push({ badge: "incompatible" });
-				}
-			} else if (reports['tb91-experiments-without-upper-limit'].rowData(extJson).include) {
-				if (wip[extJson.id]) {
-					badges.push({ link: wip[extJson.id], badge: "work_in_progress" });
-				} else {
-					badges.push({ badge: "probably_incompatible" });
-				}
-			}
-
-			return {
-				include: badges.length > 0,
-				badges
-			};
-		}
-	},
-	"tb91-pure-mx-incompatible": {
-		group: "91",
-		header: "Pure MailExtensions, marked incompatible with TB91, which they probably are not.",
-		template: "report-template.html",
-		enabled: true,
-		generate: genStandardReport,
-		rowData: function (extJson) {
-			let v78 = getExtData(extJson, "78").data;
-			let v91 = getExtData(extJson, "91").data;
-			return { include: !!v78 && !v91 && v78.mext && !v78.experiment && !v78.legacy };
-		}
-	},
-	"tb91-max-atn-value-reduced-below-max-xpi-value": {
-		group: "91",
-		header: "Extensions whose max version has been reduced in ATN below the XPI value to be marked as not compatible with TB91, which is ignored during install and app upgrade.",
-		template: "report-template.html",
-		enabled: true,
-		generate: genStandardReport,
-		rowData: function (extJson) {
-			let vCurrent = getExtData(extJson, "current").data;
-			if (!vCurrent)
-				return { include: false };
-
-			let v78 = getExtData(extJson, "78").data;
-			let v91 = getExtData(extJson, "91").data;
-
-			let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max || "*";
-			let strict_max = vCurrent.manifest?.applications?.gecko?.strict_max_version ||
-				vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
-				"*";
-
-			return { include: !!v78 && !v91 && (compareVer(strict_max, atn_max) > 0) };
-		}
 	},
 	"tb91-experiments-without-upper-limit": {
 		group: "91",
@@ -404,39 +478,14 @@ var reports = {
 		enabled: true,
 		generate: genStandardReport,
 		rowData: function (extJson) {
-			let v91 = getExtData(extJson, "91").data;
+			let v91 = getExtData(extJson, "102").data;
 			let atn_max = v91?.atn?.compatibility?.thunderbird?.max || "*";
 			let atn_min = v91?.atn?.compatibility?.thunderbird?.min || "*";
-			return { include: !knownToWork.includes(`${extJson.id}`) && !!v91 && v91.mext && v91.experiment && compareVer("90", atn_min) > 0 && atn_max == "*" };
-		}
-	},
-	// -- Lost extensions (only useful if all false positives have been removed) -------------------
-	"lost-tb60-to-tb68": {
-		group: "lost",
-		header: "Extensions which have been lost from TB60 to TB68, as seen by ATN.",
-		template: "report-template.html",
-		enabled: true,
-		generate: genStandardReport,
-		rowData: function (extJson) {
-			let v68 = getExtData(extJson, "68").version;
-			let v60 = getExtData(extJson, "60").version;
-			return { include: !!v60 && !v68 };
-		}
-	},
-	"lost-tb68-to-tb78": {
-		group: "lost",
-		header: "Extensions which have been lost from TB68 to TB78, as seen by ATN.",
-		template: "report-template.html",
-		enabled: true,
-		generate: genStandardReport,
-		rowData: function (extJson) {
-			let v78 = getExtData(extJson, "78").version;
-			let v68 = getExtData(extJson, "68").version;
-			return { include: !!v68 && !v78 };
+			return { include: !knownToWork91.includes(`${extJson.id}`) && !!v91 && v91.mext && v91.experiment && compareVer("90", atn_min) > 0 && atn_max == "*" };
 		}
 	},
 	"lost-tb78-to-tb91": {
-		group: "lost",
+		group: "91",
 		header: "Extensions which have been lost from TB78 to TB91, as seen by ATN.",
 		template: "report-template.html",
 		enabled: true,
@@ -447,43 +496,19 @@ var reports = {
 			let include = !!v78 && !v91;
 
 			let badges = [];
-			if (reports['tb91-pure-mx-incompatible'].rowData(extJson).include || false_negatives.includes(extJson.id)) {
-				badges.push({ badge: "probably_compatible" });
-			} else if (include) {
+			if (include) {
 				if (getAlternative(extJson)) {
 					badges.push({ badge: "alternative_available" });
-				} else if (wip[extJson.id]) {
-					badges.push({ link: wip[extJson.id], badge: "work_in_progress" });
 				} else {
-					badges.push({ badge: "incompatible" });
+					badges.push({ badge: "incompatible91" });
 				}
 			}
 			return { include, badges };
 		}
 	},
-	// -- ATN status reports------------------------------------------------------------------------
-	"atn-tb60": {
-		group: "atn",
-		header: "Extensions compatible with Thunderbird 60 as seen by ATN.",
-		template: "report-template.html",
-		enabled: true,
-		generate: genStandardReport,
-		rowData: function (extJson) {
-			return { include: !!(getExtData(extJson, "60").version) };
-		},
-	},
-	"atn-tb68": {
-		group: "atn",
-		header: "Extensions compatible with Thunderbird 68 as seen by ATN.",
-		template: "report-template.html",
-		enabled: true,
-		generate: genStandardReport,
-		rowData: function (extJson) {
-			return { include: !!(getExtData(extJson, "68").version) };
-		}
-	},
+	// -- v78 --------------------------------------------------------------------------------------
 	"atn-tb78": {
-		group: "atn",
+		group: "78",
 		header: "Extensions compatible with Thunderbird 78 as seen by ATN.",
 		template: "report-template.html",
 		enabled: true,
@@ -492,44 +517,39 @@ var reports = {
 			return { include: !!(getExtData(extJson, "78").version) };
 		}
 	},
-	"atn-tb91": {
-		group: "atn",
-		header: "Extensions compatible with Thunderbird 91 as seen by ATN.",
+	"lost-tb68-to-tb78": {
+		group: "78",
+		header: "Extensions which have been lost from TB68 to TB78, as seen by ATN.",
 		template: "report-template.html",
 		enabled: true,
 		generate: genStandardReport,
 		rowData: function (extJson) {
-			let badges = [];
-			if (reports['tb91-experiments-without-upper-limit'].rowData(extJson).include) {
-				badges.push({ badge: "probably_incompatible" });
-			}
-			if (wip[extJson.id]) {
-				badges.push({ link: wip[extJson.id], badge: "work_in_progress" });
-			}
-
-			return {
-				include: !!(getExtData(extJson, "91").version),
-				badges
-			};
+			let v78 = getExtData(extJson, "78").version;
+			let v68 = getExtData(extJson, "68").version;
+			return { include: !!v68 && !v78 };
 		}
 	},
-	"max-atn-value-raised-above-max-xpi-value": {
-		group: "atn",
-		header: "Extensions whose max version has been raised in ATN above the XPI value (excluding legacy extensions).",
+	// -- 68 ------------------------------------------------------------------- -------------------
+	"atn-tb68": {
+		group: "68",
+		header: "Extensions compatible with Thunderbird 68 as seen by ATN.",
 		template: "report-template.html",
 		enabled: true,
 		generate: genStandardReport,
 		rowData: function (extJson) {
-			let vCurrent = getExtData(extJson, "current").data;
-			if (!vCurrent)
-				return { include: false };
-
-			let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max || "*";
-			let strict_max = vCurrent.manifest?.applications?.gecko?.strict_max_version ||
-				vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
-				"*";
-
-			return { include: vCurrent.mext && !vCurrent.legacy && (compareVer(strict_max, atn_max) < 0) };
+			return { include: !!(getExtData(extJson, "68").version) };
+		}
+	},
+	"lost-tb60-to-tb68": {
+		group: "68",
+		header: "Extensions which have been lost from TB60 to TB68, as seen by ATN.",
+		template: "report-template.html",
+		enabled: true,
+		generate: genStandardReport,
+		rowData: function (extJson) {
+			let v68 = getExtData(extJson, "68").version;
+			let v60 = getExtData(extJson, "60").version;
+			return { include: !!v60 && !v68 };
 		}
 	},
 }
@@ -640,6 +660,7 @@ function genStandardReport(extsJson, name, report) {
 		  <td style="text-align: right" valign="top">${cv("68")}</td>
 		  <td style="text-align: right" valign="top">${cv("78")}</td>
 		  <td style="text-align: right" valign="top">${cv("91")}</td>
+		  <td style="text-align: right" valign="top">${cv("102")}</td>
 		  <td style="text-align: right" valign="top">${current_version?.atn.files[0].created.split('T')[0]}</td>
 		  <td style="text-align: right" valign="top">${cv("current")}</td>
 		  <td style="text-align: right" valign="top">${v_min}</td>
@@ -677,7 +698,7 @@ function genStandardReport(extsJson, name, report) {
 		stats_counts[stats[i].badge] = 1 + (stats_counts[stats[i].badge] || 0);
 	};
 
-	function sortStats(a,b) {
+	function sortStats(a, b) {
 		if (a[1] > b[1]) return -1;
 		if (a[1] < b[1]) return 1;
 		return 0;
@@ -723,7 +744,7 @@ function getBadgeElement(badgeName, bLink) {
 	// manipulate bRightText to reuse base bage
 	let badgeParts = badgeName.split(".");
 	let badgeOpt = badge_definitions[badgeName];
-	if (!badgeOpt && Array.isArray(badgeParts) &&  badge_definitions[badgeParts[0]]) {
+	if (!badgeOpt && Array.isArray(badgeParts) && badge_definitions[badgeParts[0]]) {
 		badgeOpt = badge_definitions[badgeParts[0]];
 		badgeOpt.bRightText = badgeParts.slice(1).join(".");
 	}
@@ -732,7 +753,7 @@ function getBadgeElement(badgeName, bLink) {
 
 function makeBadgeElement(bOpt, bLink) {
 	let title = bOpt.bTooltip ? `title='${bOpt.bTooltip}'` : ``;
-	
+
 	let tag = `<img src='https://img.shields.io/badge/${bOpt.bLeftText}-${bOpt.bRightText}-${bOpt.bColor}.png' ${title}>`
 	return bLink ? `<a href="${bLink}">${tag}</a>` : tag;
 }
