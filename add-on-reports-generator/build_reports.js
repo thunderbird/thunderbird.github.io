@@ -136,7 +136,18 @@ const knownToWork91 = `4631
  987989
  534258`.split("\n").map(e => e.trim());
 
-const knownToWork102 = [];
+const knownToWork102 = [
+	"986685", // Phoenity Icons
+	"4654", // Remove Dupes Eyal
+	"386321", // Lightning calendar tabs
+	"4970", //addon/tag-toolbar/
+	"56935", //identity-chooser/
+];
+
+const knownBroken102 = [
+	"708783", // Emoji - sidebar is not working
+	"330066", //addon/edit-email-subject/ - copies the message
+];
 
 var gAlternativeData;
 
