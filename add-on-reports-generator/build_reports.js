@@ -31,25 +31,25 @@ const wip = {
 }
 
 const knownWorking102 = [
-    "986685",  //addon/phoenity-icons/
-    "4654",    //addon/removedupes
-    "386321",  //addon/Lightning calendar tabs
-    "4970",    //addon/tag-toolbar/
-    "56935",   //addon/identity-chooser/
-    "12018",   //addon/quick-folder-move
-    "742199",  //addon/attach-from-clipboard/
-    "987908",  //addon/deepl-selected-text/
-    "987727",  //addon/monterail-full-dark-2/
-    "987995",  //addon/hide-local-folders-for-tb78/
-    "2874",    //addon/folder-account/
-    "11727",   //addon/refwdformatter/
-    "987726",  //addon/monterail-dark-2-0-for-tb-68/
-    "640",     //addon/quicktext
+    "986685", //addon/phoenity-icons/
+    "4654",   //addon/removedupes
+    "386321", //addon/Lightning calendar tabs
+    "4970",   //addon/tag-toolbar/
+    "56935",  //addon/identity-chooser/
+    "12018",  //addon/quick-folder-move
+    "742199", //addon/attach-from-clipboard/
+    "987908", //addon/deepl-selected-text/
+    "987727", //addon/monterail-full-dark-2/
+    "987995", //addon/hide-local-folders-for-tb78/
+    "2874",   //addon/folder-account/
+    "11727",  //addon/refwdformatter/
+    "987726", //addon/monterail-dark-2-0-for-tb-68/
+    "640",    //addon/quicktext
     "331666", //addon/quickarchiver/
     "360086", //addon/toggle-headers/
     "987914", //addon/filter-on-folder-button/
     "987865", //addon/previous-colors/
-    "10149", //addon/new-tab-button/
+    "10149",  //addon/new-tab-button/
     "988056", //addon/get-all-mail-button-for-tb78/
     "988098", //addon/thunderbird-todoist/
     "988057", //addon/keeprunning/
@@ -57,18 +57,30 @@ const knownWorking102 = [
     "987838", //addon/sender-domain/
     "986610", //addon/userchromejs-2/
     "987901", //addon/transfer-immunity/
+    "12802",  //addon/phoenity-buttons/
+    "987911", //addon/spam-scores/
+    "987757", //addon/taskviewstyles
+    "987868", //addon/next-unread-group/
+    "987863", //addon/eventview/
+    "987869", //addon/next-unread-thread/
+    "988106", //addon/toggle-address-box/ - Fixed probably soon
+    "987988", //addon/toggle-inline/
+    "987986", ///addon/select-prev-on-delete/
+    "987665", //addon/lefttodaysubpaneorlogoorclock/
+    "987945", //addon/treechildrenheight50/
+    "987989", //addon/toggle-summary/
+    "988086", //addon/confirmconversionsatselecting/
 ];
 
 const knownBroken102 = [
     "708783", //[ ] addon/emojiaddin/ - sidebar is not working
     "330066", //[ ] addon/edit-email-subject/ - copies the message
-    "12802",  //[ ] addon/phoenity-buttons/ - restart button is broken
     "1898",   //[ ] addon/folderflags/ - has Quota and Flags tab swapped
     "987978", //[x] addon/monterail-darkness-extended/ - uses old WL
     "988131", //[x] addon/largermessagelist/ - uses old WL
-    "219725", //[-] /addon/autoslide/ - broken
-
-
+    "219725", //[-] addon/autoslide/ - broken
+    "986572", //[ ] addon/flat-folder-tree-updated/ - broken, core does not seem to support add-on modes anymore -> API
+    "988119", //addon/hera-test-demo/ - Demo - will not be updated
 ];
 
 var gAlternativeData;
@@ -163,7 +175,17 @@ var reports = {
                 vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
                 "*";
 
-            return { include: vCurrent.mext && !vCurrent.legacy && (compareVer(strict_max, atn_max) < 0) };
+            let include = vCurrent.mext && !vCurrent.legacy && (compareVer(strict_max, atn_max) < 0);
+            let badges = [];
+            if (knownBroken102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "incompatible102" });
+            } else if (knownWorking102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "compatible102" });
+            } else {
+                badges.push({ badge: "unknown" });
+            }
+
+            return { include, badges };
         }
     },
     "requested-permissions": {
@@ -203,7 +225,7 @@ var reports = {
                 badges
             };
         },
-    },    
+    },
     // -- ATN error reports ------------------------------------------------------------------------
     "wrong-order": {
         group: "atn-errors",
@@ -251,7 +273,17 @@ var reports = {
                 vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
                 "*";
 
-            return { include: vCurrent.mext && !vCurrent.legacy && (compareVer(strict_max, atn_max) > 0) };
+            let include = vCurrent.mext && !vCurrent.legacy && (compareVer(strict_max, atn_max) > 0);
+            let badges = [];
+            if (knownBroken102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "incompatible102" });
+            } else if (knownWorking102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "compatible102" });
+            } else {
+                badges.push({ badge: "unknown" });
+            }
+
+            return { include, badges };
         }
     },
     "latest-current-mismatch": {
@@ -407,7 +439,7 @@ var reports = {
             }
             return { include, badges };
         }
-    },   
+    },
     // -- v78 --------------------------------------------------------------------------------------
     "atn-tb78": {
         group: "78",
