@@ -19,7 +19,7 @@ const extsAllJsonFileName = `${rootDir}/xall.json`;
 const badge_definitions = {
     "permission": { bLeftText: 'p', bColor: 'orange', bTooltip: "Requested permission" },
     "alternative_available": { bRightText: 'alternative available', bLeftText: '*', bColor: 'darkgreen' },
-    "work_in_progress": { bRightText: 'work in progress', bLeftText: 'TB102', bColor: 'yellow' },
+    "wip102": { bRightText: 'work in progress', bLeftText: 'TB102', bColor: 'yellow' },
     "incompatible91": { bRightText: 'incompatible', bLeftText: 'TB91', bColor: 'c90016' },
     "incompatible102": { bRightText: 'incompatible', bLeftText: 'TB102', bColor: 'c90016' },
     "compatible102": { bRightText: 'compatible', bLeftText: 'TB102', bColor: 'darkgreen' },
@@ -27,8 +27,9 @@ const badge_definitions = {
 
 }
 
-const wip = {
-}
+const wip102 = [
+    "217293", //addon/signal-spam/
+]
 
 const knownWorking102 = [
     "986685", //addon/phoenity-icons/
@@ -70,6 +71,12 @@ const knownWorking102 = [
     "987945", //addon/treechildrenheight50/
     "987989", //addon/toggle-summary/
     "988086", //addon/confirmconversionsatselecting/
+    "1279", //addon/xpunge/
+    "987844", ///addon/insertsignature/
+    "987821", //openattachmentbyextension/
+    "986522", //addon/popmaillistrecipients-2/
+    "546538", //addon/single-domain/
+    "987860", //addon/empty-folder/
 ];
 
 const knownBroken102 = [
@@ -181,6 +188,8 @@ var reports = {
                 badges.push({ badge: "incompatible102" });
             } else if (knownWorking102.includes(`${extJson.id}`)) {
                 badges.push({ badge: "compatible102" });
+            } else if (wip102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "wip102" });
             } else {
                 badges.push({ badge: "unknown" });
             }
@@ -334,13 +343,12 @@ var reports = {
         generate: genStandardReport,
         rowData: function (extJson) {
             let badges = [];
-            if (wip[extJson.id]) {
-                badges.push({ link: wip[extJson.id], badge: "work_in_progress" });
-            }
             if (knownBroken102.includes(`${extJson.id}`)) {
                 badges.push({ badge: "incompatible102" });
             } else if (knownWorking102.includes(`${extJson.id}`)) {
                 badges.push({ badge: "compatible102" });
+            } else if (wip102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "wip102" });
             } else {
                 badges.push({ badge: "unknown" });
             }
@@ -349,6 +357,43 @@ var reports = {
                 include: !!(getExtData(extJson, "102").version),
                 badges
             };
+        }
+    },
+    "valid-according-to-strict-max-but-atn-value-reduced": {
+        group: "102",
+        header: "Extensions whose strict_max_version allows installation in 102, but ATN value has been lowered (which is ignored during install and app upgrade).",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let vCurrent = getExtData(extJson, "current").data;
+            if (!vCurrent)
+                return { include: false };
+
+            let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max || "*";
+            let strict_max = vCurrent.manifest?.applications?.gecko?.strict_max_version ||
+                vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
+                "*";
+
+            let include = 
+                vCurrent.mext && // WebExtension
+                !vCurrent.legacy && // Not legacy
+                compareVer(strict_max, 102) > 0 && // strict max not below 102/* (add-ons with max xpi 97 do not install)
+                compareVer(strict_max, atn_max) > 0 && // atn lower than xpi (which is ignored)
+                compareVer(atn_max, 91) >= 0; // atn limit > 91 (if it is lowered below 91, it is already lost from 78 to 91)
+
+            let badges = [];
+            if (knownBroken102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "incompatible102" });
+            } else if (knownWorking102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "compatible102" });
+            } else if (wip102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "wip102" });
+            } else {
+                badges.push({ badge: "unknown" });
+            }
+
+            return { include, badges };
         }
     },
     "tb102-experiments-without-upper-limit": {
@@ -409,6 +454,8 @@ var reports = {
                     badges.push({ badge: "incompatible102" });
                 } else if (knownWorking102.includes(`${extJson.id}`)) {
                     badges.push({ badge: "compatible102" });
+                } else if (wip102.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "wip102" });
                 } else {
                     badges.push({ badge: "unknown" });
                 }
