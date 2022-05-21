@@ -375,6 +375,20 @@ var reports = {
             return { include, badges };
         }
     },
+    "tb102-experiments-with-102-0-limit": {
+        group: "102",
+        header: "Experiments who have an upper limit of 102.0.",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let v102 = getExtData(extJson, "102").data;
+            let atn_max = v102?.atn?.compatibility?.thunderbird?.max || "*";
+
+            let include = atn_max == "102.0";
+            return { include };
+        }
+    },    
     "lost-tb91-to-tb102": {
         group: "102",
         header: "Extensions which have been lost from TB91 to TB102 (as seen by ATN & including known incompatible)",
