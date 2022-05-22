@@ -138,6 +138,17 @@ var reports = {
             return { include: !!vHighest };
         },
     },
+    "purge-candidates": {
+        group: "all",
+        header: "All Extensions not compatible with TB78, which should be purged from ATN.",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let v78 = getExtData(extJson, "78").version;
+            return { include: !v78};
+        },
+    },
     "parsing-error": {
         group: "all",
         header: "Extensions whose XPI files could not be parsed properly and are excluded from analysis.",
