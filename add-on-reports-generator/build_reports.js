@@ -140,7 +140,7 @@ var reports = {
     },
     "purge-candidates": {
         group: "all",
-        header: "All Extensions not compatible with TB78, which should be purged from ATN.",
+        header: "All Extensions not compatible with TB68, which should be purged from ATN.",
         template: "report-template.html",
         enabled: true,
         generate: genStandardReport,
