@@ -29,6 +29,8 @@ const badge_definitions = {
 
 const wip102 = [
     "217293", //addon/signal-spam/
+    "986338", //addon/eas-4-tbsync
+    "986258", //addon/dav-4-tbsync 
 ]
 
 const knownWorking102 = [
@@ -85,9 +87,9 @@ const knownBroken102 = [
     "1898",   //[ ] addon/folderflags/ - has Quota and Flags tab swapped
     "987978", //[x] addon/monterail-darkness-extended/ - uses old WL
     "988131", //[x] addon/largermessagelist/ - uses old WL
-    "219725", //[-] addon/autoslide/ - broken
-    "986572", //[ ] addon/flat-folder-tree-updated/ - broken, core does not seem to support add-on modes anymore -> API
-    "988119", //addon/hera-test-demo/ - Demo - will not be updated
+    //"219725", //[-] addon/autoslide/ - broken
+    //"986572", //[ ] addon/flat-folder-tree-updated/ - broken, core does not seem to support add-on modes anymore -> API
+    //"988119", //addon/hera-test-demo/ - Demo - will not be updated
 ];
 
 var gAlternativeData;
@@ -288,6 +290,8 @@ var reports = {
                 badges.push({ badge: "incompatible102" });
             } else if (knownWorking102.includes(`${extJson.id}`)) {
                 badges.push({ badge: "compatible102" });
+            } else if (wip102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "wip102" });
             } else {
                 badges.push({ badge: "unknown" });
             }
@@ -361,7 +365,7 @@ var reports = {
     },
     "valid-according-to-strict-max-but-atn-value-reduced": {
         group: "102",
-        header: "Extensions whose strict_max_version allows installation in 102, but ATN value has been lowered (which is ignored during install and app upgrade).",
+        header: "Extensions whose strict_max_version allows installation in Thunderbird 102, but ATN value has been lowered (which is ignored during install and app upgrade).",
         template: "report-template.html",
         enabled: true,
         generate: genStandardReport,
@@ -380,7 +384,8 @@ var reports = {
                 !vCurrent.legacy && // Not legacy
                 compareVer(strict_max, 102) > 0 && // strict max not below 102/* (add-ons with max xpi 97 do not install)
                 compareVer(strict_max, atn_max) > 0 && // atn lower than xpi (which is ignored)
-                compareVer(atn_max, 91) >= 0; // atn limit > 91 (if it is lowered below 91, it is already lost from 78 to 91)
+                compareVer(atn_max, 91) >= 0 && // atn limit > 91 (if it is lowered below 91, it is already lost from 78 to 91)
+                compareVer(atn_max, "102.*") < 0; // atn limit < 102.*
 
             let badges = [];
             if (knownBroken102.includes(`${extJson.id}`)) {
@@ -391,30 +396,6 @@ var reports = {
                 badges.push({ badge: "wip102" });
             } else {
                 badges.push({ badge: "unknown" });
-            }
-
-            return { include, badges };
-        }
-    },
-    "tb102-experiments-without-upper-limit": {
-        group: "102",
-        header: "Experiments without upper limit in ATN, which might not be compatible with TB102.",
-        template: "report-template.html",
-        enabled: true,
-        generate: genStandardReport,
-        rowData: function (extJson) {
-            let v102 = getExtData(extJson, "102").data;
-            let atn_max = v102?.atn?.compatibility?.thunderbird?.max || "*";
-            let atn_min = v102?.atn?.compatibility?.thunderbird?.min || "*";
-
-            let include = !knownWorking102.includes(`${extJson.id}`) && !!v102 && v102.mext && v102.experiment && compareVer("101", atn_min) > 0 && (atn_max == "*" || atn_max == "102.1");
-            let badges = [];
-            if (include) {
-                if (knownBroken102.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "incompatible102" });
-                } else {
-                    badges.push({ badge: "unknown" });
-                }
             }
 
             return { include, badges };
@@ -434,16 +415,42 @@ var reports = {
             return { include };
         }
     },    
+    "tb102-incompatible": {
+        group: "102",
+        header: "Experiments known to be incompatible with TB102 .",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let include = knownBroken102.includes(`${extJson.id}`) || wip102.includes(`${extJson.id}`);
+            
+            let badges = [];            
+            if (getAlternative(extJson)) {
+                badges.push({ badge: "alternative_available" });
+            }
+            if (knownBroken102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "incompatible102" });
+            } else if (knownWorking102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "compatible102" });
+            } else if (wip102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "wip102" });
+            } else {
+                badges.push({ badge: "unknown" });
+            }
+
+            return { include, badges };
+        }
+    },
     "lost-tb91-to-tb102": {
         group: "102",
-        header: "Extensions which have been lost from TB91 to TB102 (as seen by ATN & including known incompatible)",
+        header: "Extensions which have been lost from TB91 to TB102 as seen by ATN",
         template: "report-template.html",
         enabled: true,
         generate: genStandardReport,
         rowData: function (extJson) {
             let v102 = getExtData(extJson, "102").version;
             let v91 = getExtData(extJson, "91").version;
-            let include = knownBroken102.includes(`${extJson.id}`) || (!!v91 && !v102);
+            let include = !!v91 && !v102;
 
             let badges = [];
             if (include) {
