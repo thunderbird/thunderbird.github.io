@@ -145,10 +145,11 @@ var reports = {
         enabled: true,
         generate: genStandardReport,
         rowData: function (extJson) {
+            let v68 = getExtData(extJson, "68").version;
             let v78 = getExtData(extJson, "78").version;
             let v91 = getExtData(extJson, "91").version;
             let v102 = getExtData(extJson, "102").version;
-            return { include: !v78 && !v91 && !v102};
+            return { include: !v68 && !v78 && !v91 && !v102};
         },
     },
     "parsing-error": {
