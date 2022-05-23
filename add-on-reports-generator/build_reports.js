@@ -282,6 +282,30 @@ var reports = {
             return { include: false };
         },
     },
+    "experiments-without-upper-limit": {
+        group: "atn-errors",
+        header: "Experiments without upper limit in ATN.",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let vCurrent = getExtData(extJson, "current").data;
+            let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max || "*";
+            let atn_min = vCurrent?.atn?.compatibility?.thunderbird?.min || "*";
+            let include = !!vCurrent && vCurrent.mext && vCurrent.experiment && atn_max == "*";
+            let badges = [];
+            if (knownBroken102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "incompatible102" });
+            } else if (knownWorking102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "compatible102" });
+            } else if (wip102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "wip102" });
+            } else {
+                badges.push({ badge: "unknown" });
+            }
+            return { include, badges };
+        }
+    },    
     "max-atn-value-reduced-below-max-xpi-value": {
         group: "atn-errors",
         header: "Extensions whose max version has been reduced in ATN below the XPI value, which is ignored during install and app upgrade (excluding legacy).",
