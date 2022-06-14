@@ -24,16 +24,24 @@ const badge_definitions = {
     "incompatible102": { bRightText: 'incompatible', bLeftText: 'TB102', bColor: 'c90016' },
     "compatible102": { bRightText: 'compatible', bLeftText: 'TB102', bColor: 'darkgreen' },
     "unknown": { bRightText: 'unknown', bLeftText: 'TB102', bColor: 'D3D3D3' },
-
+    "discontinued": { bRightText: 'discontinued', bLeftText: 'TB102', bColor: 'D3D3D3' },
 }
 
+const discontinued = [
+    "219725", //addon/autoslide/
+    "986572", //addon/flat-folder-tree-updated/ - broken, core does not seem to support add-on modes anymore -> API
+    "987978", //addon/monterail-darkness-extended/ - uses old WL and bad colors in TB91 already
+]
+
 const wip102 = [
-    "217293", //addon/signal-spam/
     "986338", //addon/eas-4-tbsync
-    "986258", //addon/dav-4-tbsync 
+    "986258", //addon/dav-4-tbsync
+    "988131", //addon/largermessagelist/ - uses old WL - PR https://github.com/rajprins/largermessagelist/pull/1
+    "47144",  //addon/mail-merge/
 ]
 
 const knownWorking102 = [
+    "217293", //addon/signal-spam/
     "986685", //addon/phoenity-icons/
     "4654",   //addon/removedupes
     "386321", //addon/Lightning calendar tabs
@@ -79,16 +87,13 @@ const knownWorking102 = [
     "986522", //addon/popmaillistrecipients-2/
     "546538", //addon/single-domain/
     "987860", //addon/empty-folder/
+    "987892", //addon/quotecolors/
+    "330066", //addon/edit-email-subject/
 ];
 
 const knownBroken102 = [
     "708783", //[ ] addon/emojiaddin/ - sidebar is not working
-    "330066", //[ ] addon/edit-email-subject/ - copies the message
     "1898",   //[ ] addon/folderflags/ - has Quota and Flags tab swapped
-    "987978", //[x] addon/monterail-darkness-extended/ - uses old WL
-    "988131", //[x] addon/largermessagelist/ - uses old WL
-    //"219725", //[-] addon/autoslide/ - broken
-    //"986572", //[ ] addon/flat-folder-tree-updated/ - broken, core does not seem to support add-on modes anymore -> API
     //"988119", //addon/hera-test-demo/ - Demo - will not be updated
 ];
 
@@ -206,6 +211,8 @@ var reports = {
                 badges.push({ badge: "compatible102" });
             } else if (wip102.includes(`${extJson.id}`)) {
                 badges.push({ badge: "wip102" });
+            } else if (discontinued.includes(`${extJson.id}`)) {
+                badges.push({ badge: "discontinued" });
             } else {
                 badges.push({ badge: "unknown" });
             }
@@ -300,6 +307,8 @@ var reports = {
                 badges.push({ badge: "compatible102" });
             } else if (wip102.includes(`${extJson.id}`)) {
                 badges.push({ badge: "wip102" });
+            } else if (discontinued.includes(`${extJson.id}`)) {
+                badges.push({ badge: "discontinued" });
             } else {
                 badges.push({ badge: "unknown" });
             }
@@ -330,6 +339,8 @@ var reports = {
                 badges.push({ badge: "compatible102" });
             } else if (wip102.includes(`${extJson.id}`)) {
                 badges.push({ badge: "wip102" });
+            } else if (discontinued.includes(`${extJson.id}`)) {
+                badges.push({ badge: "discontinued" });
             } else {
                 badges.push({ badge: "unknown" });
             }
@@ -391,6 +402,8 @@ var reports = {
                 badges.push({ badge: "compatible102" });
             } else if (wip102.includes(`${extJson.id}`)) {
                 badges.push({ badge: "wip102" });
+            } else if (discontinued.includes(`${extJson.id}`)) {
+                badges.push({ badge: "discontinued" });
             } else {
                 badges.push({ badge: "unknown" });
             }
@@ -432,6 +445,8 @@ var reports = {
                 badges.push({ badge: "compatible102" });
             } else if (wip102.includes(`${extJson.id}`)) {
                 badges.push({ badge: "wip102" });
+            } else if (discontinued.includes(`${extJson.id}`)) {
+                badges.push({ badge: "discontinued" });
             } else {
                 badges.push({ badge: "unknown" });
             }
@@ -472,6 +487,8 @@ var reports = {
                 badges.push({ badge: "compatible102" });
             } else if (wip102.includes(`${extJson.id}`)) {
                 badges.push({ badge: "wip102" });
+            } else if (discontinued.includes(`${extJson.id}`)) {
+                badges.push({ badge: "discontinued" });
             } else {
                 badges.push({ badge: "unknown" });
             }
@@ -501,6 +518,8 @@ var reports = {
                     badges.push({ badge: "compatible102" });
                 } else if (wip102.includes(`${extJson.id}`)) {
                     badges.push({ badge: "wip102" });
+                } else if (discontinued.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "discontinued" });
                 } else {
                     badges.push({ badge: "unknown" });
                 }
