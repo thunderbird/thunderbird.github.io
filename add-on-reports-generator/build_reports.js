@@ -31,6 +31,7 @@ const discontinued = [
     "219725", //addon/autoslide/
     "986572", //addon/flat-folder-tree-updated/ - broken, core does not seem to support add-on modes anymore -> API
     "987978", //addon/monterail-darkness-extended/ - uses old WL and bad colors in TB91 already
+    "987660", //addon/taskviewflexlayout/
 ]
 
 const wip102 = [
@@ -38,6 +39,8 @@ const wip102 = [
     "986258", //addon/dav-4-tbsync
     "988131", //addon/largermessagelist/ - uses old WL - PR https://github.com/rajprins/largermessagelist/pull/1
     "47144",  //addon/mail-merge/
+    "1898",   //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
+    "708783", //addon/emojiaddin/ - PR https://github.com/mganss/EmojiAddIn/pull/53
 ]
 
 const knownWorking102 = [
@@ -92,8 +95,6 @@ const knownWorking102 = [
 ];
 
 const knownBroken102 = [
-    "708783", //[ ] addon/emojiaddin/ - sidebar is not working
-    "1898",   //[ ] addon/folderflags/ - has Quota and Flags tab swapped
     //"988119", //addon/hera-test-demo/ - Demo - will not be updated
 ];
 
