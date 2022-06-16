@@ -37,7 +37,7 @@ const discontinued = [
 const wip102 = [
     "986338", //addon/eas-4-tbsync
     "986258", //addon/dav-4-tbsync
-    "988131", //addon/largermessagelist/ - uses old WL - PR https://github.com/rajprins/largermessagelist/pull/1
+    //"988131", //addon/largermessagelist/ - uses old WL - PR https://github.com/rajprins/largermessagelist/pull/1
     "47144",  //addon/mail-merge/
     "1898",   //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
     "708783", //addon/emojiaddin/ - PR https://github.com/mganss/EmojiAddIn/pull/53
