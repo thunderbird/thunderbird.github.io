@@ -38,32 +38,32 @@ const wip102 = [
     "986338", //addon/eas-4-tbsync
     "986258", //addon/dav-4-tbsync
     //"988131", //addon/largermessagelist/ - uses old WL - PR https://github.com/rajprins/largermessagelist/pull/1
-    "47144",  //addon/mail-merge/
-    "1898",   //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
+    "47144" , //addon/mail-merge/
+    "1898"  , //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
     "708783", //addon/emojiaddin/ - PR https://github.com/mganss/EmojiAddIn/pull/53
 ]
 
 const knownWorking102 = [
     "217293", //addon/signal-spam/
     "986685", //addon/phoenity-icons/
-    "4654",   //addon/removedupes
+    "4654"  , //addon/removedupes
     "386321", //addon/Lightning calendar tabs
-    "4970",   //addon/tag-toolbar/
-    "56935",  //addon/identity-chooser/
-    "12018",  //addon/quick-folder-move
+    "4970"  , //addon/tag-toolbar/
+    "56935" , //addon/identity-chooser/
+    "12018" , //addon/quick-folder-move
     "742199", //addon/attach-from-clipboard/
     "987908", //addon/deepl-selected-text/
     "987727", //addon/monterail-full-dark-2/
     "987995", //addon/hide-local-folders-for-tb78/
-    "2874",   //addon/folder-account/
-    "11727",  //addon/refwdformatter/
+    "2874"  , //addon/folder-account/
+    "11727" , //addon/refwdformatter/
     "987726", //addon/monterail-dark-2-0-for-tb-68/
-    "640",    //addon/quicktext
+    "640"   , //addon/quicktext
     "331666", //addon/quickarchiver/
     "360086", //addon/toggle-headers/
     "987914", //addon/filter-on-folder-button/
     "987865", //addon/previous-colors/
-    "10149",  //addon/new-tab-button/
+    "10149" , //addon/new-tab-button/
     "988056", //addon/get-all-mail-button-for-tb78/
     "988098", //addon/thunderbird-todoist/
     "988057", //addon/keeprunning/
@@ -71,7 +71,7 @@ const knownWorking102 = [
     "987838", //addon/sender-domain/
     "986610", //addon/userchromejs-2/
     "987901", //addon/transfer-immunity/
-    "12802",  //addon/phoenity-buttons/
+    "12802" , //addon/phoenity-buttons/
     "987911", //addon/spam-scores/
     "987757", //addon/taskviewstyles
     "987868", //addon/next-unread-group/
@@ -84,7 +84,7 @@ const knownWorking102 = [
     "987945", //addon/treechildrenheight50/
     "987989", //addon/toggle-summary/
     "988086", //addon/confirmconversionsatselecting/
-    "1279", //addon/xpunge/
+    "1279"  , //addon/xpunge/
     "987844", ///addon/insertsignature/
     "987821", //openattachmentbyextension/
     "986522", //addon/popmaillistrecipients-2/
@@ -92,10 +92,20 @@ const knownWorking102 = [
     "987860", //addon/empty-folder/
     "987892", //addon/quotecolors/
     "330066", //addon/edit-email-subject/
+
+    "988138", //addon/grammar-and-spell-checker/
+    "987934", //addon/simple-mail-redirection/
+    "11646" , //addon/no-message-pane-sort-by-mouse/
+    "988096", //addon/attachment-extractor/
+    "2561"  , //addon/copy-sent-to-current/
+    "987779", //addon/browseintab/
+    "3492"  , //addon/show-inout/
+
 ];
 
 const knownBroken102 = [
     //"988119", //addon/hera-test-demo/ - Demo - will not be updated
+    "116388", //addon/automatic-dictionary-switching/ - content_frame id and multiple spell
 ];
 
 var gAlternativeData;
@@ -466,7 +476,21 @@ var reports = {
             let atn_max = v102?.atn?.compatibility?.thunderbird?.max || "*";
 
             let include = atn_max == "102.0";
-            return { include };
+
+            let badges = [];
+            if (knownBroken102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "incompatible102" });
+            } else if (knownWorking102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "compatible102" });
+            } else if (wip102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "wip102" });
+            } else if (discontinued.includes(`${extJson.id}`)) {
+                badges.push({ badge: "discontinued" });
+            } else {
+                badges.push({ badge: "unknown" });
+            }
+
+            return { include, badges };
         }
     },    
     "tb102-incompatible": {
