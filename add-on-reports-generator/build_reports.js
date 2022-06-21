@@ -32,38 +32,47 @@ const discontinued = [
     "986572", //addon/flat-folder-tree-updated/ - broken, core does not seem to support add-on modes anymore -> API
     "987978", //addon/monterail-darkness-extended/ - uses old WL and bad colors in TB91 already
     "987660", //addon/taskviewflexlayout/
+    "988119", //addon/hera-test-demo/ - Demo - will not be updated
 ]
 
 const wip102 = [
     "986338", //addon/eas-4-tbsync
     "986258", //addon/dav-4-tbsync
-    //"988131", //addon/largermessagelist/ - uses old WL - PR https://github.com/rajprins/largermessagelist/pull/1
-    "47144" , //addon/mail-merge/
-    "1898"  , //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
+    "47144",  //addon/mail-merge/
+    "1898",   //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
     "708783", //addon/emojiaddin/ - PR https://github.com/mganss/EmojiAddIn/pull/53
+]
+
+const todo = [
+    "195275", //addon/send-later-3/
+    "2533",   //addon/addressbooks-synchronizer/
+    "676875", //addon/rspamd-spamness/
+    "988281", //addon/regimail/
+    "988108", //addon/openpgp-alias-updater/
+    "987844", //addon/insertsignature/
 ]
 
 const knownWorking102 = [
     "217293", //addon/signal-spam/
     "986685", //addon/phoenity-icons/
-    "4654"  , //addon/removedupes
+    "4654",   //addon/removedupes
     "386321", //addon/Lightning calendar tabs
-    "4970"  , //addon/tag-toolbar/
-    "56935" , //addon/identity-chooser/
-    "12018" , //addon/quick-folder-move
+    "4970",   //addon/tag-toolbar/
+    "56935",  //addon/identity-chooser/
+    "12018",  //addon/quick-folder-move
     "742199", //addon/attach-from-clipboard/
     "987908", //addon/deepl-selected-text/
     "987727", //addon/monterail-full-dark-2/
     "987995", //addon/hide-local-folders-for-tb78/
-    "2874"  , //addon/folder-account/
-    "11727" , //addon/refwdformatter/
+    "2874",   //addon/folder-account/
+    "11727",  //addon/refwdformatter/
     "987726", //addon/monterail-dark-2-0-for-tb-68/
-    "640"   , //addon/quicktext
+    "640",    //addon/quicktext
     "331666", //addon/quickarchiver/
     "360086", //addon/toggle-headers/
     "987914", //addon/filter-on-folder-button/
     "987865", //addon/previous-colors/
-    "10149" , //addon/new-tab-button/
+    "10149",  //addon/new-tab-button/
     "988056", //addon/get-all-mail-button-for-tb78/
     "988098", //addon/thunderbird-todoist/
     "988057", //addon/keeprunning/
@@ -71,7 +80,7 @@ const knownWorking102 = [
     "987838", //addon/sender-domain/
     "986610", //addon/userchromejs-2/
     "987901", //addon/transfer-immunity/
-    "12802" , //addon/phoenity-buttons/
+    "12802",  //addon/phoenity-buttons/
     "987911", //addon/spam-scores/
     "987757", //addon/taskviewstyles
     "987868", //addon/next-unread-group/
@@ -79,13 +88,12 @@ const knownWorking102 = [
     "987869", //addon/next-unread-thread/
     "988106", //addon/toggle-address-box/ - Fixed probably soon
     "987988", //addon/toggle-inline/
-    "987986", ///addon/select-prev-on-delete/
+    "987986", //addon/select-prev-on-delete/
     "987665", //addon/lefttodaysubpaneorlogoorclock/
     "987945", //addon/treechildrenheight50/
     "987989", //addon/toggle-summary/
     "988086", //addon/confirmconversionsatselecting/
-    "1279"  , //addon/xpunge/
-    "987844", ///addon/insertsignature/
+    "1279",   //addon/xpunge/
     "987821", //openattachmentbyextension/
     "986522", //addon/popmaillistrecipients-2/
     "546538", //addon/single-domain/
@@ -93,19 +101,46 @@ const knownWorking102 = [
     "987892", //addon/quotecolors/
     "330066", //addon/edit-email-subject/
 
+    "711456", //addon/textra-thunderbird/
+    "704523", //addon/europeanmx/
+    "988024", //addon/open-in-browser
+    "988038", //addon/archive-old-messages/
+
+    "1556",   //addon/allow-html-temp/
+    "902",    //addon/getsendbutton/
+    "987885", //addon/tbkeys-lite/
+    "986692", //addon/profile-switcher/
+    "987775", //addon/search-button/
+    "987764", //addon/header-tools-improved/
+
     "988138", //addon/grammar-and-spell-checker/
     "987934", //addon/simple-mail-redirection/
-    "11646" , //addon/no-message-pane-sort-by-mouse/
+    "11646",  //addon/no-message-pane-sort-by-mouse/
     "988096", //addon/attachment-extractor/
-    "2561"  , //addon/copy-sent-to-current/
+    "2561",   //addon/copy-sent-to-current/
     "987779", //addon/browseintab/
-    "3492"  , //addon/show-inout/
-
+    "3492",   //addon/show-inout/
+    "987933", //addon/toggle-line-wrap/
+    "987796", //addon/messagepreview/
+    "987979", //addon/attachmentcount/
+    "988195", //addon/filter-manager/
+    "987902", //addon/deselect-on-delete-tb78/
+    "987987", //addon/toggle-html/
+    "987857", //addon/preferences-button/
+    "987786", //addon/devtools-button/
+    "988173", //addon/thunderkey/
+    "534258", //addon/received/
+    "987664", //addon/copy-patch/
+    "988293", //addon/joplin-export/
+    "987976", //addon/findtasksbutton/
+    "988260", //addon/x-original-to-column/
+    "988196", //addon/message-filters-button-u/
+    "988234", //addon/tbhints/
+    "161820", //addon/alertswitch/
 ];
 
 const knownBroken102 = [
-    //"988119", //addon/hera-test-demo/ - Demo - will not be updated
-    "116388", //addon/automatic-dictionary-switching/ - content_frame id and multiple spell
+    "116388",  //addon/automatic-dictionary-switching/ - content_frame id and multiple spell
 ];
 
 var gAlternativeData;
@@ -165,7 +200,7 @@ var reports = {
             let v78 = getExtData(extJson, "78").version;
             let v91 = getExtData(extJson, "91").version;
             let v102 = getExtData(extJson, "102").version;
-            return { include: !v68 && !v78 && !v91 && !v102};
+            return { include: !v68 && !v78 && !v91 && !v102 };
         },
     },
     "parsing-error": {
@@ -224,7 +259,7 @@ var reports = {
                 badges.push({ badge: "wip102" });
             } else if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
-            } else {
+            } else if (todo.includes(`${extJson.id}`)) {
                 badges.push({ badge: "unknown" });
             }
 
@@ -320,12 +355,12 @@ var reports = {
                 badges.push({ badge: "wip102" });
             } else if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
-            } else {
+            } else if (todo.includes(`${extJson.id}`)) {
                 badges.push({ badge: "unknown" });
             }
             return { include, badges };
         }
-    },    
+    },
     "max-atn-value-reduced-below-max-xpi-value": {
         group: "atn-errors",
         header: "Extensions whose max version has been reduced in ATN below the XPI value, which is ignored during install and app upgrade (excluding legacy).",
@@ -352,7 +387,7 @@ var reports = {
                 badges.push({ badge: "wip102" });
             } else if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
-            } else {
+            } else if (todo.includes(`${extJson.id}`)) {
                 badges.push({ badge: "unknown" });
             }
 
@@ -415,7 +450,7 @@ var reports = {
                 badges.push({ badge: "wip102" });
             } else if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
-            } else {
+            } else if (todo.includes(`${extJson.id}`)) {
                 badges.push({ badge: "unknown" });
             }
 
@@ -441,7 +476,7 @@ var reports = {
                 vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
                 "*";
 
-            let include = 
+            let include =
                 vCurrent.mext && // WebExtension
                 !vCurrent.legacy && // Not legacy
                 compareVer(strict_max, 102) > 0 && // strict max not below 102/* (add-ons with max xpi 97 do not install)
@@ -458,7 +493,7 @@ var reports = {
                 badges.push({ badge: "wip102" });
             } else if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
-            } else {
+            } else if (todo.includes(`${extJson.id}`)) {
                 badges.push({ badge: "unknown" });
             }
 
@@ -486,35 +521,7 @@ var reports = {
                 badges.push({ badge: "wip102" });
             } else if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
-            } else {
-                badges.push({ badge: "unknown" });
-            }
-
-            return { include, badges };
-        }
-    },    
-    "tb102-incompatible": {
-        group: "102",
-        header: "Experiments known to be incompatible with TB102 .",
-        template: "report-template.html",
-        enabled: true,
-        generate: genStandardReport,
-        rowData: function (extJson) {
-            let include = knownBroken102.includes(`${extJson.id}`) || wip102.includes(`${extJson.id}`);
-            
-            let badges = [];            
-            if (getAlternative(extJson)) {
-                badges.push({ badge: "alternative_available" });
-            }
-            if (knownBroken102.includes(`${extJson.id}`)) {
-                badges.push({ badge: "incompatible102" });
-            } else if (knownWorking102.includes(`${extJson.id}`)) {
-                badges.push({ badge: "compatible102" });
-            } else if (wip102.includes(`${extJson.id}`)) {
-                badges.push({ badge: "wip102" });
-            } else if (discontinued.includes(`${extJson.id}`)) {
-                badges.push({ badge: "discontinued" });
-            } else {
+            } else if (todo.includes(`${extJson.id}`)) {
                 badges.push({ badge: "unknown" });
             }
 
@@ -545,10 +552,43 @@ var reports = {
                     badges.push({ badge: "wip102" });
                 } else if (discontinued.includes(`${extJson.id}`)) {
                     badges.push({ badge: "discontinued" });
-                } else {
+                } else if (todo.includes(`${extJson.id}`)) {
                     badges.push({ badge: "unknown" });
                 }
             }
+            return { include, badges };
+        }
+    },
+    "tb102-incompatible": {
+        group: "102",
+        header: "Add-ons incompatible with Thunderbird 102: A worst case scenario",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let v102 = getExtData(extJson, "102").version;
+            let v91 = getExtData(extJson, "91").version;
+            let include = (!!v91 && !v102)
+                || knownBroken102.includes(`${extJson.id}`)
+                || wip102.includes(`${extJson.id}`)
+                || todo.includes(`${extJson.id}`);
+
+            let badges = [];
+            if (getAlternative(extJson)) {
+                badges.push({ badge: "alternative_available" });
+            }
+            if (knownBroken102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "incompatible102" });
+            } else if (knownWorking102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "compatible102" });
+            } else if (wip102.includes(`${extJson.id}`)) {
+                badges.push({ badge: "wip102" });
+            } else if (discontinued.includes(`${extJson.id}`)) {
+                badges.push({ badge: "discontinued" });
+            } else if (todo.includes(`${extJson.id}`)) {
+                badges.push({ badge: "unknown" });
+            }
+
             return { include, badges };
         }
     },
