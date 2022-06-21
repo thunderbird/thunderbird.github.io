@@ -47,6 +47,8 @@ const wip102 = [
     "987840", //addon/printingtools-ng/
     "46207",  //addon/mailmindr/
     "986686", //addon/importexporttools-ng/
+    "10052",  //addon/filtaquilla/
+    "472193", //addon/categorymanager/
 ]
 
 const contacted = [
@@ -145,6 +147,7 @@ const knownWorking102 = [
     "676875", //addon/rspamd-spamness/
     "47144",  //addon/mail-merge/
     "988108", //addon/openpgp-alias-updater/
+    "988289", //addon/keepassxc-mail/
 ];
 
 const knownBroken102 = [
