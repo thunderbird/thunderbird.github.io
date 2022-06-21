@@ -25,7 +25,8 @@ const badge_definitions = {
     "compatible102": { bRightText: 'compatible', bLeftText: 'TB102', bColor: 'darkgreen' },
     "contacted": { bRightText: 'unknown', bLeftText: 'TB102', bColor: 'D3D3D3' },
     "discontinued": { bRightText: 'discontinued', bLeftText: 'TB102', bColor: 'D3D3D3' },
-    "contacted": { bRightText: 'contacted', bLeftText: 'TB102', bColor: 'FF8800' },
+    "contacted": { bRightText: 'need feedback', bLeftText: 'TB102', bColor: 'FF8800' },
+    "pure": { bRightText: 'pure WebExtension', bLeftText: 'TB102', bColor: '570861' },
 
 }
 
@@ -448,6 +449,9 @@ var reports = {
         enabled: true,
         generate: genStandardReport,
         rowData: function (extJson) {
+            let vCurrent = getExtData(extJson, "current").data;
+            let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max;
+
             let badges = [];
             if (knownBroken102.includes(`${extJson.id}`)) {
                 badges.push({ badge: "incompatible102" });
@@ -459,6 +463,13 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             } else if (contacted.includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted" });
+            } else if (!!vCurrent && vCurrent.mext && !vCurrent.experiment) {
+                badges.push({ badge: "pure" });
+            } else if (atn_max && (
+                atn_max == "102.*" ||
+                parseInt(atn_max.split(".")[0], 10) > 102
+            )) {
+                badges.push({ badge: "compatible102" });
             }
 
             return {
@@ -575,10 +586,12 @@ var reports = {
         rowData: function (extJson) {
             let v102 = getExtData(extJson, "102").version;
             let v91 = getExtData(extJson, "91").version;
-            let include = (!!v91 && !v102)
-                || knownBroken102.includes(`${extJson.id}`)
-                || wip102.includes(`${extJson.id}`)
-                || contacted.includes(`${extJson.id}`);
+            let include = !knownWorking102.includes(`${extJson.id}`) && (
+                (!!v91 && !v102) ||
+                knownBroken102.includes(`${extJson.id}`) ||
+                wip102.includes(`${extJson.id}`) ||
+                contacted.includes(`${extJson.id}`)
+            );
 
             let badges = [];
             if (getAlternative(extJson)) {
