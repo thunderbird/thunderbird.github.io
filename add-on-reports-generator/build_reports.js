@@ -23,9 +23,12 @@ const badge_definitions = {
     "incompatible91": { bRightText: 'incompatible', bLeftText: 'TB91', bColor: 'c90016' },
     "incompatible102": { bRightText: 'incompatible', bLeftText: 'TB102', bColor: 'c90016' },
     "compatible102": { bRightText: 'compatible', bLeftText: 'TB102', bColor: 'darkgreen' },
-    "unknown": { bRightText: 'unknown', bLeftText: 'TB102', bColor: 'D3D3D3' },
+    "contacted": { bRightText: 'unknown', bLeftText: 'TB102', bColor: 'D3D3D3' },
     "discontinued": { bRightText: 'discontinued', bLeftText: 'TB102', bColor: 'D3D3D3' },
+    "contacted": { bRightText: 'contacted', bLeftText: 'TB102', bColor: 'FF8800' },
+
 }
+
 
 const discontinued = [
     "219725", //addon/autoslide/
@@ -38,18 +41,17 @@ const discontinued = [
 const wip102 = [
     "986338", //addon/eas-4-tbsync
     "986258", //addon/dav-4-tbsync
-    "47144",  //addon/mail-merge/
-    "1898",   //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
+    "773590", //addon/tbsync/
     "708783", //addon/emojiaddin/ - PR https://github.com/mganss/EmojiAddIn/pull/53
+    "987840", //addon/printingtools-ng/
+    "46207",  //addon/mailmindr/
+    "986686", //addon/importexporttools-ng/
 ]
 
-const todo = [
-    "195275", //addon/send-later-3/
-    "2533",   //addon/addressbooks-synchronizer/
-    "676875", //addon/rspamd-spamness/
+const contacted = [
     "988281", //addon/regimail/
-    "988108", //addon/openpgp-alias-updater/
-    "987844", //addon/insertsignature/
+    "1898",   //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
+    "195275", //addon/send-later-3/
 ]
 
 const knownWorking102 = [
@@ -137,6 +139,11 @@ const knownWorking102 = [
     "988196", //addon/message-filters-button-u/
     "988234", //addon/tbhints/
     "161820", //addon/alertswitch/
+    "987844", //addon/insertsignature/
+    "2533",   //addon/addressbooks-synchronizer/
+    "676875", //addon/rspamd-spamness/
+    "47144",  //addon/mail-merge/
+    "988108", //addon/openpgp-alias-updater/
 ];
 
 const knownBroken102 = [
@@ -259,8 +266,8 @@ var reports = {
                 badges.push({ badge: "wip102" });
             } else if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
-            } else if (todo.includes(`${extJson.id}`)) {
-                badges.push({ badge: "unknown" });
+            } else if (contacted.includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted" });
             }
 
             return { include, badges };
@@ -355,8 +362,8 @@ var reports = {
                 badges.push({ badge: "wip102" });
             } else if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
-            } else if (todo.includes(`${extJson.id}`)) {
-                badges.push({ badge: "unknown" });
+            } else if (contacted.includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted" });
             }
             return { include, badges };
         }
@@ -387,8 +394,8 @@ var reports = {
                 badges.push({ badge: "wip102" });
             } else if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
-            } else if (todo.includes(`${extJson.id}`)) {
-                badges.push({ badge: "unknown" });
+            } else if (contacted.includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted" });
             }
 
             return { include, badges };
@@ -450,8 +457,8 @@ var reports = {
                 badges.push({ badge: "wip102" });
             } else if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
-            } else if (todo.includes(`${extJson.id}`)) {
-                badges.push({ badge: "unknown" });
+            } else if (contacted.includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted" });
             }
 
             return {
@@ -493,8 +500,8 @@ var reports = {
                 badges.push({ badge: "wip102" });
             } else if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
-            } else if (todo.includes(`${extJson.id}`)) {
-                badges.push({ badge: "unknown" });
+            } else if (contacted.includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted" });
             }
 
             return { include, badges };
@@ -521,8 +528,8 @@ var reports = {
                 badges.push({ badge: "wip102" });
             } else if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
-            } else if (todo.includes(`${extJson.id}`)) {
-                badges.push({ badge: "unknown" });
+            } else if (contacted.includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted" });
             }
 
             return { include, badges };
@@ -552,8 +559,8 @@ var reports = {
                     badges.push({ badge: "wip102" });
                 } else if (discontinued.includes(`${extJson.id}`)) {
                     badges.push({ badge: "discontinued" });
-                } else if (todo.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "unknown" });
+                } else if (contacted.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "contacted" });
                 }
             }
             return { include, badges };
@@ -571,7 +578,7 @@ var reports = {
             let include = (!!v91 && !v102)
                 || knownBroken102.includes(`${extJson.id}`)
                 || wip102.includes(`${extJson.id}`)
-                || todo.includes(`${extJson.id}`);
+                || contacted.includes(`${extJson.id}`);
 
             let badges = [];
             if (getAlternative(extJson)) {
@@ -585,8 +592,8 @@ var reports = {
                 badges.push({ badge: "wip102" });
             } else if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
-            } else if (todo.includes(`${extJson.id}`)) {
-                badges.push({ badge: "unknown" });
+            } else if (contacted.includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted" });
             }
 
             return { include, badges };
