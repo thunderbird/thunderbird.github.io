@@ -26,7 +26,7 @@ const badge_definitions = {
     "unknown": { bRightText: 'unknown', bLeftText: 'TB102', bColor: 'D3D3D3' },
     "discontinued": { bRightText: 'discontinued', bLeftText: 'TB102', bColor: 'D3D3D3' },
     "contacted": { bRightText: 'need feedback', bLeftText: 'TB102', bColor: 'FF8800' },
-    "contactedOK": { bRightText: 'need feedback', bLeftText: 'TB102', bColor: 'darkgreen' },
+    "probably_compatible": { bRightText: 'probably compatible', bLeftText: 'TB102', bColor: 'darkgreen' },
     "pure": { bRightText: 'pure WebExtension', bLeftText: 'TB102', bColor: '570861' },
 
 }
@@ -60,7 +60,7 @@ const contacted = [
     "987888", //addon/msghdr-toolbar-customize/ - lots of chnages in the header area
 ]
 
-const contactedOK = [
+const probably_compatible = [
     "195275", //addon/send-later-3/
     "605874", //addon/replywithheader/
     "987906", //addon/full-address-column/
@@ -287,8 +287,8 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             } else if (contacted.includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted" });
-            } else if (contactedOK.includes(`${extJson.id}`)) {
-                badges.push({ badge: "contactedOK" });
+            } else if (probably_compatible.includes(`${extJson.id}`)) {
+                badges.push({ badge: "probably_compatible" });
             }
 
             return { include, badges };
@@ -385,8 +385,8 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             } else if (contacted.includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted" });
-            } else if (contactedOK.includes(`${extJson.id}`)) {
-                badges.push({ badge: "contactedOK" });
+            } else if (probably_compatible.includes(`${extJson.id}`)) {
+                badges.push({ badge: "probably_compatible" });
             }
 
             return { include, badges };
@@ -420,8 +420,8 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             } else if (contacted.includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted" });
-            } else if (contactedOK.includes(`${extJson.id}`)) {
-                badges.push({ badge: "contactedOK" });
+            } else if (probably_compatible.includes(`${extJson.id}`)) {
+                badges.push({ badge: "probably_compatible" });
             }
 
             return { include, badges };
@@ -488,8 +488,8 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             } else if (contacted.includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted" });
-            } else if (contactedOK.includes(`${extJson.id}`)) {
-                badges.push({ badge: "contactedOK" });
+            } else if (probably_compatible.includes(`${extJson.id}`)) {
+                badges.push({ badge: "probably_compatible" });
             } else if (!!vCurrent && vCurrent.mext && !vCurrent.experiment) {
                 badges.push({ badge: "pure" });
             } else if (atn_max && (
@@ -540,8 +540,8 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             } else if (contacted.includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted" });
-            } else if (contactedOK.includes(`${extJson.id}`)) {
-                badges.push({ badge: "contactedOK" });
+            } else if (probably_compatible.includes(`${extJson.id}`)) {
+                badges.push({ badge: "probably_compatible" });
             } 
 
             return { include, badges };
@@ -570,8 +570,8 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             } else if (contacted.includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted" });
-            } else if (contactedOK.includes(`${extJson.id}`)) {
-                badges.push({ badge: "contactedOK" });
+            } else if (probably_compatible.includes(`${extJson.id}`)) {
+                badges.push({ badge: "probably_compatible" });
             }
 
             return { include, badges };
@@ -603,8 +603,8 @@ var reports = {
                     badges.push({ badge: "discontinued" });
                 } else if (contacted.includes(`${extJson.id}`)) {
                     badges.push({ badge: "contacted" });
-                } else if (contactedOK.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "contactedOK" });
+                } else if (probably_compatible.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "probably_compatible" });
                 }
             }
             return { include, badges };
@@ -624,7 +624,7 @@ var reports = {
                 knownBroken102.includes(`${extJson.id}`) ||
                 wip102.includes(`${extJson.id}`) ||
                 contacted.includes(`${extJson.id}`) ||
-                contactedOK.includes(`${extJson.id}`)
+                probably_compatible.includes(`${extJson.id}`)
             );
 
             let badges = [];
@@ -641,8 +641,10 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             } else if (contacted.includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted" });
-            } else if (contactedOK.includes(`${extJson.id}`)) {
-                badges.push({ badge: "contactedOK" });
+            } else if (probably_compatible.includes(`${extJson.id}`)) {
+                badges.push({ badge: "probably_compatible" });
+            } else {
+                badges.push({ badge: "unknown" });
             }
 
             return { include, badges };
