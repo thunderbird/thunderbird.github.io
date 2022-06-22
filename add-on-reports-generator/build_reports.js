@@ -64,6 +64,12 @@ const contactedOK = [
     "195275", //addon/send-later-3/
     "605874", //addon/replywithheader/
     "987906", //addon/full-address-column/
+    "988169", //addon/wikipediasearchwebapp/
+    "988170", //addon/skypewebapp/
+    "988258", //addon/recently/
+    "988304", //addon/contact-finder/
+    "988168", //addon/onedrivewebapp/
+
 ]
 
 const knownWorking102 = [
