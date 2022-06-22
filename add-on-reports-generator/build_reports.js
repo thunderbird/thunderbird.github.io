@@ -23,9 +23,10 @@ const badge_definitions = {
     "incompatible91": { bRightText: 'incompatible', bLeftText: 'TB91', bColor: 'c90016' },
     "incompatible102": { bRightText: 'incompatible', bLeftText: 'TB102', bColor: 'c90016' },
     "compatible102": { bRightText: 'compatible', bLeftText: 'TB102', bColor: 'darkgreen' },
-    "contacted": { bRightText: 'unknown', bLeftText: 'TB102', bColor: 'D3D3D3' },
+    "unknown": { bRightText: 'unknown', bLeftText: 'TB102', bColor: 'D3D3D3' },
     "discontinued": { bRightText: 'discontinued', bLeftText: 'TB102', bColor: 'D3D3D3' },
     "contacted": { bRightText: 'need feedback', bLeftText: 'TB102', bColor: 'FF8800' },
+    "contactedOK": { bRightText: 'need feedback', bLeftText: 'TB102', bColor: 'darkgreen' },
     "pure": { bRightText: 'pure WebExtension', bLeftText: 'TB102', bColor: '570861' },
 
 }
@@ -54,7 +55,15 @@ const wip102 = [
 
 const contacted = [
     "1898",   //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
+    "116388", //addon/automatic-dictionary-switching/ - content_frame id and multiple spell
+    "2610",   //addon/mailbox-alert/ - onMessageadded and does not remove folderListener
+    "987888", //addon/msghdr-toolbar-customize/ - lots of chnages in the header area
+]
+
+const contactedOK = [
     "195275", //addon/send-later-3/
+    "605874", //addon/replywithheader/
+    "987906", //addon/full-address-column/
 ]
 
 const knownWorking102 = [
@@ -152,7 +161,6 @@ const knownWorking102 = [
 ];
 
 const knownBroken102 = [
-    "116388",  //addon/automatic-dictionary-switching/ - content_frame id and multiple spell
 ];
 
 var gAlternativeData;
@@ -273,6 +281,8 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             } else if (contacted.includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted" });
+            } else if (contactedOK.includes(`${extJson.id}`)) {
+                badges.push({ badge: "contactedOK" });
             }
 
             return { include, badges };
@@ -369,7 +379,10 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             } else if (contacted.includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted" });
+            } else if (contactedOK.includes(`${extJson.id}`)) {
+                badges.push({ badge: "contactedOK" });
             }
+
             return { include, badges };
         }
     },
@@ -401,6 +414,8 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             } else if (contacted.includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted" });
+            } else if (contactedOK.includes(`${extJson.id}`)) {
+                badges.push({ badge: "contactedOK" });
             }
 
             return { include, badges };
@@ -467,6 +482,8 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             } else if (contacted.includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted" });
+            } else if (contactedOK.includes(`${extJson.id}`)) {
+                badges.push({ badge: "contactedOK" });
             } else if (!!vCurrent && vCurrent.mext && !vCurrent.experiment) {
                 badges.push({ badge: "pure" });
             } else if (atn_max && (
@@ -517,7 +534,9 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             } else if (contacted.includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted" });
-            }
+            } else if (contactedOK.includes(`${extJson.id}`)) {
+                badges.push({ badge: "contactedOK" });
+            } 
 
             return { include, badges };
         }
@@ -545,6 +564,8 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             } else if (contacted.includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted" });
+            } else if (contactedOK.includes(`${extJson.id}`)) {
+                badges.push({ badge: "contactedOK" });
             }
 
             return { include, badges };
@@ -576,6 +597,8 @@ var reports = {
                     badges.push({ badge: "discontinued" });
                 } else if (contacted.includes(`${extJson.id}`)) {
                     badges.push({ badge: "contacted" });
+                } else if (contactedOK.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "contactedOK" });
                 }
             }
             return { include, badges };
@@ -594,7 +617,8 @@ var reports = {
                 (!!v91 && !v102) ||
                 knownBroken102.includes(`${extJson.id}`) ||
                 wip102.includes(`${extJson.id}`) ||
-                contacted.includes(`${extJson.id}`)
+                contacted.includes(`${extJson.id}`) ||
+                contactedOK.includes(`${extJson.id}`)
             );
 
             let badges = [];
@@ -611,6 +635,8 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             } else if (contacted.includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted" });
+            } else if (contactedOK.includes(`${extJson.id}`)) {
+                badges.push({ badge: "contactedOK" });
             }
 
             return { include, badges };
