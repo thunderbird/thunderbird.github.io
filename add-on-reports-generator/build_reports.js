@@ -49,10 +49,10 @@ const wip102 = [
     "986686", //addon/importexporttools-ng/
     "10052",  //addon/filtaquilla/
     "472193", //addon/categorymanager/
+    "324497", //addon/smarttemplate4/
 ]
 
 const contacted = [
-    "988281", //addon/regimail/
     "1898",   //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
     "195275", //addon/send-later-3/
 ]
@@ -148,6 +148,7 @@ const knownWorking102 = [
     "47144",  //addon/mail-merge/
     "988108", //addon/openpgp-alias-updater/
     "988289", //addon/keepassxc-mail/
+    "988281", //addon/regimail/
 ];
 
 const knownBroken102 = [
