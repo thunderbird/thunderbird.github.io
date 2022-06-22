@@ -69,6 +69,13 @@ const probably_compatible = [
     "988258", //addon/recently/
     "988304", //addon/contact-finder/
     "988168", //addon/onedrivewebapp/
+    "988123", //addon/hera-hotel-reservation/
+    "988166", //addon/googlesearchwebapp/
+    "988171", //addon/msofficewebapp/
+    "988167", //addon/todowebapp/
+    "987916", //addon/telegramwebapp/
+    "988060", //addon/text-insert-text-blocks/
+    "988255", //addon/topic-tree-notebook/
 
 ]
 
