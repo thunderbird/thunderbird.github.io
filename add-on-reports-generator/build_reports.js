@@ -23,9 +23,9 @@ const badge_definitions = {
     "incompatible91": { bRightText: 'incompatible', bLeftText: 'TB91', bColor: 'c90016' },
     "incompatible102": { bRightText: 'incompatible', bLeftText: 'TB102', bColor: 'c90016' },
     "compatible102": { bRightText: 'compatible', bLeftText: 'TB102', bColor: 'darkgreen' },
-    "unknown": { bRightText: 'unknown', bLeftText: 'TB102', bColor: 'D3D3D3' },
+    "unknown": { bRightText: 'unknown', bLeftText: 'TB102', bColor: 'c90016' },
     "discontinued": { bRightText: 'discontinued', bLeftText: 'TB102', bColor: 'D3D3D3' },
-    "contacted": { bRightText: 'need feedback', bLeftText: 'TB102', bColor: 'FF8800' },
+    "contacted": { bRightText: 'need feedback', bLeftText: 'TB102', bColor: 'c90016' },
     "probably_compatible": { bRightText: 'probably compatible', bLeftText: 'TB102', bColor: 'darkgreen' },
     "pure": { bRightText: 'pure WebExtension', bLeftText: 'TB102', bColor: '570861' },
 
