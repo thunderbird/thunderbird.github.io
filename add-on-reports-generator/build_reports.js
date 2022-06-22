@@ -45,7 +45,6 @@ const wip102 = [
     "986258", //addon/dav-4-tbsync
     "773590", //addon/tbsync/
     "708783", //addon/emojiaddin/ - PR https://github.com/mganss/EmojiAddIn/pull/53
-    "987840", //addon/printingtools-ng/
     "46207",  //addon/mailmindr/
     "986686", //addon/importexporttools-ng/
     "10052",  //addon/filtaquilla/
@@ -80,6 +79,7 @@ const probably_compatible = [
 ]
 
 const knownWorking102 = [
+    "987840", //addon/printingtools-ng/
     "217293", //addon/signal-spam/
     "986685", //addon/phoenity-icons/
     "4654",   //addon/removedupes
@@ -624,9 +624,11 @@ var reports = {
         enabled: true,
         generate: genStandardReport,
         rowData: function (extJson) {
-            let v102 = getExtData(extJson, "102").version;
-            let v91 = getExtData(extJson, "91").version;
-            let include = !knownWorking102.includes(`${extJson.id}`) && (
+            let v102 = getExtData(extJson, "102").data;
+            let v91 = getExtData(extJson, "91").data;
+            let atn_max = v102?.atn?.compatibility?.thunderbird?.max || "0";
+            
+            let include = atn_max != "102.*" && parseInt(atn_max.split(".")[0], 10) > 102 == false &&  !knownWorking102.includes(`${extJson.id}`) && (
                 (!!v91 && !v102) ||
                 knownBroken102.includes(`${extJson.id}`) ||
                 wip102.includes(`${extJson.id}`) ||
