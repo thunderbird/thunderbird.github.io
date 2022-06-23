@@ -50,12 +50,13 @@ const wip102 = [
     "10052",  //addon/filtaquilla/
     "472193", //addon/categorymanager/
     "324497", //addon/smarttemplate4/
+    "64758",  //addon/xnotepp/ - PR https://github.com/xnotepp/xnote/pull/95
 ]
 
 const contacted = [
     "1898",   //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
-    "116388", //addon/automatic-dictionary-switching/ - content_frame id and multiple spell
-    "2610",   //addon/mailbox-alert/ - onMessageadded and does not remove folderListener
+    "116388", //addon/automatic-dictionary-switching/ - content_frame id and multiple spell - https://github.com/beltrachi/automatic_dictionary/issues/56#issuecomment-1162817647
+    "2610",   //addon/mailbox-alert/ - onItemAdded - onMessageadded and does not remove folderListener
     "987888", //addon/msghdr-toolbar-customize/ - lots of chnages in the header area
 ]
 
