@@ -61,7 +61,9 @@ const contacted = [
     "987839", //addon/findnow/ - move init code into startup code
     "988303", //addon/tud-cert-phishing-report/ - getURLSpecFromFile 
     "852623", //addon/remote-content-by-folder/ - https://github.com/jikamens/remote-content-by-folder/issues/3
-    "988146", ///addon/smartcompose/ - needs to replace spellcheck APIs
+    "988146", //addon/smartcompose/ - needs to replace spellcheck APIs
+    "559954", //addon/tidybird/ - folderUtils.jsm
+    "988185", //addon/bookmark-mails-and-more/ - OpenMessageInNewTab
 ]
 
 // Works after lifting strict_max_version
@@ -83,6 +85,14 @@ const probably_compatible = [
     "988300", //addon/quickowl/ - is actually a pure WebExtension
     "986523", //addon/hide-email-folders/ - could fix a bug for feeds and news
     "988214", //addon/filter-email-folders/
+    "745576", //addon/logout/
+    "988228", //addon/cb_thunderlink/ - can be turned into a pure WebExt
+    "49594",  //addon/subswitch/
+    "988190", //addon/old-icons/ - only has to exclude addressbook.xhtml from overlay
+    "988001", //addon/attachment-image-viewer/
+    "161710", //addon/more-snooze/
+    "987729", ///addon/new-folder-filters-button/
+    "372603", //addon/enhanced-priority-display/
 ]
 
 const knownWorking102 = [
@@ -183,6 +193,7 @@ const knownWorking102 = [
 
 const knownBroken102 = [
  "988198", //addon/dontrestoretabsrevival/
+ "508826", //addon/eds-calendar-integration/
 ];
 
 var gAlternativeData;
