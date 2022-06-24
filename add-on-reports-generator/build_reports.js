@@ -25,7 +25,7 @@ const badge_definitions = {
     "compatible102": { bRightText: 'compatible', bLeftText: 'TB102', bColor: 'darkgreen' },
     "unknown": { bRightText: 'unknown', bLeftText: 'TB102', bColor: 'c90016' },
     "discontinued": { bRightText: 'discontinued', bLeftText: 'TB102', bColor: 'D3D3D3' },
-    "contacted": { bRightText: 'need feedback', bLeftText: 'TB102', bColor: 'c90016' },
+    "contacted": { bRightText: 'waiting for feedback', bLeftText: 'TB102', bColor: 'ff8800' },
     "probably_compatible": { bRightText: 'probably compatible', bLeftText: 'TB102', bColor: 'darkgreen' },
     "pure": { bRightText: 'pure WebExtension', bLeftText: 'TB102', bColor: '570861' },
 
@@ -57,13 +57,16 @@ const wip102 = [
 const contacted = [
     "1898",   //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
     "2610",   //addon/mailbox-alert/ - onItemAdded - onMessageadded and does not remove folderListener
-    "987888", //addon/msghdr-toolbar-customize/ - lots of chnages in the header area
+    "987888", //addon/msghdr-toolbar-customize/ - lots of changes in the header area
+    "987839", //addon/findnow/ - move init code into startup code
+    "988303", //addon/tud-cert-phishing-report/ - getURLSpecFromFile 
+    "852623", //addon/remote-content-by-folder/ - https://github.com/jikamens/remote-content-by-folder/issues/3
+    "988146", ///addon/smartcompose/ - needs to replace spellcheck APIs
 ]
 
+// Works after lifting strict_max_version
 const probably_compatible = [
-    "195275", //addon/send-later-3/
     "605874", //addon/replywithheader/
-    "987906", //addon/full-address-column/
     "988169", //addon/wikipediasearchwebapp/
     "988170", //addon/skypewebapp/
     "988258", //addon/recently/
@@ -76,10 +79,14 @@ const probably_compatible = [
     "987916", //addon/telegramwebapp/
     "988060", //addon/text-insert-text-blocks/
     "988255", //addon/topic-tree-notebook/
-
+    "195275", //addon/send-later-3/
+    "988300", //addon/quickowl/ - is actually a pure WebExtension
+    "986523", //addon/hide-email-folders/ - could fix a bug for feeds and news
+    "988214", //addon/filter-email-folders/
 ]
 
 const knownWorking102 = [
+    "987906", //addon/full-address-column/
     "987840", //addon/printingtools-ng/
     "217293", //addon/signal-spam/
     "986685", //addon/phoenity-icons/
@@ -175,6 +182,7 @@ const knownWorking102 = [
 ];
 
 const knownBroken102 = [
+ "988198", //addon/dontrestoretabsrevival/
 ];
 
 var gAlternativeData;
