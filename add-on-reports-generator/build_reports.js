@@ -64,6 +64,7 @@ const contacted = [
     "988146", //addon/smartcompose/ - needs to replace spellcheck APIs
     "559954", //addon/tidybird/ - folderUtils.jsm
     "988185", //addon/bookmark-mails-and-more/ - OpenMessageInNewTab
+    "987740", //addon/nostalgy_ng/ - https://github.com/opto/nostalgy-xpi/issues/174#issuecomment-1165895633
 ]
 
 // Works after lifting strict_max_version
@@ -194,6 +195,7 @@ const knownWorking102 = [
 const knownBroken102 = [
  "988198", //addon/dontrestoretabsrevival/
  "508826", //addon/eds-calendar-integration/
+ "988188", //addon/morelayouts/
 ];
 
 var gAlternativeData;
