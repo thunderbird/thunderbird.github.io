@@ -73,7 +73,6 @@ const probably_compatible = [
     "988169", //addon/wikipediasearchwebapp/
     "988170", //addon/skypewebapp/
     "988258", //addon/recently/
-    "988304", //addon/contact-finder/
     "988168", //addon/onedrivewebapp/
     "988123", //addon/hera-hotel-reservation/
     "988166", //addon/googlesearchwebapp/
