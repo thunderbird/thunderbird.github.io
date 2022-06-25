@@ -82,7 +82,6 @@ const probably_compatible = [
     "988060", //addon/text-insert-text-blocks/
     "988255", //addon/topic-tree-notebook/
     "195275", //addon/send-later-3/
-    "988300", //addon/quickowl/ - is actually a pure WebExtension
     "986523", //addon/hide-email-folders/ - could fix a bug for feeds and news
     "988214", //addon/filter-email-folders/
     "745576", //addon/logout/
