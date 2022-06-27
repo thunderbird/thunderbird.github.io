@@ -81,17 +81,17 @@ const probably_compatible = [
     "987916", //addon/telegramwebapp/
     "988060", //addon/text-insert-text-blocks/
     "988255", //addon/topic-tree-notebook/
-    "195275", //addon/send-later-3/
     "986523", //addon/hide-email-folders/ - could fix a bug for feeds and news
     "988214", //addon/filter-email-folders/
-    "745576", //addon/logout/
-    "988228", //addon/cb_thunderlink/ - can be turned into a pure WebExt
+    "988228", //addon/cb_thunderlink/ - can be turned into a pure WebExt - unavailable for a few weeks
     "49594",  //addon/subswitch/
     "988190", //addon/old-icons/ - only has to exclude addressbook.xhtml from overlay
     "988001", //addon/attachment-image-viewer/
     "161710", //addon/more-snooze/
-    "987729", ///addon/new-folder-filters-button/
     "372603", //addon/enhanced-priority-display/
+    "811161", //addon/warnattachment/
+    "1203", //addon/correct-identity/
+    "1392", //addon/maximize-message-pane/
 ]
 
 const knownWorking102 = [
