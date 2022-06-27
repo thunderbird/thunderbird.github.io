@@ -62,7 +62,6 @@ const contacted = [
     "988303", //addon/tud-cert-phishing-report/ - getURLSpecFromFile 
     "852623", //addon/remote-content-by-folder/ - https://github.com/jikamens/remote-content-by-folder/issues/3
     "988146", //addon/smartcompose/ - needs to replace spellcheck APIs
-    "559954", //addon/tidybird/ - folderUtils.jsm
     "988185", //addon/bookmark-mails-and-more/ - OpenMessageInNewTab
     "987740", //addon/nostalgy_ng/ - https://github.com/opto/nostalgy-xpi/issues/174#issuecomment-1165895633
 ]
@@ -95,6 +94,7 @@ const probably_compatible = [
 ]
 
 const knownWorking102 = [
+    "559954", //addon/tidybird/ - folderUtils.jsm
     "987906", //addon/full-address-column/
     "987840", //addon/printingtools-ng/
     "217293", //addon/signal-spam/
