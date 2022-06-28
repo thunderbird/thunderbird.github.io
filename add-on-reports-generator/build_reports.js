@@ -31,7 +31,6 @@ const badge_definitions = {
 
 }
 
-
 const discontinued = [
     "219725", //addon/autoslide/
     "986572", //addon/flat-folder-tree-updated/ - broken, core does not seem to support add-on modes anymore -> API
@@ -49,7 +48,6 @@ const wip102 = [
     "986686", //addon/importexporttools-ng/
     "10052",  //addon/filtaquilla/
     "472193", //addon/categorymanager/
-    "324497", //addon/smarttemplate4/
     "64758",  //addon/xnotepp/ - PR https://github.com/xnotepp/xnote/pull/95
     "116388", //addon/automatic-dictionary-switching/ - content_frame id and multiple spell - https://github.com/beltrachi/automatic_dictionary/issues/56#issuecomment-1162817647
 ]
@@ -94,6 +92,8 @@ const probably_compatible = [
 ]
 
 const knownWorking102 = [
+    "988188", //addon/morelayouts/
+    "324497", //addon/smarttemplate4/
     "559954", //addon/tidybird/ - folderUtils.jsm
     "987906", //addon/full-address-column/
     "987840", //addon/printingtools-ng/
@@ -193,7 +193,6 @@ const knownWorking102 = [
 const knownBroken102 = [
  "988198", //addon/dontrestoretabsrevival/
  "508826", //addon/eds-calendar-integration/
- "988188", //addon/morelayouts/
 ];
 
 var gAlternativeData;
