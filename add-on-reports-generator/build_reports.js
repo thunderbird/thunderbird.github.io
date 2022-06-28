@@ -62,6 +62,10 @@ const contacted = [
     "988146", //addon/smartcompose/ - needs to replace spellcheck APIs
     "988185", //addon/bookmark-mails-and-more/ - OpenMessageInNewTab
     "987740", //addon/nostalgy_ng/ - https://github.com/opto/nostalgy-xpi/issues/174#issuecomment-1165895633
+    "988115", //addon/clippings-tb/ - content-frame
+    "986323", //addon/confirmbeforedelete/ - cannot overlay new address book, but does not seem needed anymore
+    "987689", //addon/changequote/ - https://github.com/caligraf/ChangeQuote/pull/33/files
+    "2299", //addon/threadkey/ - replace getElementsByClassName("tabmail-tab") by win.document.getElementById("tabmail").currentTabInfo
 ]
 
 // Works after lifting strict_max_version
@@ -87,8 +91,11 @@ const probably_compatible = [
     "161710", //addon/more-snooze/
     "372603", //addon/enhanced-priority-display/
     "811161", //addon/warnattachment/
-    "1203", //addon/correct-identity/
-    "1392", //addon/maximize-message-pane/
+    "1203",   //addon/correct-identity/
+    "1392",   //addon/maximize-message-pane/
+    "4454",   //addon/priority-switcher/
+    "327780", //addon/auto-select-latest-message/
+    "987749", //addon/marked-lightning/
 ]
 
 const knownWorking102 = [
