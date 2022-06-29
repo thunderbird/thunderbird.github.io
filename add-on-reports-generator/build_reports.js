@@ -92,6 +92,8 @@ const probably_compatible = [
     "327780", //addon/auto-select-latest-message/
     "987749", //addon/marked-lightning/
     "986643", //addon/filelink-provider-for-webdav/
+    "356507", //addon/header-tools-lite/
+    "287743", //addon/mailhops/
 ]
 
 const knownWorking102 = [
