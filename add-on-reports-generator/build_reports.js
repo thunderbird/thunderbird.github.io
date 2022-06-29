@@ -44,11 +44,9 @@ const wip102 = [
     "986258", //addon/dav-4-tbsync
     "773590", //addon/tbsync/
     "708783", //addon/emojiaddin/ - PR https://github.com/mganss/EmojiAddIn/pull/53
-    "46207",  //addon/mailmindr/
     "986686", //addon/importexporttools-ng/
     "10052",  //addon/filtaquilla/
     "472193", //addon/categorymanager/
-    "64758",  //addon/xnotepp/ - PR https://github.com/xnotepp/xnote/pull/95
     "116388", //addon/automatic-dictionary-switching/ - content_frame id and multiple spell - https://github.com/beltrachi/automatic_dictionary/issues/56#issuecomment-1162817647
 ]
 
@@ -73,7 +71,6 @@ const probably_compatible = [
     "605874", //addon/replywithheader/
     "988169", //addon/wikipediasearchwebapp/
     "988170", //addon/skypewebapp/
-    "988258", //addon/recently/
     "988168", //addon/onedrivewebapp/
     "988123", //addon/hera-hotel-reservation/
     "988166", //addon/googlesearchwebapp/
@@ -82,7 +79,6 @@ const probably_compatible = [
     "987916", //addon/telegramwebapp/
     "988060", //addon/text-insert-text-blocks/
     "988255", //addon/topic-tree-notebook/
-    "986523", //addon/hide-email-folders/ - could fix a bug for feeds and news
     "988214", //addon/filter-email-folders/
     "988228", //addon/cb_thunderlink/ - can be turned into a pure WebExt - unavailable for a few weeks
     "49594",  //addon/subswitch/
@@ -99,6 +95,9 @@ const probably_compatible = [
 ]
 
 const knownWorking102 = [
+    "986523", //addon/hide-email-folders/ - could fix a bug for feeds and news
+    "46207",  //addon/mailmindr/
+    "64758",  //addon/xnotepp/ - PR https://github.com/xnotepp/xnote/pull/95
     "988188", //addon/morelayouts/
     "324497", //addon/smarttemplate4/
     "559954", //addon/tidybird/ - folderUtils.jsm
