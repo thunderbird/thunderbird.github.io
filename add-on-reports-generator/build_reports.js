@@ -91,6 +91,7 @@ const probably_compatible = [
     "4454",   //addon/priority-switcher/
     "327780", //addon/auto-select-latest-message/
     "987749", //addon/marked-lightning/
+    "986643", //addon/filelink-provider-for-webdav/
 ]
 
 const knownWorking102 = [
