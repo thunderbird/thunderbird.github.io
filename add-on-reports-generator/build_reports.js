@@ -55,7 +55,6 @@ const contacted = [
     "2610",   //addon/mailbox-alert/ - onItemAdded - onMessageadded and does not remove folderListener
     "987888", //addon/msghdr-toolbar-customize/ - lots of changes in the header area
     "987839", //addon/findnow/ - move init code into startup code
-    "988303", //addon/tud-cert-phishing-report/ - getURLSpecFromFile 
     "852623", //addon/remote-content-by-folder/ - https://github.com/jikamens/remote-content-by-folder/issues/3
     "988146", //addon/smartcompose/ - needs to replace spellcheck APIs
     "988185", //addon/bookmark-mails-and-more/ - OpenMessageInNewTab
@@ -87,7 +86,6 @@ const probably_compatible = [
     "161710", //addon/more-snooze/
     "372603", //addon/enhanced-priority-display/
     "1203",   //addon/correct-identity/
-    "1392",   //addon/maximize-message-pane/
     "4454",   //addon/priority-switcher/
     "327780", //addon/auto-select-latest-message/
     "987749", //addon/marked-lightning/
@@ -97,6 +95,8 @@ const probably_compatible = [
 ]
 
 const knownWorking102 = [
+    "988303", //addon/tud-cert-phishing-report/ - getURLSpecFromFile 
+    "1392",   //addon/maximize-message-pane/
     "811161", //addon/warnattachment/
     "2299",   //addon/threadkey/ - replace getElementsByClassName("tabmail-tab") by win.document.getElementById("tabmail").currentTabInfo
     "986523", //addon/hide-email-folders/ - could fix a bug for feeds and news
