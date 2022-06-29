@@ -63,6 +63,7 @@ const contacted = [
     "988115", //addon/clippings-tb/ - content-frame
     "986323", //addon/confirmbeforedelete/ - cannot overlay new address book, but does not seem needed anymore
     "987689", //addon/changequote/ - https://github.com/caligraf/ChangeQuote/pull/33/files
+    "310",    //addon/bidi-mail-ui/ - https://github.com/eyalroz/bidimailui/pull/58/files
 ]
 
 // Works after lifting strict_max_version
@@ -85,7 +86,6 @@ const probably_compatible = [
     "988001", //addon/attachment-image-viewer/
     "161710", //addon/more-snooze/
     "372603", //addon/enhanced-priority-display/
-    "811161", //addon/warnattachment/
     "1203",   //addon/correct-identity/
     "1392",   //addon/maximize-message-pane/
     "4454",   //addon/priority-switcher/
@@ -94,6 +94,7 @@ const probably_compatible = [
 ]
 
 const knownWorking102 = [
+    "811161", //addon/warnattachment/
     "2299",   //addon/threadkey/ - replace getElementsByClassName("tabmail-tab") by win.document.getElementById("tabmail").currentTabInfo
     "986523", //addon/hide-email-folders/ - could fix a bug for feeds and news
     "46207",  //addon/mailmindr/
