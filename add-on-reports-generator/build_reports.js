@@ -48,6 +48,7 @@ const wip102 = [
     "10052",  //addon/filtaquilla/
     "472193", //addon/categorymanager/
     "116388", //addon/automatic-dictionary-switching/ - content_frame id and multiple spell - https://github.com/beltrachi/automatic_dictionary/issues/56#issuecomment-1162817647
+    "988091", //addon/expression-search-ng/
 ]
 
 const contacted = [
@@ -84,17 +85,17 @@ const probably_compatible = [
     "988190", //addon/old-icons/ - only has to exclude addressbook.xhtml from overlay
     "988001", //addon/attachment-image-viewer/
     "161710", //addon/more-snooze/
-    "372603", //addon/enhanced-priority-display/
     "1203",   //addon/correct-identity/
     "4454",   //addon/priority-switcher/
     "327780", //addon/auto-select-latest-message/
-    "987749", //addon/marked-lightning/
     "986643", //addon/filelink-provider-for-webdav/
     "356507", //addon/header-tools-lite/
     "287743", //addon/mailhops/
 ]
 
 const knownWorking102 = [
+    "372603", //addon/enhanced-priority-display/
+    "987749", //addon/marked-lightning/
     "988303", //addon/tud-cert-phishing-report/ - getURLSpecFromFile 
     "1392",   //addon/maximize-message-pane/
     "811161", //addon/warnattachment/
