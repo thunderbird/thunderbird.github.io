@@ -52,15 +52,12 @@ const wip102 = [
 
 const contacted = [
     "1898",   //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
-    "2610",   //addon/mailbox-alert/ - onItemAdded - onMessageadded and does not remove folderListener
     "987839", //addon/findnow/ - move init code into startup code
     "852623", //addon/remote-content-by-folder/ - https://github.com/jikamens/remote-content-by-folder/issues/3
     "988146", //addon/smartcompose/ - needs to replace spellcheck APIs
     "988185", //addon/bookmark-mails-and-more/ - OpenMessageInNewTab
-    "988115", //addon/clippings-tb/ - content-frame
     "986323", //addon/confirmbeforedelete/ - cannot overlay new address book, but does not seem needed anymore
     "987689", //addon/changequote/ - https://github.com/caligraf/ChangeQuote/pull/33/files
-    "310",    //addon/bidi-mail-ui/ - https://github.com/eyalroz/bidimailui/pull/58/files
 ]
 
 // Works after lifting strict_max_version
@@ -77,7 +74,6 @@ const probably_compatible = [
     "988060", //addon/text-insert-text-blocks/
     "988255", //addon/topic-tree-notebook/
     "988214", //addon/filter-email-folders/
-    "988228", //addon/cb_thunderlink/ - can be turned into a pure WebExt - unavailable for a few weeks
     "49594",  //addon/subswitch/
     "988190", //addon/old-icons/ - only has to exclude addressbook.xhtml from overlay
     "988001", //addon/attachment-image-viewer/
@@ -88,6 +84,10 @@ const probably_compatible = [
 ]
 
 const knownWorking102 = [
+    "988115", //addon/clippings-tb/ - content-frame
+    "310",    //addon/bidi-mail-ui/ - https://github.com/eyalroz/bidimailui/pull/58/files
+    "2610",   //addon/mailbox-alert/ - onItemAdded - onMessageadded and does not remove folderListener
+    "988228", //addon/cb_thunderlink/ - can be turned into a pure WebExt - unavailable for a few weeks
     "161710", //addon/more-snooze/
     "287743", //addon/mailhops/
     "987740", //addon/nostalgy_ng/ - https://github.com/opto/nostalgy-xpi/issues/174#issuecomment-1165895633
