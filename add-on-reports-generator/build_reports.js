@@ -44,7 +44,6 @@ const wip102 = [
     "986258", //addon/dav-4-tbsync
     "773590", //addon/tbsync/
     "708783", //addon/emojiaddin/ - PR https://github.com/mganss/EmojiAddIn/pull/53
-    "986686", //addon/importexporttools-ng/
     "10052",  //addon/filtaquilla/
     "472193", //addon/categorymanager/
     "116388", //addon/automatic-dictionary-switching/ - content_frame id and multiple spell - https://github.com/beltrachi/automatic_dictionary/issues/56#issuecomment-1162817647
@@ -54,12 +53,10 @@ const wip102 = [
 const contacted = [
     "1898",   //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
     "2610",   //addon/mailbox-alert/ - onItemAdded - onMessageadded and does not remove folderListener
-    "987888", //addon/msghdr-toolbar-customize/ - lots of changes in the header area
     "987839", //addon/findnow/ - move init code into startup code
     "852623", //addon/remote-content-by-folder/ - https://github.com/jikamens/remote-content-by-folder/issues/3
     "988146", //addon/smartcompose/ - needs to replace spellcheck APIs
     "988185", //addon/bookmark-mails-and-more/ - OpenMessageInNewTab
-    "987740", //addon/nostalgy_ng/ - https://github.com/opto/nostalgy-xpi/issues/174#issuecomment-1165895633
     "988115", //addon/clippings-tb/ - content-frame
     "986323", //addon/confirmbeforedelete/ - cannot overlay new address book, but does not seem needed anymore
     "987689", //addon/changequote/ - https://github.com/caligraf/ChangeQuote/pull/33/files
@@ -84,16 +81,19 @@ const probably_compatible = [
     "49594",  //addon/subswitch/
     "988190", //addon/old-icons/ - only has to exclude addressbook.xhtml from overlay
     "988001", //addon/attachment-image-viewer/
-    "161710", //addon/more-snooze/
     "1203",   //addon/correct-identity/
     "4454",   //addon/priority-switcher/
     "327780", //addon/auto-select-latest-message/
-    "986643", //addon/filelink-provider-for-webdav/
     "356507", //addon/header-tools-lite/
-    "287743", //addon/mailhops/
 ]
 
 const knownWorking102 = [
+    "161710", //addon/more-snooze/
+    "287743", //addon/mailhops/
+    "987740", //addon/nostalgy_ng/ - https://github.com/opto/nostalgy-xpi/issues/174#issuecomment-1165895633
+    "987888", //addon/msghdr-toolbar-customize/ - lots of changes in the header area
+    "986643", //addon/filelink-provider-for-webdav/
+    "986686", //addon/importexporttools-ng/
     "372603", //addon/enhanced-priority-display/
     "987749", //addon/marked-lightning/
     "988303", //addon/tud-cert-phishing-report/ - getURLSpecFromFile 
