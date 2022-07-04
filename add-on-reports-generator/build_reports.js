@@ -77,13 +77,13 @@ const probably_compatible = [
     "49594",  //addon/subswitch/
     "988190", //addon/old-icons/ - only has to exclude addressbook.xhtml from overlay
     "988001", //addon/attachment-image-viewer/
-    "1203",   //addon/correct-identity/
     "4454",   //addon/priority-switcher/
     "327780", //addon/auto-select-latest-message/
     "356507", //addon/header-tools-lite/
 ]
 
 const knownWorking102 = [
+    "1203",   //addon/correct-identity/
     "988115", //addon/clippings-tb/ - content-frame
     "310",    //addon/bidi-mail-ui/ - https://github.com/eyalroz/bidimailui/pull/58/files
     "2610",   //addon/mailbox-alert/ - onItemAdded - onMessageadded and does not remove folderListener
