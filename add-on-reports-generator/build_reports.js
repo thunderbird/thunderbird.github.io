@@ -46,7 +46,6 @@ const wip102 = [
     "708783", //addon/emojiaddin/ - PR https://github.com/mganss/EmojiAddIn/pull/53
     "10052",  //addon/filtaquilla/
     "472193", //addon/categorymanager/
-    "116388", //addon/automatic-dictionary-switching/ - content_frame id and multiple spell - https://github.com/beltrachi/automatic_dictionary/issues/56#issuecomment-1162817647
     "988091", //addon/expression-search-ng/
 ]
 
@@ -83,6 +82,7 @@ const probably_compatible = [
 ]
 
 const knownWorking102 = [
+    "116388", //addon/automatic-dictionary-switching/ - content_frame id and multiple spell - https://github.com/beltrachi/automatic_dictionary/issues/56#issuecomment-1162817647
     "1203",   //addon/correct-identity/
     "988115", //addon/clippings-tb/ - content-frame
     "310",    //addon/bidi-mail-ui/ - https://github.com/eyalroz/bidimailui/pull/58/files
