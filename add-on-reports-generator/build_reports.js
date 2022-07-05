@@ -78,6 +78,7 @@ const probably_compatible = [
     "4454",   //addon/priority-switcher/
     "327780", //addon/auto-select-latest-message/
     "356507", //addon/header-tools-lite/
+    "161820", //addon/alertswitch/
 ]
 
 const knownWorking102 = [
@@ -191,7 +192,6 @@ const knownWorking102 = [
     "988260", //addon/x-original-to-column/
     "988196", //addon/message-filters-button-u/
     "988234", //addon/tbhints/
-    "161820", //addon/alertswitch/
     "987844", //addon/insertsignature/
     "2533",   //addon/addressbooks-synchronizer/
     "676875", //addon/rspamd-spamness/
