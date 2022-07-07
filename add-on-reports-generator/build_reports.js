@@ -46,10 +46,11 @@ const wip102 = [
     "10052",  //addon/filtaquilla/
     "472193", //addon/categorymanager/
     "988091", //addon/expression-search-ng/
+    "1898",   //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
+    "988293", //addon/joplin-export/
 ]
 
 const contacted = [
-    "1898",   //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
     "987839", //addon/findnow/ - move init code into startup code
     "852623", //addon/remote-content-by-folder/ - https://github.com/jikamens/remote-content-by-folder/issues/3
     "988146", //addon/smartcompose/ - needs to replace spellcheck APIs
@@ -79,6 +80,12 @@ const probably_compatible = [
     "327780", //addon/auto-select-latest-message/
     "356507", //addon/header-tools-lite/
     "161820", //addon/alertswitch/
+    //102.0
+    "988096", //addon/attachment-extractor/
+    "711456", //addon/textra-thunderbird/
+    "988173", //addon/thunderkey/
+    "988196", //addon/message-filters-button-u/
+    "988234", //addon/tbhints/
 ]
 
 const knownWorking102 = [
@@ -157,7 +164,6 @@ const knownWorking102 = [
     "987892", //addon/quotecolors/
     "330066", //addon/edit-email-subject/
 
-    "711456", //addon/textra-thunderbird/
     "704523", //addon/europeanmx/
     "988024", //addon/open-in-browser
     "988038", //addon/archive-old-messages/
@@ -172,7 +178,6 @@ const knownWorking102 = [
     "988138", //addon/grammar-and-spell-checker/
     "987934", //addon/simple-mail-redirection/
     "11646",  //addon/no-message-pane-sort-by-mouse/
-    "988096", //addon/attachment-extractor/
     "2561",   //addon/copy-sent-to-current/
     "987779", //addon/browseintab/
     "3492",   //addon/show-inout/
@@ -184,14 +189,10 @@ const knownWorking102 = [
     "987987", //addon/toggle-html/
     "987857", //addon/preferences-button/
     "987786", //addon/devtools-button/
-    "988173", //addon/thunderkey/
     "534258", //addon/received/
     "987664", //addon/copy-patch/
-    "988293", //addon/joplin-export/
     "987976", //addon/findtasksbutton/
     "988260", //addon/x-original-to-column/
-    "988196", //addon/message-filters-button-u/
-    "988234", //addon/tbhints/
     "987844", //addon/insertsignature/
     "2533",   //addon/addressbooks-synchronizer/
     "676875", //addon/rspamd-spamness/
