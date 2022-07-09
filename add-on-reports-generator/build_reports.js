@@ -73,13 +73,11 @@ const probably_compatible = [
     "988060", //addon/text-insert-text-blocks/
     "988255", //addon/topic-tree-notebook/
     "988214", //addon/filter-email-folders/
-    "49594",  //addon/subswitch/
     "988190", //addon/old-icons/ - only has to exclude addressbook.xhtml from overlay
     "988001", //addon/attachment-image-viewer/
     "4454",   //addon/priority-switcher/
     "327780", //addon/auto-select-latest-message/
     "356507", //addon/header-tools-lite/
-    "161820", //addon/alertswitch/
     //102.0
     "988096", //addon/attachment-extractor/
     "711456", //addon/textra-thunderbird/
@@ -89,6 +87,8 @@ const probably_compatible = [
 ]
 
 const knownWorking102 = [
+    "49594",  //addon/subswitch/
+    "161820", //addon/alertswitch/
     "708783", //addon/emojiaddin/ - PR https://github.com/mganss/EmojiAddIn/pull/53
     "116388", //addon/automatic-dictionary-switching/ - content_frame id and multiple spell - https://github.com/beltrachi/automatic_dictionary/issues/56#issuecomment-1162817647
     "1203",   //addon/correct-identity/
