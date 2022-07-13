@@ -75,7 +75,6 @@ const probably_compatible = [
     "988214", //addon/filter-email-folders/
     "988190", //addon/old-icons/ - only has to exclude addressbook.xhtml from overlay
     "988001", //addon/attachment-image-viewer/
-    "4454",   //addon/priority-switcher/
     "327780", //addon/auto-select-latest-message/
     "356507", //addon/header-tools-lite/
     //102.0
@@ -83,10 +82,11 @@ const probably_compatible = [
     "711456", //addon/textra-thunderbird/
     "988173", //addon/thunderkey/
     "988196", //addon/message-filters-button-u/
-    "988234", //addon/tbhints/
 ]
 
 const knownWorking102 = [
+    "988234", //addon/tbhints/
+    "4454",   //addon/priority-switcher/
     "49594",  //addon/subswitch/
     "161820", //addon/alertswitch/
     "708783", //addon/emojiaddin/ - PR https://github.com/mganss/EmojiAddIn/pull/53
