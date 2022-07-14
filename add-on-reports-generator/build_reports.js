@@ -43,7 +43,6 @@ const wip102 = [
     "986338", //addon/eas-4-tbsync
     "986258", //addon/dav-4-tbsync
     "773590", //addon/tbsync/
-    "10052",  //addon/filtaquilla/
     "472193", //addon/categorymanager/
     "988091", //addon/expression-search-ng/
     "1898",   //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
@@ -85,6 +84,7 @@ const probably_compatible = [
 ]
 
 const knownWorking102 = [
+    "10052",  //addon/filtaquilla/
     "988234", //addon/tbhints/
     "4454",   //addon/priority-switcher/
     "49594",  //addon/subswitch/
