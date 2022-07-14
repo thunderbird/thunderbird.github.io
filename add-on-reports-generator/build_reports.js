@@ -50,7 +50,6 @@ const wip102 = [
 ]
 
 const contacted = [
-    "987839", //addon/findnow/ - move init code into startup code
     "852623", //addon/remote-content-by-folder/ - https://github.com/jikamens/remote-content-by-folder/issues/3
     "988146", //addon/smartcompose/ - needs to replace spellcheck APIs
     "988185", //addon/bookmark-mails-and-more/ - OpenMessageInNewTab
@@ -84,6 +83,7 @@ const probably_compatible = [
 ]
 
 const knownWorking102 = [
+    "987839", //addon/findnow/ - move init code into startup code
     "10052",  //addon/filtaquilla/
     "988234", //addon/tbhints/
     "4454",   //addon/priority-switcher/
