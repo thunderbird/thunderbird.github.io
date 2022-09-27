@@ -47,6 +47,7 @@ const wip102 = [
     "988091", //addon/expression-search-ng/
     "1898",   //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
     "988293", //addon/joplin-export/
+    "988090", //addon/google-4-tbsync/
 ]
 
 const contacted = [
