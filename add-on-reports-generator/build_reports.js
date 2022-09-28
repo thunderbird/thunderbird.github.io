@@ -44,23 +44,14 @@ const wip102 = [
     "986258", //addon/dav-4-tbsync
     "773590", //addon/tbsync/
     "472193", //addon/categorymanager/
-    "988091", //addon/expression-search-ng/
-    "1898",   //addon/folderflags/ - has Quota and Flags tab swapped - PR https://github.com/voccs/folderflags/pull/10
-    "988293", //addon/joplin-export/
     "988090", //addon/google-4-tbsync/
 ]
 
 const contacted = [
-    "852623", //addon/remote-content-by-folder/ - https://github.com/jikamens/remote-content-by-folder/issues/3
-    "988146", //addon/smartcompose/ - needs to replace spellcheck APIs
-    "988185", //addon/bookmark-mails-and-more/ - OpenMessageInNewTab
-    "986323", //addon/confirmbeforedelete/ - cannot overlay new address book, but does not seem needed anymore
-    "987689", //addon/changequote/ - https://github.com/caligraf/ChangeQuote/pull/33/files
 ]
 
 // Works after lifting strict_max_version
 const probably_compatible = [
-    "605874", //addon/replywithheader/
     "988169", //addon/wikipediasearchwebapp/
     "988170", //addon/skypewebapp/
     "988168", //addon/onedrivewebapp/
@@ -69,13 +60,7 @@ const probably_compatible = [
     "988171", //addon/msofficewebapp/
     "988167", //addon/todowebapp/
     "987916", //addon/telegramwebapp/
-    "988060", //addon/text-insert-text-blocks/
-    "988255", //addon/topic-tree-notebook/
     "988214", //addon/filter-email-folders/
-    "988190", //addon/old-icons/ - only has to exclude addressbook.xhtml from overlay
-    "988001", //addon/attachment-image-viewer/
-    "327780", //addon/auto-select-latest-message/
-    "356507", //addon/header-tools-lite/
     //102.0
     "988096", //addon/attachment-extractor/
     "711456", //addon/textra-thunderbird/
