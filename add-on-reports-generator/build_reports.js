@@ -40,11 +40,6 @@ const discontinued = [
 ]
 
 const wip102 = [
-    "986338", //addon/eas-4-tbsync
-    "986258", //addon/dav-4-tbsync
-    "773590", //addon/tbsync/
-    "472193", //addon/categorymanager/
-    "988090", //addon/google-4-tbsync/
 ]
 
 const contacted = [
