@@ -16,7 +16,7 @@ const rootDir = "data";
 const reportDir = "../add-on-reports";
 const extsAllJsonFileName = `${rootDir}/xall.json`;
 
-const SUPPORTED_ESR = [60, 68, 78, 91, 102, 115];
+const SUPPORTED_ESR = [60, 68, 78, 91, 102, 112];
 
 const badge_definitions = {
     "permission": { bLeftText: 'p', bColor: 'orange', bTooltip: "Requested Permission" },
@@ -317,7 +317,7 @@ var reports = {
         enabled: true,
         generate: genStandardReport,
         rowData: function (extJson) {
-            let v115 = getExtData(extJson, "115").version;
+            let v115 = getExtData(extJson, "112").version;
             let v102 = getExtData(extJson, "102").version;
             let v91 = getExtData(extJson, "91").version;
             let v78 = getExtData(extJson, "78").version;
@@ -509,7 +509,7 @@ var reports = {
         enabled: true,
         generate: genStandardReport,
         rowData: function (extJson) {
-            let v115 = getExtData(extJson, "115").data;
+            let v115 = getExtData(extJson, "112").data;
             let include = !!v115;
             let badges = [];
 
@@ -551,8 +551,8 @@ var reports = {
             let baseReport = reports["max-atn-value-reduced-below-max-xpi-value"].rowData(extJson);
             let badges = [];
             let include = baseReport.include &&
-                compareVer(strict_max, 115) > 0 && // xpi limit > 115
-                compareVer(atn_max, "115.*") < 0; // atn limit < 115.*
+                compareVer(strict_max, 112) > 0 && // xpi limit > 115
+                compareVer(atn_max, "112.*") < 0; // atn limit < 115.*
 
             if (unknown115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "unknown_115" });
@@ -632,7 +632,7 @@ var reports = {
         enabled: true,
         generate: genStandardReport,
         rowData: function (extJson) {
-            let v115 = getExtData(extJson, "115").data;
+            let v115 = getExtData(extJson, "112").data;
             let v102 = getExtData(extJson, "102").data;
             let include = (!!v102 && !v115) || unknown115.includes(`${extJson.id}`);
             let badges = [];
@@ -702,8 +702,8 @@ var reports = {
             let baseReport = reports["max-atn-value-reduced-below-max-xpi-value"].rowData(extJson);
             let badges = baseReport.badges;
             let include = baseReport.include &&
-                compareVer(strict_max, 102) > 0 && // xpi limit > 115
-                compareVer(atn_max, "102.*") < 0; // atn limit < 115.*
+                compareVer(strict_max, 102) > 0 && // xpi limit > 102
+                compareVer(atn_max, "102.*") < 0; // atn limit < 102.*
 
             if (knownBroken102.includes(`${extJson.id}`)) {
                 badges.push({ badge: "incompatible_102" });
@@ -1044,7 +1044,7 @@ function genStandardReport(extsJson, name, report) {
 		  <td style="text-align: right" valign="top">${cv("78")}</td>
 		  <td style="text-align: right" valign="top">${cv("91")}</td>
 		  <td style="text-align: right" valign="top">${cv("102")}</td>
-		  <td style="text-align: right" valign="top">${cv("115")}</td>
+		  <td style="text-align: right" valign="top">${cv("112")}</td>
 		  <td style="text-align: right" valign="top">${current_version?.atn.files[0].created.split('T')[0]}</td>
 		  <td style="text-align: right" valign="top">${cv("current")}</td>
 		  <td style="text-align: right" valign="top">${v_min}</td>
