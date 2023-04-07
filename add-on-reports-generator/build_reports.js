@@ -35,6 +35,7 @@ const badge_definitions = {
 
     "unknown_115": { bRightText: 'Compatibility Unknown', bLeftText: 'TB115', bColor: 'c90016' },
     "wip_115": { bRightText: 'Work in Progress', bLeftText: 'TB115', bColor: 'yellow' },
+    "probably_compatible_115": { bRightText: 'Probably Compatible', bLeftText: 'TB115', bColor: 'darkgreen' },
 
 
 }
@@ -265,8 +266,9 @@ const unknown115 = [
 ]
 const wip115 = [
 ]
-
-
+const probably_compatible_115 = [
+    "287743"
+]
 
 var gAlternativeData;
 
@@ -653,6 +655,9 @@ var reports = {
                 }
                 if (contacted.includes(`${extJson.id}`)) {
                     badges.push({ badge: "contacted" });
+                }
+                if (probably_compatible_115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "probably_compatible_115" });
                 }
             }
             return { include, badges };
