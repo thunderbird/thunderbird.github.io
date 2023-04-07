@@ -265,10 +265,11 @@ const unknown115 = [
     "988086",
 ]
 const wip115 = [
+    "987986", // select_prev_on_delete-2.0.0-tb
 ]
-const probably_compatible_115 = [
-    "287743"
-]
+const probably_compatible_115 = {
+    "287743":"https://github.com/MailHops/mailhops-plugin/pull/31"
+}
 
 var gAlternativeData;
 
@@ -589,7 +590,9 @@ var reports = {
             let include = !!vCurrent && vCurrent.mext && vCurrent.experiment && atn_max == "*";
             let badges = [];
 
-            if (unknown115.includes(`${extJson.id}`)) {
+            if (wip115.includes(`${extJson.id}`)) {
+                badges.push({ badge: "wip_115" });
+            } else if (unknown115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "unknown_115" });
             }
             if (discontinued.includes(`${extJson.id}`)) {
@@ -656,8 +659,8 @@ var reports = {
                 if (contacted.includes(`${extJson.id}`)) {
                     badges.push({ badge: "contacted" });
                 }
-                if (probably_compatible_115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "probably_compatible_115" });
+                if (Object.keys(probably_compatible_115).includes(`${extJson.id}`)) {
+                    badges.push({ badge: "probably_compatible_115", link: probably_compatible_115[`${extJson.id}`]});
                 }
             }
             return { include, badges };
@@ -714,8 +717,6 @@ var reports = {
                 badges.push({ badge: "incompatible_102" });
             } else if (knownWorking102.includes(`${extJson.id}`)) {
                 badges.push({ badge: "compatible_102" });
-            } else if (wip115.includes(`${extJson.id}`)) {
-                badges.push({ badge: "wip_102" });
             } else if (probably_compatible_102.includes(`${extJson.id}`)) {
                 badges.push({ badge: "probably_compatible_102" });
             }
