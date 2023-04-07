@@ -34,6 +34,7 @@ const badge_definitions = {
     "compatible_102": { bRightText: 'Compatible', bLeftText: 'TB102', bColor: 'darkgreen' },
 
     "unknown_115": { bRightText: 'Compatibility Unknown', bLeftText: 'TB115', bColor: 'c90016' },
+    "column_115": { bRightText: 'Needs Column Support', bLeftText: 'TB115', bColor: 'darkred' },
     "wip_115": { bRightText: 'Work in Progress', bLeftText: 'TB115', bColor: 'yellow' },
     "probably_compatible_115": { bRightText: 'Probably Compatible', bLeftText: 'TB115', bColor: 'darkgreen' },
 
@@ -267,9 +268,13 @@ const unknown115 = [
 const wip115 = [
     "987986", // select_prev_on_delete-2.0.0-tb
 ]
+const column115 = [
+    "987838"
+]
 const probably_compatible_115 = {
     "287743":"https://github.com/MailHops/mailhops-plugin/pull/31",
-    "987901":"" // Uses an experiment for alert, uses dead link - https://www.transferimmunity.com/
+    "987901":"", // Uses an experiment for alert, uses dead link - https://www.transferimmunity.com/
+    "407832":""
 }
 
 var gAlternativeData;
@@ -593,6 +598,8 @@ var reports = {
 
             if (wip115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "wip_115" });
+            } else if (column115.includes(`${extJson.id}`)) {
+                badges.push({ badge: "column_115" });
             } else if (Object.keys(probably_compatible_115).includes(`${extJson.id}`)) {
                 badges.push({ badge: "probably_compatible_115", link: probably_compatible_115[`${extJson.id}`]});
             } else if (unknown115.includes(`${extJson.id}`)) {
