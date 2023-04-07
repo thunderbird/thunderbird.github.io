@@ -268,7 +268,8 @@ const wip115 = [
     "987986", // select_prev_on_delete-2.0.0-tb
 ]
 const probably_compatible_115 = {
-    "287743":"https://github.com/MailHops/mailhops-plugin/pull/31"
+    "287743":"https://github.com/MailHops/mailhops-plugin/pull/31",
+    "987901":"" // Uses an experiment for alert, uses dead link - https://www.transferimmunity.com/
 }
 
 var gAlternativeData;
@@ -592,6 +593,8 @@ var reports = {
 
             if (wip115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "wip_115" });
+            } else if (Object.keys(probably_compatible_115).includes(`${extJson.id}`)) {
+                badges.push({ badge: "probably_compatible_115", link: probably_compatible_115[`${extJson.id}`]});
             } else if (unknown115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "unknown_115" });
             }
