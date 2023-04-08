@@ -256,11 +256,7 @@ const unknown115 = [
     "987914",
     "988057",
     "988108",
-    "987838",
     "987925",
-    "407832",
-    "987901",
-    "987986",
     "987945",
     "987665",
     "988086",
@@ -272,10 +268,11 @@ const column115 = [
     "987838"
 ]
 const probably_compatible_115 = {
-    "287743":"https://github.com/MailHops/mailhops-plugin/pull/31",
+    "287743":"https://github.com/MailHops/mailhops-plugin/pull/31", // Done.
     "987901":"", // Uses an experiment for alert, uses dead link - https://www.transferimmunity.com/
     "407832":""
 }
+
 
 var gAlternativeData;
 
@@ -598,11 +595,14 @@ var reports = {
 
             if (wip115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "wip_115" });
-            } else if (column115.includes(`${extJson.id}`)) {
+            }
+            if (column115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "column_115" });
-            } else if (Object.keys(probably_compatible_115).includes(`${extJson.id}`)) {
+            }
+            if (Object.keys(probably_compatible_115).includes(`${extJson.id}`)) {
                 badges.push({ badge: "probably_compatible_115", link: probably_compatible_115[`${extJson.id}`]});
-            } else if (unknown115.includes(`${extJson.id}`)) {
+            }
+            if (unknown115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "unknown_115" });
             }
             if (discontinued.includes(`${extJson.id}`)) {
@@ -649,7 +649,10 @@ var reports = {
         rowData: function (extJson) {
             let v115 = getExtData(extJson, "112").data;
             let v102 = getExtData(extJson, "102").data;
-            let include = (!!v102 && !v115) || unknown115.includes(`${extJson.id}`);
+            let include = (!!v102 && !v115) 
+                || unknown115.includes(`${extJson.id}`)
+                || wip115.includes(`${extJson.id}`)
+                || column115.includes(`${extJson.id}`)
             let badges = [];
 
             if (include) {
@@ -671,6 +674,15 @@ var reports = {
                 }
                 if (Object.keys(probably_compatible_115).includes(`${extJson.id}`)) {
                     badges.push({ badge: "probably_compatible_115", link: probably_compatible_115[`${extJson.id}`]});
+                }
+                if (wip115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "wip_115" });
+                }
+                if (column115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "column_115" });
+                }
+                if (unknown115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "unknown_115" });
                 }
             }
             return { include, badges };
