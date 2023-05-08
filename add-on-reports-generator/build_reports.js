@@ -1167,7 +1167,7 @@ function getBadgeElement(badgeName, bLink) {
 function makeBadgeElement(bOpt, bLink) {
     let title = bOpt.bTooltip ? `title='${bOpt.bTooltip}'` : ``;
 
-    let tag = `<img src='https://img.shields.io/badge/${bOpt.bLeftText}-${bOpt.bRightText}-${bOpt.bColor}.png' ${title}>`
+    let tag = `<img src='https://img.shields.io/badge/${bOpt.bLeftText}-${bOpt.bRightText}-${bOpt.bColor}.svg' ${title}>`
     return bLink ? `<a href="${bLink}">${tag}</a>` : tag;
 }
 
