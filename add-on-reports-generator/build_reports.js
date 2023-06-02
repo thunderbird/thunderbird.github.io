@@ -415,6 +415,25 @@ var reports = {
             return { include: false };
         }
     },
+    "recent-addition": {
+        group: "general",
+        header: "Extensions created within the last year.",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let current_version = getExtData(extJson, "current").data;
+            if (current_version) {
+                let c = extJson.created;
+                let cv = new Date(c);
+                let today = new Date();
+                const msDay = 24 * 60 * 60 * 1000;
+                let d = (today - cv) / msDay;
+                return { include: (d <= 365) };
+            }
+            return { include: false };
+        }
+    },
     "requested-permissions": {
         group: "general",
         header: "Extensions requesting WebExtension permissions.",
