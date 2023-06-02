@@ -202,9 +202,11 @@ const probably_compatible_102 = [
 
 // 115
 const incompatible115 = [
-    "12018",  //addon/quick-folder-move
-    "987727", //addon/monterail-full-dark-2/
-    "987726", //addon/monterail-dark-2-0-for-tb-68/
+    "12018",  //addon/quick-folder-move - contacted
+    "987914", //addon/filter-on-folder-button/ - needs multiple buttons
+    "988108", //addon/openpgp-alias-updater/ - OS.file / resource://gre/modules/osfile.jsm no longer exists
+    "987727", //addon/monterail-full-dark-2/ - probably discontinued
+    "987726", //addon/monterail-dark-2-0-for-tb-68/ - probably discontinued
 ]
 
 const unknown115 = [
@@ -212,12 +214,6 @@ const unknown115 = [
     "987995",
     "987821",
     "4654",
-    "47144",
-    "987914",
-    "988057",
-    "988108",
-    "987925",
-    "988086",
 ]
 const wip115 = [
     "987986", // select_prev_on_delete-2.0.0-tb
@@ -247,6 +243,9 @@ const known115 = [
     "438634", // DKIM
     "287743", // MailHops
     "407832", //thunderbird/addon/filter-button/
+    "988057", //addon/keeprunning/
+    "987925", //addon/eml-editor/
+    "47144",  //addon/mail-merge/
 ]
 
 const discontinued = [
@@ -261,6 +260,7 @@ const discontinued = [
     "987945", //addon/treechildrenheight50/
     "367989", //addon/rise-of-the-tools/
     "987901", //addon/transfer-immunity/ - Uses an experiment for alert, uses dead link - https://www.transferimmunity.com/
+    "988086", //addon/confirmconversionsatselecting/ - probably discontinued
 ]
 
 const contacted = [
@@ -287,6 +287,8 @@ const contacted = [
     "988451",
     "988169",
     "987925", // EML to get it to a pure WebExt
+    // incompatible
+    "12018",  //addon/quick-folder-move - contacted
 ]
 
 var gAlternativeData;
@@ -558,6 +560,55 @@ var reports = {
             return { include, badges }
         }
     },
+    "lost-tb102-to-tb115-worst-case": {
+        group: "115",
+        header: "Extensions which have been lost from TB102 to TB115, worst case scenario",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let v115 = getExtData(extJson, "115").data;
+            let v102 = getExtData(extJson, "102").data;
+            let include = (!!v102 && !v115) 
+                || incompatible115.includes(`${extJson.id}`)
+                || unknown115.includes(`${extJson.id}`)
+                || column115.includes(`${extJson.id}`)
+                || wip115.includes(`${extJson.id}`)
+            let badges = [];
+
+            if (include) {
+                if (discontinued.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "discontinued" });
+                }
+                if (reports["pure-webext-with-upper-limit"].rowData(extJson).include) {
+                    badges.push({ badge: "pure", link: "pure-webext-with-upper-limit.html" });
+                }
+                if (reports["experiments-without-upper-limit"].rowData(extJson).include) {
+                    badges.push({ badge: "no_limit_experiment", link: "experiments-without-upper-limit.html" });
+                }
+                let themeExperiment = v115?.manifest?.theme_experiment;
+                if (themeExperiment) {
+                    badges.push({ badge: "theme_experiment" });
+                }
+                if (contacted.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "contacted" });
+                }
+                if (incompatible115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "incompatible_115" });
+                }
+                if (unknown115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "unknown_115" });
+                }
+                if (column115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "column_115" });
+                }
+                if (wip115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "wip_115" });
+                }
+            }
+            return { include, badges };
+        }
+    },
     "atn-tb115": {
         group: "115",
         header: "Extensions compatible with Thunderbird 115 as seen by ATN.",
@@ -697,55 +748,7 @@ var reports = {
             return { include, badges };
         }
     },
-    "lost-tb102-to-tb115": {
-        group: "115",
-        header: "Extensions which have been lost from TB102 to TB115, worst case scenario",
-        template: "report-template.html",
-        enabled: true,
-        generate: genStandardReport,
-        rowData: function (extJson) {
-            let v115 = getExtData(extJson, "115").data;
-            let v102 = getExtData(extJson, "102").data;
-            let include = (!!v102 && !v115) 
-                || incompatible115.includes(`${extJson.id}`)
-                || unknown115.includes(`${extJson.id}`)
-                || column115.includes(`${extJson.id}`)
-                || wip115.includes(`${extJson.id}`)
-            let badges = [];
 
-            if (include) {
-                if (discontinued.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "discontinued" });
-                }
-                if (reports["pure-webext-with-upper-limit"].rowData(extJson).include) {
-                    badges.push({ badge: "pure", link: "pure-webext-with-upper-limit.html" });
-                }
-                if (reports["experiments-without-upper-limit"].rowData(extJson).include) {
-                    badges.push({ badge: "no_limit_experiment", link: "experiments-without-upper-limit.html" });
-                }
-                let themeExperiment = v102.manifest?.theme_experiment;
-                if (themeExperiment) {
-                    badges.push({ badge: "theme_experiment" });
-                }
-                if (contacted.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "contacted" });
-                }
-                if (incompatible115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "incompatible_115" });
-                }
-                if (unknown115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "unknown_115" });
-                }
-                if (column115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "column_115" });
-                }
-                if (wip115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "wip_115" });
-                }
-            }
-            return { include, badges };
-        }
-    },
     // -- v102 -------------------------------------------------------------------------------------
     "atn-tb102": {
         group: "102",
