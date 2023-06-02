@@ -525,7 +525,7 @@ var reports = {
         },
     },
     // -- v115 -------------------------------------------------------------------------------------
-    "atn-tb115-expected-compatible": {
+    "tb115-expected-compatible": {
         group: "115",
         header: "Extensions expected to be compatible with Thunderbird 115.",
         template: "report-template.html",
