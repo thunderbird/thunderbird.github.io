@@ -203,17 +203,17 @@ const probably_compatible_102 = [
 // 115
 const incompatible115 = [
     "12018",  //addon/quick-folder-move - contacted
+    "987821", //openattachmentbyextension/ - contacted
+    "988108", //addon/openpgp-alias-updater/ - contacted
     "987914", //addon/filter-on-folder-button/ - needs multiple buttons
-    "988108", //addon/openpgp-alias-updater/ - OS.file / resource://gre/modules/osfile.jsm no longer exists
+    "987995", //addon/hide-local-folders-for-tb78/ - needs to hide local folders via CSS - contacted
     "987727", //addon/monterail-full-dark-2/ - probably discontinued
     "987726", //addon/monterail-dark-2-0-for-tb-68/ - probably discontinued
+    "4654",   //addon/removedupes - needs to adapt to mail:3pane, could use menus API - contacted
+    "1279",   //addon/xpunge/ - needs to adapt to mail:3pane changes
 ]
 
 const unknown115 = [
-    "1279",
-    "987995",
-    "987821",
-    "4654",
 ]
 const wip115 = [
     "987986", // select_prev_on_delete-2.0.0-tb
@@ -289,6 +289,10 @@ const contacted = [
     "987925", // EML to get it to a pure WebExt
     // incompatible
     "12018",  //addon/quick-folder-move - contacted
+    "987821", //openattachmentbyextension/ - contacted
+    "988108", //addon/openpgp-alias-updater/ - contacted
+    "987995", //addon/hide-local-folders-for-tb78/ - needs to hide local folders via CSS - contacted
+    "4654",   //addon/removedupes - needs to adapt to mail:3pane, could use menus API - contacted
 ]
 
 var gAlternativeData;
@@ -497,15 +501,16 @@ var reports = {
             if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
             }
-            if (contacted.includes(`${extJson.id}`)) {
-                badges.push({ badge: "contacted" });
-            }
             let themeExperiment = vCurrent.manifest?.theme_experiment;
             if (themeExperiment) {
                 badges.push({ badge: "theme_experiment" });
             }
             if (!vCurrent.legacy && vCurrent.mext && !vCurrent.experiment && !themeExperiment) {
                 badges.push({ badge: "pure" });
+            }
+
+            if (contacted.includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted" });
             }
             return { include, badges };
         }
@@ -590,9 +595,6 @@ var reports = {
                 if (themeExperiment) {
                     badges.push({ badge: "theme_experiment" });
                 }
-                if (contacted.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "contacted" });
-                }
                 if (incompatible115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "incompatible_115" });
                 }
@@ -604,6 +606,10 @@ var reports = {
                 }
                 if (wip115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "wip_115" });
+                }
+
+                if (contacted.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "contacted" });
                 }
             }
             return { include, badges };
@@ -679,9 +685,7 @@ var reports = {
             if (unknown115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "unknown_115" });
             }
-            if (contacted.includes(`${extJson.id}`)) {
-                badges.push({ badge: "contacted" });
-            }
+
             let themeExperiment = vCurrent.manifest?.theme_experiment;
             if (themeExperiment) {
                 badges.push({ badge: "theme_experiment" });
@@ -693,6 +697,9 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             }
 
+            if (contacted.includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted" });
+            }
             return { include: manually_lowered || incompatible115.includes(`${extJson.id}`), badges };
         }
     },
@@ -813,11 +820,12 @@ var reports = {
                 badges.push({ badge: "probably_compatible_102" });
             }
 
-            if (contacted.includes(`${extJson.id}`)) {
-                badges.push({ badge: "contacted" });
-            }
             if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
+            }
+
+            if (contacted.includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted" });
             }
             return { include, badges };
         }
@@ -848,7 +856,6 @@ var reports = {
             if (contacted.includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted" });
             }
-
             return { include, badges };
         }
     },
