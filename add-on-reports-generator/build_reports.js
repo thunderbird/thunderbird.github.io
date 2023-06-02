@@ -210,7 +210,6 @@ const incompatible115 = [
     "987727", //addon/monterail-full-dark-2/ - probably discontinued
     "987726", //addon/monterail-dark-2-0-for-tb-68/ - probably discontinued
     "4654",   //addon/removedupes - needs to adapt to mail:3pane, could use menus API - contacted
-    "1279",   //addon/xpunge/ - needs to adapt to mail:3pane changes
 ]
 
 const unknown115 = [
@@ -225,6 +224,7 @@ const wip115 = [
     "987840", // PrintingTools NG
     "330066", // EditEmailSubject
     "711780", // LookOut
+    "1279",   //addon/xpunge/ - contacted with working version
 ]
 const column115 = [
     "987838", //addon/sender-domain/
