@@ -621,8 +621,8 @@ var reports = {
             let badges = [];
 
             if (include) {
-                if (reports["experiments-without-upper-limit"].rowData(extJson).include) {
-                    badges.push({ badge: "no_limit_experiment", link: "experiments-without-upper-limit.html" });
+                if (v115.experiment) {
+                    badges.push({ badge: "experiment"});
                 }
                 if (incompatible115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "incompatible_115" });
@@ -636,7 +636,9 @@ var reports = {
                 if (wip115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "wip_115" });
                 }
-
+                if (discontinued.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "discontinued" });
+                }
                 let themeExperiment = v115.manifest?.theme_experiment;
                 if (themeExperiment) {
                     badges.push({ badge: "theme_experiment" });
@@ -651,7 +653,7 @@ var reports = {
     },
     "valid-115-according-to-strict-max-but-atn-value-reduced": {
         group: "115",
-        header: "Extensions whose strict_max_version allows installation in Thunderbird 115, but ATN value has been lowered to signal incompatibility (which is ignored during install and app upgrade).",
+        header: "Extensions whose strict_max_version allows installation in Thunderbird 115, but ATN value has been lowered to signal incompatibility (which is ignored during install and app upgrade). Also includes add-ons which are known to be incompatible.",
         template: "report-template.html",
         enabled: true,
         generate: genStandardReport,
@@ -667,10 +669,13 @@ var reports = {
 
             let baseReport = reports["max-atn-value-reduced-below-max-xpi-value"].rowData(extJson);
             let badges = [];
-            let include = baseReport.include &&
+            let manually_lowered = baseReport.include &&
                 compareVer(strict_max, 115) > 0 && // xpi limit > 115
                 compareVer(atn_max, "115.*") < 0; // atn limit < 115.*
 
+            if (incompatible115.includes(`${extJson.id}`)) {
+                badges.push({ badge: "incompatible_115" });
+            }
             if (unknown115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "unknown_115" });
             }
@@ -688,7 +693,7 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             }
 
-            return { include, badges };
+            return { include: manually_lowered || incompatible115.includes(`${extJson.id}`), badges };
         }
     },
     "experiments-without-upper-limit": {
@@ -704,18 +709,22 @@ var reports = {
             let include = !!vCurrent && vCurrent.mext && vCurrent.experiment && atn_max == "*";
             let badges = [];
 
-            if (wip115.includes(`${extJson.id}`)) {
-                badges.push({ badge: "wip_115" });
-            }
-            if (column115.includes(`${extJson.id}`)) {
-                badges.push({ badge: "column_115" });
+            if (incompatible115.includes(`${extJson.id}`)) {
+                badges.push({ badge: "incompatible_115" });
             }
             if (unknown115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "unknown_115" });
             }
+            if (column115.includes(`${extJson.id}`)) {
+                badges.push({ badge: "column_115" });
+            }
+            if (wip115.includes(`${extJson.id}`)) {
+                badges.push({ badge: "wip_115" });
+            }
             if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
             }
+
             return { include, badges };
         }
     },
