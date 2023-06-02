@@ -8,7 +8,7 @@
  */
 
 // Define which ESR are supported.
-const SUPPORTED_ESR = [60, 68, 78, 91, 102, 112];
+const SUPPORTED_ESR = [60, 68, 78, 91, 102, 115];
 // Debug logging (0 - errors and basic logs only, 1 - verbose debug)
 const debugLevel = 1;
 // Debug option to speed up processing.

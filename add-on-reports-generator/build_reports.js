@@ -16,7 +16,7 @@ const rootDir = "data";
 const reportDir = "../add-on-reports";
 const extsAllJsonFileName = `${rootDir}/xall.json`;
 
-const SUPPORTED_ESR = [60, 68, 78, 91, 102, 112];
+const SUPPORTED_ESR = [60, 68, 78, 91, 102, 115];
 
 const badge_definitions = {
     "permission": { bLeftText: 'p', bColor: 'orange', bTooltip: "Requested Permission" },
@@ -26,6 +26,7 @@ const badge_definitions = {
     "theme_experiment": { bRightText: 'Theme Experiment', bLeftText: '⠀', bColor: 'blue' },
     "pure": { bRightText: 'Pure WebExtension', bLeftText: '⠀', bColor: '570861' },
     "no_limit_experiment": { bRightText: 'Limitless Experiment', bLeftText: '⠀', bColor: 'ff8800' },
+    "experiment": { bRightText: 'Experiment (legacy)', bLeftText: '⠀', bColor: 'ff8800' },
 
     "incompatible_91": { bRightText: 'Incompatible', bLeftText: 'TB91', bColor: 'c90016' },
 
@@ -33,48 +34,11 @@ const badge_definitions = {
     "incompatible_102": { bRightText: 'Incompatible', bLeftText: 'TB102', bColor: 'c90016' },
     "compatible_102": { bRightText: 'Compatible', bLeftText: 'TB102', bColor: 'darkgreen' },
 
+    "incompatible_115": { bRightText: 'Incompatible', bLeftText: 'TB115', bColor: 'c90016' },
     "unknown_115": { bRightText: 'Compatibility Unknown', bLeftText: 'TB115', bColor: 'c90016' },
     "column_115": { bRightText: 'Needs Column Support', bLeftText: 'TB115', bColor: 'darkred' },
     "wip_115": { bRightText: 'Work in Progress', bLeftText: 'TB115', bColor: 'yellow' },
-    "probably_compatible_115": { bRightText: 'Probably Compatible', bLeftText: 'TB115', bColor: 'darkgreen' },
-
-
 }
-
-const discontinued = [
-    "219725", //addon/autoslide/
-    "986572", //addon/flat-folder-tree-updated/ - broken, core does not seem to support add-on modes anymore -> API
-    "987978", //addon/monterail-darkness-extended/ - uses old WL and bad colors in TB91 already
-    "987660", //addon/taskviewflexlayout/
-    "987928", //addon/tabsinstatusbariconsinmenubar/
-    "988198", //addon/dontrestoretabsrevival/
-    "988370"
-]
-const contacted = [
-    // Please remove upper limit, pure webext
-    "988060", //addon/text-insert-text-blocks/
-    "987860", //addon/empty-folder/
-    "988255",
-    "988365",
-    "988338",
-    "988094",
-    "987916",
-    "988167",
-    "988258",
-    "988171",
-    "988126",
-    "988166",
-    "988168",
-    "988389",
-    "988427",
-    "988170",
-    "988431",
-    "988428",
-    "988023",
-    "988451",
-    "988169",
-    "987925", // EML to get it to a pure WebExt
-]
 
 // 102
 const knownWorking102 = [
@@ -237,43 +201,93 @@ const probably_compatible_102 = [
 ]
 
 // 115
+const incompatible115 = [
+    "12018",  //addon/quick-folder-move
+    "987727", //addon/monterail-full-dark-2/
+    "987726", //addon/monterail-dark-2-0-for-tb-68/
+]
+
 const unknown115 = [
     "1279",
     "987995",
     "987821",
     "4654",
     "47144",
-    "702920",
-    "12018",
-    "987908",
-    "987906",
-    "742199",
-    "987727",
-    "11727",
-    "987911",
-    "987726",
-    "987865",
-    "360086",
     "987914",
     "988057",
     "988108",
     "987925",
-    "987945",
-    "987665",
     "988086",
 ]
 const wip115 = [
     "987986", // select_prev_on_delete-2.0.0-tb
+    "773590", // TbSync
+    "634298", // CardBook
+    "986686", // IETools
+    "986258", // Provider for DAV
+    "986338", // Provider for Exchange
+    "987840", // PrintingTools NG
+    "330066", // EditEmailSubject
+    "711780", // LookOut
 ]
 const column115 = [
-    "987838"
+    "987838", //addon/sender-domain/
+    "987906", //addon/full-address-column/
+    "987911", //addon/spam-scores/
 ]
-const probably_compatible_115 = {
-    "287743":"https://github.com/MailHops/mailhops-plugin/pull/31", // Done.
-    "987901":"", // Uses an experiment for alert, uses dead link - https://www.transferimmunity.com/
-    "407832":""
-}
+const known115 = [
+    "988138", //addon/grammar-and-spell-checker/
+    "702920", //addon/thunderhtmledit/
+    "986685", //addon/phoenity-icons/
+    "987908", //addon/deepl-selected-text/
+    "742199", //addon/attach-from-clipboard/
+    "11727",  //addon/refwdformatter/ (can be a pure webExt)
+    "987865", //addon/previous-colors/
+    "360086", //addon/toggle-headers/
+    "438634", // DKIM
+    "287743", // MailHops
+    "407832", //thunderbird/addon/filter-button/
+]
 
+const discontinued = [
+    "219725", //addon/autoslide/
+    "986572", //addon/flat-folder-tree-updated/ - broken, core does not seem to support add-on modes anymore -> API
+    "987978", //addon/monterail-darkness-extended/ - uses old WL and bad colors in TB91 already
+    "987660", //addon/taskviewflexlayout/
+    "987928", //addon/tabsinstatusbariconsinmenubar/
+    "988198", //addon/dontrestoretabsrevival/
+    "988370", //addon/spacebar-clicker/
+    "987665", //addon/lefttodaysubpaneorlogoorclock/
+    "987945", //addon/treechildrenheight50/
+    "367989", //addon/rise-of-the-tools/
+    "987901", //addon/transfer-immunity/ - Uses an experiment for alert, uses dead link - https://www.transferimmunity.com/
+]
+
+const contacted = [
+    // Please remove upper limit, pure webext
+    "988060", //addon/text-insert-text-blocks/
+    "987860", //addon/empty-folder/
+    "988255",
+    "988365",
+    "988338",
+    "988094",
+    "987916",
+    "988167",
+    "988258",
+    "988171",
+    "988126",
+    "988166",
+    "988168",
+    "988389",
+    "988427",
+    "988170",
+    "988431",
+    "988428",
+    "988023",
+    "988451",
+    "988169",
+    "987925", // EML to get it to a pure WebExt
+]
 
 var gAlternativeData;
 
@@ -324,7 +338,7 @@ var reports = {
         enabled: true,
         generate: genStandardReport,
         rowData: function (extJson) {
-            let v115 = getExtData(extJson, "112").version;
+            let v115 = getExtData(extJson, "115").version;
             let v102 = getExtData(extJson, "102").version;
             let v91 = getExtData(extJson, "91").version;
             let v78 = getExtData(extJson, "78").version;
@@ -509,6 +523,41 @@ var reports = {
         },
     },
     // -- v115 -------------------------------------------------------------------------------------
+    "atn-tb115-expected-compatible": {
+        group: "115",
+        header: "Extensions expected to be compatible with Thunderbird 115.",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let v115 = getExtData(extJson, "115").data;
+            let include = !!v115 && 
+                !incompatible115.includes(`${extJson.id}`) &&
+                !column115.includes(`${extJson.id}`) &&
+                !wip115.includes(`${extJson.id}`);
+                !discontinued.includes(`${extJson.id}`);
+            let badges = [];
+
+            // all non pure extensions have to be explicitly checked
+            if (include) {
+                if (unknown115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "unknown_115" });
+                }
+                if (v115.experiment) {
+                    badges.push({ badge: "experiment"});
+                }
+                let themeExperiment = !!v115 && v115.manifest?.theme_experiment;
+                if (themeExperiment) {
+                    badges.push({ badge: "theme_experiment" });
+                }
+                if (!v115.legacy && v115.mext && !v115.experiment && !themeExperiment) {
+                    badges.push({ badge: "pure" });
+                }                
+            };
+
+            return { include, badges }
+        }
+    },
     "atn-tb115": {
         group: "115",
         header: "Extensions compatible with Thunderbird 115 as seen by ATN.",
@@ -516,7 +565,7 @@ var reports = {
         enabled: true,
         generate: genStandardReport,
         rowData: function (extJson) {
-            let v115 = getExtData(extJson, "112").data;
+            let v115 = getExtData(extJson, "115").data;
             let include = !!v115;
             let badges = [];
 
@@ -524,9 +573,19 @@ var reports = {
                 if (reports["experiments-without-upper-limit"].rowData(extJson).include) {
                     badges.push({ badge: "no_limit_experiment", link: "experiments-without-upper-limit.html" });
                 }
+                if (incompatible115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "incompatible_115" });
+                }
                 if (unknown115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "unknown_115" });
                 }
+                if (column115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "column_115" });
+                }
+                if (wip115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "wip_115" });
+                }
+
                 let themeExperiment = v115.manifest?.theme_experiment;
                 if (themeExperiment) {
                     badges.push({ badge: "theme_experiment" });
@@ -558,8 +617,8 @@ var reports = {
             let baseReport = reports["max-atn-value-reduced-below-max-xpi-value"].rowData(extJson);
             let badges = [];
             let include = baseReport.include &&
-                compareVer(strict_max, 112) > 0 && // xpi limit > 115
-                compareVer(atn_max, "112.*") < 0; // atn limit < 115.*
+                compareVer(strict_max, 115) > 0 && // xpi limit > 115
+                compareVer(atn_max, "115.*") < 0; // atn limit < 115.*
 
             if (unknown115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "unknown_115" });
@@ -599,9 +658,6 @@ var reports = {
             }
             if (column115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "column_115" });
-            }
-            if (Object.keys(probably_compatible_115).includes(`${extJson.id}`)) {
-                badges.push({ badge: "probably_compatible_115", link: probably_compatible_115[`${extJson.id}`]});
             }
             if (unknown115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "unknown_115" });
@@ -648,12 +704,13 @@ var reports = {
         enabled: true,
         generate: genStandardReport,
         rowData: function (extJson) {
-            let v115 = getExtData(extJson, "112").data;
+            let v115 = getExtData(extJson, "115").data;
             let v102 = getExtData(extJson, "102").data;
             let include = (!!v102 && !v115) 
+                || incompatible115.includes(`${extJson.id}`)
                 || unknown115.includes(`${extJson.id}`)
-                || wip115.includes(`${extJson.id}`)
                 || column115.includes(`${extJson.id}`)
+                || wip115.includes(`${extJson.id}`)
             let badges = [];
 
             if (include) {
@@ -673,17 +730,17 @@ var reports = {
                 if (contacted.includes(`${extJson.id}`)) {
                     badges.push({ badge: "contacted" });
                 }
-                if (Object.keys(probably_compatible_115).includes(`${extJson.id}`)) {
-                    badges.push({ badge: "probably_compatible_115", link: probably_compatible_115[`${extJson.id}`]});
+                if (incompatible115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "incompatible_115" });
                 }
-                if (wip115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "wip_115" });
+                if (unknown115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "unknown_115" });
                 }
                 if (column115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "column_115" });
                 }
-                if (unknown115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "unknown_115" });
+                if (wip115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "wip_115" });
                 }
             }
             return { include, badges };
@@ -1073,7 +1130,7 @@ function genStandardReport(extsJson, name, report) {
 		  <td style="text-align: right" valign="top">${cv("78")}</td>
 		  <td style="text-align: right" valign="top">${cv("91")}</td>
 		  <td style="text-align: right" valign="top">${cv("102")}</td>
-		  <td style="text-align: right" valign="top">${cv("112")}</td>
+		  <td style="text-align: right" valign="top">${cv("115")}</td>
 		  <td style="text-align: right" valign="top">${current_version?.atn.files[0].created.split('T')[0]}</td>
 		  <td style="text-align: right" valign="top">${cv("current")}</td>
 		  <td style="text-align: right" valign="top">${v_min}</td>
