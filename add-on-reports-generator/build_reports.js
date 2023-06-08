@@ -203,13 +203,10 @@ const probably_compatible_102 = [
 // 115
 const incompatible115 = [
     "12018",  //addon/quick-folder-move - contacted
-    "987821", //openattachmentbyextension/ - contacted
     "988108", //addon/openpgp-alias-updater/ - contacted
     "987914", //addon/filter-on-folder-button/ - needs multiple buttons
-    "987995", //addon/hide-local-folders-for-tb78/ - needs to hide local folders via CSS - contacted
     "987727", //addon/monterail-full-dark-2/ - probably discontinued
     "987726", //addon/monterail-dark-2-0-for-tb-68/ - probably discontinued
-    "4654",   //addon/removedupes - needs to adapt to mail:3pane, could use menus API - contacted
 ]
 
 const unknown115 = [
@@ -225,6 +222,8 @@ const wip115 = [
     "330066", // EditEmailSubject
     "711780", // LookOut
     "1279",   //addon/xpunge/ - contacted with working version
+    "4654",   //addon/removedupes - needs to adapt to mail:3pane, could use menus API - contacted
+    "987821", //openattachmentbyextension/ - contacted
 ]
 const column115 = [
     "987838", //addon/sender-domain/
@@ -246,6 +245,7 @@ const known115 = [
     "988057", //addon/keeprunning/
     "987925", //addon/eml-editor/
     "47144",  //addon/mail-merge/
+    "987995", //addon/hide-local-folders-for-tb78/ - needs to hide local folders via CSS - contacted
 ]
 
 const discontinued = [
@@ -289,10 +289,7 @@ const contacted = [
     "987925", // EML to get it to a pure WebExt
     // incompatible
     "12018",  //addon/quick-folder-move - contacted
-    "987821", //openattachmentbyextension/ - contacted
     "988108", //addon/openpgp-alias-updater/ - contacted
-    "987995", //addon/hide-local-folders-for-tb78/ - needs to hide local folders via CSS - contacted
-    "4654",   //addon/removedupes - needs to adapt to mail:3pane, could use menus API - contacted
 ]
 
 var gAlternativeData;
