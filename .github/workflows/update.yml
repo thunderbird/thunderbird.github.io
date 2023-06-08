@@ -1,0 +1,28 @@
+name: Update
+
+on:
+  schedule:
+    - cron:  '0 12 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    name: Update add-on reports
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+    - name: Install
+      run: |
+        cd add-on-reports-generator
+        npm ci
+    - name: Run
+      run: |
+        cd add-on-reports-generator
+        node get_addon_data.js
+        node build_reports.js
+        git config --global user.email "john.bieling@gmx.de"
+        git config --global user.name "John Bieling"
+        git commit -am "Updated add-on reports $(date -u +%F)."
+        git push
