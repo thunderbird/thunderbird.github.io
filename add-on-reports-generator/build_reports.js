@@ -203,16 +203,13 @@ const probably_compatible_102 = [
 // 115
 const incompatible115 = [
     "12018",  //addon/quick-folder-move - contacted
-    "988108", //addon/openpgp-alias-updater/ - contacted
-    "987914", //addon/filter-on-folder-button/ - needs multiple buttons
-    "987727", //addon/monterail-full-dark-2/ - probably discontinued
-    "987726", //addon/monterail-dark-2-0-for-tb-68/ - probably discontinued
 ]
 
 const unknown115 = [
 ]
 const wip115 = [
-    "987986", // select_prev_on_delete-2.0.0-tb
+    "987986", // select_prev_on_delete-2.0.0-tb (google drive)
+    "987914", //addon/filter-on-folder-button/ (google drive)
     "773590", // TbSync
     "634298", // CardBook
     "986686", // IETools
@@ -223,7 +220,6 @@ const wip115 = [
     "711780", // LookOut
     "1279",   //addon/xpunge/ - contacted with working version
     "4654",   //addon/removedupes - needs to adapt to mail:3pane, could use menus API - contacted
-    "987821", //openattachmentbyextension/ - contacted
 ]
 const column115 = [
     "987838", //addon/sender-domain/
@@ -232,7 +228,6 @@ const column115 = [
 ]
 const known115 = [
     "988138", //addon/grammar-and-spell-checker/
-    "702920", //addon/thunderhtmledit/
     "986685", //addon/phoenity-icons/
     "987908", //addon/deepl-selected-text/
     "742199", //addon/attach-from-clipboard/
@@ -246,9 +241,12 @@ const known115 = [
     "987925", //addon/eml-editor/
     "47144",  //addon/mail-merge/
     "987995", //addon/hide-local-folders-for-tb78/ - needs to hide local folders via CSS - contacted
+    "988108", //addon/openpgp-alias-updater/ - contacted
+    "987821", //openattachmentbyextension/ - contacted
 ]
 
 const discontinued = [
+    "702920", //addon/thunderhtmledit/
     "219725", //addon/autoslide/
     "986572", //addon/flat-folder-tree-updated/ - broken, core does not seem to support add-on modes anymore -> API
     "987978", //addon/monterail-darkness-extended/ - uses old WL and bad colors in TB91 already
@@ -261,6 +259,8 @@ const discontinued = [
     "367989", //addon/rise-of-the-tools/
     "987901", //addon/transfer-immunity/ - Uses an experiment for alert, uses dead link - https://www.transferimmunity.com/
     "988086", //addon/confirmconversionsatselecting/ - probably discontinued
+    "987727", //addon/monterail-full-dark-2/ - probably discontinued
+    "987726", //addon/monterail-dark-2-0-for-tb-68/ - probably discontinued
 ]
 
 const contacted = [
@@ -286,10 +286,14 @@ const contacted = [
     "988023",
     "988451",
     "988169",
-    "987925", // EML to get it to a pure WebExt
+    // google drive
+    "987914", //addon/filter-on-folder-button/ (google drive)
+    "987986", // select_prev_on_delete-2.0.0-tb (google drive)
+    "1279",   //addon/xpunge/ - (google drive)
+    // suggested changes
+    "987925", // EML to get it to a pure WebExt, uses deprecated attachment.getFile()
     // incompatible
     "12018",  //addon/quick-folder-move - contacted
-    "988108", //addon/openpgp-alias-updater/ - contacted
 ]
 
 var gAlternativeData;
