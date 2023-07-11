@@ -202,6 +202,7 @@ const probably_compatible_102 = [
 
 // 115
 const incompatible115 = [
+    "988365", //addon/advanced-composer/
 ]
 
 const unknown115 = [
@@ -263,28 +264,10 @@ const discontinued = [
 ]
 
 const contacted = [
+    "988365", //addon/advanced-composer/ - strangely incompatible
     // Please remove upper limit, pure webext
     "988060", //addon/text-insert-text-blocks/
-    "987860", //addon/empty-folder/
-    "988255",
-    "988365",
-    "988338",
-    "988094",
-    "987916",
-    "988167",
-    "988258",
-    "988171",
-    "988126",
-    "988166",
-    "988168",
-    "988389",
-    "988427",
-    "988170",
-    "988431",
-    "988428",
-    "988023",
-    "988451",
-    "988169",
+    "711456", //addon/textra-thunderbird/
     // google drive
     "987914", //addon/filter-on-folder-button/ (google drive)
     "987986", // select_prev_on_delete-2.0.0-tb (google drive)
@@ -771,6 +754,9 @@ var reports = {
 
 
             let badges = [];
+            if (incompatible115.includes(`${extJson.id}`)) {
+                badges.push({ badge: "incompatible_115" });
+            }
             if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
             }
