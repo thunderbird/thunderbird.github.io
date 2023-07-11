@@ -202,7 +202,6 @@ const probably_compatible_102 = [
 
 // 115
 const incompatible115 = [
-    "12018",  //addon/quick-folder-move - contacted
 ]
 
 const unknown115 = [
@@ -216,9 +215,7 @@ const wip115 = [
     "986258", // Provider for DAV
     "986338", // Provider for Exchange
     "987840", // PrintingTools NG
-    "330066", // EditEmailSubject
     "711780", // LookOut
-    "1279",   //addon/xpunge/ - contacted with working version
     "4654",   //addon/removedupes - needs to adapt to mail:3pane, could use menus API - contacted
 ]
 const column115 = [
@@ -243,6 +240,8 @@ const known115 = [
     "987995", //addon/hide-local-folders-for-tb78/ - needs to hide local folders via CSS - contacted
     "988108", //addon/openpgp-alias-updater/ - contacted
     "987821", //openattachmentbyextension/ - contacted
+    "1279",   //addon/xpunge/ - contacted with working version
+    "12018",  //addon/quick-folder-move - contacted
 ]
 
 const discontinued = [
@@ -289,11 +288,8 @@ const contacted = [
     // google drive
     "987914", //addon/filter-on-folder-button/ (google drive)
     "987986", // select_prev_on_delete-2.0.0-tb (google drive)
-    "1279",   //addon/xpunge/ - (google drive)
     // suggested changes
     "987925", // EML to get it to a pure WebExt, uses deprecated attachment.getFile()
-    // incompatible
-    "12018",  //addon/quick-folder-move - contacted
 ]
 
 var gAlternativeData;
