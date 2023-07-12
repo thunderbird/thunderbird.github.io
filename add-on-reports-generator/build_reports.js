@@ -223,7 +223,14 @@ const column115 = [
     "987838", //addon/sender-domain/
     "987906", //addon/full-address-column/
     "987911", //addon/spam-scores/
+    "987915", //addon/mahour-iranian-date/ 
 ]
+
+const statusBar = [
+    "988115", //addon/clippings-tb/
+    "986692", //addon/profile-switcher/
+]
+
 const known115 = [
     "988138", //addon/grammar-and-spell-checker/
     "986685", //addon/phoenity-icons/
