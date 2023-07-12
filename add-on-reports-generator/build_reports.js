@@ -211,7 +211,6 @@ const wip115 = [
     "987986", // select_prev_on_delete-2.0.0-tb (google drive)
     "987914", //addon/filter-on-folder-button/ (google drive)
     "773590", // TbSync
-    "634298", // CardBook
     "986686", // IETools
     "986258", // Provider for DAV
     "986338", // Provider for Exchange
@@ -232,6 +231,7 @@ const statusBar = [
 ]
 
 const known115 = [
+    "634298", // CardBook
     "988138", //addon/grammar-and-spell-checker/
     "986685", //addon/phoenity-icons/
     "987908", //addon/deepl-selected-text/
