@@ -215,7 +215,6 @@ const wip115 = [
     "986258", // Provider for DAV
     "986338", // Provider for Exchange
     "987840", // PrintingTools NG
-    "711780", // LookOut
     "4654",   //addon/removedupes - needs to adapt to mail:3pane, could use menus API - contacted
 ]
 const column115 = [
