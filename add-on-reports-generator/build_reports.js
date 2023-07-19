@@ -271,10 +271,7 @@ const discontinued = [
 ]
 
 const contacted = [
-    "988365", //addon/advanced-composer/ - strangely incompatible
-    // Please remove upper limit, pure webext
-    "988060", //addon/text-insert-text-blocks/
-    "711456", //addon/textra-thunderbird/
+    "988365", //addon/advanced-composer/ - strangely incompatible - windowId -1 on foccus changed
     // google drive
     "987914", //addon/filter-on-folder-button/ (google drive)
     "987986", // select_prev_on_delete-2.0.0-tb (google drive)
