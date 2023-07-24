@@ -215,7 +215,8 @@ const wip115 = [
     "986258", // Provider for DAV
     "986338", // Provider for Exchange
     "987840", // PrintingTools NG
-    "4654",   //addon/removedupes - needs to adapt to mail:3pane, could use menus API - contacted
+    "4654", //addon/removedupes - needs to adapt to mail:3pane, could use menus API - contacted
+    "3254", //addon/quickfolders-tabbed-folders/
 ]
 const column115 = [
     "987838", //addon/sender-domain/
