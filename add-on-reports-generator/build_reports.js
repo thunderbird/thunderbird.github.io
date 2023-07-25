@@ -207,16 +207,21 @@ const incompatible115 = [
 
 const unknown115 = [
 ]
-const wip115 = [
-    "987986", // select_prev_on_delete-2.0.0-tb (google drive)
-    "987914", //addon/filter-on-folder-button/ (google drive)
-    "773590", // TbSync
-    "986686", // IETools
-    "986258", // Provider for DAV
-    "986338", // Provider for Exchange
-    "987840", // PrintingTools NG
-    "3254", //addon/quickfolders-tabbed-folders/
-]
+const wip115 = {
+    "987986": "https://drive.google.com/file/d/1qXMXsl5jUg-uDsDRxoAFILUM-jjDmhc8/view?usp=sharing", // select_prev_on_delete-2.0.0-tb (google drive)
+    "987914": "https://drive.google.com/file/d/14iR0YcJLBRUtdOIj37czTp1p_rO5VCFu/view?usp=sharing", //addon/filter-on-folder-button/ (google drive)
+    "773590": "", // TbSync
+    "986686": "https://github.com/thundernest/import-export-tools-ng/issues/409", // IETools
+    "986258": "", // Provider for DAV
+    "986338": "", // Provider for Exchange
+    "987840": "https://github.com/cleidigh/printing-tools-ng/issues/225", // PrintingTools NG
+    "3254": "https://github.com/RealRaven2000/QuickFolders/issues/351", //addon/quickfolders-tabbed-folders/
+    "2610": "https://github.com/tjeb/Mailbox-Alert/issues/70", // MailBoxAlert
+    "605874": "https://github.com/jeevatkm/ReplyWithHeaderMozilla/pull/130", //ReplyWithHeader
+    "986643": "https://github.com/darktrojan/dav/pull/10", //FileLink provider for WebDAV
+    "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
+    "11005": "https://github.com/memeller/shrunked" // Shrunked Image Resizer
+}
 const column115 = [
     "987838", //addon/sender-domain/
     "987906", //addon/full-address-column/
@@ -544,7 +549,7 @@ var reports = {
             let include = !!v115 && 
                 !incompatible115.includes(`${extJson.id}`) &&
                 !column115.includes(`${extJson.id}`) &&
-                !wip115.includes(`${extJson.id}`);
+                !Object.keys(wip115).includes(`${extJson.id}`);
                 !discontinued.includes(`${extJson.id}`);
             let badges = [];
 
@@ -581,7 +586,7 @@ var reports = {
                 || incompatible115.includes(`${extJson.id}`)
                 || unknown115.includes(`${extJson.id}`)
                 || column115.includes(`${extJson.id}`)
-                || wip115.includes(`${extJson.id}`)
+                || Object.keys(wip115).includes(`${extJson.id}`)
             let badges = [];
 
             if (include) {
@@ -607,8 +612,8 @@ var reports = {
                 if (column115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "column_115" });
                 }
-                if (wip115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "wip_115" });
+                if (Object.keys(wip115).includes(`${extJson.id}`)) {
+                    badges.push({ badge: "wip_115", link: wip115[extJson.id] });
                 }
 
                 if (contacted.includes(`${extJson.id}`)) {
@@ -642,8 +647,8 @@ var reports = {
                 if (column115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "column_115" });
                 }
-                if (wip115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "wip_115" });
+                if (Object.keys(wip115).includes(`${extJson.id}`)) {
+                    badges.push({ badge: "wip_115", link: wip115[extJson.id] });
                 }
                 if (discontinued.includes(`${extJson.id}`)) {
                     badges.push({ badge: "discontinued" });
@@ -728,8 +733,8 @@ var reports = {
             if (column115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "column_115" });
             }
-            if (wip115.includes(`${extJson.id}`)) {
-                badges.push({ badge: "wip_115" });
+            if (Object.keys(wip115).includes(`${extJson.id}`)) {
+                badges.push({ badge: "wip_115", link: wip115[extJson.id] });
             }
             if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
