@@ -37,7 +37,9 @@ const badge_definitions = {
     "incompatible_115": { bRightText: 'Incompatible', bLeftText: 'TB115', bColor: 'c90016' },
     "unknown_115": { bRightText: 'Compatibility Unknown', bLeftText: 'TB115', bColor: 'c90016' },
     "column_115": { bRightText: 'Needs Column Support', bLeftText: 'TB115', bColor: 'darkred' },
+    "attachment_api": { bRightText: 'Attachment API Candidate', bLeftText: 'TB115', bColor: 'green' },
     "wip_115": { bRightText: 'Work in Progress', bLeftText: 'TB115', bColor: 'yellow' },
+    "investigated_115": { bRightText: 'Ongoing Analysis', bLeftText: 'TB115', bColor: 'orange' },
 }
 
 // 102
@@ -220,14 +222,54 @@ const wip115 = {
     "605874": "https://github.com/jeevatkm/ReplyWithHeaderMozilla/pull/130", //ReplyWithHeader
     "986643": "https://github.com/darktrojan/dav/pull/10", //FileLink provider for WebDAV
     "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
-    "11005": "https://github.com/memeller/shrunked" // Shrunked Image Resizer
+    "11005": "https://github.com/memeller/shrunked", // Shrunked Image Resizer
+    "54035": "",  //Thunderbird Conversations
+    "988096": "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/16", //Attachment Extractor
 }
+const investigated = [
+    "986523", //Hide Email Folders
+    "987902", //Deselect on Delete TB78
+    "988146", //smartCompose
+    "987664", //Copy Patch
+    "415184", //iOS IMAP Notes
+    "988214", //Filter email folders
+    "988416", //Quick Filter By
+    "745576", //Logout
+    "559954", //Tidybird
+    "988230", //MetaClean for Thunderbird
+    "988098", //Thunderbird Todoist
+    "787632", //Quick Folder Key Navigation
+    "327780", //Auto Select Latest Message
+    "987844", //InsertSignature
+    "331666", //QuickArchiver
+    "46207", //mailmindr
+    "356507", //Header Tools Lite
+    "988001", //Attachment Viewer: view in a tab, slid
+]
+
 const column115 = [
     "987838", //addon/sender-domain/
     "987906", //addon/full-address-column/
     "987911", //addon/spam-scores/
     "987915", //addon/mahour-iranian-date/ 
     "195275", //addon/send-later-3/
+    "987979", //AttachmentCount
+    "690062", //Sender Frequency
+    "4454",   //Priority Switcher
+    "988392", //Message List Preview
+    "988260", //X-Original-To Column
+    "988323", //Real sender of italian PEC
+    "988411", //Thunvatar
+    "372603", //Enhanced Priority Display
+    "676875", //Rspamd-spamness
+    "3492",   //Show InOut
+    "54035",  //Thunderbird Conversations
+    "987900", //QNote
+
+]
+const attachmentAPI = [
+    "988376", //PGP Universal
+    "711780", //Lookout Fixed
 ]
 
 const statusBar = [
@@ -273,6 +315,7 @@ const discontinued = [
     "988086", //addon/confirmconversionsatselecting/ - probably discontinued
     "987727", //addon/monterail-full-dark-2/ - probably discontinued
     "987726", //addon/monterail-dark-2-0-for-tb-68/ - probably discontinued
+    "987796", //MessagePreview
 ]
 
 const contacted = [
@@ -282,6 +325,7 @@ const contacted = [
     "987986", // select_prev_on_delete-2.0.0-tb (google drive)
     // suggested changes
     "987925", // EML to get it to a pure WebExt, uses deprecated attachment.getFile()
+    "56935", // Identity Chooser, use popup AFTER composer opened to select identity
 ]
 
 var gAlternativeData;
@@ -612,6 +656,12 @@ var reports = {
                 if (column115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "column_115" });
                 }
+                if (investigated.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "investigated_115" });
+                }
+                if (attachmentAPI.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "attachment_api" });
+                }
                 if (Object.keys(wip115).includes(`${extJson.id}`)) {
                     badges.push({ badge: "wip_115", link: wip115[extJson.id] });
                 }
@@ -646,6 +696,12 @@ var reports = {
                 }
                 if (column115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "column_115" });
+                }
+                if (investigated.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "investigated_115" });
+                }
+                if (attachmentAPI.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "attachment_api" });
                 }
                 if (Object.keys(wip115).includes(`${extJson.id}`)) {
                     badges.push({ badge: "wip_115", link: wip115[extJson.id] });
@@ -732,6 +788,9 @@ var reports = {
             }
             if (column115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "column_115" });
+            }
+            if (attachmentAPI.includes(`${extJson.id}`)) {
+                badges.push({ badge: "attachment_api" });
             }
             if (Object.keys(wip115).includes(`${extJson.id}`)) {
                 badges.push({ badge: "wip_115", link: wip115[extJson.id] });
