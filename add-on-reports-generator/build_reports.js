@@ -225,6 +225,7 @@ const wip115 = {
     "11005": "https://github.com/memeller/shrunked", // Shrunked Image Resizer
     "54035": "",  //Thunderbird Conversations
     "988096": "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/16", //Attachment Extractor
+    "987844": "https://github.com/HiraokaHyperTools/InsertSignature/pull/8", //InsertSignature
 }
 const investigated = [
     "986523", //Hide Email Folders
@@ -240,7 +241,6 @@ const investigated = [
     "988098", //Thunderbird Todoist
     "787632", //Quick Folder Key Navigation
     "327780", //Auto Select Latest Message
-    "987844", //InsertSignature
     "331666", //QuickArchiver
     "46207", //mailmindr
     "356507", //Header Tools Lite
