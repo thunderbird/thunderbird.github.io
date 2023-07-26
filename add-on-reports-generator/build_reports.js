@@ -223,25 +223,25 @@ const wip115 = {
     "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
     "54035": "",  //Thunderbird Conversations
     "988096": "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/16", //Attachment Extractor
+    "988108": "https://drive.google.com/file/d/1HXGqqnPD4Xup6td1CnYrlH0qKDUTP_3O/view?usp=sharing", //addon/openpgp-alias-updater/ - contacted
+    "745576": "https://github.com/oheil/logout/pull/1" , //Logout
+    "987664": "https://drive.google.com/file/d/19rp0sOmcoKC69V-TSuXZvSGrF46C9Dt2/view?usp=sharing", //Copy Patch
 }
+
 const investigated = [
     "986523", //Hide Email Folders
     "987902", //Deselect on Delete TB78
     "988146", //smartCompose
-    "987664", //Copy Patch
     "415184", //iOS IMAP Notes
     "988214", //Filter email folders
     "988416", //Quick Filter By
-    "745576", //Logout
     "559954", //Tidybird
     "988230", //MetaClean for Thunderbird
     "988098", //Thunderbird Todoist
     "787632", //Quick Folder Key Navigation
     "327780", //Auto Select Latest Message
     "331666", //QuickArchiver
-    "46207", //mailmindr
     "356507", //Header Tools Lite
-    "988001", //Attachment Viewer: view in a tab, slid
 ]
 
 const column115 = [
@@ -294,10 +294,10 @@ const known115 = [
     "287743", // MailHops
     "407832", //thunderbird/addon/filter-button/
     "987995", //addon/hide-local-folders-for-tb78/ - needs to hide local folders via CSS - contacted
-    "988108", //addon/openpgp-alias-updater/ - contacted
     "987821", //openattachmentbyextension/ - contacted
     "1279",   //addon/xpunge/ - contacted with working version
     "12018",  //addon/quick-folder-move - contacted
+    "987729", //: "https://drive.google.com/file/d/11T4wlUYmcpdugYkwpIUNuedEFyr2E7FL/view?usp=sharing", // New Folder Filters Button
 ]
 
 const discontinued = [
@@ -327,6 +327,8 @@ const contacted = [
     // suggested changes
     "987925", // EML to get it to a pure WebExt, uses deprecated attachment.getFile()
     "56935", // Identity Chooser, use popup AFTER composer opened to select identity
+    "988001", //Attachment Viewer: view in a tab, slid - does he need help?
+    "46207", //mailmindr - does he need help?
 ]
 
 var gAlternativeData;
@@ -562,6 +564,13 @@ var reports = {
             if (contacted.includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted" });
             }
+            if (Object.keys(wip115).includes(`${extJson.id}`)) {
+                badges.push({ badge: "wip_115", link: wip115[extJson.id] });
+            }
+            if (column115.includes(`${extJson.id}`)) {
+                badges.push({ badge: "column_115" });
+            }
+
             return { include, badges };
         }
     },
