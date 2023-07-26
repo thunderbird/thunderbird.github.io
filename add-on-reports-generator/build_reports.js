@@ -222,10 +222,8 @@ const wip115 = {
     "605874": "https://github.com/jeevatkm/ReplyWithHeaderMozilla/pull/130", //ReplyWithHeader
     "986643": "https://github.com/darktrojan/dav/pull/10", //FileLink provider for WebDAV
     "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
-    "11005": "https://github.com/memeller/shrunked", // Shrunked Image Resizer
     "54035": "",  //Thunderbird Conversations
     "988096": "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/16", //Attachment Extractor
-    "987844": "https://github.com/HiraokaHyperTools/InsertSignature/pull/8", //InsertSignature
 }
 const investigated = [
     "986523", //Hide Email Folders
@@ -278,6 +276,8 @@ const statusBar = [
 ]
 
 const known115 = [
+    "11005", //"https://github.com/memeller/shrunked", // Shrunked Image Resizer
+    "987844", // "https://github.com/HiraokaHyperTools/InsertSignature/pull/8", //InsertSignature
     "634298", // CardBook
     "988138", //addon/grammar-and-spell-checker/
     "986685", //addon/phoenity-icons/
