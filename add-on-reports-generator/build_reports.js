@@ -34,6 +34,7 @@ const badge_definitions = {
     "incompatible_102": { bRightText: 'Incompatible', bLeftText: 'TB102', bColor: 'c90016' },
     "compatible_102": { bRightText: 'Compatible', bLeftText: 'TB102', bColor: 'darkgreen' },
 
+    "compatible_115": { bRightText: 'Compatible', bLeftText: 'TB115', bColor: 'darkgreen' },
     "incompatible_115": { bRightText: 'Incompatible', bLeftText: 'TB115', bColor: 'c90016' },
     "unknown_115": { bRightText: 'Compatibility Unknown', bLeftText: 'TB115', bColor: 'c90016' },
     "column_115": { bRightText: 'Needs Column Support', bLeftText: 'TB115', bColor: 'darkred' },
@@ -207,8 +208,6 @@ const incompatible115 = [
     "988365", //addon/advanced-composer/
 ]
 
-const unknown115 = [
-]
 const wip115 = {
     "987986": "https://drive.google.com/file/d/1qXMXsl5jUg-uDsDRxoAFILUM-jjDmhc8/view?usp=sharing", // select_prev_on_delete-2.0.0-tb (google drive)
     "987914": "https://drive.google.com/file/d/14iR0YcJLBRUtdOIj37czTp1p_rO5VCFu/view?usp=sharing", //addon/filter-on-folder-button/ (google drive)
@@ -275,23 +274,25 @@ const statusBar = [
     "986692", //addon/profile-switcher/
 ]
 
+// Help for identifying working Experiments without upper limit.
 const known115 = [
-    "11005", //"https://github.com/memeller/shrunked", // Shrunked Image Resizer
-    "987844", // "https://github.com/HiraokaHyperTools/InsertSignature/pull/8", //InsertSignature
-    "634298", // CardBook
+    "47144",  //addon/mail-merge/
     "988138", //addon/grammar-and-spell-checker/
-    "986685", //addon/phoenity-icons/
-    "987908", //addon/deepl-selected-text/
     "742199", //addon/attach-from-clipboard/
     "11727",  //addon/refwdformatter/ (can be a pure webExt)
     "987865", //addon/previous-colors/
     "360086", //addon/toggle-headers/
+    "988057", //addon/keeprunning/
+    "987925", //addon/eml-editor/
+
+    "11005", //"https://github.com/memeller/shrunked", // Shrunked Image Resizer
+    "987844", // "https://github.com/HiraokaHyperTools/InsertSignature/pull/8", //InsertSignature
+    "634298", // CardBook
+    "986685", //addon/phoenity-icons/
+    "987908", //addon/deepl-selected-text/
     "438634", // DKIM
     "287743", // MailHops
     "407832", //thunderbird/addon/filter-button/
-    "988057", //addon/keeprunning/
-    "987925", //addon/eml-editor/
-    "47144",  //addon/mail-merge/
     "987995", //addon/hide-local-folders-for-tb78/ - needs to hide local folders via CSS - contacted
     "988108", //addon/openpgp-alias-updater/ - contacted
     "987821", //openattachmentbyextension/ - contacted
@@ -523,9 +524,6 @@ var reports = {
 
             let include = vCurrent.mext && !vCurrent.legacy && (compareVer(strict_max, atn_max) < 0);
             let badges = [];
-            if (unknown115.includes(`${extJson.id}`)) {
-                badges.push({ badge: "unknown_115" });
-            }
             if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
             }
@@ -599,9 +597,6 @@ var reports = {
 
             // all non pure extensions have to be explicitly checked
             if (include) {
-                if (unknown115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "unknown_115" });
-                }
                 if (v115.experiment) {
                     badges.push({ badge: "experiment"});
                 }
@@ -628,7 +623,6 @@ var reports = {
             let v102 = getExtData(extJson, "102").data;
             let include = (!!v102 && !v115) 
                 || incompatible115.includes(`${extJson.id}`)
-                || unknown115.includes(`${extJson.id}`)
                 || column115.includes(`${extJson.id}`)
                 || Object.keys(wip115).includes(`${extJson.id}`)
             let badges = [];
@@ -637,21 +631,8 @@ var reports = {
                 if (discontinued.includes(`${extJson.id}`)) {
                     badges.push({ badge: "discontinued" });
                 }
-                if (reports["pure-webext-with-upper-limit"].rowData(extJson).include) {
-                    badges.push({ badge: "pure", link: "pure-webext-with-upper-limit.html" });
-                }
-                if (reports["experiments-without-upper-limit"].rowData(extJson).include) {
-                    badges.push({ badge: "no_limit_experiment", link: "experiments-without-upper-limit.html" });
-                }
-                let themeExperiment = v115?.manifest?.theme_experiment;
-                if (themeExperiment) {
-                    badges.push({ badge: "theme_experiment" });
-                }
                 if (incompatible115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "incompatible_115" });
-                }
-                if (unknown115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "unknown_115" });
                 }
                 if (column115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "column_115" });
@@ -659,17 +640,33 @@ var reports = {
                 if (investigated.includes(`${extJson.id}`)) {
                     badges.push({ badge: "investigated_115" });
                 }
-                if (attachmentAPI.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "attachment_api" });
-                }
                 if (Object.keys(wip115).includes(`${extJson.id}`)) {
                     badges.push({ badge: "wip_115", link: wip115[extJson.id] });
                 }
-
                 if (contacted.includes(`${extJson.id}`)) {
                     badges.push({ badge: "contacted" });
                 }
+
+                if (badges.length == 0) {
+                    badges.push({ badge: "unknown_115" });
+                }
+
+                if (reports["pure-webext-with-upper-limit"].rowData(extJson).include) {
+                    badges.push({ badge: "pure", link: "pure-webext-with-upper-limit.html" });
+                }
+                if (reports["experiments-without-upper-limit"].rowData(extJson).include) {
+                    badges.push({ badge: "no_limit_experiment", link: "experiments-without-upper-limit.html" });
+                }
+                if (attachmentAPI.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "attachment_api" });
+                }
+                let themeExperiment = v115?.manifest?.theme_experiment;
+                if (themeExperiment) {
+                    badges.push({ badge: "theme_experiment" });
+                }
+
             }
+
             return { include, badges };
         }
     },
@@ -690,9 +687,6 @@ var reports = {
                 }
                 if (incompatible115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "incompatible_115" });
-                }
-                if (unknown115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "unknown_115" });
                 }
                 if (column115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "column_115" });
@@ -746,9 +740,6 @@ var reports = {
             if (incompatible115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "incompatible_115" });
             }
-            if (unknown115.includes(`${extJson.id}`)) {
-                badges.push({ badge: "unknown_115" });
-            }
 
             let themeExperiment = vCurrent.manifest?.theme_experiment;
             if (themeExperiment) {
@@ -783,9 +774,6 @@ var reports = {
             if (incompatible115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "incompatible_115" });
             }
-            if (unknown115.includes(`${extJson.id}`)) {
-                badges.push({ badge: "unknown_115" });
-            }
             if (column115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "column_115" });
             }
@@ -794,6 +782,9 @@ var reports = {
             }
             if (Object.keys(wip115).includes(`${extJson.id}`)) {
                 badges.push({ badge: "wip_115", link: wip115[extJson.id] });
+            }
+            if (known115.includes(`${extJson.id}`)) {
+                badges.push({ badge: "compatible_115" });
             }
             if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
