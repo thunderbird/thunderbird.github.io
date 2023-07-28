@@ -28,7 +28,7 @@ const badge_definitions = {
     "no_limit_experiment": { bRightText: 'Limitless Experiment', bLeftText: '⠀', bColor: 'ff8800' },
     "experiment": { bRightText: 'Experiment (legacy)', bLeftText: '⠀', bColor: 'ff8800' },
 
-    "attachment_api": { bRightText: 'Attachment API Candidate', bLeftText: '⠀', bColor: 'green' },
+    "attachment_api": { bRightText: 'Attachment API Candidate', bLeftText: '⠀', bColor: 'white' },
 
     "incompatible_91": { bRightText: 'Incompatible', bLeftText: 'TB91', bColor: 'c90016' },
 
@@ -40,6 +40,7 @@ const badge_definitions = {
     "unknown_115": { bRightText: 'Compatibility Unknown', bLeftText: 'TB115', bColor: 'c90016' },
     "column_115": { bRightText: 'Needs Column Support', bLeftText: 'TB115', bColor: 'darkred' },
     "wip_115": { bRightText: 'Work in Progress', bLeftText: 'TB115', bColor: 'yellow' },
+    "pr_115": { bRightText: 'Pending Pull Request', bLeftText: 'TB115', bColor: 'green' },
     "investigated_115": { bRightText: 'Ongoing Analysis', bLeftText: 'TB115', bColor: 'orange' },
 }
 
@@ -171,25 +172,28 @@ const incompatible115 = [
 ]
 
 const wip115 = {
-    "987986": "https://drive.google.com/file/d/1qXMXsl5jUg-uDsDRxoAFILUM-jjDmhc8/view?usp=sharing", // select_prev_on_delete-2.0.0-tb (google drive)
-    "987914": "https://drive.google.com/file/d/14iR0YcJLBRUtdOIj37czTp1p_rO5VCFu/view?usp=sharing", //addon/filter-on-folder-button/ (google drive)
     "773590": "", // TbSync
     "986686": "https://github.com/thundernest/import-export-tools-ng/issues/409", // IETools
     "986258": "", // Provider for DAV
     "986338": "", // Provider for Exchange
     "987840": "https://github.com/cleidigh/printing-tools-ng/issues/225", // PrintingTools NG
     "3254": "https://github.com/RealRaven2000/QuickFolders/issues/351", //addon/quickfolders-tabbed-folders/
+    "54035": "",  //Thunderbird Conversations
     "2610": "https://github.com/tjeb/Mailbox-Alert/issues/70", // MailBoxAlert
+    "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
+}
+
+const pr115 = {
+    "987986": "https://drive.google.com/file/d/1qXMXsl5jUg-uDsDRxoAFILUM-jjDmhc8/view?usp=sharing", // select_prev_on_delete-2.0.0-tb (google drive)
+    "987914": "https://drive.google.com/file/d/14iR0YcJLBRUtdOIj37czTp1p_rO5VCFu/view?usp=sharing", //addon/filter-on-folder-button/ (google drive)
     "605874": "https://github.com/jeevatkm/ReplyWithHeaderMozilla/pull/130", //ReplyWithHeader
     "986643": "https://github.com/darktrojan/dav/pull/10", //FileLink provider for WebDAV
-    "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
-    "54035": "",  //Thunderbird Conversations
     "988096": "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/16", //Attachment Extractor
     "988108": "https://drive.google.com/file/d/1HXGqqnPD4Xup6td1CnYrlH0qKDUTP_3O/view?usp=sharing", //addon/openpgp-alias-updater/ - contacted
-    "745576": "https://github.com/oheil/logout/pull/1" , //Logout
     "987664": "https://github.com/jan-kiszka/copypatch/pull/1", //Copy Patch
     "327780": "https://github.com/vanowm/TB-Auto-Select-Latest-Message/pull/6", //Auto Select Latest Message
     "988230": "https://drive.google.com/file/d/17IUohmzOcc8ebqpywEWDeZeeAtcPada5/view?usp=sharing", //MetaClean for Thunderbird
+    "787632": "https://github.com/hartag/keynav/pull/6", //Quick Folder Key Navigation - it relies on key navigation code of the former xul folderTree, which seems to no longer exist
 }
 
 const investigated = [
@@ -259,6 +263,7 @@ const known115 = [
     "1279",   //addon/xpunge/ - contacted with working version
     "12018",  //addon/quick-folder-move - contacted
     "987729", //: "https://drive.google.com/file/d/11T4wlUYmcpdugYkwpIUNuedEFyr2E7FL/view?usp=sharing", // New Folder Filters Button
+    "745576"//: "https://github.com/oheil/logout/pull/1" , //Logout
 ]
 
 const discontinued = [
@@ -291,7 +296,6 @@ const contacted = [
     "988001", //Attachment Viewer: view in a tab, slid - does he need help?
     "46207", //mailmindr - does he need help?
     "988365", //addon/advanced-composer/
-    "787632", //Quick Folder Key Navigation - it relies on key navigation code of the former xul folderTree, which seems to no longer exist
 ]
 
 var gAlternativeData;
@@ -530,6 +534,9 @@ var reports = {
             if (Object.keys(wip115).includes(`${extJson.id}`)) {
                 badges.push({ badge: "wip_115", link: wip115[extJson.id] });
             }
+            if (Object.keys(pr115).includes(`${extJson.id}`)) {
+                badges.push({ badge: "pr_115", link: pr115[extJson.id] });
+            }
             if (column115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "column_115" });
             }
@@ -564,6 +571,7 @@ var reports = {
                 !incompatible115.includes(`${extJson.id}`) &&
                 !column115.includes(`${extJson.id}`) &&
                 !Object.keys(wip115).includes(`${extJson.id}`);
+                !Object.keys(pr115).includes(`${extJson.id}`);
                 !discontinued.includes(`${extJson.id}`);
             let badges = [];
 
@@ -597,6 +605,7 @@ var reports = {
                 || incompatible115.includes(`${extJson.id}`)
                 || column115.includes(`${extJson.id}`)
                 || Object.keys(wip115).includes(`${extJson.id}`)
+                || Object.keys(pr115).includes(`${extJson.id}`)
             let badges = [];
 
             if (include) {
@@ -614,6 +623,9 @@ var reports = {
                 }
                 if (Object.keys(wip115).includes(`${extJson.id}`)) {
                     badges.push({ badge: "wip_115", link: wip115[extJson.id] });
+                }
+                if (Object.keys(pr115).includes(`${extJson.id}`)) {
+                    badges.push({ badge: "pr_115", link: pr115[extJson.id] });
                 }
                 if (contacted.includes(`${extJson.id}`)) {
                     badges.push({ badge: "contacted" });
@@ -671,6 +683,9 @@ var reports = {
                 }
                 if (Object.keys(wip115).includes(`${extJson.id}`)) {
                     badges.push({ badge: "wip_115", link: wip115[extJson.id] });
+                }
+                if (Object.keys(pr115).includes(`${extJson.id}`)) {
+                    badges.push({ badge: "pr_115", link: pr115[extJson.id] });
                 }
                 if (discontinued.includes(`${extJson.id}`)) {
                     badges.push({ badge: "discontinued" });
@@ -754,6 +769,9 @@ var reports = {
             }
             if (Object.keys(wip115).includes(`${extJson.id}`)) {
                 badges.push({ badge: "wip_115", link: wip115[extJson.id] });
+            }
+            if (Object.keys(pr115).includes(`${extJson.id}`)) {
+                badges.push({ badge: "pr_115", link: pr115[extJson.id] });
             }
             if (known115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "compatible_115" });
