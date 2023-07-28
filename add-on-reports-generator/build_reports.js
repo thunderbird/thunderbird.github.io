@@ -44,6 +44,10 @@ const badge_definitions = {
     "investigated_115": { bRightText: 'Ongoing Analysis', bLeftText: 'TB115', bColor: 'orange' },
 }
 
+const ignored = [
+    "986223", //Thunderbird Addons Test
+]
+
 // 102
 const knownWorking102 = [
     "987839", //addon/findnow/ - move init code into startup code
@@ -170,6 +174,7 @@ const knownBroken102 = [
 // 115
 const incompatible115 = [
 ]
+
 
 const wip115 = {
     "773590": "", // TbSync
@@ -598,7 +603,7 @@ var reports = {
         rowData: function (extJson) {
             let v115 = getExtData(extJson, "115").data;
             let v102 = getExtData(extJson, "102").data;
-            let include = (!!v102 && !v115) 
+            let include = (!!v102 && !v115 && !ignored.includes(`${extJson.id}`)) 
                 || incompatible115.includes(`${extJson.id}`)
                 || column115.includes(`${extJson.id}`)
                 || Object.keys(wip115).includes(`${extJson.id}`)
