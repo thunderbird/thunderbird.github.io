@@ -287,16 +287,12 @@ const discontinued = [
 ]
 
 const contacted = [
-    "988365", //addon/advanced-composer/ - strangely incompatible - windowId -1 on foccus changed
-    // google drive
-    "987914", //addon/filter-on-folder-button/ (google drive)
-    "987986", // select_prev_on_delete-2.0.0-tb (google drive)
-    // suggested changes
     "987925", // EML to get it to a pure WebExt, uses deprecated attachment.getFile()
-    "56935", // Identity Chooser, use popup AFTER composer opened to select identity
+    "56935",  // Identity Chooser, use popup AFTER composer opened to select identity
     "988001", //Attachment Viewer: view in a tab, slid - does he need help?
-    "46207", //mailmindr - does he need help?
-    "988365", //addon/advanced-composer/
+    "46207",  //mailmindr - does he need help?
+    "988365", //addon/advanced-composer/ - strangely incompatible - windowId -1 on foccus changed
+    "988131", // Larger Message List - sunset ?
 ]
 
 var gAlternativeData;
