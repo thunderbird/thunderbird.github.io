@@ -189,7 +189,6 @@ const pr115 = {
     "605874": "https://github.com/jeevatkm/ReplyWithHeaderMozilla/pull/130", //ReplyWithHeader
     "986643": "https://github.com/darktrojan/dav/pull/10", //FileLink provider for WebDAV
     "988096": "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/16", //Attachment Extractor
-    "988108": "https://drive.google.com/file/d/1HXGqqnPD4Xup6td1CnYrlH0qKDUTP_3O/view?usp=sharing", //addon/openpgp-alias-updater/ - contacted
     "987664": "https://github.com/jan-kiszka/copypatch/pull/1", //Copy Patch
     "327780": "https://github.com/vanowm/TB-Auto-Select-Latest-Message/pull/6", //Auto Select Latest Message
     "988230": "https://drive.google.com/file/d/17IUohmzOcc8ebqpywEWDeZeeAtcPada5/view?usp=sharing", //MetaClean for Thunderbird
@@ -263,7 +262,9 @@ const known115 = [
     "1279",   //addon/xpunge/ - contacted with working version
     "12018",  //addon/quick-folder-move - contacted
     "987729", //: "https://drive.google.com/file/d/11T4wlUYmcpdugYkwpIUNuedEFyr2E7FL/view?usp=sharing", // New Folder Filters Button
-    "745576"//: "https://github.com/oheil/logout/pull/1" , //Logout
+    "745576",//: "https://github.com/oheil/logout/pull/1" , //Logout
+    "988108",//: "https://drive.google.com/file/d/1HXGqqnPD4Xup6td1CnYrlH0qKDUTP_3O/view?usp=sharing", //addon/openpgp-alias-updater/ - contacted
+
 ]
 
 const discontinued = [
