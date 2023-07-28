@@ -28,9 +28,10 @@ const badge_definitions = {
     "no_limit_experiment": { bRightText: 'Limitless Experiment', bLeftText: '⠀', bColor: 'ff8800' },
     "experiment": { bRightText: 'Experiment (legacy)', bLeftText: '⠀', bColor: 'ff8800' },
 
+    "attachment_api": { bRightText: 'Attachment API Candidate', bLeftText: '⠀', bColor: 'green' },
+
     "incompatible_91": { bRightText: 'Incompatible', bLeftText: 'TB91', bColor: 'c90016' },
 
-    "probably_compatible_102": { bRightText: 'Probably Compatible', bLeftText: 'TB102', bColor: 'darkgreen' },
     "incompatible_102": { bRightText: 'Incompatible', bLeftText: 'TB102', bColor: 'c90016' },
     "compatible_102": { bRightText: 'Compatible', bLeftText: 'TB102', bColor: 'darkgreen' },
 
@@ -38,7 +39,6 @@ const badge_definitions = {
     "incompatible_115": { bRightText: 'Incompatible', bLeftText: 'TB115', bColor: 'c90016' },
     "unknown_115": { bRightText: 'Compatibility Unknown', bLeftText: 'TB115', bColor: 'c90016' },
     "column_115": { bRightText: 'Needs Column Support', bLeftText: 'TB115', bColor: 'darkred' },
-    "attachment_api": { bRightText: 'Attachment API Candidate', bLeftText: 'TB115', bColor: 'green' },
     "wip_115": { bRightText: 'Work in Progress', bLeftText: 'TB115', bColor: 'yellow' },
     "investigated_115": { bRightText: 'Ongoing Analysis', bLeftText: 'TB115', bColor: 'orange' },
 }
@@ -165,47 +165,9 @@ const knownWorking102 = [
 ];
 const knownBroken102 = [
 ];
-// Works after lifting strict_max_version
-const probably_compatible_102 = [
-    // 91.*
-    "988169", //addon/wikipediasearchwebapp/
-    "988170", //addon/skypewebapp/
-    "988168", //addon/onedrivewebapp/
-    "988123", //addon/hera-hotel-reservation/
-    "988166", //addon/googlesearchwebapp/
-    "988171", //addon/msofficewebapp/
-    "988167", //addon/todowebapp/
-    "987916", //addon/telegramwebapp/
-    // 102.0
-    "988173", //addon/thunderkey/
-    "988196", //addon/message-filters-button-u/
-    // 102+ (pure WebExt)
-    "988060", //addon/text-insert-text-blocks/
-    "987860", //addon/empty-folder/
-    "988255",
-    "988365",
-    "988338",
-    "988094",
-    "987916",
-    "988167",
-    "988258",
-    "988171",
-    "988126",
-    "988166",
-    "988168",
-    "988389",
-    "988427",
-    "988170",
-    "988431",
-    "988428",
-    "988023",
-    "988451",
-    "988169",
-]
 
 // 115
 const incompatible115 = [
-    "988365", //addon/advanced-composer/
 ]
 
 const wip115 = {
@@ -225,7 +187,9 @@ const wip115 = {
     "988096": "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/16", //Attachment Extractor
     "988108": "https://drive.google.com/file/d/1HXGqqnPD4Xup6td1CnYrlH0qKDUTP_3O/view?usp=sharing", //addon/openpgp-alias-updater/ - contacted
     "745576": "https://github.com/oheil/logout/pull/1" , //Logout
-    "987664": "https://drive.google.com/file/d/19rp0sOmcoKC69V-TSuXZvSGrF46C9Dt2/view?usp=sharing", //Copy Patch
+    "987664": "https://github.com/jan-kiszka/copypatch/pull/1", //Copy Patch
+    "327780": "https://github.com/vanowm/TB-Auto-Select-Latest-Message/pull/6", //Auto Select Latest Message
+    "988230": "https://drive.google.com/file/d/17IUohmzOcc8ebqpywEWDeZeeAtcPada5/view?usp=sharing", //MetaClean for Thunderbird
 }
 
 const investigated = [
@@ -236,11 +200,7 @@ const investigated = [
     "988214", //Filter email folders
     "988416", //Quick Filter By
     "559954", //Tidybird
-    "988230", //MetaClean for Thunderbird
     "988098", //Thunderbird Todoist
-    "787632", //Quick Folder Key Navigation
-    "327780", //Auto Select Latest Message
-    "331666", //QuickArchiver
     "356507", //Header Tools Lite
 ]
 
@@ -262,8 +222,9 @@ const column115 = [
     "3492",   //Show InOut
     "54035",  //Thunderbird Conversations
     "987900", //QNote
-
+    "331666", //QuickArchiver
 ]
+
 const attachmentAPI = [
     "988376", //PGP Universal
     "711780", //Lookout Fixed
@@ -329,6 +290,8 @@ const contacted = [
     "56935", // Identity Chooser, use popup AFTER composer opened to select identity
     "988001", //Attachment Viewer: view in a tab, slid - does he need help?
     "46207", //mailmindr - does he need help?
+    "988365", //addon/advanced-composer/
+    "787632", //Quick Folder Key Navigation - it relies on key navigation code of the former xul folderTree, which seems to no longer exist
 ]
 
 var gAlternativeData;
@@ -886,8 +849,6 @@ var reports = {
                 badges.push({ badge: "incompatible_102" });
             } else if (knownWorking102.includes(`${extJson.id}`)) {
                 badges.push({ badge: "compatible_102" });
-            } else if (probably_compatible_102.includes(`${extJson.id}`)) {
-                badges.push({ badge: "probably_compatible_102" });
             }
 
             if (discontinued.includes(`${extJson.id}`)) {
@@ -919,8 +880,6 @@ var reports = {
                 badges.push({ badge: "compatible_102" });
             } else if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
-            } else if (probably_compatible_102.includes(`${extJson.id}`)) {
-                badges.push({ badge: "probably_compatible_102" });
             }
 
             if (contacted.includes(`${extJson.id}`)) {
@@ -952,8 +911,6 @@ var reports = {
                     badges.push({ badge: "compatible_102" });
                 } else if (discontinued.includes(`${extJson.id}`)) {
                     badges.push({ badge: "discontinued" });
-                } else if (badLimit102 || probably_compatible_102.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "probably_compatible_102" });
                 }
 
                 if (contacted.includes(`${extJson.id}`)) {
