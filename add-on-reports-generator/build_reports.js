@@ -39,6 +39,7 @@ const badge_definitions = {
     "incompatible_115": { bRightText: 'Incompatible', bLeftText: 'TB115', bColor: 'c90016' },
     "unknown_115": { bRightText: 'Compatibility Unknown', bLeftText: 'TB115', bColor: 'c90016' },
     "column_115": { bRightText: 'Needs Column Support', bLeftText: 'TB115', bColor: 'darkred' },
+    "filter_115": { bRightText: 'Needs Custom QuickFilter Support', bLeftText: 'TB115', bColor: 'darkred' },
     "wip_115": { bRightText: 'Work in Progress', bLeftText: 'TB115', bColor: 'yellow' },
     "pr_115": { bRightText: 'Pending Pull Request', bLeftText: 'TB115', bColor: 'green' },
     "investigated_115": { bRightText: 'Ongoing Analysis', bLeftText: 'TB115', bColor: 'orange' },
@@ -231,6 +232,11 @@ const column115 = [
     "54035",  //Thunderbird Conversations
     "987900", //QNote
     "331666", //QuickArchiver
+]
+
+const filter115 = [
+    "634298", // CardBook
+    "987900", //QNote
 ]
 
 const attachmentAPI = [
@@ -542,6 +548,9 @@ var reports = {
             if (column115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "column_115" });
             }
+            if (filter115.includes(`${extJson.id}`)) {
+                badges.push({ badge: "filter_115" });
+            }
 
             return { include, badges };
         }
@@ -620,6 +629,9 @@ var reports = {
                 if (column115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "column_115" });
                 }
+                if (filter115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "filter_115" });
+                }
                 if (investigated.includes(`${extJson.id}`)) {
                     badges.push({ badge: "investigated_115" });
                 }
@@ -676,6 +688,9 @@ var reports = {
                 }
                 if (column115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "column_115" });
+                }
+                if (filter115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "filter_115" });
                 }
                 if (investigated.includes(`${extJson.id}`)) {
                     badges.push({ badge: "investigated_115" });
@@ -765,6 +780,9 @@ var reports = {
             }
             if (column115.includes(`${extJson.id}`)) {
                 badges.push({ badge: "column_115" });
+            }
+            if (filter115.includes(`${extJson.id}`)) {
+                badges.push({ badge: "filter_115" });
             }
             if (attachmentAPI.includes(`${extJson.id}`)) {
                 badges.push({ badge: "attachment_api" });
