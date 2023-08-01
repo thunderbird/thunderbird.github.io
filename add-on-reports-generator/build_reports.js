@@ -197,7 +197,6 @@ const pr115 = {
     "988096": "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/16", //Attachment Extractor
     "987664": "https://github.com/jan-kiszka/copypatch/pull/1", //Copy Patch
     "327780": "https://github.com/vanowm/TB-Auto-Select-Latest-Message/pull/6", //Auto Select Latest Message
-    "988230": "https://drive.google.com/file/d/17IUohmzOcc8ebqpywEWDeZeeAtcPada5/view?usp=sharing", //MetaClean for Thunderbird
     "787632": "https://github.com/hartag/keynav/pull/6", //Quick Folder Key Navigation - it relies on key navigation code of the former xul folderTree, which seems to no longer exist
 }
 
@@ -251,6 +250,9 @@ const statusBar = [
 
 // Help for identifying working Experiments without upper limit.
 const known115 = [
+    "676875", //Rspamd-spamness
+    "988230", // "https://drive.google.com/file/d/17IUohmzOcc8ebqpywEWDeZeeAtcPada5/view?usp=sharing", //MetaClean for Thunderbird
+
     "47144",  //addon/mail-merge/
     "988138", //addon/grammar-and-spell-checker/
     "742199", //addon/attach-from-clipboard/
@@ -614,7 +616,7 @@ var reports = {
             let v102 = getExtData(extJson, "102").data;
             let include = (!!v102 && !v115 && !ignored.includes(`${extJson.id}`)) 
                 || incompatible115.includes(`${extJson.id}`)
-                || column115.includes(`${extJson.id}`)
+                || (column115.includes(`${extJson.id}`) && !known115.includes(`${extJson.id}`))
                 || Object.keys(wip115).includes(`${extJson.id}`)
                 || Object.keys(pr115).includes(`${extJson.id}`)
             let badges = [];
