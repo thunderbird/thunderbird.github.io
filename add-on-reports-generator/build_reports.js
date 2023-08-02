@@ -297,6 +297,7 @@ const discontinued = [
     "987727", //addon/monterail-full-dark-2/ - probably discontinued
     "987726", //addon/monterail-dark-2-0-for-tb-68/ - probably discontinued
     "987796", //MessagePreview
+    "902",    //addon/getsendbutton/
 ]
 
 const contacted = [
