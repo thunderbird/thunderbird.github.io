@@ -29,6 +29,7 @@ const badge_definitions = {
     "experiment": { bRightText: 'Experiment (legacy)', bLeftText: '⠀', bColor: 'ff8800' },
 
     "attachment_api": { bRightText: 'Attachment API Candidate', bLeftText: '⠀', bColor: 'white' },
+    "recipientChanged_api": { bRightText: 'onRecipientChanged API', bLeftText: '⠀', bColor: 'white' },
 
     "incompatible_91": { bRightText: 'Incompatible', bLeftText: 'TB91', bColor: 'c90016' },
 
@@ -197,18 +198,15 @@ const pr115 = {
     "987664": "https://github.com/jan-kiszka/copypatch/pull/1", //Copy Patch
     "327780": "https://github.com/vanowm/TB-Auto-Select-Latest-Message/pull/6", //Auto Select Latest Message
     "787632": "https://github.com/hartag/keynav/pull/6", //Quick Folder Key Navigation - it relies on key navigation code of the former xul folderTree, which seems to no longer exist
+    "986523": "https://drive.google.com/file/d/17YuLerWVIxsQgmpks1PP26MWXSEJIFGa/view?usp=sharing", //Hide Email Folders
+    "987902": "https://github.com/bazuchan/thunderbird-deselect-on-delete/pull/4", //Deselect on Delete TB78
+    "988416": "https://github.com/aramir/QuickFilterBy/pull/2", // Quick Filter By
 }
 
-const investigated = [
-    "986523", //Hide Email Folders
-    "987902", //Deselect on Delete TB78
-    "988146", //smartCompose
-    "415184", //iOS IMAP Notes
-    "988214", //Filter email folders
-    "988416", //Quick Filter By
-    "559954", //Tidybird
-    "356507", //Header Tools Lite
-]
+const investigated = {
+    "415184": "Needs a full rewrite, like EditEmailSubject", // iOS IMAP Notes - Full rewrite, like edit email subject
+    "559954": "Needs updated CustomUI", // Tidybird - CustomUI
+}
 
 const column115 = [
     "987838", //addon/sender-domain/
@@ -233,12 +231,16 @@ const column115 = [
 
 const filter115 = [
     "634298", // CardBook
-    "987900", //QNote
+    "987900", // QNote
 ]
 
 const attachmentAPI = [
     "988376", //PGP Universal
     "711780", //Lookout Fixed
+]
+
+const recipientChanged = [
+    "988146", //smartCompose
 ]
 
 const statusBar = [
@@ -300,14 +302,17 @@ const discontinued = [
     "902",    //addon/getsendbutton/
 ]
 
-const contacted = [
-    "987925", // EML to get it to a pure WebExt, uses deprecated attachment.getFile()
-    "56935",  // Identity Chooser, use popup AFTER composer opened to select identity
-    "988001", //Attachment Viewer: view in a tab, slid - does he need help?
-    "46207",  //mailmindr - does he need help?
-    "988365", //addon/advanced-composer/ - strangely incompatible - windowId -1 on foccus changed
-    "988131", // Larger Message List - sunset ?
-]
+const contacted = {
+    "988146": "Works, needs max version lift", // smartCompose
+    "987925": "Explained how to get it to a pure WebExt, uses deprecated attachment.getFile()", //addon/eml-editor/
+    "56935": "Pure WebExt: Use popup AFTER composer opened to select identity",  // Identity Chooser, use popup AFTER composer opened to select identity
+    "988001": "Status request, help needed?", // Attachment Viewer: view in a tab, slid - does he need help?
+    "46207": "Status request, help needed?", // mailmindr - does he need help?
+    "988365": "Error: Does not check windowId == -1 on foccus changed", // addon/advanced-composer/ - strangely incompatible - windowId -1 on foccus changed
+    "988131": "Still needed after 115 density settings? sunset?", // Larger Message List - Still needed after 115 density settings? sunset ?
+    "356507": "Discontinued? Alternative Header Tools Improved?", //Header Tools Lite
+    "988214": "Is the new folder key navigation add-on an alternative?", //Filter email folders
+}
 
 var gAlternativeData;
 
@@ -539,8 +544,8 @@ var reports = {
                 badges.push({ badge: "pure" });
             }
 
-            if (contacted.includes(`${extJson.id}`)) {
-                badges.push({ badge: "contacted" });
+            if (Object.keys(contacted).includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`]});
             }
             if (Object.keys(wip115).includes(`${extJson.id}`)) {
                 badges.push({ badge: "wip_115", link: wip115[extJson.id] });
@@ -635,8 +640,8 @@ var reports = {
                 if (filter115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "filter_115" });
                 }
-                if (investigated.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "investigated_115" });
+                if (Object.keys(investigated).includes(`${extJson.id}`)) {
+                    badges.push({ badge: "investigated_115", tooltip: investigated[`${extJson.id}`] });
                 }
                 if (Object.keys(wip115).includes(`${extJson.id}`)) {
                     badges.push({ badge: "wip_115", link: wip115[extJson.id] });
@@ -644,8 +649,8 @@ var reports = {
                 if (Object.keys(pr115).includes(`${extJson.id}`)) {
                     badges.push({ badge: "pr_115", link: pr115[extJson.id] });
                 }
-                if (contacted.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "contacted" });
+                if (Object.keys(contacted).includes(`${extJson.id}`)) {
+                    badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
                 }
 
                 if (badges.length == 0) {
@@ -660,6 +665,9 @@ var reports = {
                 }
                 if (attachmentAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "attachment_api" });
+                }
+                if (recipientChanged.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "recipientChanged_api" });
                 }
                 let themeExperiment = v115?.manifest?.theme_experiment;
                 if (themeExperiment) {
@@ -695,11 +703,14 @@ var reports = {
                 if (filter115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "filter_115" });
                 }
-                if (investigated.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "investigated_115" });
+                if (Object.keys(investigated).includes(`${extJson.id}`)) {
+                    badges.push({ badge: "investigated_115", tooltip: investigated[`${extJson.id}`] });
                 }
                 if (attachmentAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "attachment_api" });
+                }
+                if (recipientChanged.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "recipientChanged_api" });
                 }
                 if (Object.keys(wip115).includes(`${extJson.id}`)) {
                     badges.push({ badge: "wip_115", link: wip115[extJson.id] });
@@ -759,8 +770,8 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             }
 
-            if (contacted.includes(`${extJson.id}`)) {
-                badges.push({ badge: "contacted" });
+            if (Object.keys(contacted).includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
             }
             return { include: manually_lowered || incompatible115.includes(`${extJson.id}`), badges };
         }
@@ -789,6 +800,9 @@ var reports = {
             }
             if (attachmentAPI.includes(`${extJson.id}`)) {
                 badges.push({ badge: "attachment_api" });
+            }
+            if (recipientChanged.includes(`${extJson.id}`)) {
+                badges.push({ badge: "recipientChanged_api" });
             }
             if (Object.keys(wip115).includes(`${extJson.id}`)) {
                 badges.push({ badge: "wip_115", link: wip115[extJson.id] });
@@ -832,8 +846,8 @@ var reports = {
             if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
             }
-            if (contacted.includes(`${extJson.id}`)) {
-                badges.push({ badge: "contacted" });
+            if (Object.keys(contacted).includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
             }
             return { include, badges };
         }
@@ -896,8 +910,8 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             }
 
-            if (contacted.includes(`${extJson.id}`)) {
-                badges.push({ badge: "contacted" });
+            if (Object.keys(contacted).includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
             }
             return { include, badges };
         }
@@ -923,8 +937,8 @@ var reports = {
                 badges.push({ badge: "discontinued" });
             }
 
-            if (contacted.includes(`${extJson.id}`)) {
-                badges.push({ badge: "contacted" });
+            if (Object.keys(contacted).includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
             }
             return { include, badges };
         }
@@ -954,8 +968,8 @@ var reports = {
                     badges.push({ badge: "discontinued" });
                 }
 
-                if (contacted.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "contacted" });
+                if (Object.keys(contacted).includes(`${extJson.id}`)) {
+                    badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
                 }
             }
             return { include, badges };
@@ -1223,7 +1237,7 @@ function genStandardReport(extsJson, name, report) {
 		  <td style="text-align: right" valign="top">${v_min}</td>
 		  <td style="text-align: right" valign="top">${v_strict_max}</td>
 		  <td style="text-align: right" valign="top">${v_max}</td>
-		  <td style="text-align: right; font-style: italic" valign="top">${rowData.badges ? rowData.badges.map(e => getBadgeElement(e.badge, e.link)).join("<br>") : ""}</td>
+		  <td style="text-align: right; font-style: italic" valign="top">${rowData.badges ? rowData.badges.map(e => getBadgeElement(e.badge, e.link, e.tooltip)).join("<br>") : ""}</td>
 		</tr>`;
     }
 
@@ -1297,13 +1311,16 @@ function debug(...args) {
     }
 }
 
-function getBadgeElement(badgeName, bLink) {
+function getBadgeElement(badgeName, bLink, bTooltip) {
     // manipulate bRightText to reuse base bage
     let badgeParts = badgeName.split(".");
     let badgeOpt = badge_definitions[badgeName];
     if (!badgeOpt && Array.isArray(badgeParts) && badge_definitions[badgeParts[0]]) {
         badgeOpt = badge_definitions[badgeParts[0]];
         badgeOpt.bRightText = badgeParts.slice(1).join(".");
+    }
+    if (bTooltip) {
+        badgeOpt.bTooltip = bTooltip;
     }
     return makeBadgeElement(badgeOpt, bLink);
 }
