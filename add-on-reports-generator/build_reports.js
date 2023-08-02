@@ -183,7 +183,6 @@ const wip115 = {
     "986258": "", // Provider for DAV
     "986338": "", // Provider for Exchange
     "987840": "https://github.com/cleidigh/printing-tools-ng/issues/225", // PrintingTools NG
-    "3254": "https://github.com/RealRaven2000/QuickFolders/issues/351", //addon/quickfolders-tabbed-folders/
     "54035": "",  //Thunderbird Conversations
     "2610": "https://github.com/tjeb/Mailbox-Alert/issues/70", // MailBoxAlert
     "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
@@ -208,7 +207,6 @@ const investigated = [
     "988214", //Filter email folders
     "988416", //Quick Filter By
     "559954", //Tidybird
-    "988098", //Thunderbird Todoist
     "356507", //Header Tools Lite
 ]
 
@@ -252,6 +250,8 @@ const statusBar = [
 const known115 = [
     "676875", //Rspamd-spamness
     "988230", // "https://drive.google.com/file/d/17IUohmzOcc8ebqpywEWDeZeeAtcPada5/view?usp=sharing", //MetaClean for Thunderbird
+    "3254", // "https://github.com/RealRaven2000/QuickFolders/issues/351", //addon/quickfolders-tabbed-folders/
+    "987900", //QNote
 
     "47144",  //addon/mail-merge/
     "988138", //addon/grammar-and-spell-checker/
