@@ -197,7 +197,6 @@ const pr115 = {
     "987664": "https://github.com/jan-kiszka/copypatch/pull/1", //Copy Patch
     "327780": "https://github.com/vanowm/TB-Auto-Select-Latest-Message/pull/6", //Auto Select Latest Message
     "787632": "https://github.com/hartag/keynav/pull/6", //Quick Folder Key Navigation - it relies on key navigation code of the former xul folderTree, which seems to no longer exist
-    "986523": "https://drive.google.com/file/d/17YuLerWVIxsQgmpks1PP26MWXSEJIFGa/view?usp=sharing", //Hide Email Folders
     "987902": "https://github.com/bazuchan/thunderbird-deselect-on-delete/pull/4", //Deselect on Delete TB78
     "988416": "https://github.com/aramir/QuickFilterBy/pull/2", // Quick Filter By
     "852623": "https://github.com/Extended-Thunder/remote-content-by-folder/pull/8" // Remote Content By Folder
@@ -301,6 +300,8 @@ const discontinued = [
     "987726", //addon/monterail-dark-2-0-for-tb-68/ - probably discontinued
     "987796", //MessagePreview
     "902",    //addon/getsendbutton/
+    "986523", //"https://drive.google.com/file/d/17YuLerWVIxsQgmpks1PP26MWXSEJIFGa/view?usp=sharing", //Hide Email Folders
+
 ]
 
 const contacted = {
