@@ -177,16 +177,24 @@ const knownBroken102 = [
 const incompatible115 = [
 ]
 
-
 const wip115 = {
-    "773590": "", // TbSync
+    "773590": "John", // TbSync
     "986686": "https://github.com/thundernest/import-export-tools-ng/issues/409", // IETools
-    "986258": "", // Provider for DAV
-    "986338": "", // Provider for Exchange
+    "986258": "John", // Provider for DAV
+    "986338": "John", // Provider for Exchange
     "987840": "https://github.com/cleidigh/printing-tools-ng/issues/225", // PrintingTools NG
-    "54035": "",  //Thunderbird Conversations
+    "54035": "Standard8",  //Thunderbird Conversations
     "2610": "https://github.com/tjeb/Mailbox-Alert/issues/70", // MailBoxAlert
     "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
+    "331319": "Arnd", // Folder Pane View Switcher
+    "988100": "Opto",
+    "64758": "Opto",
+    "356507": "Opto",
+    "988185": "Opto",
+    "988001": "Opto",
+    "988091": "Opto",
+    "987740": "Opto",
+    "988392": "Opto",
 }
 
 const pr115 = {
@@ -199,10 +207,11 @@ const pr115 = {
     "988416": "https://github.com/aramir/QuickFilterBy/pull/2", // Quick Filter By
     "852623": "https://github.com/Extended-Thunder/remote-content-by-folder/pull/8", // Remote Content By Folder
     "415184": "https://drive.google.com/file/d/1UeuKj0Rhkp-Pnn-8ofHK9SICP8Q6de9S/view?usp=sharing", //"Needs a full rewrite, like EditEmailSubject", // iOS IMAP Notes - Full rewrite, like edit email subject
+    "559954": "https://github.com/ganast/tidybird/pull/95", // Tidybird - CustomUI
 }
 
 const investigated = {
-    "559954": "Needs updated CustomUI", // Tidybird - CustomUI
+    "2548": "https://github.com/thsmi/sieve/issues/893",
 }
 
 const column115 = [
@@ -229,6 +238,10 @@ const column115 = [
 const filter115 = [
     "634298", // CardBook
     "987900", // QNote
+]
+
+const recentFoldersAPI = [
+    "559954", // TidyBird
 ]
 
 const attachmentAPI = [
@@ -308,11 +321,10 @@ const contacted = {
     "988146": "Works, needs max version lift", // smartCompose
     "987925": "Explained how to get it to a pure WebExt, uses deprecated attachment.getFile()", //addon/eml-editor/
     "56935": "Pure WebExt: Use popup AFTER composer opened to select identity",  // Identity Chooser, use popup AFTER composer opened to select identity
-    "988001": "Status request, help needed?", // Attachment Viewer: view in a tab, slid - does he need help?
     "46207": "Status request, help needed?", // mailmindr - does he need help?
     "988365": "Error: Does not check windowId == -1 on foccus changed", // addon/advanced-composer/ - strangely incompatible - windowId -1 on foccus changed
     "988131": "Still needed after 115 density settings? sunset?", // Larger Message List - Still needed after 115 density settings? sunset ?
-    "356507": "Discontinued? Alternative Header Tools Improved?", //Header Tools Lite
+    "356507": "Alternative Header Tools Improved?", //Header Tools Lite
     "988214": "Is the new folder key navigation add-on an alternative?", //Filter email folders
 }
 
@@ -547,7 +559,7 @@ var reports = {
             }
 
             if (Object.keys(contacted).includes(`${extJson.id}`)) {
-                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`]});
+                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
             }
             if (Object.keys(wip115).includes(`${extJson.id}`)) {
                 badges.push({ badge: "wip_115", link: wip115[extJson.id] });
@@ -588,18 +600,18 @@ var reports = {
         generate: genStandardReport,
         rowData: function (extJson) {
             let v115 = getExtData(extJson, "115").data;
-            let include = !!v115 && 
+            let include = !!v115 &&
                 !incompatible115.includes(`${extJson.id}`) &&
                 !column115.includes(`${extJson.id}`) &&
-                !Object.keys(wip115).includes(`${extJson.id}`);
-                !Object.keys(pr115).includes(`${extJson.id}`);
+                !Object.keys(wip115).includes(`${extJson.id}`) &&
+                !Object.keys(pr115).includes(`${extJson.id}`) &&
                 !discontinued.includes(`${extJson.id}`);
             let badges = [];
 
             // all non pure extensions have to be explicitly checked
             if (include) {
                 if (v115.experiment) {
-                    badges.push({ badge: "experiment"});
+                    badges.push({ badge: "experiment" });
                 }
                 let themeExperiment = !!v115 && v115.manifest?.theme_experiment;
                 if (themeExperiment) {
@@ -607,7 +619,7 @@ var reports = {
                 }
                 if (!v115.legacy && v115.mext && !v115.experiment && !themeExperiment) {
                     badges.push({ badge: "pure" });
-                }                
+                }
             };
 
             return { include, badges }
@@ -622,7 +634,7 @@ var reports = {
         rowData: function (extJson) {
             let v115 = getExtData(extJson, "115").data;
             let v102 = getExtData(extJson, "102").data;
-            let include = (!!v102 && !v115 && !ignored.includes(`${extJson.id}`)) 
+            let include = (!!v102 && !v115 && !ignored.includes(`${extJson.id}`))
                 || incompatible115.includes(`${extJson.id}`)
                 || (column115.includes(`${extJson.id}`) && !known115.includes(`${extJson.id}`))
                 || Object.keys(wip115).includes(`${extJson.id}`)
@@ -694,7 +706,7 @@ var reports = {
 
             if (include) {
                 if (v115.experiment) {
-                    badges.push({ badge: "experiment"});
+                    badges.push({ badge: "experiment" });
                 }
                 if (incompatible115.includes(`${extJson.id}`)) {
                     badges.push({ badge: "incompatible_115" });
