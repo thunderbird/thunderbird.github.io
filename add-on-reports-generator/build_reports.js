@@ -196,14 +196,12 @@ const pr115 = {
     "988096": "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/16", //Attachment Extractor
     "987664": "https://github.com/jan-kiszka/copypatch/pull/1", //Copy Patch
     "327780": "https://github.com/vanowm/TB-Auto-Select-Latest-Message/pull/6", //Auto Select Latest Message
-    "787632": "https://github.com/hartag/keynav/pull/6", //Quick Folder Key Navigation - it relies on key navigation code of the former xul folderTree, which seems to no longer exist
-    "987902": "https://github.com/bazuchan/thunderbird-deselect-on-delete/pull/4", //Deselect on Delete TB78
     "988416": "https://github.com/aramir/QuickFilterBy/pull/2", // Quick Filter By
-    "852623": "https://github.com/Extended-Thunder/remote-content-by-folder/pull/8" // Remote Content By Folder
+    "852623": "https://github.com/Extended-Thunder/remote-content-by-folder/pull/8", // Remote Content By Folder
+    "415184": "https://drive.google.com/file/d/1UeuKj0Rhkp-Pnn-8ofHK9SICP8Q6de9S/view?usp=sharing", //"Needs a full rewrite, like EditEmailSubject", // iOS IMAP Notes - Full rewrite, like edit email subject
 }
 
 const investigated = {
-    "415184": "Needs a full rewrite, like EditEmailSubject", // iOS IMAP Notes - Full rewrite, like edit email subject
     "559954": "Needs updated CustomUI", // Tidybird - CustomUI
 }
 
@@ -254,6 +252,8 @@ const known115 = [
     "3254", // "https://github.com/RealRaven2000/QuickFolders/issues/351", //addon/quickfolders-tabbed-folders/
     "987900", //QNote
     "986643", //: "https://github.com/darktrojan/dav/pull/10", //FileLink provider for WebDAV
+    "987902", //: "https://github.com/bazuchan/thunderbird-deselect-on-delete/pull/4", //Deselect on Delete TB78
+    "787632", //: "https://github.com/hartag/keynav/pull/6", //Quick Folder Key Navigation - it relies on key navigation code of the former xul folderTree, which seems to no longer exist
 
     "47144",  //addon/mail-merge/
     "988138", //addon/grammar-and-spell-checker/
