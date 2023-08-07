@@ -182,7 +182,6 @@ const wip115 = {
     "986686": "https://github.com/thundernest/import-export-tools-ng/issues/409", // IETools
     "986258": "John", // Provider for DAV
     "986338": "John", // Provider for Exchange
-    "987840": "https://github.com/cleidigh/printing-tools-ng/issues/225", // PrintingTools NG
     "54035": "Standard8",  //Thunderbird Conversations
     "2610": "https://github.com/tjeb/Mailbox-Alert/issues/70", // MailBoxAlert
     "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
@@ -263,10 +262,11 @@ const known115 = [
     "988230", // "https://drive.google.com/file/d/17IUohmzOcc8ebqpywEWDeZeeAtcPada5/view?usp=sharing", //MetaClean for Thunderbird
     "3254", // "https://github.com/RealRaven2000/QuickFolders/issues/351", //addon/quickfolders-tabbed-folders/
     "987900", //QNote
-    "986643", //: "https://github.com/darktrojan/dav/pull/10", //FileLink provider for WebDAV
-    "987902", //: "https://github.com/bazuchan/thunderbird-deselect-on-delete/pull/4", //Deselect on Delete TB78
-    "787632", //: "https://github.com/hartag/keynav/pull/6", //Quick Folder Key Navigation - it relies on key navigation code of the former xul folderTree, which seems to no longer exist
+    "986643", // "https://github.com/darktrojan/dav/pull/10", //FileLink provider for WebDAV
+    "987902", // "https://github.com/bazuchan/thunderbird-deselect-on-delete/pull/4", //Deselect on Delete TB78
+    "787632", // "https://github.com/hartag/keynav/pull/6", //Quick Folder Key Navigation - it relies on key navigation code of the former xul folderTree, which seems to no longer exist
     "988416", // "https://github.com/aramir/QuickFilterBy/pull/2", // Quick Filter By
+    "987840", // "https://github.com/cleidigh/printing-tools-ng/issues/225", // PrintingTools NG
 
     "47144",  //addon/mail-merge/
     "988138", //addon/grammar-and-spell-checker/
@@ -320,7 +320,6 @@ const discontinued = [
 const contacted = {
     "988146": "Works, needs max version lift", // smartCompose
     "987925": "Explained how to get it to a pure WebExt, uses deprecated attachment.getFile()", //addon/eml-editor/
-    "56935": "Pure WebExt: Use popup AFTER composer opened to select identity",  // Identity Chooser, use popup AFTER composer opened to select identity
     "46207": "Status request, help needed?", // mailmindr - does he need help?
     "988365": "Error: Does not check windowId == -1 on foccus changed", // addon/advanced-composer/ - strangely incompatible - windowId -1 on foccus changed
     "988131": "Still needed after 115 density settings? sunset?", // Larger Message List - Still needed after 115 density settings? sunset ?
