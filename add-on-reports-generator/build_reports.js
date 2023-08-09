@@ -186,6 +186,7 @@ const wip115 = {
     "2610": "https://github.com/tjeb/Mailbox-Alert/issues/70", // MailBoxAlert
     "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
     "331319": "Arnd", // Folder Pane View Switcher
+    "46207": "Arnd",  //addon/mailmindr/
     "988100": "Opto",
     "64758": "Opto",
     "356507": "Opto",
@@ -194,7 +195,8 @@ const wip115 = {
     "988091": "Opto",
     "987740": "Opto",
     "988392": "Opto",
-    "310": "Eyal"
+    "310": "Eyal",
+    "988090": ""
 }
 
 const pr115 = {
@@ -211,7 +213,10 @@ const pr115 = {
 }
 
 const investigated = {
-    "2548": "https://github.com/thsmi/sieve/issues/893",
+    "2548": "", //https://github.com/thsmi/sieve/issues/893", // sieve
+    "987689": "", // changeQuote, WebExt possible, needs full rewrite
+    "988303": "", // TUD-CERT Phishing Report
+    "988376": "", // PGP Universal
 }
 
 const column115 = [
@@ -324,10 +329,8 @@ const discontinued = [
 const contacted = {
     "988146": "Works, needs max version lift", // smartCompose
     "987925": "Explained how to get it to a pure WebExt, uses deprecated attachment.getFile()", //addon/eml-editor/
-    "46207": "Status request, help needed?", // mailmindr - does he need help?
     "988365": "Error: Does not check windowId == -1 on foccus changed", // addon/advanced-composer/ - strangely incompatible - windowId -1 on foccus changed
     "988131": "Still needed after 115 density settings? sunset?", // Larger Message List - Still needed after 115 density settings? sunset ?
-    "356507": "Alternative Header Tools Improved?", //Header Tools Lite
     "988214": "Is the new folder key navigation add-on an alternative?", //Filter email folders
 }
 
