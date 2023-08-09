@@ -194,6 +194,7 @@ const wip115 = {
     "988091": "Opto",
     "987740": "Opto",
     "988392": "Opto",
+    "310": "Eyal"
 }
 
 const pr115 = {
@@ -205,7 +206,8 @@ const pr115 = {
     "327780": "https://github.com/vanowm/TB-Auto-Select-Latest-Message/pull/6", //Auto Select Latest Message
     "852623": "https://github.com/Extended-Thunder/remote-content-by-folder/pull/8", // Remote Content By Folder
     "415184": "https://drive.google.com/file/d/1UeuKj0Rhkp-Pnn-8ofHK9SICP8Q6de9S/view?usp=sharing", //"Needs a full rewrite, like EditEmailSubject", // iOS IMAP Notes - Full rewrite, like edit email subject
-    "559954": "https://github.com/ganast/tidybird/pull/95", // Tidybird - CustomUI
+    "2299": "https://drive.google.com/file/d/1ix1-5mP9djmzPbG5e-8Roza8OE-tjY4q/view?usp=sharing", // ThreadKey
+    "1556": "https://www.thunderbird-mail.de/forum/thread/92406-allow-html-temp-version-9-0-f%C3%BCr-thunderbird-115/?postID=519230#post519230" ,   //addon/allow-html-temp/
 }
 
 const investigated = {
@@ -267,6 +269,8 @@ const known115 = [
     "787632", // "https://github.com/hartag/keynav/pull/6", //Quick Folder Key Navigation - it relies on key navigation code of the former xul folderTree, which seems to no longer exist
     "988416", // "https://github.com/aramir/QuickFilterBy/pull/2", // Quick Filter By
     "987840", // "https://github.com/cleidigh/printing-tools-ng/issues/225", // PrintingTools NG
+    "195275", //addon/send-later-3/
+    "559954", //"https://github.com/ganast/tidybird/pull/95", // Tidybird - CustomUI
 
     "47144",  //addon/mail-merge/
     "988138", //addon/grammar-and-spell-checker/
