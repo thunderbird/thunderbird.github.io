@@ -203,7 +203,6 @@ const pr115 = {
     "987986": "https://drive.google.com/file/d/1qXMXsl5jUg-uDsDRxoAFILUM-jjDmhc8/view?usp=sharing", // select_prev_on_delete-2.0.0-tb (google drive)
     "987914": "https://drive.google.com/file/d/14iR0YcJLBRUtdOIj37czTp1p_rO5VCFu/view?usp=sharing", //addon/filter-on-folder-button/ (google drive)
     "605874": "https://github.com/jeevatkm/ReplyWithHeaderMozilla/pull/130", //ReplyWithHeader
-    "988096": "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/16", //Attachment Extractor
     "987664": "https://github.com/jan-kiszka/copypatch/pull/1", //Copy Patch
     "327780": "https://github.com/vanowm/TB-Auto-Select-Latest-Message/pull/6", //Auto Select Latest Message
     "852623": "https://github.com/Extended-Thunder/remote-content-by-folder/pull/8", // Remote Content By Folder
@@ -276,6 +275,7 @@ const known115 = [
     "987840", // "https://github.com/cleidigh/printing-tools-ng/issues/225", // PrintingTools NG
     "195275", //addon/send-later-3/
     "559954", //"https://github.com/ganast/tidybird/pull/95", // Tidybird - CustomUI
+    "988096", // "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/16", //Attachment Extractor
 
     "47144",  //addon/mail-merge/
     "988138", //addon/grammar-and-spell-checker/
