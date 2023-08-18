@@ -178,7 +178,6 @@ const incompatible115 = [
 ]
 
 const wip115 = {
-    "773590": "John", // TbSync
     "986686": "https://github.com/thundernest/import-export-tools-ng/issues/409", // IETools
     "986258": "John", // Provider for DAV
     "986338": "John", // Provider for Exchange
@@ -195,7 +194,7 @@ const wip115 = {
     "988091": "Opto",
     "987740": "Opto",
     "988392": "Opto",
-    "310": "Eyal",
+    "310": "https://github.com/eyalroz/bidimailui/releases/tag/v0.14.0-b1",
     "988090": ""
 }
 
