@@ -179,8 +179,6 @@ const incompatible115 = [
 
 const wip115 = {
     "986686": "https://github.com/thundernest/import-export-tools-ng/issues/409", // IETools
-    "986258": "John", // Provider for DAV
-    "986338": "John", // Provider for Exchange
     "54035": "Standard8",  //Thunderbird Conversations
     "2610": "https://github.com/tjeb/Mailbox-Alert/issues/70", // MailBoxAlert
     "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
@@ -195,7 +193,7 @@ const wip115 = {
     "987740": "Opto",
     "988392": "Opto",
     "310": "https://github.com/eyalroz/bidimailui/releases/tag/v0.14.0-b1",
-    "988090": ""
+    "988090": "" // Google-4-TbSync
 }
 
 const pr115 = {
