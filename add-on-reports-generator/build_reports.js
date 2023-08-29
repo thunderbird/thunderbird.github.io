@@ -193,7 +193,6 @@ const wip115 = {
     "987740": "Opto",
     "988392": "Opto",
     "310": "https://github.com/eyalroz/bidimailui/releases/tag/v0.14.0-b1",
-    "988090": "" // Google-4-TbSync
 }
 
 const pr115 = {
@@ -201,9 +200,7 @@ const pr115 = {
     "987914": "https://drive.google.com/file/d/14iR0YcJLBRUtdOIj37czTp1p_rO5VCFu/view?usp=sharing", //addon/filter-on-folder-button/ (google drive)
     "605874": "https://github.com/jeevatkm/ReplyWithHeaderMozilla/pull/130", //ReplyWithHeader
     "327780": "https://github.com/vanowm/TB-Auto-Select-Latest-Message/pull/6", //Auto Select Latest Message
-    "415184": "https://drive.google.com/file/d/1puIpHOEQiK2Xk3fTNeo_C00hHUVGM0W0/view", // iOS IMAP Notes - Full rewrite, like edit email subject
     "2299": "https://drive.google.com/file/d/1ix1-5mP9djmzPbG5e-8Roza8OE-tjY4q/view?usp=sharing", // ThreadKey
-    "1556": "https://www.thunderbird-mail.de/forum/thread/92406-allow-html-temp-version-9-0-f%C3%BCr-thunderbird-115/?postID=519230#post519230" ,   //addon/allow-html-temp/
 }
 
 const investigated = {
@@ -273,6 +270,8 @@ const known115 = [
     "988096", // "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/16", //Attachment Extractor
     "852623", // "https://github.com/Extended-Thunder/remote-content-by-folder/pull/8", // Remote Content By Folder
     "987664", // "https://github.com/jan-kiszka/copypatch/pull/1", //Copy Patch
+    "1556", // "https://www.thunderbird-mail.de/forum/thread/92406-allow-html-temp-version-9-0-f%C3%BCr-thunderbird-115/?postID=519230#post519230" ,   //addon/allow-html-temp/
+    "415184",//: "https://drive.google.com/file/d/1puIpHOEQiK2Xk3fTNeo_C00hHUVGM0W0/view", // iOS IMAP Notes - Full rewrite, like edit email subject
 
     "47144",  //addon/mail-merge/
     "988138", //addon/grammar-and-spell-checker/
