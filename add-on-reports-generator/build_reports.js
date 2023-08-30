@@ -179,7 +179,6 @@ const incompatible115 = [
 
 const wip115 = {
     "986686": "https://github.com/thundernest/import-export-tools-ng/issues/409", // IETools
-    "54035": "Standard8",  //Thunderbird Conversations
     "2610": "https://github.com/tjeb/Mailbox-Alert/issues/70", // MailBoxAlert
     "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
     "331319": "Arnd", // Folder Pane View Switcher
@@ -272,6 +271,7 @@ const known115 = [
     "987664", // "https://github.com/jan-kiszka/copypatch/pull/1", //Copy Patch
     "1556", // "https://www.thunderbird-mail.de/forum/thread/92406-allow-html-temp-version-9-0-f%C3%BCr-thunderbird-115/?postID=519230#post519230" ,   //addon/allow-html-temp/
     "415184",//: "https://drive.google.com/file/d/1puIpHOEQiK2Xk3fTNeo_C00hHUVGM0W0/view", // iOS IMAP Notes - Full rewrite, like edit email subject
+    "54035",// "Standard8",  //Thunderbird Conversations
 
     "47144",  //addon/mail-merge/
     "988138", //addon/grammar-and-spell-checker/
