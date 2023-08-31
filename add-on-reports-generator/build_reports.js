@@ -181,7 +181,6 @@ const wip115 = {
     "986686": "https://github.com/thundernest/import-export-tools-ng/issues/409", // IETools
     "2610": "https://github.com/tjeb/Mailbox-Alert/issues/70", // MailBoxAlert
     "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
-    "331319": "Arnd", // Folder Pane View Switcher
     "46207": "Arnd",  //addon/mailmindr/
     "988100": "Opto",
     "64758": "Opto",
