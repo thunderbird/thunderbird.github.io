@@ -181,7 +181,6 @@ const wip115 = {
     "986686": "https://github.com/thundernest/import-export-tools-ng/issues/409", // IETools
     "2610": "https://github.com/tjeb/Mailbox-Alert/issues/70", // MailBoxAlert
     "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
-    "46207": "Arnd",  //addon/mailmindr/
     "988100": "Opto",
     "64758": "Opto",
     "356507": "Opto",
@@ -270,6 +269,7 @@ const known115 = [
     "415184", // "https://drive.google.com/file/d/1puIpHOEQiK2Xk3fTNeo_C00hHUVGM0W0/view", // iOS IMAP Notes - Full rewrite, like edit email subject
     "54035",  // Thunderbird Conversations
     "987914", // "https://drive.google.com/file/d/14iR0YcJLBRUtdOIj37czTp1p_rO5VCFu/view?usp=sharing", //addon/filter-on-folder-button/ (google drive)
+    "46207",  // "Arnd",  //addon/mailmindr/
 
     "47144",  //addon/mail-merge/
     "988138", //addon/grammar-and-spell-checker/
