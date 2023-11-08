@@ -181,12 +181,10 @@ const wip115 = {
     "2610": "https://github.com/tjeb/Mailbox-Alert/issues/70", // MailBoxAlert
     "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
     "988100": "Opto",
-    "64758": "Opto",
     "356507": "Opto",
     "988185": "Opto",
     "988001": "Opto",
     "988091": "Opto",
-    "987740": "Opto",
     "988392": "Opto",
 }
 
@@ -196,7 +194,6 @@ const pr115 = {
 }
 
 const investigated = {
-    "2548": "", //https://github.com/thsmi/sieve/issues/893", // sieve
     "987689": "", // changeQuote, WebExt possible, needs full rewrite
     "988303": "", // TUD-CERT Phishing Report
     "988376": "", // PGP Universal
@@ -318,7 +315,7 @@ const discontinued = [
     "987796", //MessagePreview
     "902",    //addon/getsendbutton/
     "986523", //"https://drive.google.com/file/d/17YuLerWVIxsQgmpks1PP26MWXSEJIFGa/view?usp=sharing", //Hide Email Folders
-
+    "2548", //https://github.com/thsmi/sieve/issues/893", // sieve
 ]
 
 const contacted = {
