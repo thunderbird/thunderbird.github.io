@@ -11,8 +11,8 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
     - name: Install
       run: |
         cd add-on-reports-generator
@@ -24,5 +24,8 @@ jobs:
         node build_reports.js
         git config --global user.email "john.bieling@gmx.de"
         git config --global user.name "John Bieling"
+        if git diff --quiet; then
+            exit 0
+        fi
         git commit -am "Updated add-on reports $(date -u +%F)."
         git push
