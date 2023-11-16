@@ -181,10 +181,7 @@ const wip115 = {
     "2610": "https://github.com/tjeb/Mailbox-Alert/issues/70", // MailBoxAlert
     "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
     "988100": "Opto",
-    "356507": "Opto",
     "988185": "Opto",
-    "988001": "Opto",
-    "988091": "Opto",
     "988392": "Opto",
 }
 
