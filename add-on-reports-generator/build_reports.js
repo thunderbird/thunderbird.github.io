@@ -187,7 +187,6 @@ const wip115 = {
 
 const pr115 = {
     "327780": "https://github.com/vanowm/TB-Auto-Select-Latest-Message/pull/6", //Auto Select Latest Message
-    "2299": "https://drive.google.com/file/d/1ix1-5mP9djmzPbG5e-8Roza8OE-tjY4q/view?usp=sharing", // ThreadKey
 }
 
 const investigated = {
@@ -242,6 +241,7 @@ const statusBar = [
 
 // Help for identifying working Experiments without upper limit.
 const known115 = [
+    "2299",// "https://drive.google.com/file/d/1ix1-5mP9djmzPbG5e-8Roza8OE-tjY4q/view?usp=sharing", // ThreadKey
     "987986", // "https://drive.google.com/file/d/1qXMXsl5jUg-uDsDRxoAFILUM-jjDmhc8/view?usp=sharing", // select_prev_on_delete-2.0.0-tb (google drive)
     "331666", //QuickArchiver
     "986686", // "https://github.com/thundernest/import-export-tools-ng/issues/409", // IETools
