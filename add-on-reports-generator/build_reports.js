@@ -178,7 +178,6 @@ const incompatible115 = [
 ]
 
 const wip115 = {
-    "2610": "https://github.com/tjeb/Mailbox-Alert/issues/70", // MailBoxAlert
     "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
     "988100": "Opto",
     "988185": "Opto",
@@ -312,14 +311,18 @@ const discontinued = [
     "987796", //MessagePreview
     "902",    //addon/getsendbutton/
     "986523", //"https://drive.google.com/file/d/17YuLerWVIxsQgmpks1PP26MWXSEJIFGa/view?usp=sharing", //Hide Email Folders
-    "2548", //https://github.com/thsmi/sieve/issues/893", // sieve
+    "2548",   //https://github.com/thsmi/sieve/issues/893", // sieve
+    "2610",   //"https://github.com/tjeb/Mailbox-Alert/issues/70", // MailBoxAlert
+    "988131", //"Still needed after 115 density settings? sunset?", // Larger Message List - Still needed after 115 density settings? sunset ?
+    "987757", //TaskviewStyles
+    "987863", //Eventview"
+    "988000", //TaskviewGridLayout
+    "987976", //FindTasksButton"
 ]
 
 const contacted = {
     "988146": "Works, needs max version lift", // smartCompose
     "987925": "Explained how to get it to a pure WebExt, uses deprecated attachment.getFile()", //addon/eml-editor/
-    "988365": "Error: Does not check windowId == -1 on foccus changed", // addon/advanced-composer/ - strangely incompatible - windowId -1 on foccus changed
-    "988131": "Still needed after 115 density settings? sunset?", // Larger Message List - Still needed after 115 density settings? sunset ?
     "988214": "Is the new folder key navigation add-on an alternative?", //Filter email folders
 }
 
