@@ -124,7 +124,7 @@ const modules = [
             "MailNews Core::Search",
             "MailNews Core::Security",
             "MailNews Core::Simple MAPI",
-            // Where not listed on the council page.
+            // Were not listed on the council page.
             "MailNews Core::LDAP Integration",
             "MailNews Core::Security: OpenPGP",
             "MailNews Core::XUL Replacements",
@@ -247,9 +247,6 @@ class HTMLBuilder {
     getLinkEntry(entry) {
         return `<a href="#${this.toB64(entry)}">${entry}</a>`;
     }
-    getLinkEntries(entries) {
-        return entries.map(e => this.getLinkEntry(e));
-    }
     getList(entries) {
         return `
   <ul>
@@ -261,7 +258,7 @@ class HTMLBuilder {
         return `<!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <title>Thunderbird Add-on Database Analysis</title>
+  <title>Thunderbird Modules Contribution Matrix</title>
   <meta charset="UTF-8">
   <style>
     @import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Roboto+Mono&display=swap');
@@ -511,7 +508,7 @@ to download the required data files from bugzilla.mozilla.org/rest/.
     html.addSection(2, "Modules");
     html.addParagraph("This section lists the contributions to each Module and shows the contributing Bugzilla components.");
 
-    // Module TOC
+    // Module TOC, listing associated components.
     for (let module of modules) {
         let listEntries = [];
         if (module.components?.length > 0) {
@@ -519,9 +516,9 @@ to download the required data files from bugzilla.mozilla.org/rest/.
         }
         for (let subModule of module.subModules) {
             if (subModule.components?.length > 0) {
-                listEntries.push(html.getLinkEntry(subModule.name) + html.getList(html.getLinkEntries(subModule.components)));
+                listEntries.push(html.getLinkEntry(subModule.name) + html.getList(subModule.components.map(e => html.getLinkEntry(e))));
             } else {
-                listEntries.push(html.getLinkEntry(subModule.name) + html.getList(html.getLinkEntries(subModule.folders)));
+                listEntries.push(html.getLinkEntry(subModule.name) + html.getList(subModule.folders.map(e => html.getLinkEntry(e))));
             }
         }
         html.add(html.getList([
@@ -529,7 +526,7 @@ to download the required data files from bugzilla.mozilla.org/rest/.
         ]));
     }
 
-    // TABLES of MODULES
+    // Table of modules.
     for (let module of modules) {
         html.addSection(3, module.name);
 
@@ -580,7 +577,7 @@ to download the required data files from bugzilla.mozilla.org/rest/.
     html.addSection(2, "Bugzilla Components");
     html.addParagraph("This section lists the contributions to each single Bugzilla Component.");
 
-    // TABLES of COMPONENTS
+    // Table of components.
     for (const { componentName, counter } of foundComponents) {
         html.addSection(3, componentName);
         
