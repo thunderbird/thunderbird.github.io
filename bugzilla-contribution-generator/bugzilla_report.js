@@ -471,7 +471,7 @@ to download the required data files from bugzilla.mozilla.org/rest/.
         counter: e[1]
     }));
 
-    // Find unassigned components (which needs to be fixed in the modules array).
+    // Find unassigned components (which need to be fixed in the modules array).
     let unassignedComponents = new Set([...foundComponents.map(e => e.componentName)])
     for (let module of modules) {
         module.components.forEach(e => unassignedComponents.delete(e));
