@@ -408,9 +408,6 @@ async function countContribution(component, contributor, contributionType) {
         if (!real_name) {
             real_name = parts[0];
         }
-        if (parts[1] == "thunderbird.net") {
-            real_name += " (MZLA)";
-        }
         contributors[contributor] = real_name;
     }
 }
