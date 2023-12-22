@@ -4,6 +4,9 @@
  */
 
 const fs = require('fs-extra');
+const bent = require('bent');
+const bentGetJSON = bent('GET', 'json', 200);
+
 const reportDir = "../bugzilla-contribution";
 const modules = [
     {
@@ -360,6 +363,9 @@ ${this.out}
     }
 }
 
+const contributors = new Map();
+const LOW_CONTRIBUTION_LIMIT = 4;
+
 class DefaultMap extends Map {
     constructor(defaultFunction, entries) {
         super(entries);
@@ -386,11 +392,19 @@ function incCounter(dataObj, member, incValue = 1) {
 
 
 const componentsMap = new DefaultMap(() => new DefaultMap(() => ({})));
-function countContribution(component, contributor, contributionType) {
+async function countContribution(component, contributor, contributionType) {
     const counterMap = componentsMap.get(component);
     const counts = counterMap.get(contributor);
     incCounter(counts, "TOTAL");
     incCounter(counts, contributionType);
+    
+    if (counts["TOTAL"] > LOW_CONTRIBUTION_LIMIT && !contributors.has(contributor)) {
+        let url = `https://bugzilla.mozilla.org/rest/user?names=${encodeURIComponent(contributor)}`;
+        let { users } = await bentGetJSON(url)
+        let {real_name} = users.find(u => u.name == contributor);
+        // TODO: Save data in a JSON, so we do not need to pull this on each run.
+        contributors.set(contributor, real_name ? real_name : contributor.split("@")[0]);
+    }
 }
 
 function getContributionTableRows(columns, contributions) {
@@ -404,14 +418,14 @@ function getContributionTableRows(columns, contributions) {
     // Output CSV.
     const rows = [];
     for (const [contributorName, counts] of contributions) {
-        const row = [contributorName];
+        const row = [contributors.get(contributorName)];
         columns.forEach(e => row.push(counts[e] || "-"));
         rows.push(row);
         // Abort if we have reached low contribution entries.
         if (
             rows.length > 2 &&
-            rows[rows.length - 1][1] < 4 &&
-            rows[rows.length - 2][1] < 4
+            rows[rows.length - 1][1] < LOW_CONTRIBUTION_LIMIT &&
+            rows[rows.length - 2][1] < LOW_CONTRIBUTION_LIMIT
         ) {
             break;
         }
@@ -449,7 +463,7 @@ to download the required data files from bugzilla.mozilla.org/rest/.
                     // Miss-configured bug, ignore.
                     continue;
                 }
-                countContribution(`${product}::${bug.component}`, bug.assigned_to, "FIXED");
+                await countContribution(`${product}::${bug.component}`, bug.assigned_to, "FIXED");
             } else {
                 // Bugs that have been triaged.
                 for (const history of bug.history) {
@@ -457,7 +471,7 @@ to download the required data files from bugzilla.mozilla.org/rest/.
                         c => c.field_name == "resolution" && c.removed == ""
                     );
                     if (changedResolution) {
-                        countContribution(`${product}::${bug.component}`, history.who, changedResolution.added);
+                        await countContribution(`${product}::${bug.component}`, history.who, changedResolution.added);
                         break;
                     }
                 }
