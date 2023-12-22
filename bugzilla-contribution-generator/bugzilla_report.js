@@ -363,8 +363,8 @@ ${this.out}
     }
 }
 
-const contributors = new Map();
 const LOW_CONTRIBUTION_LIMIT = 4;
+let contributors = {};
 
 class DefaultMap extends Map {
     constructor(defaultFunction, entries) {
@@ -398,12 +398,29 @@ async function countContribution(component, contributor, contributionType) {
     incCounter(counts, "TOTAL");
     incCounter(counts, contributionType);
     
-    if (counts["TOTAL"] > LOW_CONTRIBUTION_LIMIT && !contributors.has(contributor)) {
+    if (!contributors[contributor]) {
+        let parts = contributor.split("@");
+
+        console.log(`Fetching user data for ${contributor}`);
         let url = `https://bugzilla.mozilla.org/rest/user?names=${encodeURIComponent(contributor)}`;
-        let { users } = await bentGetJSON(url)
-        let {real_name} = users.find(u => u.name == contributor);
-        // TODO: Save data in a JSON, so we do not need to pull this on each run.
-        contributors.set(contributor, real_name ? real_name : contributor.split("@")[0]);
+        let { users } = await bentGetJSON(url);
+        let { real_name } = users.find(u => u.name == contributor);
+        if (!real_name) {
+            real_name = parts[0];
+        }
+        if (parts[1] == "thunderbird.net") {
+            real_name += " (MZLA)";
+        }
+        contributors[contributor] = real_name;
+    }
+}
+
+async function writePrettyJSONFile(f, json) {
+    try {
+        return await fs.outputFile(f, JSON.stringify(json, null, 4));
+    } catch (err) {
+        console.error("Error in writePrettyJSONFile()", f, err);
+        throw err;
     }
 }
 
@@ -418,7 +435,7 @@ function getContributionTableRows(columns, contributions) {
     // Output CSV.
     const rows = [];
     for (const [contributorName, counts] of contributions) {
-        const row = [contributors.get(contributorName)];
+        const row = [contributors[contributorName]];
         columns.forEach(e => row.push(counts[e] || "-"));
         rows.push(row);
         // Abort if we have reached low contribution entries.
@@ -444,6 +461,14 @@ to download the required data files from bugzilla.mozilla.org/rest/.
 
 `);
         return;
+    }
+
+    // Read user file
+    try {
+        const json = fs.readJSONSync("users.json");
+        contributors = json.contributors;
+    } catch (ex) {
+
     }
 
     // Read the provided data files and count contributions.
@@ -603,6 +628,9 @@ to download the required data files from bugzilla.mozilla.org/rest/.
     // Save report.
     fs.ensureDirSync(`${reportDir}`);
     fs.writeFileSync(`${reportDir}/contributions.html`, html.toString());
+
+    // Save user data.
+    await writePrettyJSONFile("users.json", { contributors });
 }
 
 main();
