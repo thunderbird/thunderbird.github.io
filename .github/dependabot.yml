@@ -4,7 +4,10 @@ updates:
     directory: "/add-on-reports-generator"
     schedule:
       interval: "weekly"
-updates:
+  - package-ecosystem: "npm"
+    directory: "/bugzilla-contribution-generator"
+    schedule:
+      interval: "weekly"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

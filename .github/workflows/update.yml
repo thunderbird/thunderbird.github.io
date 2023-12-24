@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  update:
+  update-add-on-reports:
     name: Update add-on reports
 
     runs-on: ubuntu-latest
@@ -28,4 +28,30 @@ jobs:
             exit 0
         fi
         git commit -am "Updated add-on reports $(date -u +%F)."
+        git push
+
+  update-bugzilla-contribution:
+    name: Update Bugzilla contribution
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+    - name: Install
+      run: |
+        cd bugzilla-contribution-generator
+        npm ci
+    - name: Run
+      run: |
+        cd bugzilla-contribution-generator
+        node get_bugzilla_data.js "Thunderbird" "2020-01-01"
+        node get_bugzilla_data.js "Calendar" "2020-01-01"
+        node get_bugzilla_data.js "MailNews Core" "2020-01-01"
+        node bugzilla_report.js data/*
+        git config --global user.email "john.bieling@gmx.de"
+        git config --global user.name "John Bieling"
+        if git diff --quiet; then
+            exit 0
+        fi
+        git commit -am "Updated Bugzilla contribution report $(date -u +%F)."
         git push
