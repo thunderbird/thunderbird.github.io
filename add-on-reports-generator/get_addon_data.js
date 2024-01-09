@@ -273,7 +273,6 @@ async function getExtensionFiles(extension) {
 		// Note: current_version is cloned into xpilib.
 		const not_needed_properties = [
 			"current_version",
-			"authors",
 			"categories",
 			"description",
 			"developer_comments",
