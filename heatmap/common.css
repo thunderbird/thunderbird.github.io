@@ -1,0 +1,136 @@
+@font-face {
+  font-family: metropolis;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("Metropolis-Regular.woff2") format("woff2"),
+    url("//www.thunderbird.net/media/fonts/Metropolis/Metropolis-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: metropolis;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("Metropolis-SemiBold.woff2") format("woff2"),
+    url("//www.thunderbird.net/media/fonts/Metropolis/Metropolis-SemiBold.woff2") format("woff2");
+}
+
+:root {
+  --color: rgb(var(--r), var(--g), var(--b));
+  --semidark-color: color-mix(in srgb, #000 50%, var(--color));
+  --dark-color: color-mix(in srgb, #000 70%, var(--color));
+  --realdark-color: color-mix(in srgb, #000 90%, var(--color));
+}
+
+body {
+  margin: 0;
+  font-family: metropolis;
+  font-size: 16px;
+}
+
+aside {
+  background-color: #0003;
+  padding: 1rem;
+  position: absolute;
+  inset: 0 auto 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input {
+  accent-color: var(--color);
+  box-shadow: 0px 0px 10px #0008;
+}
+
+input[type="color"] {
+  width: 2rem;
+  height: 2rem;
+  padding: 2px;
+  border: none;
+}
+
+#scroller {
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+section {
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  background-color: #222;
+  position: relative;
+}
+
+section:nth-of-type(2n) {
+  background-color: var(--dark-color);
+}
+
+section:nth-of-type(2n + 1) {
+  background-color: var(--realdark-color);
+}
+
+header {
+  color: white;
+  position: absolute;
+  inset: auto auto 0 0;
+  z-index: 1;
+  margin: 0;
+  transform: rotate(-90deg) translate(calc(-0.5em + 1rem), 2rem);
+  transform-origin: center left;
+}
+
+h2 {
+  display: inline-block;
+  margin-inline-end: 0.5rem;
+}
+
+header button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: white;
+  margin-inline-start: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+}
+
+header button.current {
+  outline: 1px solid currentColor;
+}
+
+svg.hidden {
+  display: none;
+}
+
+image {
+  filter: saturate(0);
+}
+
+rect {
+  --scaled: min(1, calc(var(--value, 0) / var(--scale-factor)));
+  --scaled: min(1, calc(var(--value, 0) / var(--scale-factor)));
+  /* --a: calc(calc(var(--scaled) * 0.8) + 0.01); */
+  --a: calc(calc(log(var(--scaled)) + 10) / 10);
+
+  fill: rgb(var(--r), var(--g), var(--b));
+  fill-opacity: var(--a);
+}
+
+circle {
+  fill: transparent;
+  stroke: var(--realdark-color);
+  stroke-width: 5px;
+  stroke-dasharray: 2 3;
+  cursor: pointer;
+}
+
+.hidden-popup {
+  display: none;
+}
