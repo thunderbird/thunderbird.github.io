@@ -189,8 +189,6 @@ const pr115 = {
 }
 
 const investigated = {
-    "987689": "", // changeQuote, WebExt possible, needs full rewrite
-    "988303": "", // TUD-CERT Phishing Report
     "988376": "", // PGP Universal
 }
 
