@@ -13,6 +13,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
+      with:
+        cache: 'npm'
+        cache-dependency-path: add-on-reports-generator/package-lock.json
+    - uses: actions/cache@v4
+      with:
+        path: add-on-reports-generator/data/
+        key: add-on-reports-generator-data
     - name: Install
       run: |
         cd add-on-reports-generator
@@ -28,6 +35,7 @@ jobs:
             exit 0
         fi
         git commit -am "Updated add-on reports $(date -u +%F)."
+        git pull --rebase
         git push
 
   update-bugzilla-contribution:
@@ -37,6 +45,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
+      with:
+        cache: 'npm'
+        cache-dependency-path: bugzilla-contribution-generator/package-lock.json
+    - uses: actions/cache@v4
+      with:
+        path: bugzilla-contribution-generator/data/
+        key: bugzilla-contribution-generator-data
     - name: Install
       run: |
         cd bugzilla-contribution-generator
@@ -44,9 +59,9 @@ jobs:
     - name: Run
       run: |
         cd bugzilla-contribution-generator
-        node get_bugzilla_data.js "Thunderbird" "2020-01-01"
-        node get_bugzilla_data.js "Calendar" "2020-01-01"
-        node get_bugzilla_data.js "MailNews Core" "2020-01-01"
+        for product in "Thunderbird" "Calendar" "MailNews Core"; do
+            node get_bugzilla_data.js "$product" "2020-01-01"
+        done
         node bugzilla_report.js data/*
         git config --global user.email "john.bieling@gmx.de"
         git config --global user.name "John Bieling"
@@ -54,4 +69,5 @@ jobs:
             exit 0
         fi
         git commit -am "Updated Bugzilla contribution report $(date -u +%F)."
+        git pull --rebase
         git push
