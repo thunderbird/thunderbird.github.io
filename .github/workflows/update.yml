@@ -1,0 +1,73 @@
+name: Update
+
+on:
+  schedule:
+    - cron:  '0 12 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-add-on-reports:
+    name: Update add-on reports
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        cache: 'npm'
+        cache-dependency-path: add-on-reports-generator/package-lock.json
+    - uses: actions/cache@v4
+      with:
+        path: add-on-reports-generator/data/
+        key: add-on-reports-generator-data
+    - name: Install
+      run: |
+        cd add-on-reports-generator
+        npm ci
+    - name: Run
+      run: |
+        cd add-on-reports-generator
+        node get_addon_data.js
+        node build_reports.js
+        git config --global user.email "john.bieling@gmx.de"
+        git config --global user.name "John Bieling"
+        if git diff --quiet; then
+            exit 0
+        fi
+        git commit -am "Updated add-on reports $(date -u +%F)."
+        git pull --rebase
+        git push
+
+  update-bugzilla-contribution:
+    name: Update Bugzilla contribution
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        cache: 'npm'
+        cache-dependency-path: bugzilla-contribution-generator/package-lock.json
+    - uses: actions/cache@v4
+      with:
+        path: bugzilla-contribution-generator/data/
+        key: bugzilla-contribution-generator-data
+    - name: Install
+      run: |
+        cd bugzilla-contribution-generator
+        npm ci
+    - name: Run
+      run: |
+        cd bugzilla-contribution-generator
+        for product in "Thunderbird" "Calendar" "MailNews Core"; do
+            node get_bugzilla_data.js "$product" "2020-01-01"
+        done
+        node bugzilla_report.js data/*
+        git config --global user.email "john.bieling@gmx.de"
+        git config --global user.name "John Bieling"
+        if git diff --quiet; then
+            exit 0
+        fi
+        git commit -am "Updated Bugzilla contribution report $(date -u +%F)."
+        git pull --rebase
+        git push
