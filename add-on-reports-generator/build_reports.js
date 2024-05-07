@@ -194,7 +194,6 @@ const investigated = {
 
 const column115 = [
     "987838", //addon/sender-domain/
-    "987906", //addon/full-address-column/
     "987911", //addon/spam-scores/
     "987915", //addon/mahour-iranian-date/ 
     "195275", //addon/send-later-3/
@@ -207,7 +206,6 @@ const column115 = [
     "988411", //Thunvatar
     "372603", //Enhanced Priority Display
     "676875", //Rspamd-spamness
-    "3492",   //Show InOut
     "54035",  //Thunderbird Conversations
     "987900", //QNote
     "331666", //QuickArchiver
@@ -632,7 +630,6 @@ var reports = {
             let v102 = getExtData(extJson, "102").data;
             let include = (!!v102 && !v115 && !ignored.includes(`${extJson.id}`))
                 || incompatible115.includes(`${extJson.id}`)
-                || (column115.includes(`${extJson.id}`) && !known115.includes(`${extJson.id}`))
                 || Object.keys(wip115).includes(`${extJson.id}`)
                 || Object.keys(pr115).includes(`${extJson.id}`)
             let badges = [];
