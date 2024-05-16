@@ -285,7 +285,6 @@ const known115 = [
     "987729", //: "https://drive.google.com/file/d/11T4wlUYmcpdugYkwpIUNuedEFyr2E7FL/view?usp=sharing", // New Folder Filters Button
     "745576",//: "https://github.com/oheil/logout/pull/1" , //Logout
     "988108",//: "https://drive.google.com/file/d/1HXGqqnPD4Xup6td1CnYrlH0qKDUTP_3O/view?usp=sharing", //addon/openpgp-alias-updater/ - contacted
-
 ]
 
 const discontinued = [
@@ -596,7 +595,7 @@ var reports = {
             let v115 = getExtData(extJson, "115").data;
             let include = !!v115 &&
                 !incompatible115.includes(`${extJson.id}`) &&
-                !column115.includes(`${extJson.id}`) &&
+                //!column115.includes(`${extJson.id}`) &&
                 !Object.keys(wip115).includes(`${extJson.id}`) &&
                 !Object.keys(pr115).includes(`${extJson.id}`) &&
                 !discontinued.includes(`${extJson.id}`);
