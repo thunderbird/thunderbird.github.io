@@ -16,7 +16,7 @@ const rootDir = "data";
 const reportDir = "../add-on-reports";
 const extsAllJsonFileName = `${rootDir}/xall.json`;
 
-const SUPPORTED_ESR = [60, 68, 78, 91, 102, 115];
+const SUPPORTED_ESR = [60, 68, 78, 91, 102, 115, 128];
 
 const badge_definitions = {
     "permission": { bLeftText: 'p', bColor: 'orange', bTooltip: "Requested Permission" },
@@ -325,14 +325,17 @@ var gAlternativeData;
 
 var groups = [
     {
-        id: "115",
-        header: "Thunderbird Supernova reports"
+        id: "128",
+        header: "Thunderbird Nebula reports"
     },
     {
         id: "general",
         header: "General reports"
     },
-
+    {
+        id: "115",
+        header: "Thunderbird Supernova reports"
+    },
     {
         id: "102",
         header: "Thunderbird 102 reports"
@@ -584,6 +587,200 @@ var reports = {
             return { include: !reports["wrong-order"].rowData(extJson).include && !!vHighest && vHighest.version != vCurrent.version };
         },
     },
+    // -- v128 -------------------------------------------------------------------------------------
+    "tb128-expected-compatible": {
+        group: "128",
+        header: "Extensions expected to be compatible with Thunderbird 128.",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let v128 = getExtData(extJson, "128").data;
+            let include = !!v128
+            let badges = [];
+
+            // all non pure extensions have to be explicitly checked
+            if (include) {
+                if (v128.experiment) {
+                    badges.push({ badge: "experiment" });
+                }
+                let themeExperiment = !!v128 && v128.manifest?.theme_experiment;
+                if (themeExperiment) {
+                    badges.push({ badge: "theme_experiment" });
+                }
+                if (!v128.legacy && v128.mext && !v128.experiment && !themeExperiment) {
+                    badges.push({ badge: "pure" });
+                }
+            };
+
+            return { include, badges }
+        }
+    },
+    "lost-tb115-to-tb128-worst-case": {
+        group: "128",
+        header: "Extensions which have been lost from TB102 to TB115, worst case scenario",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let v128 = getExtData(extJson, "128").data;
+            let v115 = getExtData(extJson, "115").data;
+            let include = (!!v115 && !v128 && !ignored.includes(`${extJson.id}`))
+            let badges = [];
+
+            if (include) {
+                if (discontinued.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "discontinued" });
+                }
+
+                if (badges.length == 0) {
+                    badges.push({ badge: "unknown_115" });
+                }
+
+                if (reports["pure-webext-with-upper-limit"].rowData(extJson).include) {
+                    badges.push({ badge: "pure", link: "pure-webext-with-upper-limit.html" });
+                }
+                if (reports["experiments-without-upper-limit"].rowData(extJson).include) {
+                    badges.push({ badge: "no_limit_experiment", link: "experiments-without-upper-limit.html" });
+                }
+                if (attachmentAPI.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "attachment_api" });
+                }
+                if (recipientChanged.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "recipientChanged_api" });
+                }
+                let themeExperiment = v128?.manifest?.theme_experiment;
+                if (themeExperiment) {
+                    badges.push({ badge: "theme_experiment" });
+                }
+
+            }
+
+            return { include, badges };
+        }
+    },
+    "atn-tb128": {
+        group: "128",
+        header: "Extensions compatible with Thunderbird 128 as seen by ATN.",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let v128 = getExtData(extJson, "128").data;
+            let include = !!v128;
+            let badges = [];
+
+            if (include) {
+                if (v128.experiment) {
+                    badges.push({ badge: "experiment" });
+                }
+                if (filter115.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "filter_115" });
+                }
+                if (attachmentAPI.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "attachment_api" });
+                }
+                if (recipientChanged.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "recipientChanged_api" });
+                }
+                if (discontinued.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "discontinued" });
+                }
+                let themeExperiment = v128.manifest?.theme_experiment;
+                if (themeExperiment) {
+                    badges.push({ badge: "theme_experiment" });
+                }
+                if (!v128.legacy && v128.mext && !v128.experiment && !themeExperiment) {
+                    badges.push({ badge: "pure" });
+                }
+            };
+
+            return { include, badges }
+        }
+    },
+    "valid-128-according-to-strict-max-but-atn-value-reduced": {
+        group: "128",
+        header: "Extensions whose strict_max_version allows installation in Thunderbird 128, but ATN value has been lowered to signal incompatibility (which is ignored during install and app upgrade).",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let vCurrent = getExtData(extJson, "current").data;
+            if (!vCurrent)
+                return { include: false };
+
+            let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max || "*";
+            let strict_max = vCurrent.manifest?.applications?.gecko?.strict_max_version ||
+                vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
+                "*";
+
+            let baseReport = reports["max-atn-value-reduced-below-max-xpi-value"].rowData(extJson);
+            let badges = [];
+            let manually_lowered = baseReport.include &&
+                compareVer(strict_max, 128) > 0 && // xpi limit > 115
+                compareVer(atn_max, "128.*") < 0; // atn limit < 115.*
+
+
+            let themeExperiment = vCurrent.manifest?.theme_experiment;
+            if (themeExperiment) {
+                badges.push({ badge: "theme_experiment" });
+            }
+            if (!vCurrent.legacy && vCurrent.mext && !vCurrent.experiment && !themeExperiment) {
+                badges.push({ badge: "pure" });
+            }
+            if (discontinued.includes(`${extJson.id}`)) {
+                badges.push({ badge: "discontinued" });
+            }
+            return { include: manually_lowered, badges };
+        }
+    },
+    "experiments-without-upper-limit": {
+        group: "128",
+        header: "Experiments without upper limit in ATN.",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let vCurrent = getExtData(extJson, "current").data;
+            let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max || "*";
+            let atn_min = vCurrent?.atn?.compatibility?.thunderbird?.min || "*";
+            let include = !!vCurrent && vCurrent.mext && vCurrent.experiment && atn_max == "*";
+            let badges = [];
+
+            if (discontinued.includes(`${extJson.id}`)) {
+                badges.push({ badge: "discontinued" });
+            }
+
+            return { include, badges };
+        }
+    },
+    "pure-webext-with-upper-limit": {
+        group: "128",
+        header: "Pure WebExtensions with an unnecessary max_version_setting (excluding theme_experiments).",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let vCurrent = getExtData(extJson, "current").data;
+            if (!vCurrent)
+                return { include: false };
+
+            let themeExperiment = vCurrent.manifest?.theme_experiment;
+            let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max || "*";
+            let strict_max = vCurrent.manifest?.applications?.gecko?.strict_max_version ||
+                vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
+                "*";
+            let include = !themeExperiment && !vCurrent.legacy && vCurrent.mext && !vCurrent.experiment && (strict_max != "*" || atn_max != "*");
+
+
+            let badges = [];
+            if (discontinued.includes(`${extJson.id}`)) {
+                badges.push({ badge: "discontinued" });
+            }
+            return { include, badges };
+        }
+    },
+
     // -- v115 -------------------------------------------------------------------------------------
     "tb115-expected-compatible": {
         group: "115",
@@ -737,125 +934,6 @@ var reports = {
             };
 
             return { include, badges }
-        }
-    },
-    "valid-115-according-to-strict-max-but-atn-value-reduced": {
-        group: "115",
-        header: "Extensions whose strict_max_version allows installation in Thunderbird 115, but ATN value has been lowered to signal incompatibility (which is ignored during install and app upgrade). Also includes add-ons which are known to be incompatible.",
-        template: "report-template.html",
-        enabled: true,
-        generate: genStandardReport,
-        rowData: function (extJson) {
-            let vCurrent = getExtData(extJson, "current").data;
-            if (!vCurrent)
-                return { include: false };
-
-            let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max || "*";
-            let strict_max = vCurrent.manifest?.applications?.gecko?.strict_max_version ||
-                vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
-                "*";
-
-            let baseReport = reports["max-atn-value-reduced-below-max-xpi-value"].rowData(extJson);
-            let badges = [];
-            let manually_lowered = baseReport.include &&
-                compareVer(strict_max, 115) > 0 && // xpi limit > 115
-                compareVer(atn_max, "115.*") < 0; // atn limit < 115.*
-
-            if (incompatible115.includes(`${extJson.id}`)) {
-                badges.push({ badge: "incompatible_115" });
-            }
-
-            let themeExperiment = vCurrent.manifest?.theme_experiment;
-            if (themeExperiment) {
-                badges.push({ badge: "theme_experiment" });
-            }
-            if (!vCurrent.legacy && vCurrent.mext && !vCurrent.experiment && !themeExperiment) {
-                badges.push({ badge: "pure" });
-            }
-            if (discontinued.includes(`${extJson.id}`)) {
-                badges.push({ badge: "discontinued" });
-            }
-
-            if (Object.keys(contacted).includes(`${extJson.id}`)) {
-                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
-            }
-            return { include: manually_lowered || incompatible115.includes(`${extJson.id}`), badges };
-        }
-    },
-    "experiments-without-upper-limit": {
-        group: "115",
-        header: "Experiments without upper limit in ATN.",
-        template: "report-template.html",
-        enabled: true,
-        generate: genStandardReport,
-        rowData: function (extJson) {
-            let vCurrent = getExtData(extJson, "current").data;
-            let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max || "*";
-            let atn_min = vCurrent?.atn?.compatibility?.thunderbird?.min || "*";
-            let include = !!vCurrent && vCurrent.mext && vCurrent.experiment && atn_max == "*";
-            let badges = [];
-
-            if (incompatible115.includes(`${extJson.id}`)) {
-                badges.push({ badge: "incompatible_115" });
-            }
-            if (column115.includes(`${extJson.id}`)) {
-                badges.push({ badge: "column_115" });
-            }
-            if (filter115.includes(`${extJson.id}`)) {
-                badges.push({ badge: "filter_115" });
-            }
-            if (attachmentAPI.includes(`${extJson.id}`)) {
-                badges.push({ badge: "attachment_api" });
-            }
-            if (recipientChanged.includes(`${extJson.id}`)) {
-                badges.push({ badge: "recipientChanged_api" });
-            }
-            if (Object.keys(wip115).includes(`${extJson.id}`)) {
-                badges.push({ badge: "wip_115", link: wip115[extJson.id] });
-            }
-            if (Object.keys(pr115).includes(`${extJson.id}`)) {
-                badges.push({ badge: "pr_115", link: pr115[extJson.id] });
-            }
-            if (known115.includes(`${extJson.id}`)) {
-                badges.push({ badge: "compatible_115" });
-            }
-            if (discontinued.includes(`${extJson.id}`)) {
-                badges.push({ badge: "discontinued" });
-            }
-
-            return { include, badges };
-        }
-    },
-    "pure-webext-with-upper-limit": {
-        group: "115",
-        header: "Pure WebExtensions with an unnecessary max_version_setting (excluding theme_experiments).",
-        template: "report-template.html",
-        enabled: true,
-        generate: genStandardReport,
-        rowData: function (extJson) {
-            let vCurrent = getExtData(extJson, "current").data;
-            if (!vCurrent)
-                return { include: false };
-
-            let themeExperiment = vCurrent.manifest?.theme_experiment;
-            let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max || "*";
-            let strict_max = vCurrent.manifest?.applications?.gecko?.strict_max_version ||
-                vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
-                "*";
-            let include = !themeExperiment && !vCurrent.legacy && vCurrent.mext && !vCurrent.experiment && (strict_max != "*" || atn_max != "*");
-
-
-            let badges = [];
-            if (incompatible115.includes(`${extJson.id}`)) {
-                badges.push({ badge: "incompatible_115" });
-            }
-            if (discontinued.includes(`${extJson.id}`)) {
-                badges.push({ badge: "discontinued" });
-            }
-            if (Object.keys(contacted).includes(`${extJson.id}`)) {
-                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
-            }
-            return { include, badges };
         }
     },
 
@@ -1238,6 +1316,7 @@ function genStandardReport(extsJson, name, report) {
 		  <td style="text-align: right" valign="top">${cv("91")}</td>
 		  <td style="text-align: right" valign="top">${cv("102")}</td>
 		  <td style="text-align: right" valign="top">${cv("115")}</td>
+		  <td style="text-align: right" valign="top">${cv("128")}</td>
 		  <td style="text-align: right" valign="top">${current_version?.atn.files[0].created.split('T')[0]}</td>
 		  <td style="text-align: right" valign="top">${cv("current")}</td>
 		  <td style="text-align: right" valign="top">${v_min}</td>
