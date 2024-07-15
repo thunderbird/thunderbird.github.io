@@ -19,272 +19,47 @@ const extsAllJsonFileName = `${rootDir}/xall.json`;
 const SUPPORTED_ESR = [60, 68, 78, 91, 102, 115, 128];
 
 const badge_definitions = {
-    "permission": { bLeftText: 'p', bColor: 'orange', bTooltip: "Requested Permission" },
-    "alternative_available": { bRightText: 'Alternative Available', bLeftText: '*', bColor: 'darkgreen' },
+    "permission": { bLeftText: 'permission', bColor: 'orange', bTooltip: "Requested Permission" },
+    "alternative_available": { bRightText: 'Alternative Available', bLeftText: '⠀', bColor: 'darkgreen' },
     "discontinued": { bRightText: 'Discontinued', bLeftText: '⠀', bColor: 'D3D3D3' },
     "contacted": { bRightText: 'Waiting for Feedback', bLeftText: '⠀', bColor: 'ff8800' },
     "theme_experiment": { bRightText: 'Theme Experiment', bLeftText: '⠀', bColor: 'blue' },
     "pure": { bRightText: 'Pure WebExtension', bLeftText: '⠀', bColor: '570861' },
     "no_limit_experiment": { bRightText: 'Limitless Experiment', bLeftText: '⠀', bColor: 'ff8800' },
     "experiment": { bRightText: 'Experiment (legacy)', bLeftText: '⠀', bColor: 'ff8800' },
+    "incompatible": { bRightText: 'Incompatible', bLeftText: '⠀', bColor: 'c90016' },
+    "compatible": { bRightText: 'Compatible (manually tested)', bLeftText: '⠀', bColor: 'darkgreen' },
+    "unknown": { bRightText: 'Compatibility Unknown', bLeftText: '⠀', bColor: 'c90016' },
+    "pending_pr": { bRightText: 'Pending Pull Request', bLeftText: '⠀', bColor: 'green' },
+    "investigated": { bRightText: 'Ongoing Analysis', bLeftText: '⠀', bColor: 'orange' },
 
     "attachment_api": { bRightText: 'Attachment API Candidate', bLeftText: '⠀', bColor: 'white' },
     "recipientChanged_api": { bRightText: 'onRecipientChanged API', bLeftText: '⠀', bColor: 'white' },
-
-    "incompatible_91": { bRightText: 'Incompatible', bLeftText: 'TB91', bColor: 'c90016' },
-
-    "incompatible_102": { bRightText: 'Incompatible', bLeftText: 'TB102', bColor: 'c90016' },
-    "compatible_102": { bRightText: 'Compatible', bLeftText: 'TB102', bColor: 'darkgreen' },
-
-    "compatible_115": { bRightText: 'Compatible', bLeftText: 'TB115', bColor: 'darkgreen' },
-    "incompatible_115": { bRightText: 'Incompatible', bLeftText: 'TB115', bColor: 'c90016' },
-    "unknown_115": { bRightText: 'Compatibility Unknown', bLeftText: 'TB115', bColor: 'c90016' },
-    "column_115": { bRightText: 'Needs Column Support', bLeftText: 'TB115', bColor: 'darkred' },
-    "filter_115": { bRightText: 'Needs Custom QuickFilter Support', bLeftText: 'TB115', bColor: 'darkred' },
-    "wip_115": { bRightText: 'Work in Progress', bLeftText: 'TB115', bColor: 'yellow' },
-    "pr_115": { bRightText: 'Pending Pull Request', bLeftText: 'TB115', bColor: 'green' },
-    "investigated_115": { bRightText: 'Ongoing Analysis', bLeftText: 'TB115', bColor: 'orange' },
+    "column_api": { bRightText: 'Needs Column Support', bLeftText: '⠀', bColor: 'darkred' },
+    "filter_api": { bRightText: 'Needs Custom QuickFilter Support', bLeftText: '⠀', bColor: 'darkred' },
 }
+
+const compatible_128 = [
+    "987844",	//InsertSignature
+    "331666",	//QuickArchiver
+    "988608",	//Open Google Chat
+    "988166",	//googlesearchwebapp
+    "988718",	//CollectAddresses
+    "988167",	//todowebapp
+    "987916",	//telegramwebapp
+    "988171",	//msofficewebapp
+    "988168",	//onedrivewebapp
+    "988126",	//ResizeTbWidth
+    "988170",	//skypewebapp
+    "988428",	//TileNote
+    "988451",	//PowerFolder
+    "988431",	//RainbowMemo
+    "988748",	//Check before sending email
+    "988169",	//wikipediasearchwebapp    
+]
 
 const ignored = [
     "986223", //Thunderbird Addons Test
-]
-
-// 102
-const knownWorking102 = [
-    "987839", //addon/findnow/ - move init code into startup code
-    "10052",  //addon/filtaquilla/
-    "988234", //addon/tbhints/
-    "4454",   //addon/priority-switcher/
-    "49594",  //addon/subswitch/
-    "161820", //addon/alertswitch/
-    "708783", //addon/emojiaddin/ - PR https://github.com/mganss/EmojiAddIn/pull/53
-    "116388", //addon/automatic-dictionary-switching/ - content_frame id and multiple spell - https://github.com/beltrachi/automatic_dictionary/issues/56#issuecomment-1162817647
-    "1203",   //addon/correct-identity/
-    "988115", //addon/clippings-tb/ - content-frame
-    "310",    //addon/bidi-mail-ui/ - https://github.com/eyalroz/bidimailui/pull/58/files
-    "2610",   //addon/mailbox-alert/ - onItemAdded - onMessageadded and does not remove folderListener
-    "988228", //addon/cb_thunderlink/ - can be turned into a pure WebExt - unavailable for a few weeks
-    "161710", //addon/more-snooze/
-    "287743", //addon/mailhops/
-    "987740", //addon/nostalgy_ng/ - https://github.com/opto/nostalgy-xpi/issues/174#issuecomment-1165895633
-    "987888", //addon/msghdr-toolbar-customize/ - lots of changes in the header area
-    "986643", //addon/filelink-provider-for-webdav/
-    "986686", //addon/importexporttools-ng/
-    "372603", //addon/enhanced-priority-display/
-    "987749", //addon/marked-lightning/
-    "988303", //addon/tud-cert-phishing-report/ - getURLSpecFromFile 
-    "1392",   //addon/maximize-message-pane/
-    "811161", //addon/warnattachment/
-    "2299",   //addon/threadkey/ - replace getElementsByClassName("tabmail-tab") by win.document.getElementById("tabmail").currentTabInfo
-    "986523", //addon/hide-email-folders/ - could fix a bug for feeds and news
-    "46207",  //addon/mailmindr/
-    "64758",  //addon/xnotepp/ - PR https://github.com/xnotepp/xnote/pull/95
-    "988188", //addon/morelayouts/
-    "324497", //addon/smarttemplate4/
-    "559954", //addon/tidybird/ - folderUtils.jsm
-    "987906", //addon/full-address-column/
-    "987840", //addon/printingtools-ng/
-    "217293", //addon/signal-spam/
-    "986685", //addon/phoenity-icons/
-    "4654",   //addon/removedupes
-    "386321", //addon/Lightning calendar tabs
-    "4970",   //addon/tag-toolbar/
-    "56935",  //addon/identity-chooser/
-    "12018",  //addon/quick-folder-move
-    "742199", //addon/attach-from-clipboard/
-    "987908", //addon/deepl-selected-text/
-    "987727", //addon/monterail-full-dark-2/
-    "987995", //addon/hide-local-folders-for-tb78/
-    "2874",   //addon/folder-account/
-    "11727",  //addon/refwdformatter/
-    "987726", //addon/monterail-dark-2-0-for-tb-68/
-    "640",    //addon/quicktext
-    "331666", //addon/quickarchiver/
-    "360086", //addon/toggle-headers/
-    "987914", //addon/filter-on-folder-button/
-    "987865", //addon/previous-colors/
-    "10149",  //addon/new-tab-button/
-    "988056", //addon/get-all-mail-button-for-tb78/
-    "988098", //addon/thunderbird-todoist/
-    "988057", //addon/keeprunning/
-    "987925", //addon/eml-editor/
-    "987838", //addon/sender-domain/
-    "986610", //addon/userchromejs-2/
-    "987901", //addon/transfer-immunity/
-    "12802",  //addon/phoenity-buttons/
-    "987911", //addon/spam-scores/
-    "987757", //addon/taskviewstyles
-    "987868", //addon/next-unread-group/
-    "987863", //addon/eventview/
-    "987869", //addon/next-unread-thread/
-    "988106", //addon/toggle-address-box/ - Fixed probably soon
-    "987988", //addon/toggle-inline/
-    "987986", //addon/select-prev-on-delete/
-    "987665", //addon/lefttodaysubpaneorlogoorclock/
-    "987945", //addon/treechildrenheight50/
-    "987989", //addon/toggle-summary/
-    "988086", //addon/confirmconversionsatselecting/
-    "1279",   //addon/xpunge/
-    "987821", //openattachmentbyextension/
-    "986522", //addon/popmaillistrecipients-2/
-    "546538", //addon/single-domain/
-    "987860", //addon/empty-folder/
-    "987892", //addon/quotecolors/
-    "330066", //addon/edit-email-subject/
-
-    "704523", //addon/europeanmx/
-    "988024", //addon/open-in-browser
-    "988038", //addon/archive-old-messages/
-
-    "1556",   //addon/allow-html-temp/
-    "902",    //addon/getsendbutton/
-    "987885", //addon/tbkeys-lite/
-    "986692", //addon/profile-switcher/
-    "987775", //addon/search-button/
-    "987764", //addon/header-tools-improved/
-
-    "988138", //addon/grammar-and-spell-checker/
-    "987934", //addon/simple-mail-redirection/
-    "11646",  //addon/no-message-pane-sort-by-mouse/
-    "2561",   //addon/copy-sent-to-current/
-    "987779", //addon/browseintab/
-    "3492",   //addon/show-inout/
-    "987933", //addon/toggle-line-wrap/
-    "987796", //addon/messagepreview/
-    "987979", //addon/attachmentcount/
-    "988195", //addon/filter-manager/
-    "987902", //addon/deselect-on-delete-tb78/
-    "987987", //addon/toggle-html/
-    "987857", //addon/preferences-button/
-    "987786", //addon/devtools-button/
-    "534258", //addon/received/
-    "987664", //addon/copy-patch/
-    "987976", //addon/findtasksbutton/
-    "988260", //addon/x-original-to-column/
-    "987844", //addon/insertsignature/
-    "2533",   //addon/addressbooks-synchronizer/
-    "676875", //addon/rspamd-spamness/
-    "47144",  //addon/mail-merge/
-    "988108", //addon/openpgp-alias-updater/
-    "988289", //addon/keepassxc-mail/
-    "988281", //addon/regimail/
-];
-const knownBroken102 = [
-];
-
-// 115
-const incompatible115 = [
-]
-
-const wip115 = {
-    "15102": "https://github.com/protz/Manually-Sort-Folders/pull/201", // Manually sort folders
-    "988100": "Opto",
-    "988185": "Opto",
-    "988392": "Opto",
-}
-
-const pr115 = {
-    "327780": "https://github.com/vanowm/TB-Auto-Select-Latest-Message/pull/6", //Auto Select Latest Message
-}
-
-const investigated = {
-    "988376": "", // PGP Universal
-}
-
-const column115 = [
-    "987838", //addon/sender-domain/
-    "987911", //addon/spam-scores/
-    "987915", //addon/mahour-iranian-date/ 
-    "195275", //addon/send-later-3/
-    "987979", //AttachmentCount
-    "690062", //Sender Frequency
-    "4454",   //Priority Switcher
-    "988392", //Message List Preview
-    "988260", //X-Original-To Column
-    "988323", //Real sender of italian PEC
-    "988411", //Thunvatar
-    "372603", //Enhanced Priority Display
-    "676875", //Rspamd-spamness
-    "54035",  //Thunderbird Conversations
-    "987900", //QNote
-    "331666", //QuickArchiver
-]
-
-const filter115 = [
-    "634298", // CardBook
-    "987900", // QNote
-]
-
-const recentFoldersAPI = [
-    "559954", // TidyBird
-]
-
-const attachmentAPI = [
-    "988376", //PGP Universal
-    "711780", //Lookout Fixed
-]
-
-const recipientChanged = [
-    "988146", //smartCompose
-]
-
-const statusBar = [
-    "988115", //addon/clippings-tb/
-    "986692", //addon/profile-switcher/
-]
-
-// Help for identifying working Experiments without upper limit.
-const known115 = [
-    "2299",// "https://drive.google.com/file/d/1ix1-5mP9djmzPbG5e-8Roza8OE-tjY4q/view?usp=sharing", // ThreadKey
-    "987986", // "https://drive.google.com/file/d/1qXMXsl5jUg-uDsDRxoAFILUM-jjDmhc8/view?usp=sharing", // select_prev_on_delete-2.0.0-tb (google drive)
-    "331666", //QuickArchiver
-    "986686", // "https://github.com/thundernest/import-export-tools-ng/issues/409", // IETools
-    "605874", // "https://github.com/jeevatkm/ReplyWithHeaderMozilla/pull/130", //ReplyWithHeader
-    "676875", // Rspamd-spamness
-    "988230", // "https://drive.google.com/file/d/17IUohmzOcc8ebqpywEWDeZeeAtcPada5/view?usp=sharing", //MetaClean for Thunderbird
-    "3254",   // "https://github.com/RealRaven2000/QuickFolders/issues/351", //addon/quickfolders-tabbed-folders/
-    "987900", // QNote
-    "986643", // "https://github.com/darktrojan/dav/pull/10", //FileLink provider for WebDAV
-    "987902", // "https://github.com/bazuchan/thunderbird-deselect-on-delete/pull/4", //Deselect on Delete TB78
-    "787632", // "https://github.com/hartag/keynav/pull/6", //Quick Folder Key Navigation - it relies on key navigation code of the former xul folderTree, which seems to no longer exist
-    "988416", // "https://github.com/aramir/QuickFilterBy/pull/2", // Quick Filter By
-    "987840", // "https://github.com/cleidigh/printing-tools-ng/issues/225", // PrintingTools NG
-    "195275", // addon/send-later-3/
-    "559954", // "https://github.com/ganast/tidybird/pull/95", // Tidybird - CustomUI
-    "988096", // "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/16", //Attachment Extractor
-    "852623", // "https://github.com/Extended-Thunder/remote-content-by-folder/pull/8", // Remote Content By Folder
-    "987664", // "https://github.com/jan-kiszka/copypatch/pull/1", //Copy Patch
-    "1556",   // "https://www.thunderbird-mail.de/forum/thread/92406-allow-html-temp-version-9-0-f%C3%BCr-thunderbird-115/?postID=519230#post519230" ,   //addon/allow-html-temp/
-    "415184", // "https://drive.google.com/file/d/1puIpHOEQiK2Xk3fTNeo_C00hHUVGM0W0/view", // iOS IMAP Notes - Full rewrite, like edit email subject
-    "54035",  // Thunderbird Conversations
-    "987914", // "https://drive.google.com/file/d/14iR0YcJLBRUtdOIj37czTp1p_rO5VCFu/view?usp=sharing", //addon/filter-on-folder-button/ (google drive)
-    "46207",  // "Arnd",  //addon/mailmindr/
-
-    "47144",  //addon/mail-merge/
-    "988138", //addon/grammar-and-spell-checker/
-    "742199", //addon/attach-from-clipboard/
-    "11727",  //addon/refwdformatter/ (can be a pure webExt)
-    "987865", //addon/previous-colors/
-    "360086", //addon/toggle-headers/
-    "988057", //addon/keeprunning/
-    "987925", //addon/eml-editor/
-
-    "11005", //"https://github.com/memeller/shrunked", // Shrunked Image Resizer
-    "987844", // "https://github.com/HiraokaHyperTools/InsertSignature/pull/8", //InsertSignature
-    "634298", // CardBook
-    "986685", //addon/phoenity-icons/
-    "987908", //addon/deepl-selected-text/
-    "438634", // DKIM
-    "287743", // MailHops
-    "407832", //thunderbird/addon/filter-button/
-    "987995", //addon/hide-local-folders-for-tb78/ - needs to hide local folders via CSS - contacted
-    "987821", //openattachmentbyextension/ - contacted
-    "1279",   //addon/xpunge/ - contacted with working version
-    "12018",  //addon/quick-folder-move - contacted
-    "987729", //: "https://drive.google.com/file/d/11T4wlUYmcpdugYkwpIUNuedEFyr2E7FL/view?usp=sharing", // New Folder Filters Button
-    "745576",//: "https://github.com/oheil/logout/pull/1" , //Logout
-    "988108",//: "https://drive.google.com/file/d/1HXGqqnPD4Xup6td1CnYrlH0qKDUTP_3O/view?usp=sharing", //addon/openpgp-alias-updater/ - contacted
 ]
 
 const discontinued = [
@@ -315,11 +90,65 @@ const discontinued = [
     "987976", //FindTasksButton"
 ]
 
+const pending_pr = {
+    "327780": "https://github.com/vanowm/TB-Auto-Select-Latest-Message/pull/6", //Auto Select Latest Message
+    "988715": "https://github.com/JohannesBuchner/thunderbird-ai-grammar-mailextension/pull/4", //AI Grammar
+    "988698": "https://github.com/2AStudios/tb-export2csv/pull/3" //tb-export2csv 
+}
+
 const contacted = {
     "988146": "Works, needs max version lift", // smartCompose
     "987925": "Explained how to get it to a pure WebExt, uses deprecated attachment.getFile()", //addon/eml-editor/
     "988214": "Is the new folder key navigation add-on an alternative?", //Filter email folders
 }
+
+const investigated = {
+    "988376": "", // PGP Universal
+}
+
+// Keep to inform users about WebExt API
+const columnAPI = [
+    "987838", //addon/sender-domain/
+    "987911", //addon/spam-scores/
+    "987915", //addon/mahour-iranian-date/ 
+    "195275", //addon/send-later-3/
+    "987979", //AttachmentCount
+    "690062", //Sender Frequency
+    "4454",   //Priority Switcher
+    "988392", //Message List Preview
+    "988260", //X-Original-To Column
+    "988323", //Real sender of italian PEC
+    "988411", //Thunvatar
+    "372603", //Enhanced Priority Display
+    "676875", //Rspamd-spamness
+    "54035",  //Thunderbird Conversations
+    "987900", //QNote
+    "331666", //QuickArchiver
+]
+
+const filterAPI = [
+    "634298", // CardBook
+    "987900", // QNote
+]
+
+const recentFoldersAPI = [
+    "559954", // TidyBird
+]
+
+const attachmentAPI = [
+    "988376", //PGP Universal
+    "711780", //Lookout Fixed
+]
+
+const recipientChangedAPI = [
+    "988146", //smartCompose
+]
+
+const statusBarAPI = [
+    "988115", //addon/clippings-tb/
+    "986692", //addon/profile-switcher/
+]
+
 
 var gAlternativeData;
 
@@ -557,17 +386,14 @@ var reports = {
             if (Object.keys(contacted).includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
             }
-            if (Object.keys(wip115).includes(`${extJson.id}`)) {
-                badges.push({ badge: "wip_115", link: wip115[extJson.id] });
+            if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
+                badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
             }
-            if (Object.keys(pr115).includes(`${extJson.id}`)) {
-                badges.push({ badge: "pr_115", link: pr115[extJson.id] });
+            if (columnAPI.includes(`${extJson.id}`)) {
+                badges.push({ badge: "column_api" });
             }
-            if (column115.includes(`${extJson.id}`)) {
-                badges.push({ badge: "column_115" });
-            }
-            if (filter115.includes(`${extJson.id}`)) {
-                badges.push({ badge: "filter_115" });
+            if (filterAPI.includes(`${extJson.id}`)) {
+                badges.push({ badge: "filter_api" });
             }
 
             return { include, badges };
@@ -588,37 +414,9 @@ var reports = {
         },
     },
     // -- v128 -------------------------------------------------------------------------------------
-    "tb128-expected-compatible": {
+    "lost-tb115-to-tb128-according-to-atn": {
         group: "128",
-        header: "Extensions expected to be compatible with Thunderbird 128.",
-        template: "report-template.html",
-        enabled: true,
-        generate: genStandardReport,
-        rowData: function (extJson) {
-            let v128 = getExtData(extJson, "128").data;
-            let include = !!v128
-            let badges = [];
-
-            // all non pure extensions have to be explicitly checked
-            if (include) {
-                if (v128.experiment) {
-                    badges.push({ badge: "experiment" });
-                }
-                let themeExperiment = !!v128 && v128.manifest?.theme_experiment;
-                if (themeExperiment) {
-                    badges.push({ badge: "theme_experiment" });
-                }
-                if (!v128.legacy && v128.mext && !v128.experiment && !themeExperiment) {
-                    badges.push({ badge: "pure" });
-                }
-            };
-
-            return { include, badges }
-        }
-    },
-    "lost-tb115-to-tb128-worst-case": {
-        group: "128",
-        header: "Extensions which have been lost from TB115 to TB128, worst case scenario",
+        header: "Extensions which have been lost from TB115 to TB128, as seen by ATN.",
         template: "report-template.html",
         enabled: true,
         generate: genStandardReport,
@@ -632,9 +430,21 @@ var reports = {
                 if (discontinued.includes(`${extJson.id}`)) {
                     badges.push({ badge: "discontinued" });
                 }
+                if (compatible_128.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "compatible" });
+                }
+                if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
+                    badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
+                }
+                if (Object.keys(investigated).includes(`${extJson.id}`)) {
+                    badges.push({ badge: "investigated", tooltip: investigated[`${extJson.id}`] });
+                }
+                if (Object.keys(contacted).includes(`${extJson.id}`)) {
+                    badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
+                }
 
                 if (badges.length == 0) {
-                    badges.push({ badge: "unknown_115" });
+                    badges.push({ badge: "unknown" });
                 }
 
                 if (reports["pure-webext-with-upper-limit"].rowData(extJson).include) {
@@ -646,7 +456,7 @@ var reports = {
                 if (attachmentAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "attachment_api" });
                 }
-                if (recipientChanged.includes(`${extJson.id}`)) {
+                if (recipientChangedAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "recipientChanged_api" });
                 }
                 let themeExperiment = v128?.manifest?.theme_experiment;
@@ -661,7 +471,7 @@ var reports = {
     },
     "atn-tb128": {
         group: "128",
-        header: "Extensions compatible with Thunderbird 128 as seen by ATN.",
+        header: "Extensions compatible with Thunderbird 128, as seen by ATN.",
         template: "report-template.html",
         enabled: true,
         generate: genStandardReport,
@@ -674,13 +484,13 @@ var reports = {
                 if (v128.experiment) {
                     badges.push({ badge: "experiment" });
                 }
-                if (filter115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "filter_115" });
+                if (filterAPI.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "filter_api" });
                 }
                 if (attachmentAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "attachment_api" });
                 }
-                if (recipientChanged.includes(`${extJson.id}`)) {
+                if (recipientChangedAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "recipientChanged_api" });
                 }
                 if (discontinued.includes(`${extJson.id}`)) {
@@ -791,10 +601,7 @@ var reports = {
         rowData: function (extJson) {
             let v115 = getExtData(extJson, "115").data;
             let include = !!v115 &&
-                !incompatible115.includes(`${extJson.id}`) &&
-                //!column115.includes(`${extJson.id}`) &&
-                !Object.keys(wip115).includes(`${extJson.id}`) &&
-                !Object.keys(pr115).includes(`${extJson.id}`) &&
+                !Object.keys(pending_pr).includes(`${extJson.id}`) &&
                 !discontinued.includes(`${extJson.id}`);
             let badges = [];
 
@@ -825,39 +632,31 @@ var reports = {
             let v115 = getExtData(extJson, "115").data;
             let v102 = getExtData(extJson, "102").data;
             let include = (!!v102 && !v115 && !ignored.includes(`${extJson.id}`))
-                || incompatible115.includes(`${extJson.id}`)
-                || Object.keys(wip115).includes(`${extJson.id}`)
-                || Object.keys(pr115).includes(`${extJson.id}`)
+                || Object.keys(pending_pr).includes(`${extJson.id}`)
             let badges = [];
 
             if (include) {
                 if (discontinued.includes(`${extJson.id}`)) {
                     badges.push({ badge: "discontinued" });
                 }
-                if (incompatible115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "incompatible_115" });
+                if (columnAPI.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "column_api" });
                 }
-                if (column115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "column_115" });
-                }
-                if (filter115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "filter_115" });
+                if (filterAPI.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "filter_api" });
                 }
                 if (Object.keys(investigated).includes(`${extJson.id}`)) {
-                    badges.push({ badge: "investigated_115", tooltip: investigated[`${extJson.id}`] });
+                    badges.push({ badge: "investigated", tooltip: investigated[`${extJson.id}`] });
                 }
-                if (Object.keys(wip115).includes(`${extJson.id}`)) {
-                    badges.push({ badge: "wip_115", link: wip115[extJson.id] });
-                }
-                if (Object.keys(pr115).includes(`${extJson.id}`)) {
-                    badges.push({ badge: "pr_115", link: pr115[extJson.id] });
+                if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
+                    badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
                 }
                 if (Object.keys(contacted).includes(`${extJson.id}`)) {
                     badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
                 }
 
                 if (badges.length == 0) {
-                    badges.push({ badge: "unknown_115" });
+                    badges.push({ badge: "unknown" });
                 }
 
                 if (reports["pure-webext-with-upper-limit"].rowData(extJson).include) {
@@ -869,7 +668,7 @@ var reports = {
                 if (attachmentAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "attachment_api" });
                 }
-                if (recipientChanged.includes(`${extJson.id}`)) {
+                if (recipientChangedAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "recipientChanged_api" });
                 }
                 let themeExperiment = v115?.manifest?.theme_experiment;
@@ -897,29 +696,23 @@ var reports = {
                 if (v115.experiment) {
                     badges.push({ badge: "experiment" });
                 }
-                if (incompatible115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "incompatible_115" });
+                if (columnAPI.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "column_api" });
                 }
-                if (column115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "column_115" });
-                }
-                if (filter115.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "filter_115" });
+                if (filterAPI.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "filter_api" });
                 }
                 if (Object.keys(investigated).includes(`${extJson.id}`)) {
-                    badges.push({ badge: "investigated_115", tooltip: investigated[`${extJson.id}`] });
+                    badges.push({ badge: "investigated", tooltip: investigated[`${extJson.id}`] });
                 }
                 if (attachmentAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "attachment_api" });
                 }
-                if (recipientChanged.includes(`${extJson.id}`)) {
+                if (recipientChangedAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "recipientChanged_api" });
                 }
-                if (Object.keys(wip115).includes(`${extJson.id}`)) {
-                    badges.push({ badge: "wip_115", link: wip115[extJson.id] });
-                }
-                if (Object.keys(pr115).includes(`${extJson.id}`)) {
-                    badges.push({ badge: "pr_115", link: pr115[extJson.id] });
+                if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
+                    badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
                 }
                 if (discontinued.includes(`${extJson.id}`)) {
                     badges.push({ badge: "discontinued" });
@@ -984,12 +777,6 @@ var reports = {
                 compareVer(strict_max, 102) > 0 && // xpi limit > 102
                 compareVer(atn_max, "102.*") < 0; // atn limit < 102.*
 
-            if (knownBroken102.includes(`${extJson.id}`)) {
-                badges.push({ badge: "incompatible_102" });
-            } else if (knownWorking102.includes(`${extJson.id}`)) {
-                badges.push({ badge: "compatible_102" });
-            }
-
             if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
             }
@@ -1013,11 +800,7 @@ var reports = {
             let include = atn_max == "102.0";
 
             let badges = [];
-            if (knownBroken102.includes(`${extJson.id}`)) {
-                badges.push({ badge: "incompatible_102" });
-            } else if (knownWorking102.includes(`${extJson.id}`)) {
-                badges.push({ badge: "compatible_102" });
-            } else if (discontinued.includes(`${extJson.id}`)) {
+            if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
             }
 
@@ -1044,11 +827,7 @@ var reports = {
                 if (getAlternative(extJson)) {
                     badges.push({ badge: "alternative_available" });
                 }
-                if (knownBroken102.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "incompatible_102" });
-                } else if (knownWorking102.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "compatible_102" });
-                } else if (discontinued.includes(`${extJson.id}`)) {
+                if (discontinued.includes(`${extJson.id}`)) {
                     badges.push({ badge: "discontinued" });
                 }
 
@@ -1100,7 +879,7 @@ var reports = {
                 if (getAlternative(extJson)) {
                     badges.push({ badge: "alternative_available" });
                 } else {
-                    badges.push({ badge: "incompatible_91" });
+                    badges.push({ badge: "incompatible" });
                 }
             }
             return { include, badges };
