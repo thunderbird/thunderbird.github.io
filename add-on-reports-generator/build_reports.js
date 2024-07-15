@@ -618,7 +618,7 @@ var reports = {
     },
     "lost-tb115-to-tb128-worst-case": {
         group: "128",
-        header: "Extensions which have been lost from TB102 to TB115, worst case scenario",
+        header: "Extensions which have been lost from TB115 to TB128, worst case scenario",
         template: "report-template.html",
         enabled: true,
         generate: genStandardReport,
