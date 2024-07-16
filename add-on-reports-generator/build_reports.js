@@ -88,6 +88,9 @@ const discontinued = [
     "987863", //Eventview"
     "988000", //TaskviewGridLayout
     "987976", //FindTasksButton"
+    "987779", //BrowseInTab
+    "988188", //MoreLayouts
+    "987979", //AttachmentCount
 ]
 
 const pending_pr = {
@@ -104,6 +107,14 @@ const contacted = {
 
 const investigated = {
     "988376": "", // PGP Universal
+    "1392": "", // Maximize Message Pane
+    "327780": "", // Auto Select Latest Message
+    "372603": "", // Enhanced Priority Display
+    "987838": "", // Sender Domain
+    "4454": "", // Priority Switcher
+    "988411": "", // Thunvatar
+    "988323": "", // Real sender of italian PEC
+    "988260": "", // X-Original-To Column
 }
 
 // Keep to inform users about WebExt API
