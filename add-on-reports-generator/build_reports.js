@@ -142,6 +142,7 @@ const attachmentAPI = [
 
 const recipientChangedAPI = [
     "988146", //smartCompose
+    "116388", //Automatic Dictionary
 ]
 
 const statusBarAPI = [
@@ -414,7 +415,7 @@ var reports = {
         },
     },
     // -- v128 -------------------------------------------------------------------------------------
-    "lost-tb115-to-tb128-according-to-atn": {
+    "lost-tb115-to-tb128": {
         group: "128",
         header: "Extensions which have been lost from TB115 to TB128, as seen by ATN.",
         template: "report-template.html",
@@ -622,17 +623,16 @@ var reports = {
             return { include, badges }
         }
     },
-    "lost-tb102-to-tb115-worst-case": {
+    "lost-tb102-to-tb115": {
         group: "115",
-        header: "Extensions which have been lost from TB102 to TB115, worst case scenario",
+        header: "Extensions which have been lost from TB102 to TB115, as seen by ATN.",
         template: "report-template.html",
         enabled: true,
         generate: genStandardReport,
         rowData: function (extJson) {
             let v115 = getExtData(extJson, "115").data;
             let v102 = getExtData(extJson, "102").data;
-            let include = (!!v102 && !v115 && !ignored.includes(`${extJson.id}`))
-                || Object.keys(pending_pr).includes(`${extJson.id}`)
+            let include = (!!v102 && !v115 && !ignored.includes(`${extJson.id}`));
             let badges = [];
 
             if (include) {
@@ -812,7 +812,7 @@ var reports = {
     },
     "lost-tb91-to-tb102": {
         group: "102",
-        header: "Extensions which have been lost from TB91 to TB102 as seen by ATN",
+        header: "Extensions which have been lost from TB91 to TB102, as seen by ATN.",
         template: "report-template.html",
         enabled: true,
         generate: genStandardReport,
