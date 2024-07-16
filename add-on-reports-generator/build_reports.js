@@ -41,8 +41,6 @@ const badge_definitions = {
 }
 
 const compatible_128 = [
-    "987844",	//InsertSignature
-    "331666",	//QuickArchiver
     "988608",	//Open Google Chat
     "988166",	//googlesearchwebapp
     "988718",	//CollectAddresses
@@ -104,6 +102,9 @@ const contacted = {
     "988146": "Works, needs max version lift", // smartCompose
     "987925": "Explained how to get it to a pure WebExt, uses deprecated attachment.getFile()", //addon/eml-editor/
     "988214": "Is the new folder key navigation add-on an alternative?", //Filter email folders
+    "987844": "Works, needs max version lift (pure WebExtension)", //InsertSignature
+    "331666": "Works, needs max version lift (pure WebExtension)", //QuickArchiver
+    "46207": "Asked if help is needed", //mailmindr
 }
 
 const investigated = {
