@@ -19,20 +19,21 @@ const extsAllJsonFileName = `${rootDir}/xall.json`;
 const SUPPORTED_ESR = [60, 68, 78, 91, 102, 115, 128];
 
 const badge_definitions = {
+    "pending_pr": { bRightText: 'Pending Pull Request', bLeftText: 'Status', bColor: 'green' },
+    "investigated": { bRightText: 'Ongoing Analysis', bLeftText: 'Status', bColor: 'orange' },
+    "discontinued": { bRightText: 'Discontinued', bLeftText: 'Status', bColor: 'D3D3D3' },
+    "unknown": { bRightText: 'Unknown', bLeftText: 'Status', bColor: 'c90016' },
+    "contacted": { bRightText: 'Waiting for Feedback', bLeftText: 'Status', bColor: 'ff8800' },
+    "compatible": { bRightText: 'Compatible (manually tested)', bLeftText: 'Status', bColor: 'darkgreen' },
+
+    "alternative_available": { bRightText: 'Alternative Available', bLeftText: 'Status', bColor: 'darkgreen' },
+
     "permission": { bLeftText: 'permission', bColor: 'orange', bTooltip: "Requested Permission" },
-    "alternative_available": { bRightText: 'Alternative Available', bLeftText: '⠀', bColor: 'darkgreen' },
-    "discontinued": { bRightText: 'Discontinued', bLeftText: '⠀', bColor: 'D3D3D3' },
-    "contacted": { bRightText: 'Waiting for Feedback', bLeftText: '⠀', bColor: 'ff8800' },
     "theme_experiment": { bRightText: 'Theme Experiment', bLeftText: '⠀', bColor: 'blue' },
     "pure": { bRightText: 'Pure WebExtension', bLeftText: '⠀', bColor: '570861' },
     "no_limit_experiment": { bRightText: 'Limitless Experiment', bLeftText: '⠀', bColor: 'ff8800' },
     "experiment": { bRightText: 'Experiment (legacy)', bLeftText: '⠀', bColor: 'ff8800' },
-    "incompatible": { bRightText: 'Incompatible', bLeftText: '⠀', bColor: 'c90016' },
-    "compatible": { bRightText: 'Compatible (manually tested)', bLeftText: '⠀', bColor: 'darkgreen' },
-    "unknown": { bRightText: 'Compatibility Unknown', bLeftText: '⠀', bColor: 'c90016' },
-    "pending_pr": { bRightText: 'Pending Pull Request', bLeftText: '⠀', bColor: 'green' },
-    "investigated": { bRightText: 'Ongoing Analysis', bLeftText: '⠀', bColor: 'orange' },
-
+ 
     "attachment_api": { bRightText: 'Attachment API Candidate', bLeftText: '⠀', bColor: 'white' },
     "recipientChanged_api": { bRightText: 'onRecipientChanged API', bLeftText: '⠀', bColor: 'white' },
     "column_api": { bRightText: 'Needs Column Support', bLeftText: '⠀', bColor: 'darkred' },
@@ -80,10 +81,9 @@ const discontinued = [
     "987726", //addon/monterail-dark-2-0-for-tb-68/ - probably discontinued
     "987796", //MessagePreview
     "902",    //addon/getsendbutton/
-    "986523", //"https://drive.google.com/file/d/17YuLerWVIxsQgmpks1PP26MWXSEJIFGa/view?usp=sharing", //Hide Email Folders
     "2548",   //https://github.com/thsmi/sieve/issues/893", // sieve
     "2610",   //"https://github.com/tjeb/Mailbox-Alert/issues/70", // MailBoxAlert
-    "988131", //"Still needed after 115 density settings? sunset?", // Larger Message List - Still needed after 115 density settings? sunset ?
+    "988131", // Larger Message List - Still needed after 115 density settings? sunset ?
     "987757", //TaskviewStyles
     "987863", //Eventview"
     "988000", //TaskviewGridLayout
@@ -91,6 +91,7 @@ const discontinued = [
     "987779", //BrowseInTab
     "988188", //MoreLayouts
     "987979", //AttachmentCount
+    "15102",  //Manually sort folders
 ]
 
 const pending_pr = {
@@ -108,7 +109,6 @@ const contacted = {
 const investigated = {
     "988376": "", // PGP Universal
     "1392": "", // Maximize Message Pane
-    "327780": "", // Auto Select Latest Message
     "372603": "", // Enhanced Priority Display
     "987838": "", // Sender Domain
     "4454": "", // Priority Switcher
@@ -643,18 +643,14 @@ var reports = {
         rowData: function (extJson) {
             let v115 = getExtData(extJson, "115").data;
             let v102 = getExtData(extJson, "102").data;
-            let include = (!!v102 && !v115 && !ignored.includes(`${extJson.id}`));
+            let badLimit102 = reports["tb102-experiments-with-102-0-limit"].rowData(extJson).include;
+
+            let include = (!!v102 && !v115 && !badLimit102 && !ignored.includes(`${extJson.id}`));
             let badges = [];
 
             if (include) {
                 if (discontinued.includes(`${extJson.id}`)) {
                     badges.push({ badge: "discontinued" });
-                }
-                if (columnAPI.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "column_api" });
-                }
-                if (filterAPI.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "filter_api" });
                 }
                 if (Object.keys(investigated).includes(`${extJson.id}`)) {
                     badges.push({ badge: "investigated", tooltip: investigated[`${extJson.id}`] });
@@ -670,6 +666,12 @@ var reports = {
                     badges.push({ badge: "unknown" });
                 }
 
+                if (columnAPI.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "column_api" });
+                }
+                if (filterAPI.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "filter_api" });
+                }
                 if (reports["pure-webext-with-upper-limit"].rowData(extJson).include) {
                     badges.push({ badge: "pure", link: "pure-webext-with-upper-limit.html" });
                 }
@@ -841,9 +843,11 @@ var reports = {
                 if (discontinued.includes(`${extJson.id}`)) {
                     badges.push({ badge: "discontinued" });
                 }
-
                 if (Object.keys(contacted).includes(`${extJson.id}`)) {
                     badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
+                }
+                if (badges.length == 0) {
+                    badges.push({ badge: "unknown" });
                 }
             }
             return { include, badges };
@@ -890,7 +894,7 @@ var reports = {
                 if (getAlternative(extJson)) {
                     badges.push({ badge: "alternative_available" });
                 } else {
-                    badges.push({ badge: "incompatible" });
+                    badges.push({ badge: "unknown" });
                 }
             }
             return { include, badges };
