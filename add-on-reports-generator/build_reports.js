@@ -95,7 +95,9 @@ const discontinued = [
 const pending_pr = {
     "327780": "https://github.com/vanowm/TB-Auto-Select-Latest-Message/pull/6", //Auto Select Latest Message
     "988715": "https://github.com/JohannesBuchner/thunderbird-ai-grammar-mailextension/pull/4", //AI Grammar
-    "988698": "https://github.com/2AStudios/tb-export2csv/pull/3" //tb-export2csv 
+    "988698": "https://github.com/2AStudios/tb-export2csv/pull/3", //tb-export2csv 
+    "711780": "https://github.com/TB-throwback/LookOut-fix-version/pull/119", //Lookout Fixed 
+
 }
 
 const contacted = {
