@@ -101,12 +101,18 @@ const pending_pr = {
 }
 
 const contacted = {
-    "988146": "Works, needs max version lift", // smartCompose
     "987925": "Explained how to get it to a pure WebExt, uses deprecated attachment.getFile()", //addon/eml-editor/
     "988214": "Is the new folder key navigation add-on an alternative?", //Filter email folders
-    "987844": "Works, needs max version lift (pure WebExtension)", //InsertSignature
-    "331666": "Works, needs max version lift (pure WebExtension)", //QuickArchiver
     "46207": "Asked if help is needed", //mailmindr
+    // Enforced lifts
+    "988389": "Works! Enforced max version lift since 102", //Thunderbird OpenProject
+    "988258": "Works! Enforced max version lift since 102", // Recently
+    "988427": "Works! Enforced max version lift since 102", // EnhancedReplyHeaders - can use more new APIs and could be a top spot candidate
+    // Candidates for enforced lifts
+    "988146": "Works, needs max version lift (pure WebExtension)", // smartCompose
+    "331666": "Works, needs max version lift (pure WebExtension)", // QuickArchiver
+    "988561": "Works, needs max version lift (pure WebExtension)", // Freecosys - Провайдер FileLink
+    "988060": "Works, needs max version lift (pure WebExtension)", // Text Insert: Templates/Instant Spell C
 }
 
 const investigated = {
@@ -518,6 +524,9 @@ var reports = {
                 if (!v128.legacy && v128.mext && !v128.experiment && !themeExperiment) {
                     badges.push({ badge: "pure" });
                 }
+                if (Object.keys(contacted).includes(`${extJson.id}`)) {
+                    badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
+                }    
             };
 
             return { include, badges }
@@ -601,6 +610,9 @@ var reports = {
             let badges = [];
             if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
+            }
+            if (Object.keys(contacted).includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
             }
             return { include, badges };
         }
