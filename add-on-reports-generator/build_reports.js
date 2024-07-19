@@ -101,11 +101,12 @@ const pending_pr = {
 }
 
 const contacted = {
-    "987925": "Explained how to get it to a pure WebExt, uses deprecated attachment.getFile()", //addon/eml-editor/
-    "988214": "Is the new folder key navigation add-on an alternative?", //Filter email folders
-    "46207": "Asked if help is needed", //mailmindr
+    "987925": "Explained how to get it to a pure WebExt, uses deprecated attachment.getFile()", // EML Editor
+    "988214": "Is the new folder key navigation add-on an alternative?", // Filter email folders
+    "46207": "Asked if help is needed", // mailmindr
+    "987838": "Asked if help is needed", // Sender Domain
     // Enforced lifts
-    "988389": "Works! Enforced max version lift since 102", //Thunderbird OpenProject
+    "988389": "Works! Enforced max version lift since 102", // Thunderbird OpenProject
     "988258": "Works! Enforced max version lift since 102", // Recently
     "988427": "Works! Enforced max version lift since 102", // EnhancedReplyHeaders - can use more new APIs and could be a top spot candidate
     // Candidates for enforced lifts
@@ -114,6 +115,46 @@ const contacted = {
     "988561": "Works, needs max version lift (pure WebExtension)", // Freecosys - Провайдер FileLink
     "988060": "Works, needs max version lift (pure WebExtension)", // Text Insert: Templates/Instant Spell C
 }
+
+const pending_messages_update = [
+    "217293", // signal-spam
+    "287743", // mailhops
+    "320395", // remindit
+    "46207", // mailmindr
+    "4970", // tag-toolbar
+    "566490", // expertspam
+    "64758", // xnotepp
+    "704523", // europeanmx
+    "986632", // spambee
+    "987823", // autobucket
+    "987834", // spoofdetection
+    "987907", // mark-gmail-read\2478313\src\background.js
+    "987938", // pratiche-mail\2476555\src\background-script.js
+    "987939", // preventivi-mail\2476400\src\background-script.js
+    "987940", // hotel-mail\2476556\src\alert.js
+    "987984", // just-report-it\2476824\src\scripts\background.js
+    "988024", // open-in-browser\2477587\src\background.js
+    "988069", // spam-check-for-ocn\2475472\src\background.js
+    "988252", // reply-to-all-selected-mail\2482250\src\background.js
+    "988314", // auto-mark-folder-read\2477943\src\js\background.js
+    "988371", // replymarksread\2477988\src\src\replymarksread.js
+    "988439", // remindme\2478544\src\scripts\background.js
+    "988447", // gmail-labels\2478584\src\src\background.js
+    "988463", // grapevine\2478656\src\lib\AutoArchiver.js
+    "988476", // if-this-then-connector\2478751\src\if-background.js
+    "988532", // tagger\2479956\src\background.js
+    "988566", // mark-read-on-tab-open\2482102\src\src\opentabmarksread.js
+    "988677", // sync-for-tb\2485183\src\sy-background.js
+    "988752", // mark-subfolders-read\2487282\src\background.js
+    "988356", // auto-mark-as-read\2486030\src\options.js
+    // Experiments NOT notified, waiting for PR
+    //986323 confirmbeforedelete
+    //987689 changequote
+    //987900 qnote\2480264\src\scripts\utils-message.js
+    //988173 thunderkey\2476427\src\src\background.js
+    //UUps
+    //987858 mark-all-read-we -- uuups folders.markAsRead should need messagesUpdate instead of accountsFolders
+]
 
 const investigated = {
     "988376": "", // PGP Universal
@@ -490,6 +531,23 @@ var reports = {
             return { include, badges };
         }
     },
+    "pending-permission-update": {
+        group: "128",
+        header: "In Thunderbird 128 we had to introduce a backward incompatible permission change. Some extensions are now broken. The relevant add-on developers have been notified.",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let data = getExtData(extJson, "128").data;
+            let permissions = data?.manifest?.permissions;
+            let messagesUpdate = Array.isArray(permissions) &&  permissions.includes("messagesUpdate")
+
+            return {
+                include: data && pending_messages_update.includes(`${extJson.id}`) && !messagesUpdate,
+                badges: []
+            };
+        },
+    }, 
     "atn-tb128": {
         group: "128",
         header: "Extensions compatible with Thunderbird 128, as seen by ATN.",
@@ -565,6 +623,9 @@ var reports = {
             if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
             }
+            if (Object.keys(contacted).includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
+            }
             return { include: manually_lowered, badges };
         }
     },
@@ -617,6 +678,7 @@ var reports = {
             return { include, badges };
         }
     },
+   
 
     // -- v115 -------------------------------------------------------------------------------------
     "tb115-expected-compatible": {
