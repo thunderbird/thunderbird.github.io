@@ -461,7 +461,36 @@ var reports = {
             return { include, badges };
         }
     },
-    "latest-current-mismatch": {
+    "pure-webext-with-upper-limit": {
+        group: "general",
+        header: "Pure WebExtensions with an unnecessary max_version_setting (excluding theme_experiments).",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let vCurrent = getExtData(extJson, "current").data;
+            if (!vCurrent)
+                return { include: false };
+
+            let themeExperiment = vCurrent.manifest?.theme_experiment;
+            let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max || "*";
+            let strict_max = vCurrent.manifest?.applications?.gecko?.strict_max_version ||
+                vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
+                "*";
+            let include = !themeExperiment && !vCurrent.legacy && vCurrent.mext && !vCurrent.experiment && (strict_max != "*" || atn_max != "*");
+
+
+            let badges = [];
+            if (discontinued.includes(`${extJson.id}`)) {
+                badges.push({ badge: "discontinued" });
+            }
+            if (Object.keys(contacted).includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
+            }
+            return { include, badges };
+        }
+    },
+   "latest-current-mismatch": {
         group: "general",
         header: "Extensions, where the latest upload is for an older release, which will fail to install in current ESR (current = defined current in ATN) from within the add-on manager.",
         template: "report-template.html",
@@ -649,36 +678,38 @@ var reports = {
             return { include, badges };
         }
     },
-    "pure-webext-with-upper-limit": {
+    "lost-pure-webext-with-upper-limit": {
         group: "128",
-        header: "Pure WebExtensions with an unnecessary max_version_setting (excluding theme_experiments).",
+        header: "Lost pure WebExtensions with an unnecessary max_version_setting (excluding theme_experiments).",
         template: "report-template.html",
         enabled: true,
         generate: genStandardReport,
         rowData: function (extJson) {
             let vCurrent = getExtData(extJson, "current").data;
+            let v128 = getExtData(extJson, "128").data;
             if (!vCurrent)
                 return { include: false };
 
             let themeExperiment = vCurrent.manifest?.theme_experiment;
-            let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max || "*";
-            let strict_max = vCurrent.manifest?.applications?.gecko?.strict_max_version ||
-                vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
-                "*";
-            let include = !themeExperiment && !vCurrent.legacy && vCurrent.mext && !vCurrent.experiment && (strict_max != "*" || atn_max != "*");
-
+            let include = !discontinued.includes(`${extJson.id}`) && !v128 && !themeExperiment && !vCurrent.legacy && vCurrent.mext && !vCurrent.experiment;
 
             let badges = [];
-            if (discontinued.includes(`${extJson.id}`)) {
-                badges.push({ badge: "discontinued" });
-            }
             if (Object.keys(contacted).includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
             }
+            if (compatible_128.includes(`${extJson.id}`)) {
+                badges.push({ badge: "compatible" });
+            }
+            if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
+                badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
+            }
+            if (Object.keys(investigated).includes(`${extJson.id}`)) {
+                badges.push({ badge: "investigated", tooltip: investigated[`${extJson.id}`] });
+            }
+            
             return { include, badges };
         }
     },
-   
 
     // -- v115 -------------------------------------------------------------------------------------
     "tb115-expected-compatible": {
