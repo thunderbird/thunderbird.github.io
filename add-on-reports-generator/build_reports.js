@@ -90,6 +90,8 @@ const discontinued = [
     "988188", //MoreLayouts
     "987979", //AttachmentCount
     "15102",  //Manually sort folders
+    "988173", //Thunderkey
+    "988196", //メッセージフィルターボタン
 ]
 
 const pending_pr = {
@@ -97,7 +99,8 @@ const pending_pr = {
     "988715": "https://github.com/JohannesBuchner/thunderbird-ai-grammar-mailextension/pull/4", //AI Grammar
     "988698": "https://github.com/2AStudios/tb-export2csv/pull/3", //tb-export2csv 
     "711780": "https://github.com/TB-throwback/LookOut-fix-version/pull/119", //Lookout Fixed 
-
+    "711456": "https://drive.google.com/file/d/1PpJO6UjudJF6F_V922-ul1wMphrDBOn3/view?usp=sharing", // TexTra
+    "987900": "https://github.com/mlazdans/qnote/pull/55", // QNote
 }
 
 const contacted = {
@@ -113,7 +116,6 @@ const contacted = {
     "988146": "Works, needs max version lift (pure WebExtension)", // smartCompose
     "331666": "Works, needs max version lift (pure WebExtension)", // QuickArchiver
     "988561": "Works, needs max version lift (pure WebExtension)", // Freecosys - Провайдер FileLink
-    "988060": "Works, needs max version lift (pure WebExtension)", // Text Insert: Templates/Instant Spell C
 }
 
 const pending_messages_update = [
@@ -712,36 +714,6 @@ var reports = {
     },
 
     // -- v115 -------------------------------------------------------------------------------------
-    "tb115-expected-compatible": {
-        group: "115",
-        header: "Extensions expected to be compatible with Thunderbird 115.",
-        template: "report-template.html",
-        enabled: true,
-        generate: genStandardReport,
-        rowData: function (extJson) {
-            let v115 = getExtData(extJson, "115").data;
-            let include = !!v115 &&
-                !Object.keys(pending_pr).includes(`${extJson.id}`) &&
-                !discontinued.includes(`${extJson.id}`);
-            let badges = [];
-
-            // all non pure extensions have to be explicitly checked
-            if (include) {
-                if (v115.experiment) {
-                    badges.push({ badge: "experiment" });
-                }
-                let themeExperiment = !!v115 && v115.manifest?.theme_experiment;
-                if (themeExperiment) {
-                    badges.push({ badge: "theme_experiment" });
-                }
-                if (!v115.legacy && v115.mext && !v115.experiment && !themeExperiment) {
-                    badges.push({ badge: "pure" });
-                }
-            };
-
-            return { include, badges }
-        }
-    },
     "lost-tb102-to-tb115": {
         group: "115",
         header: "Extensions which have been lost from TB102 to TB115, as seen by ATN.",
@@ -751,9 +723,8 @@ var reports = {
         rowData: function (extJson) {
             let v115 = getExtData(extJson, "115").data;
             let v102 = getExtData(extJson, "102").data;
-            let badLimit102 = reports["tb102-experiments-with-102-0-limit"].rowData(extJson).include;
 
-            let include = (!!v102 && !v115 && !badLimit102 && !ignored.includes(`${extJson.id}`));
+            let include = (!!v102 && !v115 && !ignored.includes(`${extJson.id}`));
             let badges = [];
 
             if (include) {
@@ -876,61 +847,6 @@ var reports = {
             return { include, badges };
         }
     },
-    "valid-102-according-to-strict-max-but-atn-value-reduced": {
-        group: "102",
-        header: "Extensions whose strict_max_version allows installation in Thunderbird 102, but ATN value has been lowered to signal incompatibility (which is ignored during install and app upgrade).",
-        template: "report-template.html",
-        enabled: true,
-        generate: genStandardReport,
-        rowData: function (extJson) {
-            let vCurrent = getExtData(extJson, "current").data;
-            if (!vCurrent)
-                return { include: false };
-
-            let atn_max = vCurrent?.atn?.compatibility?.thunderbird?.max || "*";
-            let strict_max = vCurrent.manifest?.applications?.gecko?.strict_max_version ||
-                vCurrent.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
-                "*";
-
-            let baseReport = reports["max-atn-value-reduced-below-max-xpi-value"].rowData(extJson);
-            let badges = baseReport.badges;
-            let include = baseReport.include &&
-                compareVer(strict_max, 102) > 0 && // xpi limit > 102
-                compareVer(atn_max, "102.*") < 0; // atn limit < 102.*
-
-            if (discontinued.includes(`${extJson.id}`)) {
-                badges.push({ badge: "discontinued" });
-            }
-
-            if (Object.keys(contacted).includes(`${extJson.id}`)) {
-                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
-            }
-            return { include, badges };
-        }
-    },
-    "tb102-experiments-with-102-0-limit": {
-        group: "102",
-        header: "Experiments who have an upper limit of 102.0.",
-        template: "report-template.html",
-        enabled: true,
-        generate: genStandardReport,
-        rowData: function (extJson) {
-            let v102 = getExtData(extJson, "102").data;
-            let atn_max = v102?.atn?.compatibility?.thunderbird?.max || "*";
-
-            let include = atn_max == "102.0";
-
-            let badges = [];
-            if (discontinued.includes(`${extJson.id}`)) {
-                badges.push({ badge: "discontinued" });
-            }
-
-            if (Object.keys(contacted).includes(`${extJson.id}`)) {
-                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
-            }
-            return { include, badges };
-        }
-    },
     "lost-tb91-to-tb102": {
         group: "102",
         header: "Extensions which have been lost from TB91 to TB102, as seen by ATN.",
@@ -940,8 +856,7 @@ var reports = {
         rowData: function (extJson) {
             let v102 = getExtData(extJson, "102").version;
             let v91 = getExtData(extJson, "91").version;
-            let badLimit102 = reports["tb102-experiments-with-102-0-limit"].rowData(extJson).include;
-            let include = (!!v91 && !v102) || badLimit102;
+            let include = (!!v91 && !v102);
 
             let badges = [];
             if (include) {

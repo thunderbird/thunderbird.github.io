@@ -104,10 +104,10 @@ async function requestATN(addon_id, query_type, options) {
 
 	// Retry on error, using a hard timeout enforced from the client side.
 	let rv;
-	for (let i = 0; (!rv && i < 5); i++) {
+	for (let i = 0; (!rv && i < 10); i++) {
 		if (i > 0) {
 			console.error("Retry", i);
-			await new Promise(resolve => setTimeout(resolve, 5000));
+			await new Promise(resolve => setTimeout(resolve, 10000));
 		}
 
 		let killTimer;
