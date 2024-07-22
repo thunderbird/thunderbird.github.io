@@ -960,17 +960,6 @@ var reports = {
             return { include: !!v68 && !v78 };
         }
     },
-    "false-positives-tb78": {
-        group: "78",
-        header: "Extensions claiming to be compatible with Thunderbird 78, but are legacy extensions or legacy WebExtensions and therefore unsupported.",
-        template: "report-template.html",
-        enabled: true,
-        generate: genStandardReport,
-        rowData: function (extJson) {
-            let data = getExtData(extJson, "78").data;
-            return { include: !!data && data.legacy };
-        }
-    },
     // -- 68 ------------------------------------------------------------------- -------------------
     "atn-tb68": {
         group: "68",
@@ -1007,18 +996,7 @@ var reports = {
             let v60 = getExtData(extJson, "60").version;
             return { include: !!v60 && !v68 };
         }
-    },
-    "false-positives-tb68": {
-        group: "68",
-        header: "Extensions claiming to be compatible with Thunderbird 68, but are legacy extensions and therefore unsupported.",
-        template: "report-template.html",
-        enabled: true,
-        generate: genStandardReport,
-        rowData: function (extJson) {
-            let data = getExtData(extJson, "68").data;
-            return { include: !!data && data.legacy && !data.mext };
-        }
-    },
+    }
 }
 
 // -----------------------------------------------------------------------------
