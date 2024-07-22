@@ -58,6 +58,8 @@ const compatible_128 = [
     // Experiments
     "47144",    // Mail Merge
     "988057",   // KeepRunning
+    "407832",   // Filter Button
+    "844927",   // ToggleReplied
 ]
 
 const ignored = [
@@ -108,7 +110,8 @@ const pending_pr = {
     "987900" : "https://github.com/mlazdans/qnote/pull/55", // QNote
     "742199" : "https://github.com/mganss/AttachFromClipboard/pull/16", // Attach from Clipboard
     "11727"  : "https://github.com/isshiki/ReFwdFormatter/pull/7", // ReFwdFormatter
-    "987865" : 	"https://github.com/alkatrazstudio/prev-colors/pull/3", // Previous Colors
+    "987865" : "https://github.com/alkatrazstudio/prev-colors/pull/3", // Previous Colors
+    "360086" : "https://drive.google.com/file/d/1QScEmQ-RfzdVeWux6O-GrBmTJpRNyytQ/view?usp=sharing" // Toggle Headers
 }
 
 const contacted = {
