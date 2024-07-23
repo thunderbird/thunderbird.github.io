@@ -111,7 +111,8 @@ const pending_pr = {
     "742199" : "https://github.com/mganss/AttachFromClipboard/pull/16", // Attach from Clipboard
     "11727"  : "https://github.com/isshiki/ReFwdFormatter/pull/7", // ReFwdFormatter
     "987865" : "https://github.com/alkatrazstudio/prev-colors/pull/3", // Previous Colors
-    "360086" : "https://drive.google.com/file/d/1QScEmQ-RfzdVeWux6O-GrBmTJpRNyytQ/view?usp=sharing" // Toggle Headers
+    "360086" : "https://drive.google.com/file/d/1QScEmQ-RfzdVeWux6O-GrBmTJpRNyytQ/view?usp=sharing", // Toggle Headers
+    "987911" : "https://github.com/friedPotat0/Spam-Scores/pull/63", // Spam Scores
 }
 
 const contacted = {
