@@ -18,6 +18,8 @@ const extsAllJsonFileName = `${rootDir}/xall.json`;
 
 const SUPPORTED_ESR = [60, 68, 78, 91, 102, 115, 128];
 
+const {fastFindInFiles} = require('fast-find-in-files');
+
 const badge_definitions = {
     "pending_pr": { bRightText: 'Pending Pull Request', bLeftText: 'Status', bColor: 'green' },
     "investigated": { bRightText: 'Ongoing Analysis', bLeftText: 'Status', bColor: 'orange' },
@@ -338,7 +340,7 @@ var reports = {
                 } else if (Object.keys(contacted).includes(`${extJson.id}`)) {
                     badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
                 } else if (breaking_api_change.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "breaking_api_change" });
+                    badges.push({ badge: "contacted", tooltip: "Breaking API change" });
                 }
 
                 if (badges.length == 0) {
@@ -377,11 +379,22 @@ var reports = {
             let data = getExtData(extJson, "128").data;
             let permissions = data?.manifest?.permissions;
             let messagesUpdate = Array.isArray(permissions) &&  permissions.includes("messagesUpdate")
+            let badges = [];
+            let include = false;
 
-            return {
-                include: data && breaking_api_change.includes(`${extJson.id}`) && !messagesUpdate,
-                badges: []
-            };
+            if (data && !messagesUpdate) {
+                const result = fastFindInFiles({ 
+                    directory: `${data.localExtensionDir}/src`, 
+                    needle: ".messages.update"
+                })
+                const lines = result.length && result.flatMap(r => r.queryHits.map(h => h.link)).join("\n")
+
+                if (lines) {
+                    include = true;
+                    badges.push({ badge: "breaking_api_change", tooltip: lines })
+                }
+            }
+            return { include, badges };
         },
     }, 
     "valid-128-according-to-strict-max-but-atn-value-reduced": {
@@ -423,7 +436,7 @@ var reports = {
             } else if (Object.keys(contacted).includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
             } else if (breaking_api_change.includes(`${extJson.id}`)) {
-                badges.push({ badge: "breaking_api_change" });
+                badges.push({ badge: "contacted", tooltip: "Breaking API change" });
             }
 
             return { include: manually_lowered, badges };
@@ -489,9 +502,8 @@ var reports = {
             } else if (Object.keys(contacted).includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
             } else if (breaking_api_change.includes(`${extJson.id}`)) {
-                badges.push({ badge: "breaking_api_change" });
+                badges.push({ badge: "contacted", tooltip: "Breaking API change" });
             }
-            
             
             return { include, badges };
         }

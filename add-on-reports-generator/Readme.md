@@ -2,7 +2,7 @@ Install needed packages
 =======================
 
 ```
-npm install fs-extra bent download path extract-zip comment-json xml-js
+npm install fs-extra bent download path extract-zip comment-json xml-js fast-find-in-files
 ```
 
 Run
