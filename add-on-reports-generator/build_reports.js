@@ -25,6 +25,7 @@ const badge_definitions = {
     "unknown": { bRightText: 'Unknown', bLeftText: 'Status', bColor: 'c90016' },
     "contacted": { bRightText: 'Waiting for Feedback', bLeftText: 'Status', bColor: 'ff8800' },
     "compatible": { bRightText: 'Compatible (manually tested)', bLeftText: 'Status', bColor: 'darkgreen' },
+    "breaking_api_change": { bRightText: 'WebExtension API Change', bLeftText: 'Status', bColor: 'ff8800' },
 
     "alternative_available": { bRightText: 'Alternative Available', bLeftText: 'Status', bColor: 'darkgreen' },
 
@@ -33,7 +34,8 @@ const badge_definitions = {
     "pure": { bRightText: 'Pure WebExtension', bLeftText: '⠀', bColor: '570861' },
     "no_limit_experiment": { bRightText: 'Limitless Experiment', bLeftText: '⠀', bColor: 'ff8800' },
     "experiment": { bRightText: 'Experiment (legacy)', bLeftText: '⠀', bColor: 'ff8800' },
- 
+    
+
     "attachment_api": { bRightText: 'Attachment API Candidate', bLeftText: '⠀', bColor: 'white' },
     "recipientChanged_api": { bRightText: 'onRecipientChanged API', bLeftText: '⠀', bColor: 'white' },
     "column_api": { bRightText: 'Needs Column Support', bLeftText: '⠀', bColor: 'darkred' },
@@ -56,6 +58,7 @@ const compatible_128 = [
     "988748",	//Check before sending email
     "988169",	//wikipediasearchwebapp
     // Experiments
+    "987911",   // Spam Scores
     "47144",    // Mail Merge
     "988057",   // KeepRunning
     "407832",   // Filter Button
@@ -105,19 +108,25 @@ const pending_pr = {
     "327780" : "https://github.com/vanowm/TB-Auto-Select-Latest-Message/pull/6", //Auto Select Latest Message
     "988715" : "https://github.com/JohannesBuchner/thunderbird-ai-grammar-mailextension/pull/4", //AI Grammar
     "988698" : "https://github.com/2AStudios/tb-export2csv/pull/3", //tb-export2csv 
-    "711780" : "https://github.com/TB-throwback/LookOut-fix-version/pull/119", //Lookout Fixed 
+    //"711780" : "https://github.com/TB-throwback/LookOut-fix-version/pull/119", //Lookout Fixed 
     "711456" : "https://drive.google.com/file/d/1PpJO6UjudJF6F_V922-ul1wMphrDBOn3/view?usp=sharing", // TexTra
     "987900" : "https://github.com/mlazdans/qnote/pull/55", // QNote
-    "742199" : "https://github.com/mganss/AttachFromClipboard/pull/16", // Attach from Clipboard
-    "11727"  : "https://github.com/isshiki/ReFwdFormatter/pull/7", // ReFwdFormatter
+    //"742199" : "https://github.com/mganss/AttachFromClipboard/pull/16", // Attach from Clipboard
+    //"11727"  : "https://github.com/isshiki/ReFwdFormatter/pull/7", // ReFwdFormatter
     "987865" : "https://github.com/alkatrazstudio/prev-colors/pull/3", // Previous Colors
     "360086" : "https://drive.google.com/file/d/1QScEmQ-RfzdVeWux6O-GrBmTJpRNyytQ/view?usp=sharing", // Toggle Headers
-    "987911" : "https://github.com/friedPotat0/Spam-Scores/pull/63", // Spam Scores
+    //"987911" : "https://github.com/friedPotat0/Spam-Scores/pull/63", // Spam Scores
+    // messagesUpdate
+    "287743" : "https://github.com/MailHops/mailhops-plugin/pull/40", // MailHops
+    "987984" : "https://github.com/justreportit/thunderbird/pull/69", // Just Report It
+    "988314" : "https://github.com/thirdinsight/AutoMarkFolderRead/pull/9", // Auto-Mark Folder Read
+    "988532" : "https://github.com/xot/tagger/pull/4", // Tagger
+    "987823" : "https://github.com/a-tak/auto-bucket/pull/170", // AutoBucket
+    "988069" : "https://github.com/KenichiTanino/spam_header_checker_for_ocn/pull/1", // SPAM Check for OCN
 }
 
 const contacted = {
     "988214": "Is the new folder key navigation add-on an alternative?", // Filter email folders
-    "46207": "Asked if help is needed", // mailmindr
     "987838": "Asked if help is needed", // Sender Domain
     "988138": "Still loads Services.jsm", // Grammar and Spell Checker — LanguageTo
     // Enforced lifts
@@ -130,7 +139,8 @@ const contacted = {
     "988561": "Works, needs max version lift (pure WebExtension)", // Freecosys - Провайдер FileLink
 }
 
-const pending_messages_update = [
+const breaking_api_change = [
+    // messagesUpdate permission
     "217293", // signal-spam
     "287743", // mailhops
     "320395", // remindit
@@ -166,7 +176,7 @@ const pending_messages_update = [
     //987689 changequote
     //987900 qnote\2480264\src\scripts\utils-message.js
     //988173 thunderkey\2476427\src\src\background.js
-    //UUps
+    // UUps
     //987858 mark-all-read-we -- uuups folders.markAsRead should need messagesUpdate instead of accountsFolders
 ]
 
@@ -295,9 +305,6 @@ var reports = {
                 if (!v128.legacy && v128.mext && !v128.experiment && !themeExperiment) {
                     badges.push({ badge: "pure" });
                 }
-                if (Object.keys(contacted).includes(`${extJson.id}`)) {
-                    badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
-                }    
             };
 
             return { include, badges }
@@ -322,14 +329,16 @@ var reports = {
                 if (compatible_128.includes(`${extJson.id}`)) {
                     badges.push({ badge: "compatible" });
                 }
-                if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
-                    badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
-                }
                 if (Object.keys(investigated).includes(`${extJson.id}`)) {
                     badges.push({ badge: "investigated", tooltip: investigated[`${extJson.id}`] });
                 }
-                if (Object.keys(contacted).includes(`${extJson.id}`)) {
+
+                if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
+                    badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
+                } else if (Object.keys(contacted).includes(`${extJson.id}`)) {
                     badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
+                } else if (breaking_api_change.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "breaking_api_change" });
                 }
 
                 if (badges.length == 0) {
@@ -358,9 +367,9 @@ var reports = {
             return { include, badges };
         }
     },
-    "pending-permission-update": {
+    "missing-messagesUpdate-permission": {
         group: "128",
-        header: "In Thunderbird 128 we had to introduce a backward incompatible permission change. Some extensions are now broken. The relevant add-on developers have been notified.",
+        header: "Extensions using <i>messages.update()</i> in Thunderbird 128, without requesting the <i>messagesUpdate</i> permission.",
         template: "report-template.html",
         enabled: true,
         generate: genStandardReport,
@@ -370,7 +379,7 @@ var reports = {
             let messagesUpdate = Array.isArray(permissions) &&  permissions.includes("messagesUpdate")
 
             return {
-                include: data && pending_messages_update.includes(`${extJson.id}`) && !messagesUpdate,
+                include: data && breaking_api_change.includes(`${extJson.id}`) && !messagesUpdate,
                 badges: []
             };
         },
@@ -408,12 +417,15 @@ var reports = {
             if (discontinued.includes(`${extJson.id}`)) {
                 badges.push({ badge: "discontinued" });
             }
-            if (Object.keys(contacted).includes(`${extJson.id}`)) {
-                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
-            }
+            
             if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
                 badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
+            } else if (Object.keys(contacted).includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
+            } else if (breaking_api_change.includes(`${extJson.id}`)) {
+                badges.push({ badge: "breaking_api_change" });
             }
+
             return { include: manually_lowered, badges };
         }
     },
@@ -465,18 +477,21 @@ var reports = {
             let include = !discontinued.includes(`${extJson.id}`) && !v128 && !themeExperiment && !vCurrent.legacy && vCurrent.mext && !vCurrent.experiment;
 
             let badges = [];
-            if (Object.keys(contacted).includes(`${extJson.id}`)) {
-                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
-            }
             if (compatible_128.includes(`${extJson.id}`)) {
                 badges.push({ badge: "compatible" });
-            }
-            if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
-                badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
             }
             if (Object.keys(investigated).includes(`${extJson.id}`)) {
                 badges.push({ badge: "investigated", tooltip: investigated[`${extJson.id}`] });
             }
+            
+            if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
+                badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
+            } else if (Object.keys(contacted).includes(`${extJson.id}`)) {
+                badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
+            } else if (breaking_api_change.includes(`${extJson.id}`)) {
+                badges.push({ badge: "breaking_api_change" });
+            }
+            
             
             return { include, badges };
         }

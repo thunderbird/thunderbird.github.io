@@ -205,19 +205,21 @@ async function getExtensionFiles(extension) {
 			if (ext_data[ext_version])
 				continue;
 
+			// Prepare the filenames used for downloading the XPI (use id instead
+			// of version, as version could be not save for filesystem).
+			const extRootDir = `${rootDir}/${downloadDir}/${extRootName}/${esr_data[ESR].id}`;
+			const xpiFileURL = esr_data[ESR].files[0].url;
+			// Do not use original filename, as it could be too long for the fs and truncated.
+			const xpiFileName = "ext.xpi";
+
 			// Prepare default xpi data.
 			let data = {
 				atn: esr_data[ESR],
 				mext: false,
 				legacy: false,
 				experiment: false,
+				localExtensionDir: extRootDir,
 			};
-
-			// Download the XPI (use id instead of version, as version could be not save for filesystem)
-			const extRootDir = `${rootDir}/${downloadDir}/${extRootName}/${esr_data[ESR].id}`;
-			const xpiFileURL = esr_data[ESR].files[0].url;
-			// Do not use original filename, as it could be too long for the fs and truncated.
-			const xpiFileName = "ext.xpi";
 
 			// Skip download if it exists already
 			if (!fs.existsSync(`${extRootDir}/xpi/${xpiFileName}`)) {
