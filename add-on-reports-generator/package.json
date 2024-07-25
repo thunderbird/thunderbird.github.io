@@ -1,9 +1,10 @@
 {
   "dependencies": {
     "bent": "^7.3.12",
-    "comment-json": "^4.2.3",
+    "comment-json": "^4.2.4",
     "download": "^8.0.0",
     "extract-zip": "^2.0.1",
+    "fast-find-in-files": "^1.0.4",
     "fs-extra": "^10.1.0",
     "path": "^0.12.7",
     "xml-js": "^1.6.11"

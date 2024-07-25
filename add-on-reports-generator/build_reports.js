@@ -141,8 +141,7 @@ const contacted = {
     "988561": "Works, needs max version lift (pure WebExtension)", // Freecosys - Провайдер FileLink
 }
 
-const breaking_api_change = [
-    // messagesUpdate permission
+const messagesUpdate = [
     "217293", // signal-spam
     "287743", // mailhops
     "320395", // remindit
@@ -339,8 +338,8 @@ var reports = {
                     badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
                 } else if (Object.keys(contacted).includes(`${extJson.id}`)) {
                     badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
-                } else if (breaking_api_change.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "contacted", tooltip: "Breaking API change" });
+                } else if (messagesUpdate.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "breaking_api_change", tooltip: "Missing messagesUpdate permission" });
                 }
 
                 if (badges.length == 0) {
@@ -435,8 +434,8 @@ var reports = {
                 badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
             } else if (Object.keys(contacted).includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
-            } else if (breaking_api_change.includes(`${extJson.id}`)) {
-                badges.push({ badge: "contacted", tooltip: "Breaking API change" });
+            } else if (messagesUpdate.includes(`${extJson.id}`)) {
+                badges.push({ badge: "breaking_api_change", tooltip: "Missing messagesUpdate permission" });
             }
 
             return { include: manually_lowered, badges };
@@ -501,8 +500,8 @@ var reports = {
                 badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
             } else if (Object.keys(contacted).includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
-            } else if (breaking_api_change.includes(`${extJson.id}`)) {
-                badges.push({ badge: "contacted", tooltip: "Breaking API change" });
+            } else if (messagesUpdate.includes(`${extJson.id}`)) {
+                badges.push({ badge: "breaking_api_change", tooltip: "Missing messagesUpdate permission" });
             }
             
             return { include, badges };
