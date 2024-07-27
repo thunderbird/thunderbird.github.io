@@ -174,6 +174,7 @@ const messagesUpdate = [
     "988677", // sync-for-tb\2485183\src\sy-background.js
     "988752", // mark-subfolders-read\2487282\src\background.js
     "988356", // auto-mark-as-read\2486030\src\options.js
+    "988510", // vault56 protection
     // Experiments NOT notified, waiting for PR
     //986323 confirmbeforedelete
     //987689 changequote
