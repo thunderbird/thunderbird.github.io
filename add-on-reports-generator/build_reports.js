@@ -104,6 +104,8 @@ const discontinued = [
     "988173", //Thunderkey
     "988196", //メッセージフィルターボタン
     "987925", // EML Editor
+    "988214", // Filter email folders -> https://addons.thunderbird.net/en-US/thunderbird/addon/filtered-folder-to-favorite/
+    "987838", // Sender Domain
 ]
 
 const pending_pr = {
@@ -125,18 +127,18 @@ const pending_pr = {
     "988532" : "https://github.com/xot/tagger/pull/4", // Tagger
     "987823" : "https://github.com/a-tak/auto-bucket/pull/170", // AutoBucket
     "988069" : "https://github.com/KenichiTanino/spam_header_checker_for_ocn/pull/1", // SPAM Check for OCN
+    "988260" : "https://github.com/peterfab9845/original-to-column/pull/2", // X-Original-To Column
+
 }
 
 const contacted = {
-    "988214": "Is the new folder key navigation add-on an alternative?", // Filter email folders
-    "987838": "Asked if help is needed", // Sender Domain
     "988138": "Still loads Services.jsm", // Grammar and Spell Checker — LanguageTo
     // Enforced lifts
     "988389": "Works! Enforced max version lift since 102", // Thunderbird OpenProject
     "988258": "Works! Enforced max version lift since 102", // Recently
     "988427": "Works! Enforced max version lift since 102", // EnhancedReplyHeaders - can use more new APIs and could be a top spot candidate
     // Candidates for enforced lifts
-    "988146": "Works, needs max version lift (pure WebExtension)", // smartCompose
+    "988146": "Works, needs max version lift", // smartCompose
     "331666": "Works, needs max version lift (pure WebExtension)", // QuickArchiver
     "988561": "Works, needs max version lift (pure WebExtension)", // Freecosys - Провайдер FileLink
 }
@@ -183,22 +185,16 @@ const messagesUpdate = [
 
 const investigated = {
     "988376": "", // PGP Universal
-    "1392": "", // Maximize Message Pane
-    "372603": "", // Enhanced Priority Display
-    "987838": "", // Sender Domain
     "4454": "", // Priority Switcher
     "988411": "", // Thunvatar
     "988323": "", // Real sender of italian PEC
-    "988260": "", // X-Original-To Column
 }
 
 // Keep to inform users about WebExt API
 const columnAPI = [
-    "987838", //addon/sender-domain/
     "987911", //addon/spam-scores/
     "987915", //addon/mahour-iranian-date/ 
     "195275", //addon/send-later-3/
-    "987979", //AttachmentCount
     "690062", //Sender Frequency
     "4454",   //Priority Switcher
     "988392", //Message List Preview
