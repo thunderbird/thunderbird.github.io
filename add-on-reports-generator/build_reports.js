@@ -175,9 +175,9 @@ const messagesUpdate = [
     "988752", // mark-subfolders-read\2487282\src\background.js
     "988356", // auto-mark-as-read\2486030\src\options.js
     "988510", // vault56 protection
+    "987689", // changequote
     // Experiments NOT notified, waiting for PR
     //986323 confirmbeforedelete
-    //987689 changequote
     //987900 qnote\2480264\src\scripts\utils-message.js
     //988173 thunderkey\2476427\src\src\background.js
     // UUps
