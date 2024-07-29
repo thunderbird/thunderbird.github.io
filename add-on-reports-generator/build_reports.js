@@ -28,6 +28,7 @@ const badge_definitions = {
     "contacted": { bRightText: 'Waiting for Feedback', bLeftText: 'Status', bColor: 'ff8800' },
     "compatible": { bRightText: 'Compatible (manually tested)', bLeftText: 'Status', bColor: 'darkgreen' },
     "breaking_api_change": { bRightText: 'WebExtension API Change', bLeftText: 'Status', bColor: 'ff8800' },
+    "wip": { bRightText: 'Work in progress', bLeftText: 'Status', bColor: 'gold' },
 
     "alternative_available": { bRightText: 'Alternative Available', bLeftText: 'Status', bColor: 'darkgreen' },
 
@@ -106,6 +107,13 @@ const discontinued = [
     "987925", // EML Editor
     "988214", // Filter email folders -> https://addons.thunderbird.net/en-US/thunderbird/addon/filtered-folder-to-favorite/
     "987838", // Sender Domain
+    "987995", // Hide Local Folders for TB78++ 
+]
+
+const wip = [
+    "773590", // TbSync
+    "986338", // Provider for Exchange ActiveSync"
+    "988090", // Google-4-TbSync
 ]
 
 const pending_pr = {
@@ -128,6 +136,8 @@ const pending_pr = {
     "987823" : "https://github.com/a-tak/auto-bucket/pull/170", // AutoBucket
     "988069" : "https://github.com/KenichiTanino/spam_header_checker_for_ocn/pull/1", // SPAM Check for OCN
     "988260" : "https://github.com/peterfab9845/original-to-column/pull/2", // X-Original-To Column
+    // TB128 updates
+    "988096": "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/26", // Attachment Extractor
 
 }
 
@@ -141,6 +151,7 @@ const contacted = {
     "988146": "Works, needs max version lift", // smartCompose
     "331666": "Works, needs max version lift (pure WebExtension)", // QuickArchiver
     "988561": "Works, needs max version lift (pure WebExtension)", // Freecosys - Провайдер FileLink
+    "986682": "Works, needs max version lift", // Disable DragAndDrop
 }
 
 const messagesUpdate = [
@@ -337,6 +348,8 @@ var reports = {
                     badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
                 } else if (messagesUpdate.includes(`${extJson.id}`)) {
                     badges.push({ badge: "breaking_api_change", tooltip: "Missing messagesUpdate permission" });
+                } else if (wip.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "wip" });
                 }
 
                 if (badges.length == 0) {
