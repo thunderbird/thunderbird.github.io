@@ -138,11 +138,11 @@ const pending_pr = {
     "988260" : "https://github.com/peterfab9845/original-to-column/pull/2", // X-Original-To Column
     // TB128 updates
     "988096": "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/26", // Attachment Extractor
-    "1279": "https://drive.google.com/file/d/1e9a36Vc_ksOnfynbbDSSXcKwSjwY5HiB/view?usp=sharing"
+    "1279": "https://drive.google.com/file/d/1e9a36Vc_ksOnfynbbDSSXcKwSjwY5HiB/view?usp=sharing", // XPurge
+    "988001": "https://github.com/opto/Imageview/issues/6", // Attachment Viewer: view in a tab, slid
 }
 
 const contacted = {
-    "988138": "Still loads Services.jsm", // Grammar and Spell Checker — LanguageTo
     // Enforced lifts
     "988389": "Works! Enforced max version lift since 102", // Thunderbird OpenProject
     "988258": "Works! Enforced max version lift since 102", // Recently
@@ -151,7 +151,8 @@ const contacted = {
     "988146": "Works, needs max version lift", // smartCompose
     "331666": "Works, needs max version lift (pure WebExtension)", // QuickArchiver
     "988561": "Works, needs max version lift (pure WebExtension)", // Freecosys - Провайдер FileLink
-    "986682": "Works, needs max version lift", // Disable DragAndDrop
+    // Discontinue?
+    "356507": "Propose Header Tools improved instead?", //Header Tools Lite
 }
 
 const messagesUpdate = [
