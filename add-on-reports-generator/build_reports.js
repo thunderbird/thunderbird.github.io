@@ -114,6 +114,9 @@ const wip = [
     "773590", // TbSync
     "986338", // Provider for Exchange ActiveSync"
     "988090", // Google-4-TbSync
+    "356507", // Header Tools Lite
+    "988091", // Expression Search - NG
+    "987740", // Nostalgy++/ Manage, search and archive
 ]
 
 const pending_pr = {
@@ -140,6 +143,7 @@ const pending_pr = {
     "988096": "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/26", // Attachment Extractor
     "1279": "https://drive.google.com/file/d/1e9a36Vc_ksOnfynbbDSSXcKwSjwY5HiB/view?usp=sharing", // XPurge
     "988001": "https://github.com/opto/Imageview/issues/6", // Attachment Viewer: view in a tab, slid
+    "1898": "https://github.com/voccs/folderflags/pull/17" // Folder Flags
 }
 
 const contacted = {
@@ -147,12 +151,10 @@ const contacted = {
     "988389": "Works! Enforced max version lift since 102", // Thunderbird OpenProject
     "988258": "Works! Enforced max version lift since 102", // Recently
     "988427": "Works! Enforced max version lift since 102", // EnhancedReplyHeaders - can use more new APIs and could be a top spot candidate
+    "331666": "Works! Enforced max version lift since 128", // QuickArchiver
+    "988561": "Works! Enforced max version lift since 128", // Freecosys - Провайдер FileLink
     // Candidates for enforced lifts
     "988146": "Works, needs max version lift", // smartCompose
-    "331666": "Works, needs max version lift (pure WebExtension)", // QuickArchiver
-    "988561": "Works, needs max version lift (pure WebExtension)", // Freecosys - Провайдер FileLink
-    // Discontinue?
-    "356507": "Propose Header Tools improved instead?", //Header Tools Lite
 }
 
 const messagesUpdate = [
