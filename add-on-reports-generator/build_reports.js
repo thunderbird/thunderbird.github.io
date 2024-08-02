@@ -170,9 +170,6 @@ const messagesUpdate = [
     "987823", // autobucket
     "987834", // spoofdetection
     "987907", // mark-gmail-read\2478313\src\background.js
-    "987938", // pratiche-mail\2476555\src\background-script.js
-    "987939", // preventivi-mail\2476400\src\background-script.js
-    "987940", // hotel-mail\2476556\src\alert.js
     "987984", // just-report-it\2476824\src\scripts\background.js
     "988024", // open-in-browser\2477587\src\background.js
     "988069", // spam-check-for-ocn\2475472\src\background.js
