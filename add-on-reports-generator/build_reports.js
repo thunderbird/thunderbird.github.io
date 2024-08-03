@@ -117,6 +117,7 @@ const wip = [
     "356507", // Header Tools Lite
     "988091", // Expression Search - NG
     "987740", // Nostalgy++/ Manage, search and archive
+    "988228", // Thunderlink
 ]
 
 const pending_pr = {
@@ -143,7 +144,8 @@ const pending_pr = {
     "988096": "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/26", // Attachment Extractor
     "1279": "https://drive.google.com/file/d/1e9a36Vc_ksOnfynbbDSSXcKwSjwY5HiB/view?usp=sharing", // XPurge
     "988001": "https://github.com/opto/Imageview/issues/6", // Attachment Viewer: view in a tab, slid
-    "1898": "https://github.com/voccs/folderflags/pull/17" // Folder Flags
+    "1898": "https://github.com/voccs/folderflags/pull/17", // Folder Flags
+    "988035": "https://gitlab.com/jfx2006/markdown-here-revival/-/merge_requests/4" //Markdown Here Revival
 }
 
 const contacted = {
@@ -200,6 +202,8 @@ const investigated = {
     "4454": "", // Priority Switcher
     "988411": "", // Thunvatar
     "988323": "", // Real sender of italian PEC
+    "986323": "https://github.com/caligraf/ConfirmBeforeDelete/issues/25"
+
 }
 
 // Keep to inform users about WebExt API
@@ -340,9 +344,7 @@ var reports = {
                 }
                 if (Object.keys(investigated).includes(`${extJson.id}`)) {
                     badges.push({ badge: "investigated", tooltip: investigated[`${extJson.id}`] });
-                }
-
-                if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
+                } else if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
                     badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
                 } else if (Object.keys(contacted).includes(`${extJson.id}`)) {
                     badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
@@ -504,9 +506,7 @@ var reports = {
             }
             if (Object.keys(investigated).includes(`${extJson.id}`)) {
                 badges.push({ badge: "investigated", tooltip: investigated[`${extJson.id}`] });
-            }
-            
-            if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
+            } else if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
                 badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
             } else if (Object.keys(contacted).includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
