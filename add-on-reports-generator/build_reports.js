@@ -142,7 +142,7 @@ const pending_pr = {
     "988260" : "https://github.com/peterfab9845/original-to-column/pull/2", // X-Original-To Column
     // TB128 updates
     "988096": "https://github.com/thestonehead/ThunderbirdAttachmentExtractor/pull/26", // Attachment Extractor
-    "1279": "https://drive.google.com/file/d/1e9a36Vc_ksOnfynbbDSSXcKwSjwY5HiB/view?usp=sharing", // XPurge
+    "1279": "https://github.com/theodore-tegos/xpunge-tb/pull/1", // XPurge
     "988001": "https://github.com/opto/Imageview/issues/6", // Attachment Viewer: view in a tab, slid
     "1898": "https://github.com/voccs/folderflags/pull/17", // Folder Flags
     "988035": "https://gitlab.com/jfx2006/markdown-here-revival/-/merge_requests/4" //Markdown Here Revival
