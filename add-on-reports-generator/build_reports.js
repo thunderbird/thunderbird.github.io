@@ -202,8 +202,8 @@ const investigated = {
     "4454": "", // Priority Switcher
     "988411": "", // Thunvatar
     "988323": "", // Real sender of italian PEC
-    "986323": "https://github.com/caligraf/ConfirmBeforeDelete/issues/25"
-
+    "986323": "https://github.com/caligraf/ConfirmBeforeDelete/issues/25",
+    "6533": "https://github.com/threadvis/ThreadVis/issues/58",
 }
 
 // Keep to inform users about WebExt API
@@ -343,7 +343,12 @@ var reports = {
                     badges.push({ badge: "compatible" });
                 }
                 if (Object.keys(investigated).includes(`${extJson.id}`)) {
-                    badges.push({ badge: "investigated", tooltip: investigated[`${extJson.id}`] });
+                    let payload = investigated[`${extJson.id}`];
+                    let badge = { badge: "investigated", tooltip: payload }
+                    if (payload.startsWith("http")) {
+                        badge.link = payload;
+                    }
+                    badges.push(badge);
                 } else if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
                     badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
                 } else if (Object.keys(contacted).includes(`${extJson.id}`)) {
@@ -476,7 +481,11 @@ var reports = {
                 badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
             }
             if (Object.keys(investigated).includes(`${extJson.id}`)) {
-                badges.push({ badge: "investigated", tooltip: investigated[`${extJson.id}`] });
+                let payload = investigated[`${extJson.id}`];
+                let badge = { badge: "investigated", tooltip: payload }
+                if (payload.startsWith("http")) {
+                    badge.link = payload;
+                }
             }
             if (Object.keys(contacted).includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
@@ -505,7 +514,11 @@ var reports = {
                 badges.push({ badge: "compatible" });
             }
             if (Object.keys(investigated).includes(`${extJson.id}`)) {
-                badges.push({ badge: "investigated", tooltip: investigated[`${extJson.id}`] });
+                let payload = investigated[`${extJson.id}`];
+                let badge = { badge: "investigated", tooltip: payload }
+                if (payload.startsWith("http")) {
+                    badge.link = payload;
+                }
             } else if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
                 badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
             } else if (Object.keys(contacted).includes(`${extJson.id}`)) {
@@ -799,7 +812,11 @@ var reports = {
                     badges.push({ badge: "filter_api" });
                 }
                 if (Object.keys(investigated).includes(`${extJson.id}`)) {
-                    badges.push({ badge: "investigated", tooltip: investigated[`${extJson.id}`] });
+                    let payload = investigated[`${extJson.id}`];
+                    let badge = { badge: "investigated", tooltip: payload }
+                    if (payload.startsWith("http")) {
+                        badge.link = payload;
+                    }
                 }
                 if (attachmentAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "attachment_api" });
@@ -843,7 +860,11 @@ var reports = {
                     badges.push({ badge: "discontinued" });
                 }
                 if (Object.keys(investigated).includes(`${extJson.id}`)) {
-                    badges.push({ badge: "investigated", tooltip: investigated[`${extJson.id}`] });
+                    let payload = investigated[`${extJson.id}`];
+                    let badge = { badge: "investigated", tooltip: payload }
+                    if (payload.startsWith("http")) {
+                        badge.link = payload;
+                    }
                 }
                 if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
                     badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
