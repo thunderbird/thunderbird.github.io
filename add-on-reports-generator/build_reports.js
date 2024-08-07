@@ -117,7 +117,6 @@ const wip = [
     "356507", // Header Tools Lite
     "988091", // Expression Search - NG
     "987740", // Nostalgy++/ Manage, search and archive
-    "988228", // Thunderlink
 ]
 
 const pending_pr = {
@@ -145,7 +144,8 @@ const pending_pr = {
     "1279": "https://github.com/theodore-tegos/xpunge-tb/pull/1", // XPurge
     "988001": "https://github.com/opto/Imageview/issues/6", // Attachment Viewer: view in a tab, slid
     "1898": "https://github.com/voccs/folderflags/pull/17", // Folder Flags
-    "988035": "https://gitlab.com/jfx2006/markdown-here-revival/-/merge_requests/4" //Markdown Here Revival
+    "988035": "https://gitlab.com/jfx2006/markdown-here-revival/-/merge_requests/4", //Markdown Here Revival
+    "988228": "https://github.com/CamielBouchier/cb_thunderlink/pull/68", // Thunderlink
 }
 
 const contacted = {
