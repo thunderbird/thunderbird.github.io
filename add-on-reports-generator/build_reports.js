@@ -146,6 +146,9 @@ const pending_pr = {
     "1898": "https://github.com/voccs/folderflags/pull/17", // Folder Flags
     "988035": "https://gitlab.com/jfx2006/markdown-here-revival/-/merge_requests/4", //Markdown Here Revival
     "988228": "https://github.com/CamielBouchier/cb_thunderlink/pull/68", // Thunderlink
+    "987986": "https://drive.google.com/file/d/10oRqrKDzSRBmNXa3WMtPJm9jJdZPyfW9/view?usp=sharing", // Select Prev on Delete
+    "988230": "https://drive.google.com/file/d/1-2mMbzEkmyrACNG87gvZvP2gLuC85VnG/view?usp=sharing", // MetaClean for Thunderbird
+    "559954": "https://github.com/ganast/tidybird/pull/113", // TidyBird
 }
 
 const contacted = {
