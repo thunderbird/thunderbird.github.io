@@ -21,16 +21,15 @@ const SUPPORTED_ESR = [60, 68, 78, 91, 102, 115, 128];
 const {fastFindInFiles} = require('fast-find-in-files');
 
 const badge_definitions = {
-    "pending_pr": { bRightText: 'Pending Pull Request', bLeftText: 'Status', bColor: 'green' },
+    "compatible": { bRightText: 'Compatible (manually tested)', bLeftText: 'Status', bColor: 'darkgreen' },
+    "alternative_available": { bRightText: 'Alternative Available', bLeftText: 'Status', bColor: 'darkgreen' },
+    "pending_pr": { bRightText: 'Pending Pull Request', bLeftText: 'Status', bColor: 'darkgreen' },
+    "contacted": { bRightText: 'Waiting for Feedback', bLeftText: 'Status', bColor: 'green' },
+    "breaking_api_change": { bRightText: 'WebExtension API Change', bLeftText: 'Status', bColor: 'green' },
+    "wip": { bRightText: 'Work in progress', bLeftText: 'Status', bColor: 'gold' },
     "investigated": { bRightText: 'Ongoing Analysis', bLeftText: 'Status', bColor: 'orange' },
     "discontinued": { bRightText: 'Discontinued', bLeftText: 'Status', bColor: 'D3D3D3' },
     "unknown": { bRightText: 'Unknown', bLeftText: 'Status', bColor: 'c90016' },
-    "contacted": { bRightText: 'Waiting for Feedback', bLeftText: 'Status', bColor: 'ff8800' },
-    "compatible": { bRightText: 'Compatible (manually tested)', bLeftText: 'Status', bColor: 'darkgreen' },
-    "breaking_api_change": { bRightText: 'WebExtension API Change', bLeftText: 'Status', bColor: 'ff8800' },
-    "wip": { bRightText: 'Work in progress', bLeftText: 'Status', bColor: 'gold' },
-
-    "alternative_available": { bRightText: 'Alternative Available', bLeftText: 'Status', bColor: 'darkgreen' },
 
     "permission": { bLeftText: 'permission', bColor: 'orange', bTooltip: "Requested Permission" },
     "theme_experiment": { bRightText: 'Theme Experiment', bLeftText: '⠀', bColor: 'blue' },
@@ -66,6 +65,7 @@ const compatible_128 = [
     "988057",   // KeepRunning
     "407832",   // Filter Button
     "844927",   // ToggleReplied
+    "988770",   // Auto Profile Picture
 ]
 
 const ignored = [
@@ -109,6 +109,10 @@ const discontinued = [
     "987838", // Sender Domain
     "987995", // Hide Local Folders for TB78++ 
     "987729", // New Folder Filters Button
+    "988234", // tbhints (insignificant, stale)
+    "988575", // Filtered Folder to Favorite (insignificant, stale)
+    "988281", // regimail (insignificant, stale)
+    "988592", // Hide Duplicates From 'All Mail' (insignificant, stale)
 ]
 
 const wip = [
@@ -152,6 +156,7 @@ const pending_pr = {
     "988230": "https://drive.google.com/file/d/1-2mMbzEkmyrACNG87gvZvP2gLuC85VnG/view?usp=sharing", // MetaClean for Thunderbird
     "559954": "https://github.com/ganast/tidybird/pull/113", // TidyBird
     "988416": "https://github.com/aramir/QuickFilterBy/pull/6", // QuickFilterBy
+    "986230": "https://github.com/peci1/mailing-list-filter/pull/1", // Mailing list filter
 }
 
 const contacted = {
@@ -163,6 +168,12 @@ const contacted = {
     "988561": "Works! Enforced max version lift since 128", // Freecosys - Провайдер FileLink
     // Candidates for enforced lifts
     "988146": "Works, needs max version lift", // smartCompose
+    // Update instructions
+    "987821": "https://github.com/HiraokaHyperTools/OpenAttachmentByExtension/issues/11",
+    "988108": "https://addons.thunderbird.net/en-US/reviewers/review/openpgp-alias-updater",
+    "508826": "https://addons.thunderbird.net/en-US/reviewers/review/eds-calendar-integration",
+    "988303": "https://addons.thunderbird.net/en-US/reviewers/review/tud-cert-phishing-report",
+    "988686": "https://addons.thunderbird.net/en-US/reviewers/review/multimonth-view",
 }
 
 const messagesUpdate = [
@@ -209,12 +220,8 @@ const investigated = {
     "988323": "", // Real sender of italian PEC
     "986323": "https://github.com/caligraf/ConfirmBeforeDelete/issues/25",
     "6533": "https://github.com/threadvis/ThreadVis/issues/58",
-    "987821": "https://github.com/HiraokaHyperTools/OpenAttachmentByExtension/issues/11",
-    "988108": "https://addons.thunderbird.net/en-US/reviewers/review/openpgp-alias-updater",
-    "508826": "https://addons.thunderbird.net/en-US/reviewers/review/eds-calendar-integration",
     "49594": "https://addons.thunderbird.net/en-US/reviewers/review/subswitch",
-    "988303": "https://addons.thunderbird.net/en-US/reviewers/review/tud-cert-phishing-report",
-    "988686": "https://addons.thunderbird.net/en-US/reviewers/review/multimonth-view",
+
 }
 
 // Keep to inform users about WebExt API
@@ -350,9 +357,7 @@ var reports = {
                 if (discontinued.includes(`${extJson.id}`)) {
                     badges.push({ badge: "discontinued" });
                 }
-                if (compatible_128.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "compatible" });
-                }
+
                 if (Object.keys(investigated).includes(`${extJson.id}`)) {
                     let payload = investigated[`${extJson.id}`];
                     let badge = { badge: "investigated", tooltip: payload }
@@ -363,7 +368,12 @@ var reports = {
                 } else if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
                     badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
                 } else if (Object.keys(contacted).includes(`${extJson.id}`)) {
-                    badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
+                    let info = contacted[`${extJson.id}`];
+                    let badge = { badge: "contacted", tooltip: info }
+                    if (info.startsWith("http")) {
+                        badge.link = info
+                    }
+                    badges.push(badge);
                 } else if (messagesUpdate.includes(`${extJson.id}`)) {
                     badges.push({ badge: "breaking_api_change", tooltip: "Missing messagesUpdate permission" });
                 } else if (wip.includes(`${extJson.id}`)) {
@@ -374,9 +384,6 @@ var reports = {
                     badges.push({ badge: "unknown" });
                 }
 
-                if (reports["pure-webext-with-upper-limit"].rowData(extJson).include) {
-                    badges.push({ badge: "pure", link: "pure-webext-with-upper-limit.html" });
-                }
                 if (reports["experiments-without-upper-limit"].rowData(extJson).include) {
                     badges.push({ badge: "no_limit_experiment", link: "experiments-without-upper-limit.html" });
                 }
