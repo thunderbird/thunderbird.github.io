@@ -108,6 +108,7 @@ const discontinued = [
     "988214", // Filter email folders -> https://addons.thunderbird.net/en-US/thunderbird/addon/filtered-folder-to-favorite/
     "987838", // Sender Domain
     "987995", // Hide Local Folders for TB78++ 
+    "987729", // New Folder Filters Button
 ]
 
 const wip = [
@@ -117,6 +118,7 @@ const wip = [
     "356507", // Header Tools Lite
     "988091", // Expression Search - NG
     "987740", // Nostalgy++/ Manage, search and archive
+    "64758", // xnotepp
 ]
 
 const pending_pr = {
@@ -149,6 +151,7 @@ const pending_pr = {
     "987986": "https://drive.google.com/file/d/10oRqrKDzSRBmNXa3WMtPJm9jJdZPyfW9/view?usp=sharing", // Select Prev on Delete
     "988230": "https://drive.google.com/file/d/1-2mMbzEkmyrACNG87gvZvP2gLuC85VnG/view?usp=sharing", // MetaClean for Thunderbird
     "559954": "https://github.com/ganast/tidybird/pull/113", // TidyBird
+    "988416": "https://github.com/aramir/QuickFilterBy/pull/6", // QuickFilterBy
 }
 
 const contacted = {
@@ -169,7 +172,6 @@ const messagesUpdate = [
     "46207", // mailmindr
     "4970", // tag-toolbar
     "566490", // expertspam
-    "64758", // xnotepp
     "704523", // europeanmx
     "986632", // spambee
     "987823", // autobucket
@@ -207,6 +209,12 @@ const investigated = {
     "988323": "", // Real sender of italian PEC
     "986323": "https://github.com/caligraf/ConfirmBeforeDelete/issues/25",
     "6533": "https://github.com/threadvis/ThreadVis/issues/58",
+    "987821": "https://github.com/HiraokaHyperTools/OpenAttachmentByExtension/issues/11",
+    "988108": "https://addons.thunderbird.net/en-US/reviewers/review/openpgp-alias-updater",
+    "508826": "https://addons.thunderbird.net/en-US/reviewers/review/eds-calendar-integration",
+    "49594": "https://addons.thunderbird.net/en-US/reviewers/review/subswitch",
+    "988303": "https://addons.thunderbird.net/en-US/reviewers/review/tud-cert-phishing-report",
+    "988686": "https://addons.thunderbird.net/en-US/reviewers/review/multimonth-view",
 }
 
 // Keep to inform users about WebExt API
