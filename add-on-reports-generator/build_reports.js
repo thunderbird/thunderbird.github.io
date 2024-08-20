@@ -116,9 +116,6 @@ const discontinued = [
 ]
 
 const wip = [
-    "773590", // TbSync
-    "986338", // Provider for Exchange ActiveSync"
-    "988090", // Google-4-TbSync
     "356507", // Header Tools Lite
     "988091", // Expression Search - NG
     "987740", // Nostalgy++/ Manage, search and archive
@@ -175,6 +172,9 @@ const contacted = {
     "988303": "https://addons.thunderbird.net/en-US/reviewers/review/tud-cert-phishing-report",
     "988686": "https://addons.thunderbird.net/en-US/reviewers/review/multimonth-view",
     "49594": "https://github.com/tomaszkrajewski/tb-subswitch/issues/7",
+    // Beta
+    "986338": "https://github.com/jobisoft/EAS-4-TbSync/issues/267#issuecomment-2297181031", // Provider for Exchange ActiveSync"
+
 }
 
 const messagesUpdate = [
