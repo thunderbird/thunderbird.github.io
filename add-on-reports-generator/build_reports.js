@@ -174,6 +174,7 @@ const contacted = {
     "508826": "https://addons.thunderbird.net/en-US/reviewers/review/eds-calendar-integration",
     "988303": "https://addons.thunderbird.net/en-US/reviewers/review/tud-cert-phishing-report",
     "988686": "https://addons.thunderbird.net/en-US/reviewers/review/multimonth-view",
+    "49594": "https://github.com/tomaszkrajewski/tb-subswitch/issues/7",
 }
 
 const messagesUpdate = [
@@ -220,7 +221,6 @@ const investigated = {
     "988323": "", // Real sender of italian PEC
     "986323": "https://github.com/caligraf/ConfirmBeforeDelete/issues/25",
     "6533": "https://github.com/threadvis/ThreadVis/issues/58",
-    "49594": "https://addons.thunderbird.net/en-US/reviewers/review/subswitch",
 
 }
 
