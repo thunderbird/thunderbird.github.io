@@ -224,7 +224,7 @@ const investigated = {
     "988323": "", // Real sender of italian PEC
     "986323": "https://github.com/caligraf/ConfirmBeforeDelete/issues/25",
     "6533": "https://github.com/threadvis/ThreadVis/issues/58",
-
+    "161820": "", // Alert Switch
 }
 
 // Keep to inform users about WebExt API
