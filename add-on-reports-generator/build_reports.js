@@ -113,6 +113,7 @@ const discontinued = [
     "988575", // Filtered Folder to Favorite (insignificant, stale)
     "988281", // regimail (insignificant, stale)
     "988592", // Hide Duplicates From 'All Mail' (insignificant, stale)
+    "988392", //Message List Preview
 ]
 
 const wip = [
@@ -120,6 +121,8 @@ const wip = [
     "988091", // Expression Search - NG
     "987740", // Nostalgy++/ Manage, search and archive
     "64758", // xnotepp
+    "988185", // Bookmarks: eMails and XNotes
+    "988100", // Folders for search, onDisk Status- Glo
 ]
 
 const pending_pr = {
@@ -231,7 +234,6 @@ const columnAPI = [
     "195275", //addon/send-later-3/
     "690062", //Sender Frequency
     "4454",   //Priority Switcher
-    "988392", //Message List Preview
     "988260", //X-Original-To Column
     "988323", //Real sender of italian PEC
     "988411", //Thunvatar
@@ -504,6 +506,7 @@ var reports = {
                 if (payload.startsWith("http")) {
                     badge.link = payload;
                 }
+                badges.push(badge);
             }
             if (Object.keys(contacted).includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
@@ -537,6 +540,7 @@ var reports = {
                 if (payload.startsWith("http")) {
                     badge.link = payload;
                 }
+                badges.push(badge);
             } else if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
                 badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
             } else if (Object.keys(contacted).includes(`${extJson.id}`)) {
@@ -754,9 +758,6 @@ var reports = {
             if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
                 badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
             }
-            if (columnAPI.includes(`${extJson.id}`)) {
-                badges.push({ badge: "column_api" });
-            }
             if (filterAPI.includes(`${extJson.id}`)) {
                 badges.push({ badge: "filter_api" });
             }
@@ -823,9 +824,6 @@ var reports = {
                 if (v115.experiment) {
                     badges.push({ badge: "experiment" });
                 }
-                if (columnAPI.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "column_api" });
-                }
                 if (filterAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "filter_api" });
                 }
@@ -835,6 +833,7 @@ var reports = {
                     if (payload.startsWith("http")) {
                         badge.link = payload;
                     }
+                    badges.push(badge);
                 }
                 if (attachmentAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "attachment_api" });
@@ -883,6 +882,7 @@ var reports = {
                     if (payload.startsWith("http")) {
                         badge.link = payload;
                     }
+                    badges.push(badge);
                 }
                 if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
                     badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
@@ -890,14 +890,14 @@ var reports = {
                 if (Object.keys(contacted).includes(`${extJson.id}`)) {
                     badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
                 }
+                if (wip.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "wip" });
+                }
 
                 if (badges.length == 0) {
                     badges.push({ badge: "unknown" });
                 }
 
-                if (columnAPI.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "column_api" });
-                }
                 if (filterAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "filter_api" });
                 }
