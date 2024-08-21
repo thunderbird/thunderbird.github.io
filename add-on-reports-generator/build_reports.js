@@ -157,6 +157,7 @@ const pending_pr = {
     "559954": "https://github.com/ganast/tidybird/pull/113", // TidyBird
     "988416": "https://github.com/aramir/QuickFilterBy/pull/6", // QuickFilterBy
     "986230": "https://github.com/peci1/mailing-list-filter/pull/1", // Mailing list filter
+    "161820": "https://github.com/tomaszkrajewski/tb-alertswitch/pull/1", // Alert Switch
 }
 
 const contacted = {
@@ -224,7 +225,6 @@ const investigated = {
     "988323": "", // Real sender of italian PEC
     "986323": "https://github.com/caligraf/ConfirmBeforeDelete/issues/25",
     "6533": "https://github.com/threadvis/ThreadVis/issues/58",
-    "161820": "", // Alert Switch
 }
 
 // Keep to inform users about WebExt API
