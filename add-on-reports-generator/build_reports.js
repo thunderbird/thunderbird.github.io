@@ -841,9 +841,6 @@ var reports = {
                 if (recipientChangedAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "recipientChanged_api" });
                 }
-                if (Object.keys(pending_pr).includes(`${extJson.id}`)) {
-                    badges.push({ badge: "pending_pr", link: pending_pr[extJson.id] });
-                }
                 if (discontinued.includes(`${extJson.id}`)) {
                     badges.push({ badge: "discontinued" });
                 }
