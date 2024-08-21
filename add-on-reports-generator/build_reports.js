@@ -175,10 +175,19 @@ const contacted = {
     "508826": "https://addons.thunderbird.net/en-US/reviewers/review/eds-calendar-integration",
     "988303": "https://addons.thunderbird.net/en-US/reviewers/review/tud-cert-phishing-report",
     "988686": "https://addons.thunderbird.net/en-US/reviewers/review/multimonth-view",
-    "49594": "https://github.com/tomaszkrajewski/tb-subswitch/issues/7",
     // Beta
     "986338": "https://github.com/jobisoft/EAS-4-TbSync/issues/267#issuecomment-2297181031", // Provider for Exchange ActiveSync"
 
+}
+
+const investigated = {
+    "988376": "", // PGP Universal
+    "4454": "", // Priority Switcher
+    "988411": "", // Thunvatar
+    "988323": "", // Real sender of italian PEC
+    "986323": "https://github.com/caligraf/ConfirmBeforeDelete/issues/25",
+    "6533": "https://github.com/threadvis/ThreadVis/issues/58",
+    "49594": "https://github.com/tomaszkrajewski/tb-subswitch/issues/7",
 }
 
 const messagesUpdate = [
@@ -217,15 +226,6 @@ const messagesUpdate = [
     // UUps
     //987858 mark-all-read-we -- uuups folders.markAsRead should need messagesUpdate instead of accountsFolders
 ]
-
-const investigated = {
-    "988376": "", // PGP Universal
-    "4454": "", // Priority Switcher
-    "988411": "", // Thunvatar
-    "988323": "", // Real sender of italian PEC
-    "986323": "https://github.com/caligraf/ConfirmBeforeDelete/issues/25",
-    "6533": "https://github.com/threadvis/ThreadVis/issues/58",
-}
 
 // Keep to inform users about WebExt API
 const columnAPI = [
@@ -827,22 +827,11 @@ var reports = {
                 if (filterAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "filter_api" });
                 }
-                if (Object.keys(investigated).includes(`${extJson.id}`)) {
-                    let payload = investigated[`${extJson.id}`];
-                    let badge = { badge: "investigated", tooltip: payload }
-                    if (payload.startsWith("http")) {
-                        badge.link = payload;
-                    }
-                    badges.push(badge);
-                }
                 if (attachmentAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "attachment_api" });
                 }
                 if (recipientChangedAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "recipientChanged_api" });
-                }
-                if (discontinued.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "discontinued" });
                 }
                 let themeExperiment = v115.manifest?.theme_experiment;
                 if (themeExperiment) {
@@ -1290,21 +1279,27 @@ function debug(...args) {
 }
 
 function getBadgeElement(badgeName, bLink, bTooltip) {
-    // manipulate bRightText to reuse base bage
+    // Manipulate bRightText to reuse base badge.
     let badgeParts = badgeName.split(".");
-    let badgeOpt = badge_definitions[badgeName];
-    if (!badgeOpt && Array.isArray(badgeParts) && badge_definitions[badgeParts[0]]) {
-        badgeOpt = badge_definitions[badgeParts[0]];
+    let badgeOpt;
+    if (!badge_definitions[badgeName] && Array.isArray(badgeParts) && badge_definitions[badgeParts[0]]) {
+        badgeOpt = {...badge_definitions[badgeParts[0]]};
         badgeOpt.bRightText = badgeParts.slice(1).join(".");
+    } else {
+        badgeOpt = {...badge_definitions[badgeName]};
     }
     if (bTooltip) {
-        badgeOpt.bTooltip = bTooltip;
+        badgeOpt.bTooltip = bTooltip
+    } else if (!badgeOpt.bTooltip) {
+        badgeOpt.bTooltip = ""
     }
     return makeBadgeElement(badgeOpt, bLink);
 }
 
 function makeBadgeElement(bOpt, bLink) {
-    let title = bOpt.bTooltip ? `title='${bOpt.bTooltip}'` : ``;
+    let title = "";
+    if (bOpt.bTooltip) {title = `title='${bOpt.bTooltip}'`;}
+    else if (bLink) {title = `title='${bLink}'`;}
 
     let tag = `<img src='https://img.shields.io/badge/${bOpt.bLeftText}-${bOpt.bRightText}-${bOpt.bColor}.svg' ${title}>`
     return bLink ? `<a href="${bLink}">${tag}</a>` : tag;
