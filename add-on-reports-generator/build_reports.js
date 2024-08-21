@@ -926,6 +926,9 @@ var reports = {
                 if (themeExperiment) {
                     badges.push({ badge: "theme_experiment" });
                 }
+                if (v102.experiment) {
+                    badges.push({ badge: "experiment" });
+                }
                 if (!v102.legacy && v102.mext && !v102.experiment && !themeExperiment) {
                     badges.push({ badge: "pure" });
                 }
@@ -980,6 +983,9 @@ var reports = {
                 if (themeExperiment) {
                     badges.push({ badge: "theme_experiment" });
                 }
+                if (v91.experiment) {
+                    badges.push({ badge: "experiment" });
+                }
                 if (!v91.legacy && v91.mext && !v91.experiment && !themeExperiment) {
                     badges.push({ badge: "pure" });
                 }
@@ -1026,6 +1032,9 @@ var reports = {
                 let themeExperiment = v78.manifest?.theme_experiment;
                 if (themeExperiment) {
                     badges.push({ badge: "theme_experiment" });
+                }
+                if (v78.experiment) {
+                    badges.push({ badge: "experiment" });
                 }
                 if (!v78.legacy && v78.mext && !v78.experiment && !themeExperiment) {
                     badges.push({ badge: "pure" });
