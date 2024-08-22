@@ -116,14 +116,15 @@ const discontinued = [
     "988392", //Message List Preview
 ]
 
-const wip = [
-    "356507", // Header Tools Lite
-    "988091", // Expression Search - NG
-    "987740", // Nostalgy++/ Manage, search and archive
-    "64758", // xnotepp
-    "988185", // Bookmarks: eMails and XNotes
-    "988100", // Folders for search, onDisk Status- Glo
-]
+const wip = {
+    "356507": "", // Header Tools Lite
+    "988091": "", // Expression Search - NG
+    "987740": "", // Nostalgy++/ Manage, search and archive
+    "64758": "", // xnotepp
+    "988185": "", // Bookmarks: eMails and XNotes
+    "988100": "", // Folders for search, onDisk Status- Glo
+    "6533": "https://github.com/threadvis/ThreadVis/issues/58#issuecomment-2304477952",
+}
 
 const pending_pr = {
     "327780" : "https://github.com/vanowm/TB-Auto-Select-Latest-Message/pull/6", //Auto Select Latest Message
@@ -186,7 +187,6 @@ const investigated = {
     "988411": "", // Thunvatar
     "988323": "", // Real sender of italian PEC
     "986323": "https://github.com/caligraf/ConfirmBeforeDelete/issues/25",
-    "6533": "https://github.com/threadvis/ThreadVis/issues/58",
     "49594": "https://github.com/tomaszkrajewski/tb-subswitch/issues/7",
 }
 
@@ -378,8 +378,13 @@ var reports = {
                     badges.push(badge);
                 } else if (messagesUpdate.includes(`${extJson.id}`)) {
                     badges.push({ badge: "breaking_api_change", tooltip: "Missing messagesUpdate permission" });
-                } else if (wip.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "wip" });
+                } else if (Object.keys(wip).includes(`${extJson.id}`)) {
+                    let info = wip[`${extJson.id}`];
+                    let badge = { badge: "wip", tooltip: info };
+                    if (info.startsWith("http")) {
+                        badge.link = info
+                    }
+                    badges.push(badge);
                 }
 
                 if (badges.length == 0) {
@@ -876,8 +881,13 @@ var reports = {
                 if (Object.keys(contacted).includes(`${extJson.id}`)) {
                     badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
                 }
-                if (wip.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "wip" });
+                if (Object.keys(wip).includes(`${extJson.id}`)) {
+                    let info = wip[`${extJson.id}`];
+                    let badge = { badge: "wip", tooltip: info };
+                    if (info.startsWith("http")) {
+                        badge.link = info
+                    }
+                    badges.push(badge);
                 }
 
                 if (badges.length == 0) {
