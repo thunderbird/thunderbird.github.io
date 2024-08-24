@@ -183,7 +183,6 @@ const contacted = {
 }
 
 const investigated = {
-    "988376": "", // PGP Universal
     "4454": "", // Priority Switcher
     "988411": "", // Thunvatar
     "988323": "", // Real sender of italian PEC
