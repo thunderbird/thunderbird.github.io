@@ -159,6 +159,7 @@ const pending_pr = {
     "988416": "https://github.com/aramir/QuickFilterBy/pull/6", // QuickFilterBy
     "986230": "https://github.com/peci1/mailing-list-filter/pull/1", // Mailing list filter
     "161820": "https://github.com/tomaszkrajewski/tb-alertswitch/pull/1", // Alert Switch
+    "988376": "https://github.com/kgraefe/thunderbird-pgp-universal/pull/3", // PGP Universal
 }
 
 const contacted = {
