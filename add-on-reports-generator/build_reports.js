@@ -418,6 +418,10 @@ var reports = {
         generate: genStandardReport,
         rowData: function (extJson) {
             let data = getExtData(extJson, "128").data;
+            if (!data) {
+                return { include: false };
+            }
+            
             let permissions = data?.manifest?.permissions;
             let messagesUpdate = Array.isArray(permissions) &&  permissions.includes("messagesUpdate")
             let badges = [];
@@ -436,6 +440,38 @@ var reports = {
                 }
             }
             return { include, badges };
+        },
+    },
+    "mail-folder-picker": {
+        group: "general",
+        header: "Extensions which use a mail folder picker",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let mfp = [
+                6533, // threadvis
+                988356, // Auto Mark as read
+                988087, // Message Mover
+                12018, // Quick Folder Move
+                46207, // mailmindr
+            ]
+            if (mfp.includes(extJson.id)) {
+                return { include: true };
+            }
+
+            let data = getExtData(extJson, "102").data;
+            if (data) {
+                const result = fastFindInFiles({ 
+                    directory: `${data.localExtensionDir}/src`, 
+                    needle: `folder-menupopup`
+                })
+                if (result.length > 0) {
+                    return { include: true };
+                }
+            }
+
+            return { include: false };
         },
     }, 
     "valid-128-according-to-strict-max-but-atn-value-reduced": {
