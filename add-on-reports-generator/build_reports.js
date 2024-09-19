@@ -25,7 +25,7 @@ const badge_definitions = {
     "alternative_available": { bRightText: 'Alternative Available', bLeftText: 'Status', bColor: 'darkgreen' },
     "pending_pr": { bRightText: 'Pending Pull Request', bLeftText: 'Status', bColor: 'darkgreen' },
     "contacted": { bRightText: 'Waiting for Feedback', bLeftText: 'Status', bColor: 'green' },
-    "breaking_api_change": { bRightText: 'WebExtension API Change', bLeftText: 'Status', bColor: 'green' },
+    "messages_update": { bRightText: 'Missing messagesUpdate', bLeftText: 'Status', bColor: 'green' },
     "wip": { bRightText: 'Work in progress', bLeftText: 'Status', bColor: 'gold' },
     "investigated": { bRightText: 'Ongoing Analysis', bLeftText: 'Status', bColor: 'orange' },
     "discontinued": { bRightText: 'Discontinued', bLeftText: 'Status', bColor: 'D3D3D3' },
@@ -377,7 +377,7 @@ var reports = {
                     }
                     badges.push(badge);
                 } else if (messagesUpdate.includes(`${extJson.id}`)) {
-                    badges.push({ badge: "breaking_api_change", tooltip: "Missing messagesUpdate permission" });
+                    badges.push({ badge: "messages_update", tooltip: "Missing messagesUpdate permission" });
                 } else if (Object.keys(wip).includes(`${extJson.id}`)) {
                     let info = wip[`${extJson.id}`];
                     let badge = { badge: "wip", tooltip: info };
@@ -412,7 +412,7 @@ var reports = {
     },
     "missing-messagesUpdate-permission": {
         group: "128",
-        header: "Extensions using <i>messages.update()</i> in Thunderbird 128, without requesting the <i>messagesUpdate</i> permission.",
+        header: "Extensions using <i>messages.update()</i> or <i>folders.markAsRead()</i>in Thunderbird 128, without requesting the <i>messagesUpdate</i> permission.",
         template: "report-template.html",
         enabled: true,
         generate: genStandardReport,
@@ -427,6 +427,7 @@ var reports = {
             let badges = [];
             let include = false;
 
+            // update a message
             if (data && !messagesUpdate) {
                 const result = fastFindInFiles({ 
                     directory: `${data.localExtensionDir}/src`, 
@@ -436,9 +437,23 @@ var reports = {
 
                 if (lines) {
                     include = true;
-                    badges.push({ badge: "breaking_api_change", tooltip: lines })
+                    badges.push({ badge: "messages_update", tooltip: "browser.messages.update()" })
                 }
             }
+            // update a folder
+            if (data && !messagesUpdate) {
+                const result = fastFindInFiles({ 
+                    directory: `${data.localExtensionDir}/src`, 
+                    needle: ".folders.markAsRead"
+                })
+                const lines = result.length && result.flatMap(r => r.queryHits.map(h => h.link)).join("\n")
+
+                if (lines) {
+                    include = true;
+                    badges.push({ badge: "messages_update", tooltip: "browser.folders.markAsRead()" })
+                }
+            }
+
             return { include, badges };
         },
     },
@@ -513,7 +528,7 @@ var reports = {
             } else if (Object.keys(contacted).includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
             } else if (messagesUpdate.includes(`${extJson.id}`)) {
-                badges.push({ badge: "breaking_api_change", tooltip: "Missing messagesUpdate permission" });
+                badges.push({ badge: "messages_update", tooltip: "Missing messagesUpdate permission" });
             }
 
             return { include: manually_lowered, badges };
@@ -587,7 +602,7 @@ var reports = {
             } else if (Object.keys(contacted).includes(`${extJson.id}`)) {
                 badges.push({ badge: "contacted", tooltip: contacted[`${extJson.id}`] });
             } else if (messagesUpdate.includes(`${extJson.id}`)) {
-                badges.push({ badge: "breaking_api_change", tooltip: "Missing messagesUpdate permission" });
+                badges.push({ badge: "messages_update", tooltip: "Missing messagesUpdate permission" });
             }
             
             return { include, badges };
