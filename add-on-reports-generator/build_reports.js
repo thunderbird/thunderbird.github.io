@@ -111,7 +111,6 @@ const discontinued = [
     "987729", // New Folder Filters Button
     "988234", // tbhints (insignificant, stale)
     "988575", // Filtered Folder to Favorite (insignificant, stale)
-    "988281", // regimail (insignificant, stale)
     "988592", // Hide Duplicates From 'All Mail' (insignificant, stale)
     "988392", //Message List Preview
 ]
