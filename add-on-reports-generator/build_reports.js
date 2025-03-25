@@ -16,7 +16,7 @@ const rootDir = "data";
 const reportDir = "../add-on-reports";
 const extsAllJsonFileName = `${rootDir}/xall.json`;
 
-const SUPPORTED_ESR = [60, 68, 78, 91, 102, 115, 128];
+const SUPPORTED_VERSIONS = [60, 68, 78, 91, 102, 115, 128, 136];
 
 const {fastFindInFiles} = require('fast-find-in-files');
 
@@ -616,7 +616,7 @@ var reports = {
         generate: genStandardReport,
         rowData: function (extJson) {
             let data = getAllData(extJson);
-            return { include: !!Object.values(data).find(esr => esr.version) };
+            return { include: !!Object.values(data).find(version => version.version) };
         },
     },
     "wrong-order": {
@@ -1189,10 +1189,10 @@ function genStandardReport(extsJson, name, report) {
             current_version?.manifest?.browser_specific_settings?.gecko?.strict_max_version ||
             "*";
 
-        // Helper function to return the version cell for a given ESR
-        const cv = (esr) => {
+        // Helper function to return the version cell for a given version
+        const cv = (v) => {
             let rv = [];
-            let { version, data } = getExtData(extJson, esr);
+            let { version, data } = getExtData(extJson, v);
 
             if (version) {
                 rv.push(version);
@@ -1268,6 +1268,7 @@ function genStandardReport(extsJson, name, report) {
 		  <td style="text-align: right" valign="top">${cv("102")}</td>
 		  <td style="text-align: right" valign="top">${cv("115")}</td>
 		  <td style="text-align: right" valign="top">${cv("128")}</td>
+		  <td style="text-align: right" valign="top">${cv("136")}</td>
 		  <td style="text-align: right" valign="top">${current_version?.atn.files[0].created.split('T')[0]}</td>
 		  <td style="text-align: right" valign="top">${cv("current")}</td>
 		  <td style="text-align: right" valign="top">${v_min}</td>
@@ -1406,17 +1407,17 @@ function compareVer(a, b) {
 
 function getAllData(extJson) {
     let data = {}
-    for (let esr of SUPPORTED_ESR) {
-        data[esr] = getExtData(extJson, esr);
+    for (let version of SUPPORTED_VERSIONS) {
+        data[version] = getExtData(extJson, version);
     }
     return data;
 }
 
-// Returns the special xpilib object for the given ESR (or current).
-function getExtData(extJson, esr) {
+// Returns the special xpilib object for the given version (or current).
+function getExtData(extJson, v) {
     let cmp_data = extJson?.xpilib?.cmp_data;
     let version = cmp_data
-        ? cmp_data[esr]
+        ? cmp_data[v]
         : null;
 
     let ext_data = extJson?.xpilib?.ext_data;
