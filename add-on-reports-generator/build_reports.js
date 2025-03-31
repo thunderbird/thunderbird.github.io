@@ -16,7 +16,7 @@ const rootDir = "data";
 const reportDir = "../add-on-reports";
 const extsAllJsonFileName = `${rootDir}/xall.json`;
 
-const RELEASE = 136;
+const RELEASE = 137;
 const SUPPORTED_VERSIONS = [60, 68, 78, 91, 102, 115, 128, RELEASE];
 
 const {fastFindInFiles} = require('fast-find-in-files');
@@ -37,13 +37,163 @@ const badge_definitions = {
     "pure": { bRightText: 'Pure WebExtension', bLeftText: '⠀', bColor: '570861' },
     "no_limit_experiment": { bRightText: 'Limitless Experiment', bLeftText: '⠀', bColor: 'ff8800' },
     "experiment": { bRightText: 'Experiment (legacy)', bLeftText: '⠀', bColor: 'ff8800' },
-    
+    "experiment_new": { bRightText: 'New Experiment since Feb 2025', bLeftText: '⠀', bColor: 'darkred' },
+    "experiment_migrated": { bRightText: 'Migrated Experiment since Feb 2025', bLeftText: '⠀', bColor: 'darkgreen' },
 
     "attachment_api": { bRightText: 'Attachment API Candidate', bLeftText: '⠀', bColor: 'white' },
     "recipientChanged_api": { bRightText: 'onRecipientChanged API', bLeftText: '⠀', bColor: 'white' },
     "column_api": { bRightText: 'Needs Column Support', bLeftText: '⠀', bColor: 'darkred' },
     "filter_api": { bRightText: 'Needs Custom QuickFilter Support', bLeftText: '⠀', bColor: 'darkred' },
 }
+
+const experiments_feb_2025 = [
+    "986686",
+    "4631",
+    "711780",
+    "640",
+    "195275",
+    "4654",
+    "47144",
+    "988138",
+    "634298",
+    "773590",
+    "986325",
+    "986643",
+    "987716",
+    "986338",
+    "987840",
+    "386321",
+    "54035",
+    "2533",
+    "438634",
+    "217293",
+    "10052",
+    "64758",
+    "4970",
+    "3254",
+    "11005",
+    "90003",
+    "986685",
+    "372870",
+    "987783",
+    "1556",
+    "987908",
+    "987798",
+    "987934",
+    "1279",
+    "988090",
+    "12018",
+    "988096",
+    "742199",
+    "987900",
+    "987906",
+    "987931",
+    "988116",
+    "987888",
+    "988001",
+    "12802",
+    "244848",
+    "987885",
+    "11646",
+    "324497",
+    "646888",
+    "1898",
+    "986682",
+    "987740",
+    "116388",
+    "6533",
+    "331319",
+    "987775",
+    "811161",
+    "986692",
+    "988190",
+    "356507",
+    "987764",
+    "988091",
+    "1203",
+    "11727",
+    "2874",
+    "769143",
+    "988215",
+    "988195",
+    "310",
+    "987911",
+    "987865",
+    "987689",
+    "2561",
+    "988057",
+    "988108",
+    "988035",
+    "986632",
+    "988056",
+    "987787",
+    "987784",
+    "987914",
+    "988081",
+    "988289",
+    "360086",
+    "987987",
+    "676875",
+    "3492",
+    "987933",
+    "407832",
+    "987786",
+    "987729",
+    "508826",
+    "161710",
+    "161820",
+    "987821",
+    "987785",
+    "988770",
+    "988416",
+    "49594",
+    "988293",
+    "988559",
+    "690062",
+    "988383",
+    "986523",
+    "988572",
+    "987857",
+    "986610",
+    "988567",
+    "844927",
+    "559954",
+    "988724",
+    "988230",
+    "988772",
+    "988806",
+    "988539",
+    "988303",
+    "745576",
+    "615980",
+    "534258",
+    "986230",
+    "987868",
+    "988837",
+    "987869",
+    "988794",
+    "987988",
+    "988849",
+    "988728",
+    "852623",
+    "987922",
+    "987989",
+    "988530",
+    "988106",
+    "987915",
+    "988875",
+    "988260",
+    "988816",
+    "988571",
+    "988848",
+    "988790",
+    "988722",
+    "988100",
+    "988281",
+    "988826",
+    "988732",
+    "988827"
+]
 
 const compatible_128 = [
     "988608",	//Open Google Chat
@@ -312,12 +462,21 @@ var reports = {
         generate: genStandardReport,
         rowData: function (extJson) {
             let v128 = getExtData(extJson, "128").data;
+            let vRelease = getExtData(extJson, `${RELEASE}`).data;
             let include = !!v128;
             let badges = [];
 
             if (include) {
-                if (v128.experiment) {
+                let isExperiment = vRelease ? vRelease.experiment : v128.experiment;
+
+                if (isExperiment) {
                     badges.push({ badge: "experiment" });
+                }
+                if (!isExperiment && experiments_feb_2025.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "experiment_migrated" });
+                }
+                if (isExperiment && !experiments_feb_2025.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "experiment_new" });
                 }
                 if (filterAPI.includes(`${extJson.id}`)) {
                     badges.push({ badge: "filter_api" });
@@ -608,6 +767,37 @@ var reports = {
             return { include, badges };
         }
     },
+    "experiment-status": {
+        group: "128",
+        header: "Extensions with added or removed Experiments.",
+        template: "report-template.html",
+        enabled: true,
+        generate: genStandardReport,
+        rowData: function (extJson) {
+            let v128 = getExtData(extJson, "128").data;
+            let vRelease = getExtData(extJson, `${RELEASE}`).data;
+            let include = !!v128;
+            let badges = [];
+            let includeForReal = false;
+
+            if (include) {
+                let isExperiment = vRelease ? vRelease.experiment : v128.experiment;
+                if (isExperiment) {
+                    badges.push({ badge: "experiment" });
+                }
+                if (!isExperiment && experiments_feb_2025.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "experiment_migrated" });
+                    includeForReal = true;
+                }
+                if (isExperiment && !experiments_feb_2025.includes(`${extJson.id}`)) {
+                    badges.push({ badge: "experiment_new" });
+                    includeForReal = true;
+                }
+            };
+
+            return { include: includeForReal, badges }
+        }
+    },    
     // -- general ----------------------------------------------------------------------------------
     "all": {
         group: "general",
@@ -1269,7 +1459,7 @@ function genStandardReport(extsJson, name, report) {
 		  <td style="text-align: right" valign="top">${cv("102")}</td>
 		  <td style="text-align: right" valign="top">${cv("115")}</td>
 		  <td style="text-align: right" valign="top">${cv("128")}</td>
-		  <td style="text-align: right" valign="top">${cv(RELEASE)}</td>
+		  <td style="text-align: right" valign="top">${cv(`${RELEASE}`)}</td>
 		  <td style="text-align: right" valign="top">${current_version?.atn.files[0].created.split('T')[0]}</td>
 		  <td style="text-align: right" valign="top">${cv("current")}</td>
 		  <td style="text-align: right" valign="top">${v_min}</td>
