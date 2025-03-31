@@ -16,7 +16,8 @@ const rootDir = "data";
 const reportDir = "../add-on-reports";
 const extsAllJsonFileName = `${rootDir}/xall.json`;
 
-const SUPPORTED_VERSIONS = [60, 68, 78, 91, 102, 115, 128, 136];
+const RELEASE = 136;
+const SUPPORTED_VERSIONS = [60, 68, 78, 91, 102, 115, 128, RELEASE];
 
 const {fastFindInFiles} = require('fast-find-in-files');
 
@@ -1268,7 +1269,7 @@ function genStandardReport(extsJson, name, report) {
 		  <td style="text-align: right" valign="top">${cv("102")}</td>
 		  <td style="text-align: right" valign="top">${cv("115")}</td>
 		  <td style="text-align: right" valign="top">${cv("128")}</td>
-		  <td style="text-align: right" valign="top">${cv("136")}</td>
+		  <td style="text-align: right" valign="top">${cv(RELEASE)}</td>
 		  <td style="text-align: right" valign="top">${current_version?.atn.files[0].created.split('T')[0]}</td>
 		  <td style="text-align: right" valign="top">${cv("current")}</td>
 		  <td style="text-align: right" valign="top">${v_min}</td>
