@@ -47,14 +47,14 @@
 
     </style>
     <script>
-    const path = window.location.pathname;
-    const search = window.location.search || '';
-    const hash = window.location.hash || '';
+        const path = window.location.pathname;
+        const search = window.location.search || '';
+        const hash = window.location.hash || '';
 
-    if (path.startsWith('/add-on-reports')) {
-        const newPath = path.replace('/add-on-reports', '/webext-reports');
-        window.location.href = newPath + search + hash;
-    }
+        if (path.startsWith('/add-on-reports')) {
+            const newPath = path.replace('/add-on-reports', '/webext-reports');
+            window.location.href = newPath + search + hash;
+        }
     </script>
   </head>
   <body>
@@ -82,11 +82,11 @@
       </p>
 
       <a href="/" class="logo logo-img-1x">
-        <img title="" alt="" src="logo.png">
+        <img title="" alt="" src="/logo.png">
       </a>
 
       <a href="/" class="logo logo-img-2x">
-        <img title="" alt="" src="logo.png">
+        <img title="" alt="" src="/logo.png">
       </a>
     </div>
   </body>
