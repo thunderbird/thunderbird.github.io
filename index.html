@@ -1,9 +1,103 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">    
-  </head>
-  <body>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thunderbird Github Pages</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    .logo-container {
+      height: 33vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      padding: 20px;
+    }
+
+    .logo-container img {
+      max-height: 100%;
+      max-width: 100%;
+    }
+
+    .cards-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 40px 20px;
+      background-color: #f0f0f0;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      margin: 10px;
+      width: 300px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-description {
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <div class="logo-container">
+    <img src="logo.png" alt="Thunderbird Logo">
+  </div>
+
+  <!-- Cards -->
+  <div class="cards-container">
+    <a href="https://thunderbird.github.io/webext-reports/" class="card">
+      <img src="cards/reports.png" alt="Add-on Reports">
+      <div class="card-description">
+        <h3>Add-on Reports</h3>
+        <p>Detailed information about add-ons available on addons.thunderbird.net (ATN).</p>
+      </div>
+    </a>
+
+    <a href="https://thunderbird.github.io/heatmap/" class="card">
+      <img src="cards/heatmap.png" alt="Thunderbird Heatmap">
+      <div class="card-description">
+        <h3>Heatmap</h3>
+        <p>See which clickable elements of Thunderbird's UI are <i>actually</i> used.</p>
+      </div>
+    </a>
+
+    <a href="https://github.com/thunderbird/policy-templates/blob/master/README.md" class="card">
+      <img src="cards/policies.png" alt="Thunderbird Policy Templates">
+      <div class="card-description">
+        <h3>Policy Templates</h3>
+        <p>Enterprise policy descriptions and templates for Thunderbird.</p>
+      </div>
+    </a>
+  </div>
+
+</body>
 </html>
